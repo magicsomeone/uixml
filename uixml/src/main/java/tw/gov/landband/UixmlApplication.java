@@ -5,12 +5,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import tw.gov.landband.component.LoadXmlComponent;
+import tw.gov.landband.component.UiXmlGeneratorComponent;
+import tw.gov.landband.component.UiXmlLoaderComponent;
 
 @SpringBootApplication
 public class UixmlApplication implements CommandLineRunner {
 	@Autowired
-	private LoadXmlComponent loadXmlComponent;
+	private UiXmlLoaderComponent loaderComponent;
+	@Autowired
+	private UiXmlGeneratorComponent generatorComponent;
 
 	public static void main(String[] args) {
 		SpringApplication.run(UixmlApplication.class, args);
@@ -18,7 +21,8 @@ public class UixmlApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		loadXmlComponent.process();
+//		loaderComponent.load();
+		generatorComponent.generate();
 		System.exit(0);
 	}
 
