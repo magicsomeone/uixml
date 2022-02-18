@@ -1,0 +1,1290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_ICTM_RULE</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>规则 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>4</MAXLENGTH>
+        <NAME>RULE_ID</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>规则说明</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>RULE_DESC</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>规则 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>4</MAXLENGTH>
+        <NAME>RULE_ID</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>规则说明</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>RULE_DESC</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="主要" TMP_SCR_TYPE="M">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>经办者</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>复核者</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>日期时间：</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>日期时间：</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>模式编号</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL></LBL>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="C">已关闭</OPTION>
+                <OPTION VALUE="O">打开</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>记录状态</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="A">已授权</OPTION>
+                <OPTION VALUE="R">已拒付</OPTION>
+                <OPTION VALUE="U">未授权</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>授权状态</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RULE</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="S" SEQ="1" id="CVS_FORMULAS">
+        <SCREEN>CVS_FORMULAS</SCREEN>
+        <LBL>公式</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="2" id="CSCFNUDF">
+        <SCREEN>CVS_UDF</SCREEN>
+        <LBL>字段</LBL>
+        <FUNCTION>CSCFNUDF</FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="3" id="CVS_RATE_EXPR">
+        <SCREEN>CVS_RATE_EXPR</SCREEN>
+        <LBL>公式利率</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_NEW1">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>规则 ID</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>RULE_ID</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>规则说明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>RULE_DESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_PRIMARY_ELEMENT</NAME>
+                </LOV>
+                <LBL>主要要素</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>PRIMARY_ELEMENT</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>模块 ID</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>IC</VALUE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>MODULEID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RULE</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_APPLY_INTEREST">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>账户开放月份</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>INT_ACC_OPEN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>账户关闭月份</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>INT_ACC_CLOSE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>应用利息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RULE</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_LM_PARAMS">
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_chk()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>IL_RULE</NAME>
+                <LBL>集成 LM</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>集成 LM 类型</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="0" SELECTED="0">池领导者</OPTION>
+                <OPTION VALUE="1" SELECTED="0">池重新分配</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>IL_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>ILM 参数</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RULE</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_SYSTEM">
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>SDE_ID</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_SDE_ID</NAME>
+                </LOV>
+                <LBL>系统要素</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>系统要素</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RULE_SDE</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_USER">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>用户要素</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>UDE_ID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>类型 </LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="A" SELECTED="0">金额</OPTION>
+                <OPTION VALUE="R" SELECTED="0">汇率</OPTION>
+                <OPTION VALUE="N" SELECTED="0">编号</OPTION>
+                <OPTION VALUE="C" SELECTED="0">利率代码</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>UDE_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>获取最新</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="Y" SELECTED="0">使用当前</OPTION>
+                <OPTION VALUE="N" SELECTED="0">使用生效</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>GET_LATEST</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>用户要素</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RULE_UDE</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_FORMULAS" POSITION="template" TITLE="公式" TMP_SCR_TYPE="L">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="S" SEQ="1" id="CVS_RATE">
+        <SCREEN>CVS_RATE</SCREEN>
+        <LBL>公式向导</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="ME" INDEX="1" ID="FST_FSFRM">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>FRM_NO</NAME>
+                <LBL>公式号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>借记/贷记</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="D" SELECTED="0">借记</OPTION>
+                <OPTION VALUE="C" SELECTED="0">贷记</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>DRCR_IND</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>启用应计计算</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ACCR_FLAG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>自计息方法</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>FRM_INT_METH</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RULE_FRM</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="ME" INDEX="1" ID="FST_FSBOOK">
+              <NAV_BTN_REQ>Y</NAV_BTN_REQ>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>记账标志</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="B" SELECTED="0">已记账</OPTION>
+                <OPTION VALUE="N" SELECTED="0">非记账</OPTION>
+                <OPTION VALUE="T" SELECTED="0">税额</OPTION>
+                <OPTION VALUE="P" SELECTED="0">罚款</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>BOOK_FLAG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>一个月的天数</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="A" SELECTED="0">实际</OPTION>
+                <OPTION VALUE="T" SELECTED="0">30 天</OPTION>
+                <OPTION VALUE="E" SELECTED="0">欧式 - 30</OPTION>
+                <OPTION VALUE="1" SELECTED="0">30（欧式）-ISDA</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>DAYS_MTH</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>币种定义默认的计息方法</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>DAYS_FROM_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RULE_FRM</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART3" ID="PART3" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="ME" INDEX="1" ID="FST_FSPERIOD">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>周期</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="D" SELECTED="0">每日</OPTION>
+                <OPTION VALUE="P" SELECTED="0">周期性</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PRD_FLAG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>一年的天数</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="A" SELECTED="0">实际</OPTION>
+                <OPTION VALUE="T" SELECTED="0">360 天</OPTION>
+                <OPTION VALUE="F" SELECTED="0">365 天</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>DAYS_YEAR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>天数差异</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>DAYS_DIFF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>需要舍入</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ROUNDING_REQD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RULE_FRM</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="ME" INDEX="1" ID="FST_FSPERIOD1">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_TAX_CATEGORY</NAME>
+                </LOV>
+                <LBL>税费类别</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>10</MAXLENGTH>
+                <NAME>TAX_CATEGORY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>税费说明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DESCRIPTION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RULE_FRM</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_3" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="ME" INDEX="1" ID="FST_CALC_PARAM">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>BASIS_PERCENT</NAME>
+                <LBL>基准百分比</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>本币基准</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>A</OFF>
+                  <ON>L</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TAX_CALC_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>计算参数</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RULE_FRM</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="ME" INDEX="1" ID="FST_BOOKING">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>将税额记至费用账户</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TAX_CUST</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>税费支付币种标志</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="A" SELECTED="0">账户币种</OPTION>
+                <OPTION VALUE="L" SELECTED="0">本币</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TAX_PAY_CCY_FLAG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>记账</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RULE_FRM</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART3" ID="PART3" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="ME" INDEX="1" ID="FST_FATCA">
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>FATCA_TAX</NAME>
+                <LBL>FATCA 预提税</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>FATCA</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RULE_FRM</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_4" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="ME" INDEX="1" ID="FST_BASIS_AMT">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>选项</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="D" SELECTED="0">默认币种</OPTION>
+                <OPTION VALUE="S" SELECTED="0">特定</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CALC_AMT_RND_OPTION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>方法</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="T" SELECTED="0">削减</OPTION>
+                <OPTION VALUE="U" SELECTED="0">向上舍入</OPTION>
+                <OPTION VALUE="D" SELECTED="0">向下舍入</OPTION>
+                <OPTION VALUE="N" SELECTED="0">四舍五入</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CALC_AMT_RND_METHOD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>CALC_AMT_RND_DECIMAL</NAME>
+                <LBL>小数</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>CALC_AMT_RND_UNITS</NAME>
+                <LBL>单位</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>基准金额</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RULE_FRM</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="ME" INDEX="1" ID="FST_TAX_AMT">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>选项</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="D" SELECTED="0">默认币种</OPTION>
+                <OPTION VALUE="S" SELECTED="0">特定</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TAX_AMT_RND_OPTION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>方法</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="T" SELECTED="0">削减</OPTION>
+                <OPTION VALUE="U" SELECTED="0">向上舍入</OPTION>
+                <OPTION VALUE="D" SELECTED="0">向下舍入</OPTION>
+                <OPTION VALUE="N" SELECTED="0">四舍五入</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TAX_AMT_RND_METHOD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>TAX_AMT_RND_DECIMAL</NAME>
+                <LBL>小数</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>TAX_AMT_RND_UNITS</NAME>
+                <LBL>单位</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>税额</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RULE_FRM</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_RATE_EXPR" POSITION="template" TITLE="公式向导" TMP_SCR_TYPE="M">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_FOR_RATE">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>5</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>EXPR_NO</NAME>
+                <LBL>表达式</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>条件</LBL>
+                <SIZE>70</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_cond(event)</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>COND_EXPR</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>结果</LBL>
+                <SIZE>70</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_result(event)</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>RES_EXPR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RATE_EXPR</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FOR_RATE1">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>要素</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>LST_ELEM1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>功能</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="A" SELECTED="0">绝对值</OPTION>
+                <OPTION VALUE="X" SELECTED="0">最大</OPTION>
+                <OPTION VALUE="M" SELECTED="0">最少</OPTION>
+                <OPTION VALUE="R" SELECTED="0">四舍五入</OPTION>
+                <OPTION VALUE="T" SELECTED="0">削减</OPTION>
+                <OPTION VALUE="F" SELECTED="0">最低</OPTION>
+                <OPTION VALUE="C" SELECTED="0">最高</OPTION>
+                <OPTION VALUE="P" SELECTED="0">幂</OPTION>
+                <OPTION VALUE="Q" SELECTED="0">模式</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>LST_FUNC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>运算符</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="+" SELECTED="0">+</OPTION>
+                <OPTION VALUE="-" SELECTED="0">-</OPTION>
+                <OPTION VALUE="*" SELECTED="0">*</OPTION>
+                <OPTION VALUE="/" SELECTED="0">/</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>LST_OP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>逻辑运算符</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="&lt;" SELECTED="0"><</OPTION>
+                <OPTION VALUE="&gt;" SELECTED="0">></OPTION>
+                <OPTION VALUE="=" SELECTED="0">=</OPTION>
+                <OPTION VALUE="&lt;&gt;" SELECTED="0"><></OPTION>
+                <OPTION VALUE="&lt;=" SELECTED="0"><=</OPTION>
+                <OPTION VALUE="&gt;=" SELECTED="0">>=</OPTION>
+                <OPTION VALUE="AND" SELECTED="0">和</OPTION>
+                <OPTION VALUE="OR" SELECTED="0">OR</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>LST_LOP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RULE</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_RATE" POSITION="template" TITLE="公式向导" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_FOR_WIZ">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>5</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>EXPR_LINE</NAME>
+                <CASE>UPPER</CASE>
+                <LBL>表达式</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE>70</SIZE>
+                <COLS>50</COLS>
+                <MAXLENGTH>2000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_cond(event)</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>COND</NAME>
+                <CASE>UPPER</CASE>
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>条件</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>条件</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXTAREA</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>结果</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>结果</LBL>
+                <SIZE>70</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS>50</COLS>
+                <TYPE>TEXTAREA</TYPE>
+                <MAXLENGTH>2000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_result(event)</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>RESULT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_EXPR</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_WIZ">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>要素</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>LST_ELEM</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>功能</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="A" SELECTED="0">绝对值</OPTION>
+                <OPTION VALUE="X" SELECTED="0">最大</OPTION>
+                <OPTION VALUE="M" SELECTED="0">最少</OPTION>
+                <OPTION VALUE="R" SELECTED="0">四舍五入</OPTION>
+                <OPTION VALUE="T" SELECTED="0">削减</OPTION>
+                <OPTION VALUE="F" SELECTED="0">最低</OPTION>
+                <OPTION VALUE="C" SELECTED="0">最高</OPTION>
+                <OPTION VALUE="P" SELECTED="0">幂</OPTION>
+                <OPTION VALUE="Q" SELECTED="0">模式</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>LST_FUNC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>运算符</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="+" SELECTED="0">+</OPTION>
+                <OPTION VALUE="-" SELECTED="0">-</OPTION>
+                <OPTION VALUE="*" SELECTED="0">*</OPTION>
+                <OPTION VALUE="/" SELECTED="0">/</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>LST_OP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>逻辑运算符</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="&lt;" SELECTED="0"><</OPTION>
+                <OPTION VALUE="&gt;" SELECTED="0">></OPTION>
+                <OPTION VALUE="=" SELECTED="0">=</OPTION>
+                <OPTION VALUE="&lt;&gt;" SELECTED="0"><></OPTION>
+                <OPTION VALUE="&lt;=" SELECTED="0"><=</OPTION>
+                <OPTION VALUE="&gt;=" SELECTED="0">>=</OPTION>
+                <OPTION VALUE="AND" SELECTED="0">和</OPTION>
+                <OPTION VALUE="OR" SELECTED="0">OR</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>LST_LOP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_RULE</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

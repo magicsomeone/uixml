@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="${FORM.SUMMARY.-TITLE}" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS>1</BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fn_viewDDRequest()</BUTTON_EVENT>
+        <BUTTON_LBL>${FORM.SUMMARY.SUMBUTTONS.BUTTON.0.BUTTON_LBL}</BUTTON_LBL>
+        <BUTTON_NAME>VIEW_DD_REQUEST</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fn_drawdownRelease()</BUTTON_EVENT>
+        <BUTTON_LBL>${FORM.SUMMARY.SUMBUTTONS.BUTTON.1.BUTTON_LBL}</BUTTON_LBL>
+        <BUTTON_NAME>DD_RELAESE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="3">
+        <BUTTON_EVENT>fn_drawdownReject()</BUTTON_EVENT>
+        <BUTTON_LBL>${FORM.SUMMARY.SUMBUTTONS.BUTTON.2.BUTTON_LBL}</BUTTON_LBL>
+        <BUTTON_NAME>DD_REJECT</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="4">
+        <BUTTON_EVENT>fn_drawdownAuthorize()</BUTTON_EVENT>
+        <BUTTON_LBL>${FORM.SUMMARY.SUMBUTTONS.BUTTON.3.BUTTON_LBL}</BUTTON_LBL>
+        <BUTTON_NAME>DD_AUTH</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="5">
+        <BUTTON_EVENT>fn_ViewQueueAction()</BUTTON_EVENT>
+        <BUTTON_LBL>${FORM.SUMMARY.SUMBUTTONS.BUTTON.4.BUTTON_LBL}</BUTTON_LBL>
+        <BUTTON_NAME>VIEW_QUEUE_ACTION</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW>6</BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_FW_DRAWDOWN_APPROVAL_QUEUE</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>${FORM.SUMMARY.SUMBLOCK.0.FIELD.0.LBL}</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.0.FIELD.1.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>9</MAXLENGTH>
+        <NAME>SENDER_DI_ABA_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.0.FIELD.2.LBL}</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>INPUT_CYCLE_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.0.FIELD.3.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <NAME>IMAD</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.0.FIELD.4.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TRANSFER_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>${FORM.SUMMARY.SUMBLOCK.0.FIELD.5.LBL}</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>TRANSFER_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TRANSFER_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.0.FIELD.6.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>SENDER_REFERENCE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.0.FIELD.7.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>DRAWDOWN_DR_AC_NO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.0.FIELD.8.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>34</MAXLENGTH>
+        <NAME>BENEFICIARY_IDENTIFIER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.0.FIELD.9.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXN_BRANCH</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.0.FIELD.10.LBL}</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">${FORM.SUMMARY.SUMBLOCK.0.FIELD.10.OPTION.1.#text}</OPTION>
+        <OPTION VALUE="U" SELECTED="0">${FORM.SUMMARY.SUMBLOCK.0.FIELD.10.OPTION.2.#text}</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT1</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_TYPE_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>${FORM.SUMMARY.SUMBLOCK.0.FIELD.11.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>NETWORK_TYPE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>${FORM.SUMMARY.SUMBLOCK.0.FIELD.12.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.0.LBL}</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.1.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>9</MAXLENGTH>
+        <NAME>SENDER_DI_ABA_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.2.LBL}</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>INPUT_CYCLE_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.3.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <NAME>IMAD</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.4.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TRANSFER_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.5.LBL}</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>TRANSFER_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TRANSFER_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.6.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>SENDER_REFERENCE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.7.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>DRAWDOWN_DR_AC_NO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.8.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>34</MAXLENGTH>
+        <NAME>BENEFICIARY_IDENTIFIER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.9.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXN_BRANCH</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.10.LBL}</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">${FORM.SUMMARY.SUMBLOCK.1.FIELD.10.OPTION.1.#text}</OPTION>
+        <OPTION VALUE="U" SELECTED="0">${FORM.SUMMARY.SUMBLOCK.1.FIELD.10.OPTION.2.#text}</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT1</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.11.LBL}</LBL>
+        <MAX_VAL></MAX_VAL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_TYPE_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.12.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>NETWORK_TYPE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.13.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">${FORM.SUMMARY.SUMBLOCK.1.LEGENDS.OPTION.0.#text}</OPTION>
+        <OPTION VALUE="U">${FORM.SUMMARY.SUMBLOCK.1.LEGENDS.OPTION.1.#text}</OPTION>
+        <FIELD_NAME>AUTH_STAT1</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="${FORM.SCREEN.-TITLE}" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_DD_APPROVAL_QUEUE">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>QUEUE_REF_NO</NAME>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.0.LBL}</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.1.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>9</MAXLENGTH>
+                <NAME>SENDER_DI_ABA_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.2.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>INPUT_CYCLE_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.3.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>IMAD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.4.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>TRANSFER_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>TRANSFER_CCY</RELATED_FIELD>
+                <MAXLENGTH>22,4</MAXLENGTH>
+                <NAME>TRANSFER_AMT</NAME>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.5.LBL}</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.6.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>DRAWDOWN_DR_AC_NO</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.7.LBL}</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="W" SELECTED="0">${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.7.OPTION.#text}</OPTION>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PAYMENT_TYPE1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.8.LBL}</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="A" SELECTED="0">${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.8.OPTION.1.#text}</OPTION>
+                <OPTION VALUE="U" SELECTED="0">${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.8.OPTION.2.#text}</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTH_STAT1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>PROCESS_TYPE</NAME>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.9.LBL}</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.10.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>SENDER_REFERENCE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.11.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>TXN_BRANCH</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.12.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>34</MAXLENGTH>
+                <NAME>BENEFICIARY_IDENTIFIER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.13.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2040</MAXLENGTH>
+                <NAME>ERR_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.14.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2040</MAXLENGTH>
+                <NAME>REPAIR_REASON</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.15.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>NETWORK_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.16.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>SOURCE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.17.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CUSTOMER_SERVICE_MODEL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.18.LBL}</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="O" SELECTED="0">${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.18.OPTION.0.#text}</OPTION>
+                <OPTION VALUE="I" SELECTED="0">${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.18.OPTION.1.#text}</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>PAYMENT_TXN_TYPE1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>TXN_REF_NO</NAME>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.19.LBL}</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.20.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>QUEUE_ACTION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.21.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>SOURCE_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.22.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>PREV_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.23.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>REMARKS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.24.LBL}</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="W" SELECTED="0">${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.24.OPTION.#text}</OPTION>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PAYMENT_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.25.LBL}</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="A" SELECTED="0">${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.25.OPTION.0.#text}</OPTION>
+                <OPTION VALUE="C" SELECTED="0">${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.25.OPTION.1.#text}</OPTION>
+                <OPTION VALUE="F" SELECTED="0">${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.25.OPTION.2.#text}</OPTION>
+                <OPTION VALUE="P" SELECTED="0">${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.25.OPTION.3.#text}</OPTION>
+                <OPTION VALUE="R" SELECTED="0">${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.25.OPTION.4.#text}</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>CURRENT_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.26.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>MAKER_DT_STAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.27.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>MAKER_ID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.28.LBL}</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="PW" SELECTED="0">${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.28.OPTION.#text}</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>MODULE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.29.LBL}</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="A" SELECTED="0">${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.29.OPTION.1.#text}</OPTION>
+                <OPTION VALUE="U" SELECTED="0">${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.29.OPTION.2.#text}</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTH_STAT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>HOST_ID</NAME>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.30.LBL}</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>NETWORK_ID</NAME>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.31.LBL}</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.32.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>CHECKER_DT_STAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.33.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>PAYMENT_TXN_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.34.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>CUSTOMER_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.35.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>HOST_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>LATEST_QUEUE_SEQ</NAME>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.36.LBL}</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.PART.FLDSET.FIELD.37.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>CHECKER_ID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_FW_DRAWDOWN_APPROVAL_QUEUE</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

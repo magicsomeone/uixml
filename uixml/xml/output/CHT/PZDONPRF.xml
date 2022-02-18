@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="展期本金及利息淨額" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_BRN_ACH_DBT_OUTBND_PREF</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>審計</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Mantas 文件參數</OPTION>
+        <OPTION VALUE="U">評論</OPTION>
+        <OPTION VALUE="R">前幾句話</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>拒絕</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">中等</OPTION>
+        <OPTION VALUE="C">授權狀態</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_S</NAME>
+        </LOV>
+        <LBL>網路貨幣首選項摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>網路BIC</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>NETWORK_CCY</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>審計</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Mantas 文件參數</OPTION>
+        <OPTION VALUE="U">評論</OPTION>
+        <OPTION VALUE="R">前幾句話</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>拒絕</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">中等</OPTION>
+        <OPTION VALUE="C">授權狀態</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_S</NAME>
+        </LOV>
+        <LBL>網路貨幣首選項摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>網路BIC</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>NETWORK_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <REQD>-1</REQD>
+        <LBL>主機主金鑰</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>HOST_CODE</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+        <SECTION ID="SEC_HEADER" COLLAPSE="N">
+          <PART NAME="PARTITION1" ID="PARTITION1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HEADER">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <REQD>-1</REQD>
+                <LBL>主機主金鑰</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>HOST_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>NETWORK_CODE</NAME>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_NETWORK_CODE</NAME>
+                </LOV>
+                <LBL>網路貨幣首選項摘要</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>網路BIC</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>NETWORK_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="Z" SELECTED="0">每個DD</OPTION>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PAYMENT_TYPE</NAME>
+                <LBL>支付至</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>網路直接借記優惠</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>NETWORK_DESCRIPTION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="Y" SELECTED="0">扣留</OPTION>
+                <OPTION VALUE="N" SELECTED="0">不設網</OPTION>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ALL_CCY</NAME>
+                <LBL>LBL_ALLOW_ALL_CCY</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>網絡類型描述</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>NETWORK_TYPE_DESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>網絡代碼</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>NETWORK_TYPE_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_BRN_ACH_DBT_OUTBND_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>高</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>已授權</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>覆核者</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>覆核者</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>經辦者</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL></LBL>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="C">授權狀態</OPTION>
+                <OPTION VALUE="O">中等</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>拒絕</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="A">Mantas 文件參數</OPTION>
+                <OPTION VALUE="R">前幾句話</OPTION>
+                <OPTION VALUE="U">評論</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>審計</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_BRN_ACH_DBT_OUTBND_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_PAYMENT_PREF">
+        <LBL>Debit Preferences</LBL>
+        <SECTION ID="SEC_ACCOUNTING_CODES" COLLAPSE="N">
+          <PART NAME="PARTITION1" ID="PARTITION1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_ACCOUNTING_CODES">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_DR_ACC_CODES</NAME>
+                </LOV>
+                <LBL>總帳額度</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>DR_LIQ_ACC_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CR_ACC_CODES</NAME>
+                </LOV>
+                <LBL>總帳額度</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>CR_LIQ_ACC_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_ACC_CODES</NAME>
+                </LOV>
+                <LBL>調度帳戶參數</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>DISPATCH_ACC_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>會計代碼</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_BRN_ACH_DBT_OUTBND_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PARTITION2" ID="PARTITION2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_EXRATE_PREF">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_FX_RATE_TYPE</NAME>
+                </LOV>
+                <LBL>匯率重估</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>RATE_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>9</MAXLENGTH>
+                <NAME>RATE_OVERRIDE_VARIANCE</NAME>
+                <LBL>轉出佇列 JNDI 名稱</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>9</MAXLENGTH>
+                <NAME>RATE_STOP_VARIANCE</NAME>
+                <LBL>匯率狀態</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>適用的外部匯率</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>EXTERNAL_RATE_APPLICABLE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>外匯金額</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="F" SELECTED="0">憑帳戶銷售外匯</OPTION>
+                <OPTION VALUE="A" SELECTED="0">自動提取</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>EXT_FX_CANCEL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Exchange Rate Preference</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_BRN_ACH_DBT_OUTBND_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_PRICECD_DTLS" COLLAPSE="N">
+          <PART NAME="PARTITION1" ID="PARTITION1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_NET_ACC">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_NETWORK_ACC</NAME>
+                </LOV>
+                <LBL>清除網路限制</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>NETWORK_ACCOUNT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>負超馳</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_BRN_ACH_DBT_OUTBND_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PARTITION2" ID="PARTITION2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_SMALL_FXLIMITS">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_SMALL_FX_LT_CCY</NAME>
+                </LOV>
+                <LBL>小匯率刷新</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>SMALL_FX_LIMITCCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>SMALL_FX_LIMITCCY</RELATED_FIELD>
+                <MAXLENGTH>22,4</MAXLENGTH>
+                <NAME>SMALL_FX_LIMITAMT</NAME>
+                <LBL>外匯小限額</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Small FX Limits</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_BRN_ACH_DBT_OUTBND_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_PRICECD_DTLS">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_PRICING_CODE</NAME>
+                </LOV>
+                <LBL>軋差</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>10</MAXLENGTH>
+                <NAME>TXN_PRICING_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Price Code Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_BRN_ACH_DBT_OUTBND_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="P2" ID="P2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_VAL_PRF">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>LBL_CUSTAGCHK</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="Y" SELECTED="0">年數</OPTION>
+                <OPTION VALUE="N" SELECTED="0">不設網</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>CUST_AG_CHECK</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>LBL_MANDATECHK</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="Y" SELECTED="0">年數</OPTION>
+                <OPTION VALUE="N" SELECTED="0">不設網</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>MANDATE_CHECK</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_BRN_ACH_DBT_OUTBND_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+      <TAB ID="TAB_RTRANSACTION_PREF">
+        <LBL>退回標識</LBL>
+        <SECTION ID="SEC_RTRAN" COLLAPSE="N">
+          <PART NAME="PARTITION1" ID="PARTITION1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_RTRAN">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>憑帳戶購買外匯</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="Y" SELECTED="0">年數</OPTION>
+                <OPTION VALUE="N" SELECTED="0">不設網</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>FX_RATE_PICKUP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>RETURN_DAYS</NAME>
+                <LBL>需要截止退回</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_RET_GL</NAME>
+                </LOV>
+                <LBL>零售存款明細</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>RETURN_GL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_BRN_ACH_DBT_OUTBND_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PARTITION2" ID="PARTITION2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_R_ACCOUNTING_CODES">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_R_RECPT_ACC_CODES</NAME>
+                </LOV>
+                <LBL>LBL_FILE_ACCOUNTING</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>R_RECEIPT_ACC_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>會計代碼</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_BRN_ACH_DBT_OUTBND_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+      <TAB ID="TAB_CANC_PREF">
+        <LBL>LBL_CANCELLATION_PREF</LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_CANC_PREF">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>LBL_NETWORK_ALLOWS_CANC</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="N" SELECTED="0">不設網</OPTION>
+                <OPTION VALUE="Y" SELECTED="0">年數</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>NETWORK_ALLOWS_CNC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>CANCEL_DAYS</NAME>
+                <LBL>LBL_CANCEL_DAYS</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_BRN_ACH_DBT_OUTBND_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="100">
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+      <TAB ID="TAB_REV_PREF">
+        <LBL>LBL_REVERSAL_PREF</LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="100"></PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_REV_PREF">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>LBL_NETWORK_ALLOWS_REV</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="N" SELECTED="0">不設網</OPTION>
+                <OPTION VALUE="Y" SELECTED="0">年數</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>NETWORK_ALLOWS_REV</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>LBL_REPICKUP_FX</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="N" SELECTED="0">不設網</OPTION>
+                <OPTION VALUE="Y" SELECTED="0">年數</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REPICKUP_FX</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>LBL_VALUE_DATE_FOR_REV</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="O" SELECTED="0">原Txn參考號</OPTION>
+                <OPTION VALUE="R" SELECTED="0">LBL_REVERSAL_DATE</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>VALUE_DATE_FOR_REV</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>REVERSAL_DAYS</NAME>
+                <LBL>LBL_REVERSAL_DAYS</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_REV_FILE_ACC</NAME>
+                </LOV>
+                <LBL>LBL_FILE_ACC_CODE</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>FILE_ACC_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_BRN_ACH_DBT_OUTBND_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

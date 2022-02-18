@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="View Transactions" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_OUT191_MASTER</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>Transaction Reference no</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Host Code</LBL>
+        <SIZE>8</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>HOST_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>Receiver</LBL>
+        <SIZE>16</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>MSG191_RECEIVER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>Status</LBL>
+        <OPTION VALUE="S" SELECTED="0">Claim Sent</OPTION>
+        <OPTION VALUE="P" SELECTED="0">Claim Paid</OPTION>
+        <OPTION VALUE="R" SELECTED="0">Claim Partially Paid</OPTION>
+        <OPTION VALUE="N" SELECTED="0">Claim Not Paid</OPTION>
+        <OPTION VALUE="C" SELECTED="0">Cancelled</OPTION>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="E" SELECTED="0">Expense Out</OPTION>
+        <OPTION VALUE="O" SELECTED="0">Partially Expense Out</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>Claim Amount</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>MSG191_TAG32B_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>MSG191_TAG32B_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>Claim Currency</LBL>
+        <SIZE>3</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>MSG191_TAG32B_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>Receiver Charge Amount</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>MSG103_TAG71G_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>MSG103_TAG71G_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>Receiver Charge Currency</LBL>
+        <SIZE>3</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>MSG103_TAG71G_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>Claim Payment Status</LBL>
+        <OPTION VALUE="R" SELECTED="0">Received</OPTION>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <OPTION VALUE="L" SELECTED="0">Liquidated</OPTION>
+        <OPTION VALUE="C" SELECTED="0">Cancelled</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">Seized</OPTION>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CLAIM_PMNT_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>Total Claim Payment Amount </LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>MSG103_TAG71G_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>CLAIM_PMNT_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <REQD>-1</REQD>
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>Reference Number</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>REFERENCE_NO</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>Transaction Reference no</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Host Code</LBL>
+        <SIZE>8</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>HOST_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>Receiver</LBL>
+        <SIZE>16</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>MSG191_RECEIVER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>Status</LBL>
+        <OPTION VALUE="S" SELECTED="0">Claim Sent</OPTION>
+        <OPTION VALUE="P" SELECTED="0">Claim Paid</OPTION>
+        <OPTION VALUE="R" SELECTED="0">Claim Partially Paid</OPTION>
+        <OPTION VALUE="N" SELECTED="0">Claim Not Paid</OPTION>
+        <OPTION VALUE="C" SELECTED="0">Cancelled</OPTION>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="E" SELECTED="0">Expense Out</OPTION>
+        <OPTION VALUE="O" SELECTED="0">Partially Expense Out</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>Claim Amount</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>MSG191_TAG32B_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>MSG191_TAG32B_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>Claim Currency</LBL>
+        <SIZE>3</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>MSG191_TAG32B_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>Receiver Charge Amount</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>MSG103_TAG71G_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>MSG103_TAG71G_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>Receiver Charge Currency</LBL>
+        <SIZE>3</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>MSG103_TAG71G_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>Claim Payment Status</LBL>
+        <OPTION VALUE="R" SELECTED="0">Received</OPTION>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <OPTION VALUE="L" SELECTED="0">Liquidated</OPTION>
+        <OPTION VALUE="C" SELECTED="0">Cancelled</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">Seized</OPTION>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CLAIM_PMNT_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>Total Claim Payment Amount </LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>MSG103_TAG71G_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>CLAIM_PMNT_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>Claim Receive Date</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>CLAIM_RECV_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>Related Reference</LBL>
+        <SIZE>16</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>MSG191_TAG21</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <REQD>-1</REQD>
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>Reference Number</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>REFERENCE_NO</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="S">Claim Sent</OPTION>
+        <OPTION VALUE="P">Claim Paid</OPTION>
+        <OPTION VALUE="R">Claim Partially Paid</OPTION>
+        <OPTION VALUE="N">Claim Not Paid</OPTION>
+        <OPTION VALUE="C">Cancelled</OPTION>
+        <OPTION VALUE="E">Expense Out</OPTION>
+        <OPTION VALUE="O">Partially Expense Out</OPTION>
+        <FIELD_NAME>STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="R">Received</OPTION>
+        <OPTION VALUE="P">Pending</OPTION>
+        <OPTION VALUE="L">Liquidated</OPTION>
+        <OPTION VALUE="C">Cancelled</OPTION>
+        <OPTION VALUE="Z">Seized</OPTION>
+        <FIELD_NAME>CLAIM_PMNT_STATUS</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="L">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="LF" SEQ="1" id="PMDACENT">
+        <SCREEN>CVS_ACCOUNTS</SCREEN>
+        <LBL>Out Claim Accounting</LBL>
+        <FUNCTION>PMDACENT</FUNCTION>
+      </FORM>
+      <FORM TYPE="LF" SEQ="2" id="PXDALMSG">
+        <SCREEN>CVS_MESGS</SCREEN>
+        <LBL>All Messages</LBL>
+        <FUNCTION>PXDALMSG</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_ONE" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_ONE">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <REQD>-1</REQD>
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>REFERENCE_NO</NAME>
+                <LBL>Reference Number</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Branch Code</LBL>
+                <SIZE>3</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRANCH_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Host Code</LBL>
+                <SIZE>8</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>HOST_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_OUT191_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_TWO" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_TWO">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>TXN_REF_NO</NAME>
+                <LBL>Transaction Reference no</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Transaction Currency</LBL>
+                <SIZE>3</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>MSG103_TAG32A_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Receiver Charge Currency</LBL>
+                <SIZE>3</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>MSG103_TAG71G_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>MSG103_TAG71G_CCY</RELATED_FIELD>
+                <MAXLENGTH>22,4</MAXLENGTH>
+                <NAME>MSG103_TAG71G_AMT</NAME>
+                <LBL>Receiver Charge Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Original Transaction Type</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="I" SELECTED="0">Incoming</OPTION>
+                <OPTION VALUE="O" SELECTED="0">Outgoing</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ORG_TXN_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Original Transaction Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_OUT191_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_THREE" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_THREE">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Receiver</LBL>
+                <SIZE>16</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>MSG191_RECEIVER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Related Reference</LBL>
+                <SIZE>16</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>MSG191_TAG21</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Claim Currency</LBL>
+                <SIZE>3</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>MSG191_TAG32B_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>MSG191_TAG32B_CCY</RELATED_FIELD>
+                <MAXLENGTH>22,4</MAXLENGTH>
+                <NAME>MSG191_TAG32B_AMT</NAME>
+                <LBL>Claim Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>71B: Charge Details</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>MSG191_TAG71B_DETAILS1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>MSG191_TAG71B_DETAILS2</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>MSG191_TAG71B_DETAILS3</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>MSG191_TAG71B_DETAILS4</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>MSG191_TAG71B_DETAILS5</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>MSG191_TAG71B_DETAILS6</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Claim Type</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="A" SELECTED="0">Auto</OPTION>
+                <OPTION VALUE="M" SELECTED="0">Manual</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CLAIM_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Status</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="S" SELECTED="0">Claim Sent</OPTION>
+                <OPTION VALUE="P" SELECTED="0">Claim Paid</OPTION>
+                <OPTION VALUE="R" SELECTED="0">Claim Partially Paid</OPTION>
+                <OPTION VALUE="N" SELECTED="0">Claim Not Paid</OPTION>
+                <OPTION VALUE="C" SELECTED="0">Cancelled</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="E" SELECTED="0">Expense Out</OPTION>
+                <OPTION VALUE="O" SELECTED="0">Partially Expense Out</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Charge Claim Network</LBL>
+                <SIZE>15</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>CHG_CLAIM_NETWORK</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Claim Payment Message</LBL>
+                <SIZE>5</SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>5</MAXLENGTH>
+                <NAME>CLAIM_PMNT_MESSAGE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Claim Payment Status</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="R" SELECTED="0">Received</OPTION>
+                <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+                <OPTION VALUE="L" SELECTED="0">Liquidated</OPTION>
+                <OPTION VALUE="C" SELECTED="0">Cancelled</OPTION>
+                <OPTION VALUE="Z" SELECTED="0">Seized</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CLAIM_PMNT_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Claim Payment Tag20</LBL>
+                <SIZE>16</SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CLAIM_PMNT_TAG20</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>MSG103_TAG71G_CCY</RELATED_FIELD>
+                <MAXLENGTH>22,4</MAXLENGTH>
+                <NAME>CLAIM_PMNT_AMT</NAME>
+                <LBL>Total Claim Payment Amount </LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Claim Receive Date</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>CLAIM_RECV_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Claim Receive Date Limit</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>CLAIM_RECV_DATE_LMT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE>16</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CLAIM_PMNT_ACCREF</NAME>
+                <LBL>Claim Payment Account Reference</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Charge Claim Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_OUT191_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_FOUR" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_FOUR">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>TXN_REF_NO</NAME>
+                <LBL>Transaction Reference Number</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Claim Payment Message</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CLAIM_PMNT_MESSAGE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Claim Payment Currency</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CLAIM_PMT_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>CLAIM_PMNT_AMT</NAME>
+                <LBL>Claim Payment Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Claim Currency</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CLAIM_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>CLAIM_AMT</NAME>
+                <LBL>Claim Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Sender</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>SENDER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Claim Receive Date</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>CLAIM_RECV_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Claim Payment Tag20</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CLAIM_PMNT_TAG20</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Within Tolerance</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="Y" SELECTED="0">Yes</OPTION>
+                <OPTION VALUE="N" SELECTED="0">No</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>WITHIN_TOLERANCE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>MT199 Generated</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>MT199_GENERATED</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Claim Reference Number</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CLAIM_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>ORIG_TXN_REF_NO</NAME>
+                <LBL>Original Incoming Transaction Reference</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CLAIM_PAYMENT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_FIVE" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FIVE">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>Claim Payment Accounting</LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnviewclaimacct()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_CLAIM</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_OUT191_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

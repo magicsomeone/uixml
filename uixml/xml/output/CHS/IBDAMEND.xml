@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_SUMMARY</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>合同状态</LBL>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CONTSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>授权状态</LBL>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>合同参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CONREFNO</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>合同状态</LBL>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CONTSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>授权状态</LBL>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>合同参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CONREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>事件序号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>ESN</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>版本号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>VERNUM</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>客户 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>9</MAXLENGTH>
+        <NAME>CUSTID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>票据金额</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>BILLCCY</RELATED_FIELD>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>BILLAMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>票据币种</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BILLCCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>未付余额</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>BILLCCY</RELATED_FIELD>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>BILLDUEAMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>起息日</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>VALDT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>借记起息日</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>DRVALDT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>贷记起息日</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>CRVALDT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>到期日</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>MATDT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>模块代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>MODULE_CODE</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_AMEND" POSITION="template" TITLE="伊斯兰票据和托收金额修改输入" TMP_SCR_TYPE="M">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HEADER">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CONTRACT</NAME>
+                </LOV>
+                <LBL>合同参考编号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>RESTRICTED_TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CONREFNO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>D</LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnEnrichDetails()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_D</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>客户 ID</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>9</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CUSTID</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>LATEVNSEQNO</NAME>
+                <LBL>最新事件序号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>子系统状态</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>200</MAXLENGTH>
+                <NAME>SUBSYSSTAT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>分行代码</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRNCD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>-1</HREQ>
+              <BLOCK>BLK_AMENDMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FOOTER">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>输入者</LBL>
+                <SIZE>12</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>授权者</LBL>
+                <SIZE>12</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>日期时间</LBL>
+                <SIZE>17</SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>日期时间</LBL>
+                <SIZE>17</SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>状态</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="K" SELECTED="0">取消</OPTION>
+                <OPTION VALUE="V" SELECTED="0">已冲正</OPTION>
+                <OPTION VALUE="S" SELECTED="0">已关闭</OPTION>
+                <OPTION VALUE="A" SELECTED="0">有效</OPTION>
+                <OPTION VALUE="H" SELECTED="0">暂挂</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>ROSELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>授权状态</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="U" SELECTED="0">未授权</OPTION>
+                <OPTION VALUE="A" SELECTED="0">已授权</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>ROSELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_AMENDMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="LF" SEQ="1" id="CSDEVENT">
+        <SCREEN>CVS_EVENTS</SCREEN>
+        <LBL>事件</LBL>
+        <FUNCTION>CSDEVENT</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="2" id="ISCTRSTL">
+        <SCREEN>CVS_SETTLEMENT</SCREEN>
+        <LBL>结算</LBL>
+        <FUNCTION>ISCTRSTL</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="3" id="CFCTRIHG">
+        <SCREEN>CVS_INTREST</SCREEN>
+        <LBL>利息</LBL>
+        <FUNCTION>CFCTRIHG</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="4" id="CFCTRCHG">
+        <SCREEN>CVS_CFCTRCHG</SCREEN>
+        <LBL>计费</LBL>
+        <FUNCTION>CFCTRCHG</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="5" id="TACTRTAX">
+        <SCREEN>CVS_TAX</SCREEN>
+        <LBL>税额</LBL>
+        <FUNCTION>TACTRTAX</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL>主要</LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_CONT_MASTER1">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>票据币种</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BILLCCY</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>BILLCCY</RELATED_FIELD>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>BILLAMT</NAME>
+                <LBL>票据金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>起息日</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>VALDT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>借记起息日</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>DRVALDT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>贷记起息日</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>CRVALDT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_AMENDMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_CONT_MASTER2">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>BILLCCY</RELATED_FIELD>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BILLDUEAMT</NAME>
+                <LBL>未付余额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>到期日</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MATDT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_AMENDMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+      <TAB ID="TAB_ADVFFT">
+        <LBL>通知单/FFT</LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_ADVICES">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>通知单代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>MSGTYP</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>媒介</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>MEDIUM</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易方类型</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>PRTY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易方 ID</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>9</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PRTYID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易方名称</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PRTYNAME</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <OPTION VALUE="1" SELECTED="0">高</OPTION>
+                <OPTION VALUE="2" SELECTED="-1">正常</OPTION>
+                <OPTION VALUE="3" SELECTED="0">低</OPTION>
+                <MAX_VAL></MAX_VAL>
+                <VALUE>2</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>PRIORITY</NAME>
+                <LBL>优先级</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>停止</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="Y" SELECTED="0">是</OPTION>
+                <OPTION VALUE="N" SELECTED="0">编号</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SUPRESS</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>合同参考编号</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CONTREFNO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>ESN</NAME>
+                <LBL>事件序号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>通知单</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_AMENDADV</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_AMNDFFT">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_FFT</NAME>
+                </LOV>
+                <LBL>文本代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>FFTCD</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>通知单代码</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>ADVCD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>自由格式文本</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>自由格式文本</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2000</MAXLENGTH>
+                <NAME>FFTTXT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>BC 参考编号</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>BCREFNO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>ESN</NAME>
+                <LBL>事件序号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>RECSEQNO</NAME>
+                <LBL>序号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>自由格式文本</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_AMENDFFT</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_AMNDINS">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_INS</NAME>
+                </LOV>
+                <LBL>文本代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>INSCD</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>通知单代码</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>ADVCD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>指示文本</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2000</MAXLENGTH>
+                <NAME>INSTXT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>BC 参考编号</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>BCREFNO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>ESN</NAME>
+                <LBL>事件序号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>RECSEQNO</NAME>
+                <LBL>序号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>指示</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_AMENDINS</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

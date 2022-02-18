@@ -1,0 +1,1193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="Confirmation Messages Matching Summary" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_FXVWS_UPLOAD_FX_SUMMARY</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>消息参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>MESSAGE_REFERENCE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>合同参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CONTRACT_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>匹配模式</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>MATCHING_MODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>匹配参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>MATCH_REFERENCE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>记录状态</LBL>
+        <OPTION VALUE="O" SELECTED="0">开立</OPTION>
+        <OPTION VALUE="A" SELECTED="0">有效</OPTION>
+        <OPTION VALUE="C" SELECTED="0">已关闭</OPTION>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>RECORD_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>授权状态</LBL>
+        <OPTION VALUE="A" SELECTED="0">已授权</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授权</OPTION>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>消息参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>MESSAGE_REFERENCE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>合同参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CONTRACT_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>匹配模式</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>MATCHING_MODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>匹配参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>MATCH_REFERENCE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>记录状态</LBL>
+        <OPTION VALUE="O" SELECTED="0">开立</OPTION>
+        <OPTION VALUE="A" SELECTED="0">有效</OPTION>
+        <OPTION VALUE="C" SELECTED="0">已关闭</OPTION>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>RECORD_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>授权状态</LBL>
+        <OPTION VALUE="A" SELECTED="0">已授权</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授权</OPTION>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="O">开立</OPTION>
+        <OPTION VALUE="A">有效</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <FIELD_NAME>RECORD_STAT</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <FIELD_NAME>AUTH_STAT</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="确认消息匹配" TMP_SCR_TYPE="M">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FOOTER">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>输入者</LBL>
+                <SIZE>30</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>MAKER_ID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>日期时间</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>MAKER_DT_STAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>授权者</LBL>
+                <SIZE>30</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>CHECKER_ID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>日期时间</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>CHECKER_DT_STAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>记录状态</LBL>
+                <SIZE>30</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>RECORD_STAT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>授权状态</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTH_STAT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_FXVWS_UPLOAD_FX_FOOTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="S" SEQ="1" id="CVS_MATCH_DETAILS">
+        <SCREEN>CVS_MATCH_DETAILS</SCREEN>
+        <LBL>查看匹配详细信息</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="2" id="CVS_CONTRAT_DETAILS">
+        <SCREEN>CVS_CONTRAT_DETAILS</SCREEN>
+        <LBL>合同</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+      <FORM TYPE="LF" SEQ="3" id="MSDINBRW">
+        <SCREEN>CVS_MAIN</SCREEN>
+        <LBL>查看消息</LBL>
+        <FUNCTION>MSDINBRW</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_1">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>模块</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>FX</VALUE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>MODULE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>消息参考编号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>MESSAGE_REFERENCE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CSTBS_UI_COLUMNS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_2">
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>合同参考编号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>CONTRACT_REFERENCE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>匹配参考编号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>MATCH_REFERENCE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>事件</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>EVENT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>规则标识</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>RULE_IDENTIFICATION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CSTBS_UI_COLUMNS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_3" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_3">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <OPTION VALUE="P" SELECTED="-1">部分匹配</OPTION>
+                <OPTION VALUE="U" SELECTED="0">Un-Matched</OPTION>
+                <VALUE>P</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>MATCH_STATUS</NAME>
+                <LBL>匹配状态</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_MESSAGE_DCN</NAME>
+                </LOV>
+                <LBL>DCN</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>DCN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_EXTERNAL_REF</NAME>
+                </LOV>
+                <LBL>外部参考编号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>SENDER_REF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y" SPRT="2">
+                <LBL>提取</LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_FetchRecord()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_FETCH</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>消息详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CSTBS_UI_COLUMNS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_4" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_4">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>匹配状态</LBL>
+                <SIZE>30</SIZE>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>消息 DCN</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>DCN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>外部参考编号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>SENDERS_REF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>合同参考编号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_PopulateHeader()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>CONTRACT_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_FXVWS_UPLOAD_FX</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_5" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_5">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>合同参考编号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CONTRACT_REFERENCE_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>规则 ID</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>RULE_ID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>规则说明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>RULE_DESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>事件</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>EVENT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>部分匹配</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STVWS_MATCH_STAT</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_6" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100"></PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_CONTRAT_DETAILS" POSITION="template" TITLE="合同详细信息" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="LF" SEQ="1" id="FXDTRONL">
+        <SCREEN>CVS_MAIN</SCREEN>
+        <LBL>查看合同</LBL>
+        <FUNCTION>FXDTRONL</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_CONT_1">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CONTRACT_REF</NAME>
+                </LOV>
+                <LBL>合同参考编号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>CONTRACT_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_COUNTERPARTY</NAME>
+                </LOV>
+                <LBL>对手方</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>COUNTERPARTY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_BOTCCY</NAME>
+                </LOV>
+                <LBL>买入币种</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>BOTCCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_SOLDCCY</NAME>
+                </LOV>
+                <LBL>卖出币种</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>SOLDCCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_BOOKING_DATE</NAME>
+                </LOV>
+                <LBL>记账日期</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>BOOKING_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y" SPRT="2">
+                <LBL>提取</LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_FetchContract()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_CONT_FETCH</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CSTBS_UI_COLUMNS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_CONT_2">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>合同参考编号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CONTRACT_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>记账日期</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>BOOKING_DATE_TIME</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>对手方</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>9</MAXLENGTH>
+                <NAME>COUNTERPARTY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>买入币种</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BOTCCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>BOT_AMOUNT</NAME>
+                <LBL>买入金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>卖出币种</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>SOLDCCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>SOLD_AMT</NAME>
+                <LBL>卖出金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_FXTBS_CONTRACT_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_MATCH_DETAILS" POSITION="template" TITLE="匹配详细信息" TMP_SCR_TYPE="M">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_MATCH_DET">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>消息 DCN</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>DCN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>匹配状态</LBL>
+                <SIZE></SIZE>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>MATCH_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_FXVWS_UPLOAD_FX_A</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_MATCH_DET_2">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>事件</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>EVENT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>对手方</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>COUNTERPARTY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>买入币种</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BOTCCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>BOT_AMT</NAME>
+                <LBL>买入金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>卖出币种</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>SOLDCCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>SOLD_AMT</NAME>
+                <LBL>卖出金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>EXCHANGE_RATE</NAME>
+                <LBL>汇率</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>起息日</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>VALUE_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>记账日期</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>BOOKING_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>公用参考编号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COMMON_REF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>结算支付阶段</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>216</MAXLENGTH>
+                <NAME>PAY_LEG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>结算接收阶段</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>216</MAXLENGTH>
+                <NAME>RECEIVE_LEG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>AWI 支付阶段</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>216</MAXLENGTH>
+                <NAME>AWI_PAY_LEG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>AWI 接收阶段</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>216</MAXLENGTH>
+                <NAME>AWI_RECIEVE_LEG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>中介机构支付阶段</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>INTERMED_PAY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>中介机构接收阶段</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>INTERMED_RECEIVE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>受益机构支付阶段</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>BENEF_PAY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>受益机构接收阶段</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>BENEF_RECEIVE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>消息详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_FXVWS_UPLOAD_FX_A</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_MATCH_DET_3">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>事件</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>EVENT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>对手方</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>COUNTERPARTY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>买入币种</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BOT_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>BOT_AMOUNT</NAME>
+                <LBL>买入金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>卖出币种</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>SOLD_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>SOLD_AMOUNT</NAME>
+                <LBL>卖出金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>EXCHANGE_RATE</NAME>
+                <LBL>汇率</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>起息日</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>VALUE_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>记账日期</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>TRADE_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>公用参考编号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COMMON_REF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>结算支付阶段</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>PAY_LEG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>结算接收阶段</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>RECEIVE_LEG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>AWI 支付阶段</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>216</MAXLENGTH>
+                <NAME>AWI_PAY_LEG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>AWI 接收阶段</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>216</MAXLENGTH>
+                <NAME>AWI_RECIEVE_LEG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>中介机构支付阶段</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>INTERMED_PAY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>中介机构接收阶段</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>INTERMED_RECEIVE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>受益机构支付阶段</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>BENEF_PAY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>受益机构接收阶段</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>BENEF_RECEIVE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>合同详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_FXTBS_CONTRACT_FX</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

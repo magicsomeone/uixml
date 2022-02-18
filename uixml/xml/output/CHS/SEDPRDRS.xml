@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_PRODUCT_RESTR</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>产品代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>4</MAXLENGTH>
+        <NAME>PRODUCT_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>产品代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>4</MAXLENGTH>
+        <NAME>PRODUCT_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="M">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HDR">
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>4</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_prod_code_change()</FUNCTION>
+                  <NAME>onblur</NAME>
+                </EVENT>
+                <NAME>PRODUCT_CODE</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_PRD_CODE</NAME>
+                </LOV>
+                <LBL>产品代码</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>产品说明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PRDDESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>HIDDEN_PRTFLIOPRDALLW</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>HIDDEN_INSTRMNTPRDALLW</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_RESTR</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>经办者</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>复核者</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>日期时间：</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>日期时间：</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>模式编号</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL></LBL>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="C">已关闭</OPTION>
+                <OPTION VALUE="O">打开</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>记录状态</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="A">已授权</OPTION>
+                <OPTION VALUE="R">已拒付</OPTION>
+                <OPTION VALUE="U">未授权</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>授权状态</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_RESTR</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="VL" SEQ="1" id="">
+        <SCREEN></SCREEN>
+        <LBL>更改日志</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_PORTFOLIO">
+        <LBL>投资组合限制</LBL>
+        <SECTION ID="SEC_3" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_PF_CLASS">
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>10</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CLASS_CODE_PF</NAME>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_PR_CLASS</NAME>
+                </LOV>
+                <LBL>分类代码</LBL>
+                <INPUT_LOV>-1</INPUT_LOV>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>分类说明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CLASDESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PF_CLASS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_DEF_PF_CLASS">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>默认自分类</LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnPortClassDefault('BLK_PRODUCT_RESTR')</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_DEFAULT_PR_CLASS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PF_CLASS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_PORT_PROD">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_PORT_RES</NAME>
+                </LOV>
+                <LBL>产品代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>SEPRODUCT_CODE</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>产品说明</LBL>
+                <SIZE>35</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PRDDESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>投资组合产品限制</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PORTFOLIO_PROD_RES</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_PORT_RESTR">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>投资组合产品允许</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="D" SELECTED="0">不允许</OPTION>
+                <OPTION VALUE="A" SELECTED="0">允许</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PRTFLIOPRDALLW</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_RESTR</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL>投资组合产品限制</LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_PORT_ACCESS">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_PORT_ACCESS</NAME>
+                </LOV>
+                <LBL>投资组合 ID</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>PORTFOLIO_ID</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>产品代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PFOLIOPRD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>投资组合说明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PFOLIODESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>允许/不允许</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="N" SELECTED="-1">不允许</OPTION>
+                <OPTION VALUE="Y" SELECTED="0">允许</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ACCESS_ALLOWED_FLAG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>投资组合访问</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PORTFOLIO_ACCESS_RES</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL>投资组合访问</LBL>
+
+        </SECTION>
+      </TAB>
+      <TAB ID="TAB_INSTRUMENT">
+        <LBL>Instrument Restriction</LBL>
+        <SECTION ID="SEC_3" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_IN_CLASS">
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>10</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CLASS_CODE_IN</NAME>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_SR_CLASS</NAME>
+                </LOV>
+                <LBL>分类代码</LBL>
+                <INPUT_LOV>-1</INPUT_LOV>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>分类说明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CLASDESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_IN_CLASS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_DEFT_IN_CLASS">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>默认自分类</LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnINTClassDefault('BLK_PRODUCT_RESTR')</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_DEFAULT_FROM_RES_CLASS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_IN_CLASS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_INSTR_PROD">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_INSTR_RESTRC</NAME>
+                </LOV>
+                <LBL>证券代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>SEPRODUCT_CODE</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>产品说明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PRDDESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>金融工具产品限制</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_INSTRUMENT_PROD_RES</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_INSTR_RESTR">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>金融工具产品允许</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="D" SELECTED="0">不允许</OPTION>
+                <OPTION VALUE="A" SELECTED="0">允许</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>INSTRUMENT_PRODUCT_ALLOW</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_RESTR</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL>金融工具产品限制</LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_INSTR_ACCESS">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_INSTR_ACCESS</NAME>
+                </LOV>
+                <LBL>证券 ID</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>SECURITY_ID</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>产品代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>INSTRACCPRD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>证券说明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>INSTRDESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>限制类型</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="N" SELECTED="-1">不允许</OPTION>
+                <OPTION VALUE="Y" SELECTED="0">允许</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ACCESS_ALLOWED_FLAG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>金融工具访问</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_INSTRUMENT_ACCESS_RES</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL>金融工具访问</LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

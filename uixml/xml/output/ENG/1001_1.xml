@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="Cash Withdrawal" TMP_SCR_TYPE="M">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_3">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_TXN_ACCOUNT</NAME>
+                </LOV>
+                <LBL>Account Number</LBL>
+                <SIZE>20</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>TXNACC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_TRANSACTION_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_4">
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE>3</SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TXNBRN</NAME>
+                <CASE>UPPER</CASE>
+                <LBL>Account Branch</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Offset Branch</LBL>
+                <SIZE>3</SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>OFFSETBRN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_TRANSACTION_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_5">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Account Description</LBL>
+                <SIZE>95</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ACCTITLE1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_TRANSACTION_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_3" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_6">
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE>3</SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnComputeXrate(event)</FUNCTION>
+                  <NAME>onblur</NAME>
+                </EVENT>
+                <NAME>OFFSETCCY</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CCY</NAME>
+                </LOV>
+                <LBL>Transaction Currency</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>OFFSETCCY</RELATED_FIELD>
+                <MAXLENGTH/>
+                <EVENT>
+                  <FUNCTION>fnComputeXrate(event)</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>OFFSETAMT</NAME>
+                <LBL>Transaction Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>DENMAMT2</NAME>
+                <LBL>Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_TRANSACTION_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_7">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Account Currency</LBL>
+                <SIZE>3</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TXNCCY</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>TXNCCY</RELATED_FIELD>
+                <MAXLENGTH/>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ACTAMT</NAME>
+                <LBL>Account Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_TRANSACTION_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_4" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_8">
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>Narrative</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>Narrative</LBL>
+                <SIZE>95</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>255</MAXLENGTH>
+                <NAME>NARRATIVE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>External Reference</LBL>
+                <SIZE>20</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>XREF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Product</LBL>
+                <SIZE>4</SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>CHWL</VALUE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>PRD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <RELATED_FIELD>TXNCCY</RELATED_FIELD>
+                <MAXLENGTH/>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TXNAMT</NAME>
+                <LBL>Transaction Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>22</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>XRATE</NAME>
+                <LBL>Exchange Rate</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>LCYAMT</NAME>
+                <LBL>Local Currency Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Liquidation Date</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>TXNDATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Value Date</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>VALDATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Customer</LBL>
+                <SIZE>9</SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>9</MAXLENGTH>
+                <NAME>RELCUST</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH/>
+                <NAME>TCYTOTCHGAMT</NAME>
+                <LBL>Total Charge</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>Recalculate</LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>BTN_RECALC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Denomination Currency</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <NAME>DENMCCY1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>DENMAMT1</NAME>
+                <LBL>Denomination Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Book Date</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>BOOKDATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Batch Number</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <NAME>BATCHNO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Dr/Cr</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <NAME>TXNDRCR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Module</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>MODULE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Transaction Code</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>TXNTRN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>FT</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <NAME>FT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Offset Transaction</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>OFFSETTRN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>Compute</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnComputeXrate(event)</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_COMPUTE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Branch</LBL>
+                <SIZE>3</SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_TRANSACTION_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="All">
+        <LBL>All</LBL>
+
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

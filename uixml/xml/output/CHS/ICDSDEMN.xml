@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="SUMMARY" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_ICTM_SDE</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>要素</LBL>
+        <SIZE>16</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>RESTRICTED_TEXT</TYPE>
+        <MAXLENGTH>30</MAXLENGTH>
+        <NAME>SDE_ID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>基准</LBL>
+        <OPTION VALUE="" SELECTED="0"></OPTION>
+        <OPTION VALUE="B" SELECTED="-1">余额</OPTION>
+        <OPTION VALUE="T" SELECTED="0">交易额</OPTION>
+        <OPTION VALUE="I" SELECTED="0">项目计数</OPTION>
+        <OPTION VALUE="O" SELECTED="0">其他</OPTION>
+        <OPTION VALUE="P" SELECTED="0">期间（时间）</OPTION>
+        <OPTION VALUE="U" SELECTED="0">用户定义</OPTION>
+        <OPTION VALUE="C" SELECTED="0">净出资</OPTION>
+        <OPTION VALUE="R" SELECTED="0">预池余额</OPTION>
+        <OPTION VALUE="S" SELECTED="0">后池余额</OPTION>
+        <OPTION VALUE="N" SELECTED="0">净池余额</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">出资</OPTION>
+        <OPTION VALUE="H" SELECTED="0">题头前池余额</OPTION>
+        <OPTION VALUE="G" SELECTED="0">题头后池余额</OPTION>
+        <OPTION VALUE="A" SELECTED="0">IC 余额</OPTION>
+        <OPTION VALUE="D" SELECTED="0">垫付利息</OPTION>
+        <OPTION VALUE="L" SELECTED="0">差异余额</OPTION>
+        <OPTION VALUE="K" SELECTED="0">贷款已关联</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>SDE_BASIS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="B" SELECTED="0">登记日期</OPTION>
+        <OPTION VALUE="V" SELECTED="0">起息日</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>SDE_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>自然</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="D" SELECTED="0">借记</OPTION>
+        <OPTION VALUE="C" SELECTED="0">贷记</OPTION>
+        <OPTION VALUE="N" SELECTED="0">轧差</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>SDE_NTR</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>周期</LBL>
+        <OPTION VALUE="" SELECTED="0"></OPTION>
+        <OPTION VALUE="D" SELECTED="-1">每日</OPTION>
+        <OPTION VALUE="M" SELECTED="0">每月</OPTION>
+        <OPTION VALUE="Q" SELECTED="0">每季度</OPTION>
+        <OPTION VALUE="S" SELECTED="0">半年</OPTION>
+        <OPTION VALUE="A" SELECTED="0">每年</OPTION>
+        <OPTION VALUE="P" SELECTED="0">周期性</OPTION>
+        <OPTION VALUE="C" SELECTED="0">清算周期</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>SDE_PRD</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>操作</LBL>
+        <OPTION VALUE="" SELECTED="0"></OPTION>
+        <OPTION VALUE="N" SELECTED="-1">无操作</OPTION>
+        <OPTION VALUE="A" SELECTED="0">平均</OPTION>
+        <OPTION VALUE="M" SELECTED="0">最小</OPTION>
+        <OPTION VALUE="X" SELECTED="0">最大</OPTION>
+        <OPTION VALUE="S" SELECTED="0">汇总</OPTION>
+        <OPTION VALUE="C" SELECTED="0">计数</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>SDE_OP</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>自开始以来的天数</LBL>
+        <SIZE>2</SIZE>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>SDE_DAYS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>计算的最后一天</LBL>
+        <SIZE>2</SIZE>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>SDE_DAYS_END</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>要素</LBL>
+        <SIZE>16</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>RESTRICTED_TEXT</TYPE>
+        <MAXLENGTH>30</MAXLENGTH>
+        <NAME>SDE_ID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>基准</LBL>
+        <OPTION VALUE="" SELECTED="0"></OPTION>
+        <OPTION VALUE="B" SELECTED="-1">余额</OPTION>
+        <OPTION VALUE="T" SELECTED="0">交易额</OPTION>
+        <OPTION VALUE="I" SELECTED="0">项目计数</OPTION>
+        <OPTION VALUE="O" SELECTED="0">其他</OPTION>
+        <OPTION VALUE="P" SELECTED="0">期间（时间）</OPTION>
+        <OPTION VALUE="U" SELECTED="0">用户定义</OPTION>
+        <OPTION VALUE="C" SELECTED="0">净出资</OPTION>
+        <OPTION VALUE="R" SELECTED="0">预池余额</OPTION>
+        <OPTION VALUE="S" SELECTED="0">后池余额</OPTION>
+        <OPTION VALUE="N" SELECTED="0">净池余额</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">出资</OPTION>
+        <OPTION VALUE="H" SELECTED="0">题头前池余额</OPTION>
+        <OPTION VALUE="G" SELECTED="0">题头后池余额</OPTION>
+        <OPTION VALUE="A" SELECTED="0">IC 余额</OPTION>
+        <OPTION VALUE="D" SELECTED="0">垫付利息</OPTION>
+        <OPTION VALUE="L" SELECTED="0">差异余额</OPTION>
+        <OPTION VALUE="K" SELECTED="0">贷款已关联</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>SDE_BASIS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="B" SELECTED="0">登记日期</OPTION>
+        <OPTION VALUE="V" SELECTED="0">起息日</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>SDE_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>自然</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="D" SELECTED="0">借记</OPTION>
+        <OPTION VALUE="C" SELECTED="0">贷记</OPTION>
+        <OPTION VALUE="N" SELECTED="0">轧差</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>SDE_NTR</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>周期</LBL>
+        <OPTION VALUE="" SELECTED="0"></OPTION>
+        <OPTION VALUE="D" SELECTED="-1">每日</OPTION>
+        <OPTION VALUE="M" SELECTED="0">每月</OPTION>
+        <OPTION VALUE="Q" SELECTED="0">每季度</OPTION>
+        <OPTION VALUE="S" SELECTED="0">半年</OPTION>
+        <OPTION VALUE="A" SELECTED="0">每年</OPTION>
+        <OPTION VALUE="P" SELECTED="0">周期性</OPTION>
+        <OPTION VALUE="C" SELECTED="0">清算周期</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>SDE_PRD</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>操作</LBL>
+        <OPTION VALUE="" SELECTED="0"></OPTION>
+        <OPTION VALUE="N" SELECTED="-1">无操作</OPTION>
+        <OPTION VALUE="A" SELECTED="0">平均</OPTION>
+        <OPTION VALUE="M" SELECTED="0">最小</OPTION>
+        <OPTION VALUE="X" SELECTED="0">最大</OPTION>
+        <OPTION VALUE="S" SELECTED="0">汇总</OPTION>
+        <OPTION VALUE="C" SELECTED="0">计数</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>SDE_OP</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>自开始以来的天数</LBL>
+        <SIZE>2</SIZE>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>SDE_DAYS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <REQD>-1</REQD>
+        <LBL>说明</LBL>
+        <SIZE>22</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>SDE_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>计算的最后一天</LBL>
+        <SIZE>2</SIZE>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>SDE_DAYS_END</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="B">余额</OPTION>
+        <OPTION VALUE="T">交易额</OPTION>
+        <OPTION VALUE="I">项目计数</OPTION>
+        <OPTION VALUE="O">其他</OPTION>
+        <OPTION VALUE="P">期间（时间）</OPTION>
+        <OPTION VALUE="U">用户定义</OPTION>
+        <OPTION VALUE="C">净出资</OPTION>
+        <OPTION VALUE="R">预池余额</OPTION>
+        <OPTION VALUE="S">后池余额</OPTION>
+        <OPTION VALUE="N">净池余额</OPTION>
+        <OPTION VALUE="Z">出资</OPTION>
+        <OPTION VALUE="H">题头前池余额</OPTION>
+        <OPTION VALUE="G">题头后池余额</OPTION>
+        <OPTION VALUE="A">IC 余额</OPTION>
+        <OPTION VALUE="D">垫付利息</OPTION>
+        <OPTION VALUE="L">差异余额</OPTION>
+        <OPTION VALUE="K">贷款已关联</OPTION>
+        <FIELD_NAME>SDE_BASIS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="B">登记日期</OPTION>
+        <OPTION VALUE="V">起息日</OPTION>
+        <FIELD_NAME>SDE_TYPE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="D">借记</OPTION>
+        <OPTION VALUE="C">贷记</OPTION>
+        <OPTION VALUE="N">轧差</OPTION>
+        <FIELD_NAME>SDE_NTR</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="D">每日</OPTION>
+        <OPTION VALUE="M">每月</OPTION>
+        <OPTION VALUE="Q">每季度</OPTION>
+        <OPTION VALUE="S">半年</OPTION>
+        <OPTION VALUE="A">每年</OPTION>
+        <OPTION VALUE="P">周期性</OPTION>
+        <OPTION VALUE="C">清算周期</OPTION>
+        <FIELD_NAME>SDE_PRD</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="N">无操作</OPTION>
+        <OPTION VALUE="A">平均</OPTION>
+        <OPTION VALUE="M">最小</OPTION>
+        <OPTION VALUE="X">最大</OPTION>
+        <OPTION VALUE="S">汇总</OPTION>
+        <OPTION VALUE="C">计数</OPTION>
+        <FIELD_NAME>SDE_OP</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="账户系统数据要素维护" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>经办者</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>复核者</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>日期时间：</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>日期时间：</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>模式编号</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL></LBL>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="C">已关闭</OPTION>
+                <OPTION VALUE="O">打开</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>记录状态</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="A">已授权</OPTION>
+                <OPTION VALUE="R">已拒付</OPTION>
+                <OPTION VALUE="U">未授权</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>授权状态</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_SDE</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="C" SEQ="1" id="CSCFNUDF">
+        <SCREEN>CVS_UDF</SCREEN>
+        <LBL>字段</LBL>
+        <FUNCTION>CSCFNUDF</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL>全部</LBL>
+        <SECTION ID="SEC_S1" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FIELD1">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>要素</LBL>
+                <SIZE>16</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>RESTRICTED_TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>SDE_ID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>说明</LBL>
+                <SIZE>22</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>SDE_DESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_SDE</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="P2" ID="P2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FIELD2">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>基准</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="B" SELECTED="-1">余额</OPTION>
+                <OPTION VALUE="T" SELECTED="0">交易额</OPTION>
+                <OPTION VALUE="I" SELECTED="0">项目计数</OPTION>
+                <OPTION VALUE="O" SELECTED="0">其他</OPTION>
+                <OPTION VALUE="P" SELECTED="0">期间（时间）</OPTION>
+                <OPTION VALUE="U" SELECTED="0">用户定义</OPTION>
+                <OPTION VALUE="C" SELECTED="0">净出资</OPTION>
+                <OPTION VALUE="R" SELECTED="0">预池余额</OPTION>
+                <OPTION VALUE="S" SELECTED="0">后池余额</OPTION>
+                <OPTION VALUE="N" SELECTED="0">净池余额</OPTION>
+                <OPTION VALUE="Z" SELECTED="0">出资</OPTION>
+                <OPTION VALUE="H" SELECTED="0">题头前池余额</OPTION>
+                <OPTION VALUE="G" SELECTED="0">题头后池余额</OPTION>
+                <OPTION VALUE="A" SELECTED="0">IC 余额</OPTION>
+                <OPTION VALUE="D" SELECTED="0">垫付利息</OPTION>
+                <OPTION VALUE="L" SELECTED="0">差异余额</OPTION>
+                <OPTION VALUE="K" SELECTED="0">贷款已关联</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>B</VALUE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SDE_BASIS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>周期</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="D" SELECTED="-1">每日</OPTION>
+                <OPTION VALUE="M" SELECTED="0">每月</OPTION>
+                <OPTION VALUE="Q" SELECTED="0">每季度</OPTION>
+                <OPTION VALUE="S" SELECTED="0">半年</OPTION>
+                <OPTION VALUE="A" SELECTED="0">每年</OPTION>
+                <OPTION VALUE="P" SELECTED="0">周期性</OPTION>
+                <OPTION VALUE="C" SELECTED="0">清算周期</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>D</VALUE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SDE_PRD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_SDE</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_S2" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FIELD3">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>自然</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="D" SELECTED="0">借记</OPTION>
+                <OPTION VALUE="C" SELECTED="0">贷记</OPTION>
+                <OPTION VALUE="N" SELECTED="0">轧差</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SDE_NTR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>类型</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="B" SELECTED="0">登记日期</OPTION>
+                <OPTION VALUE="V" SELECTED="0">起息日</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SDE_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>操作</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="N" SELECTED="-1">无操作</OPTION>
+                <OPTION VALUE="A" SELECTED="0">平均</OPTION>
+                <OPTION VALUE="M" SELECTED="0">最小</OPTION>
+                <OPTION VALUE="X" SELECTED="0">最大</OPTION>
+                <OPTION VALUE="S" SELECTED="0">汇总</OPTION>
+                <OPTION VALUE="C" SELECTED="0">计数</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SDE_OP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_SDE</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="P2" ID="P2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FIELD_NAME_FOR_UDB">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_FIELD_NAME</NAME>
+                </LOV>
+                <LBL>字段名称</LBL>
+                <SIZE>22</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>FIELD_NAME</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>2</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>SDE_DAYS</NAME>
+                <LBL>自开始以来的天数</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>2</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>SDE_DAYS_END</NAME>
+                <LBL>计算的最后一天</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>用户定义基准的字段名称</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ICTM_SDE</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_S3" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="50"></PART>
+          <PART NAME="P2" ID="P2" WIDTH="50"></PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_S4" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="50"></PART>
+          <PART NAME="P2" ID="P2" WIDTH="50"></PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_S5" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="50"></PART>
+          <PART NAME="P2" ID="P2" WIDTH="50"></PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

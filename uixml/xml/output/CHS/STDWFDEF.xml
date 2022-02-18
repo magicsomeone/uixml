@@ -1,0 +1,1110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_STTMS_BRANCH_WF_DEF_MASTER</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>分行代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BRANCHCODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>功能 ID/组</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>FUNCTIONGROUP</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>分行代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BRANCHCODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>功能 ID/组</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>FUNCTIONGROUP</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="M">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>经办者</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>复核者</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>日期时间：</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>日期时间：</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>模式编号</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL></LBL>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="C">已关闭</OPTION>
+                <OPTION VALUE="O">打开</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>记录状态</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="A">已授权</OPTION>
+                <OPTION VALUE="R">已拒付</OPTION>
+                <OPTION VALUE="U">未授权</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>授权状态</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTMS_BRANCH_WF_DEF_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="S" SEQ="1" id="CVS_CCY_AMT">
+        <SCREEN>CVS_CCY_AMT</SCREEN>
+        <LBL>授权额度检查</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="2" id="CVS_MULT_AUTH">
+        <SCREEN>CVS_MULT_AUTH</SCREEN>
+        <LBL>多次授权角色详细信息</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_1">
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRANCHCODE</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_BRN_CODE</NAME>
+                </LOV>
+                <LBL>分行代码</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>分行说明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BRANCHNAME</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>LBL_BRANHCCODE1</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRANHCCODE1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTMS_BRANCH_WF_DEF_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_2">
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>FUNCTIONGROUP</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_FN_GRP</NAME>
+                </LOV>
+                <LBL>功能 ID/组</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>功能说明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>255</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DESCRIPTION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>LBL_WFFUNCTION</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>WFFUNCTION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTMS_BRANCH_WF_DEF_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_3">
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnRepopulate()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>MISINPUT</NAME>
+                <LBL>可修改 MIS</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnRepopulate()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>UDFINPUT</NAME>
+                <LBL>可修改 UDF</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnRepopulate()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>CHGAMENDABLE</NAME>
+                <LBL>可修改费用</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnRepopulate()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>EXCHRATEAMEND</NAME>
+                <LBL>可修改汇率</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>需要尾箱</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CASHTXN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnRepopulate()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>DENMREQD</NAME>
+                <LBL>需要面值跟踪</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnRepopulate()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>AUTOAUTHREQD</NAME>
+                <LBL>自动授权</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>签名认证</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SIGN_VER_REQD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>用户偏好选项</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTMS_BRANCH_WF_DEF_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_11">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>多次授权</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>MULTIAUTHREQ</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>连续</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SEQUENTIAL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>多级别授权偏好选项</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTMS_BRANCH_WF_DEF_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_4">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>分行间检查</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>IBCHK</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>授权额度检查</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHLIMITCHK</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Default Authorization</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>DEFAULTAUTH</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>验证偏好选项</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTMS_BRANCH_WF_DEF_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_5">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>授权计费修改</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CHGAMENDAUTH</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>授权汇率修改</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>EXCHRATEAMENDAUTH</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>电子邮件审批</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>EMAIL_APPROVAL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>分配模式</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="A" SELECTED="0">自动</OPTION>
+                <OPTION VALUE="M" SELECTED="0">手动</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHMODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>AUTHROLE</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_ASSN_ROLE</NAME>
+                </LOV>
+                <LBL>授权角色</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_TWO_STEP_ROLE</NAME>
+                </LOV>
+                <LBL>两步角色</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>TWOSTEPROLE</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>授权偏好选项</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTMS_BRANCH_WF_DEF_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_3" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100"></PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_CCY_AMT" POSITION="template" TITLE="" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_7">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>LBL_BRANCHOCDE</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRANCHOCDE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>LBL_FUNCTIONGROUP</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>FUNCTIONGROUP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CCY</NAME>
+                </LOV>
+                <LBL>币种</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CCYCODE</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>AMOUNT</NAME>
+                <LBL>金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>OFFLINEAMT</NAME>
+                <LBL>脱机金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>币种与金额详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTMS_BRANCH_WF_TXN_LIMIT</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_MULT_AUTH" POSITION="template" TITLE="角色" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PAR1" ID="PAR1" WIDTH="50">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_8">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>分行代码</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRANCHCODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>LBL_FUNCTIONGROUP</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>FUNCTIONGROUP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CCYCODE</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CCY</NAME>
+                </LOV>
+                <LBL>币种代码</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>币种</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTMS_BRANCH_MULTIAUTH_CCY</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PAR2" ID="PAR2" WIDTH="50">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_9">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>分行代码</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRANCHCODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>LBL_FUNCTIONGROUP</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>FUNCTIONGROUP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>币种代码</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CCYCODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>AMTSLAB</NAME>
+                <LBL>金额级距</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PATH1LEVELS</NAME>
+                <LBL>级别数路径 1</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PATH2LEVELS</NAME>
+                <LBL>级别数路径 2</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>金额级距和授权级别</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTMS_BRANCH_MULTIAUTH_AMT</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PAR1" ID="PAR1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_10">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>分行代码</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRANCHCODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>LBL_FUNCTIONGROUP</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>FUNCTIONGROUP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>币种代码</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CCYCODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>AMTSLAB</NAME>
+                <LBL>金额级距</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>授权规则</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="P" SELECTED="0">主要</OPTION>
+                <OPTION VALUE="S" SELECTED="0">辅助</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>AUTH_RULE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_ASSN_ROLE</NAME>
+                </LOV>
+                <LBL>Level 1</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>ROLE1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_ASSN_ROLE</NAME>
+                </LOV>
+                <LBL>级别 2</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>ROLE2</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_ASSN_ROLE</NAME>
+                </LOV>
+                <LBL>级别 3</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>ROLE3</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_ASSN_ROLE</NAME>
+                </LOV>
+                <LBL>级别 4</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>ROLE4</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_ASSN_ROLE</NAME>
+                </LOV>
+                <LBL>级别 5</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>ROLE5</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>授权角色映射</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTMS_BRANCH_MULTIAUTH_MAP</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

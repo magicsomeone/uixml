@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_USER_QUEUE_MASTER</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Authorization Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Authorized</OPTION>
+        <OPTION VALUE="U">Unauthorized</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Record Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">Open</OPTION>
+        <OPTION VALUE="C">Closed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>User Identification</LBL>
+        <SIZE>15</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>USER_ID</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Authorization Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Authorized</OPTION>
+        <OPTION VALUE="U">Unauthorized</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Record Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">Open</OPTION>
+        <OPTION VALUE="C">Closed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>User Identification</LBL>
+        <SIZE>15</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>USER_ID</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="User Maintenance" TMP_SCR_TYPE="M">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>Maker</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>Checker</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>Date Time:</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>Date Time:</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>Mod No</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL></LBL>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="C">Closed</OPTION>
+                <OPTION VALUE="O">Open</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>Record Status</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="A">Authorized</OPTION>
+                <OPTION VALUE="R">Rejected</OPTION>
+                <OPTION VALUE="U">Unauthorized</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>Authorization Status</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_USER_QUEUE_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART_1" ID="PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_MASTER1">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_USER_ID</NAME>
+                </LOV>
+                <LBL>User Identification</LBL>
+                <SIZE>15</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>USER_ID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_USER_QUEUE_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART_2" ID="PART_2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_MASTER2">
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_USER_QUEUE_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PART_1" ID="PART_1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_DETAIL">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_HOST_CODE</NAME>
+                </LOV>
+                <LBL>Host Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>HOST_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_QUEUE_FUNCTION</NAME>
+                </LOV>
+                <LBL>Function</LBL>
+                <SIZE>10</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>FUNCTION_ID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>RELEASE_PAYMENT</NAME>
+                <LBL>Release Payment</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>APPROVE_CREDIT</NAME>
+                <LBL>Approve Credit</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CARRY_FORWARD</NAME>
+                <LBL>Carry Forward</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>RETRY</NAME>
+                <LBL>Retry</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>RETURN</NAME>
+                <LBL>Return</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REPAIR</NAME>
+                <LBL>Repaired</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>MOVE_TO_REPAIR</NAME>
+                <LBL>Move to Repair</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CANCEL</NAME>
+                <LBL>Cancel</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>STATUS_CHANGE</NAME>
+                <LBL>Approve</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>RATE_DETAILS</NAME>
+                <LBL>Rate Details</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHORIZE</NAME>
+                <LBL>Authorize</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CLOSE</NAME>
+                <LBL>Close</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ACCEPTED</NAME>
+                <LBL>Accepted</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>NOT_APPLICABLE</NAME>
+                <LBL>Not Applicable</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REJECTED</NAME>
+                <LBL>Rejected</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>BULK_STATUS_CHANGE</NAME>
+                <LBL>Bulk Status Change</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>COVER_MATCH</NAME>
+                <LBL>Match Cover</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>UNMATCH</NAME>
+                <LBL>Un Match</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>MATCH_PARENT</NAME>
+                <LBL>Match Parent</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SUPPRESS</NAME>
+                <LBL>Suppress</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CHANGE_VALUE</NAME>
+                <LBL>Change Value</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>DELINK</NAME>
+                <LBL>Delink</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_USER_QUEUE_ACCESS</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

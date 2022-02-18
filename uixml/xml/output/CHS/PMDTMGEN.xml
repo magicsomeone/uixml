@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="ACH Transaction Message Screen" TMP_SCR_TYPE="L">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS>1</BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fnGenerateMessage()</BUTTON_EVENT>
+        <BUTTON_LBL>生成</BUTTON_LBL>
+        <BUTTON_NAME>BTN_GEN</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fnAuthorize()</BUTTON_EVENT>
+        <BUTTON_LBL>授权</BUTTON_LBL>
+        <BUTTON_NAME>BTN_AUTH</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="3">
+        <BUTTON_EVENT>fnDelete()</BUTTON_EVENT>
+        <BUTTON_LBL>删除</BUTTON_LBL>
+        <BUTTON_NAME>BTN_DELETE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="4">
+        <BUTTON_EVENT>fnViewMessage()</BUTTON_EVENT>
+        <BUTTON_LBL>查看消息</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_MSG</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="5">
+        <BUTTON_EVENT>fnViewQueueAction()</BUTTON_EVENT>
+        <BUTTON_LBL>查看队列操作</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_Q_ACTION</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW>1</BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_PMVW_TXN_DISPATCH</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>交易参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>网络代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>消息生成状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="G" SELECTED="0">已生成</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未生成</OPTION>
+        <OPTION VALUE="E" SELECTED="0">错误</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>MESSAGE_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>交易类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="O" SELECTED="0">发起的 CT 付款</OPTION>
+        <OPTION VALUE="C" SELECTED="0">发起的 CT 撤消</OPTION>
+        <OPTION VALUE="V" SELECTED="0">发起的 CT 冲正</OPTION>
+        <OPTION VALUE="R" SELECTED="0">CT 收据退回</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TRANSACTION_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>错误代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>ERROR_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>授权状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">已授权</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授权</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>交易参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>主机代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>HOST_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>网络代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>消息生成状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="G" SELECTED="0">已生成</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未生成</OPTION>
+        <OPTION VALUE="E" SELECTED="0">错误</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>MESSAGE_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>交易类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="O" SELECTED="0">发起的 CT 付款</OPTION>
+        <OPTION VALUE="C" SELECTED="0">发起的 CT 撤消</OPTION>
+        <OPTION VALUE="V" SELECTED="0">发起的 CT 冲正</OPTION>
+        <OPTION VALUE="R" SELECTED="0">CT 收据退回</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TRANSACTION_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>仅延长发送</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">是</OPTION>
+        <OPTION VALUE="N" SELECTED="0">否</OPTION>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>EXTENDED_DISPATCH_ONLY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>延长发送日期时间</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>EXTENDED_DISPATCH_DATETIME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>错误代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>ERROR_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>错误说明</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2000</MAXLENGTH>
+        <NAME>ERROR_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>发送参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>DISPATCH_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>发送日志参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>LAST_DISPATCH_LOG_SEQ_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>授权状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">已授权</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授权</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>交易存档日期</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>TXN_ARCH_DT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>队列参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUE_REF_NO</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="G">已生成</OPTION>
+        <OPTION VALUE="U">未生成</OPTION>
+        <OPTION VALUE="E">错误</OPTION>
+        <FIELD_NAME>MESSAGE_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="O">发起的 CT 付款</OPTION>
+        <OPTION VALUE="C">发起的 CT 撤消</OPTION>
+        <OPTION VALUE="V">发起的 CT 冲正</OPTION>
+        <OPTION VALUE="R">CT 收据退回</OPTION>
+        <FIELD_NAME>TRANSACTION_TYPE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="Y">是</OPTION>
+        <OPTION VALUE="N">否</OPTION>
+        <FIELD_NAME>EXTENDED_DISPATCH_ONLY</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <FIELD_NAME>AUTH_STAT</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_1">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>交易存档日期</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>TXN_ARCH_DT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>TXN_REF_NO</NAME>
+                <LBL>交易参考编号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>DISPATCH_REF_NO</NAME>
+                <LBL>发送参考编号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>LAST_DISPATCH_LOG_SEQ_NO</NAME>
+                <LBL>发送日志参考编号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>网络代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>NETWORK</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>主机代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>HOST_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>交易类型</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="O" SELECTED="0">发起的 CT 付款</OPTION>
+                <OPTION VALUE="C" SELECTED="0">发起的 CT 撤消</OPTION>
+                <OPTION VALUE="V" SELECTED="0">发起的 CT 冲正</OPTION>
+                <OPTION VALUE="R" SELECTED="0">CT 收据退回</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TRANSACTION_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>延长发送日期时间</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>EXTENDED_DISPATCH_DATETIME</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="Y" SELECTED="0">是</OPTION>
+                <OPTION VALUE="N" SELECTED="0">否</OPTION>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>EXTENDED_DISPATCH_ONLY</NAME>
+                <LBL>仅延长发送</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>消息生成状态</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="G" SELECTED="0">已生成</OPTION>
+                <OPTION VALUE="U" SELECTED="0">未生成</OPTION>
+                <OPTION VALUE="E" SELECTED="0">错误</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>MESSAGE_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>TRANSACTION_MESSAGE_SIZE</NAME>
+                <LBL>LBL_TRANSACTION_MESSAGE_SIZE</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>LBL_GENERATION_DATETIME</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>GENERATION_DATETIME</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>生成模式</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>GENERATION_MODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>错误代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>ERROR_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>错误说明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2000</MAXLENGTH>
+                <NAME>ERROR_DESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>授权状态</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="A" SELECTED="0">已授权</OPTION>
+                <OPTION VALUE="U" SELECTED="0">未授权</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTH_STAT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>复核者日期戳记</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>CHECKER_DT_STAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>复核者 ID</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>CHECKER_ID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>解除时间</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>MAKER_DT_STAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>经办者 ID</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>MAKER_ID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PMVW_TXN_DISPATCH</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

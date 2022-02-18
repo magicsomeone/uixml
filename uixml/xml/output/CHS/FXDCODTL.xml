@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SCREEN QUERY_REQD="N" MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="L">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_MASTER" COLLAPSE="N">
+          <PART NAME="PART_1" ID="PART_1" WIDTH="50"></PART>
+          <PART NAME="PART_2" ID="PART_2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_MASTER">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>对手方</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>9</MAXLENGTH>
+                <NAME>COUNTERPARTY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>筛选标准</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="E" SELECTED="0">所有合同</OPTION>
+                <OPTION VALUE="A" SELECTED="0">全部活动合同</OPTION>
+                <OPTION VALUE="V" SELECTED="0">全部冲正的合同</OPTION>
+                <OPTION VALUE="L" SELECTED="0">全部清算的合同</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CONTRACT_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>>></LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_query()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_GO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>-1</HREQ>
+              <BLOCK>BLK_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_DETAIL" COLLAPSE="N">
+          <PART NAME="PART_2" ID="PART_2" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_DETAIL">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>合同参考编号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_cont_det(this,event)</FUNCTION>
+                  <NAME>ondblclick</NAME>
+                </EVENT>
+                <NAME>CONTRACT_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易类型</LBL>
+                <SIZE>10</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>BUYSELLUI</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>记账日期</LBL>
+                <SIZE>8</SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>BOOKING_DATE_TIME</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>买入币种</LBL>
+                <SIZE>4</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BOT_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE>22</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>BOT_CCY</RELATED_FIELD>
+                <MAXLENGTH>22,3</MAXLENGTH>
+                <NAME>BOT_AMOUNT</NAME>
+                <LBL>买入金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>买入起息日</LBL>
+                <SIZE>8</SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>BOT_VALUE_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>卖出币种</LBL>
+                <SIZE>4</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>SOLD_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>SOLD_CCY</RELATED_FIELD>
+                <MAXLENGTH>22,3</MAXLENGTH>
+                <NAME>SOLD_AMOUNT</NAME>
+                <LBL>卖出金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>卖出起息日</LBL>
+                <SIZE>8</SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>SOLD_VALUE_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>对手方</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>9</MAXLENGTH>
+                <NAME>COUNTERPARTY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>合同状态</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_DET</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT>300</HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

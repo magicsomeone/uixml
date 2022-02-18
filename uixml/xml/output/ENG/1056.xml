@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="Stop Payment" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_1">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>External Reference Number</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>XREF</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE>20</SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>ACC</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_ACCOUNT</NAME>
+                </LOV>
+                <LBL>Account</LBL>
+                <HOTKEYREQJA>Y</HOTKEYREQJA>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Customer Name</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CUSTNAME</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STOP_PAYMENT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_2">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Stop Payment Type</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="A" SELECTED="0">Amount</OPTION>
+                <OPTION VALUE="C" SELECTED="0">Cheque</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnChange()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>STOPPAYTYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Start Cheque Number</LBL>
+                <SIZE>16</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>STARTCHKNO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>Effective Date</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>EFFDT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <OFFLINE_LOV>
+                  <TYPE>G</TYPE>
+                  <NAME>LOV_CURRENCY_LOCAL</NAME>
+                </OFFLINE_LOV>
+                <SIZE>3</SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CCY</NAME>
+                <CASE>UPPER</CASE>
+                <LBL>Currency</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STOP_PAYMENT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_3">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Branch</LBL>
+                <SIZE>3</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BRN</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Account Title</LBL>
+                <SIZE>22</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ACCTITLE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Remarks</LBL>
+                <SIZE>20</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>255</MAXLENGTH>
+                <NAME>REM</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STOP_PAYMENT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_4">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>End cheque Number</LBL>
+                <SIZE>16</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>ENDCHKNO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Expiry Date</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>EXPDT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>22</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>CCY</RELATED_FIELD>
+                <MAXLENGTH/>
+                <EVENT>
+                  <FUNCTION>fnSetOldValue(event)</FUNCTION>
+                  <NAME>onfocus</NAME>
+                </EVENT>
+                <EVENT>
+                  <FUNCTION>fnPickupReqd(event);this.oldvalue = this.value</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>AMT</NAME>
+                <LBL>Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>Pickup</LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnResetTxnAmt();fnEnrich()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>RECALC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STOP_PAYMENT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="C" SEQ="1" id="CHCD">
+        <SCREEN>CVS_CHCD</SCREEN>
+        <LBL>Charge</LBL>
+        <FUNCTION>CHCD</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

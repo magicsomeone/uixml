@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE/>
+    <SUMMARY_DATA_BLK>BLK_ECA_SUMMARY</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>External credit approval Reference</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>ECAREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>External Reference</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>CREATEEXTREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>Account Number</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTACNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>Source Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>SOURCE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>Undo External Reference</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>UNDOEXTREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>ECA Status</LBL>
+        <OPTION VALUE="A" SELECTED="0">Active</OPTION>
+        <OPTION VALUE="S" SELECTED="0">Closed</OPTION>
+        <OPTION VALUE="K" SELECTED="0">Cancelled</OPTION>
+        <OPTION VALUE="R" SELECTED="0">Reject</OPTION>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>ECA_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>Transaction Branch</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BRANCH</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>External credit approval Reference</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>ECAREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>External Reference</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>CREATEEXTREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>Account Number</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTACNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>Source Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>SOURCE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>Undo External Reference</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>UNDOEXTREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>ECA Status</LBL>
+        <OPTION VALUE="A" SELECTED="0">Active</OPTION>
+        <OPTION VALUE="S" SELECTED="0">Closed</OPTION>
+        <OPTION VALUE="K" SELECTED="0">Cancelled</OPTION>
+        <OPTION VALUE="R" SELECTED="0">Reject</OPTION>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>ECA_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>Transaction Branch</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BRANCH</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>Effective Date</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>EFFECTIVEDATE</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL/>
+        <OPTION VALUE="A">Active</OPTION>
+        <OPTION VALUE="S">Closed</OPTION>
+        <OPTION VALUE="K">Cancelled</OPTION>
+        <OPTION VALUE="R">Reject</OPTION>
+        <OPTION VALUE="P">Pending</OPTION>
+        <FIELD_NAME>ECA_STAT</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="M">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL/>
+        <SECTION ID="SEC_MAIN" COLLAPSE="N">
+          <PART NAME="PART_MAIN_1" ID="PART_MAIN_1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HEADER">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Branch</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRANCH</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Source Code</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>SOURCE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_EXT_REF_NO</NAME>
+                </LOV>
+                <LBL>External Reference</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>CREATEEXTREFNO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_ECA_REF</NAME>
+                </LOV>
+                <LBL>External credit approval Reference</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>ECAREFNO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Effective Date</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>EFFECTIVEDATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE/>
+                <COLS/>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>UPDASERRIFANYFAIL</NAME>
+                <LBL>Mark as Error</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE/>
+                <VALUE>N</VALUE>
+                <COLS/>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REFERRAL_ALLOWED</NAME>
+                <LBL>Referral Allowed</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ECA_MASTER</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL/>
+        <SECTION ID="SEC_PART1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FOOTER">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Input By</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>MAKER</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Checker</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>CHKR</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Date Time</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>MADTTIME</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Date Time</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>CHKDTTIME</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Authorization Status</LBL>
+                <SIZE/>
+                <OPTION VALUE="A" SELECTED="0">Authorized</OPTION>
+                <OPTION VALUE="U" SELECTED="0">Unauthorized</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS/>
+                <TYPE>ROSELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Status</LBL>
+                <SIZE/>
+                <OPTION VALUE="A" SELECTED="0">Active</OPTION>
+                <OPTION VALUE="S" SELECTED="0">Closed</OPTION>
+                <OPTION VALUE="K" SELECTED="0">Cancelled</OPTION>
+                <OPTION VALUE="R" SELECTED="0">Reject</OPTION>
+                <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS/>
+                <TYPE>ROSELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>-1</HREQ>
+              <BLOCK>BLK_ECA_MASTER</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="S" SEQ="1" id="CVS_DETAIL">
+        <SCREEN>CVS_DETAIL</SCREEN>
+        <LBL>Details</LBL>
+        <FUNCTION/>
+      </FORM>
+      <FORM TYPE="LF" SEQ="2" id="CADECADL">
+        <SCREEN>CVS_MAIN</SCREEN>
+        <LBL>View History</LBL>
+        <FUNCTION>CADECADL</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL/>
+        <SECTION ID="SEC_PART1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_BLK_DETAIL">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Account Branch</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CUSTACBRN</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Account Number</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>CUSTACNO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Account Currency</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CUSTACCCY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>NUM_FIELD16</NAME>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_MCA_ACC_NO</NAME>
+                </LOV>
+                <LBL>Multi CurrencyAccount No</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>CUSTACCCY</RELATED_FIELD>
+                <MAXLENGTH>22,3</MAXLENGTH>
+                <NAME>REQBLKAMT</NAME>
+                <LBL>Requested Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>CUSTACCCY</RELATED_FIELD>
+                <MAXLENGTH>22,3</MAXLENGTH>
+                <NAME>APPROVEDBLKAMT</NAME>
+                <LBL>Approved Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>CUSTACCCY</RELATED_FIELD>
+                <MAXLENGTH>22,3</MAXLENGTH>
+                <NAME>OUTSTANDINGBLKAMT</NAME>
+                <LBL>Outstanding Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Status</LBL>
+                <SIZE/>
+                <OPTION VALUE="A" SELECTED="0">Active</OPTION>
+                <OPTION VALUE="S" SELECTED="0">Closed</OPTION>
+                <OPTION VALUE="K" SELECTED="0">Cancelled</OPTION>
+                <OPTION VALUE="E" SELECTED="0">Error</OPTION>
+                <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>ROSELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>BLKSTATUS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Remarks</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>255</MAXLENGTH>
+                <NAME>REMARKS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Sweep Required</LBL>
+                <SIZE/>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SWEEPREQD</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Partial Block Required</LBL>
+                <SIZE/>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PARTIALBLKREQD</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Partial Release Allowed</LBL>
+                <SIZE/>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PARTIALRELEASEALLOWED</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Instrument Code</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>INSTRUMENTCODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Block Type</LBL>
+                <SIZE/>
+                <OPTION VALUE="E" SELECTED="0">ECA</OPTION>
+                <OPTION VALUE="L" SELECTED="0">LEAN</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>BLOCKTYPE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Force Block</LBL>
+                <SIZE/>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>FORCEBLOCK</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Action</LBL>
+                <SIZE/>
+                <OPTION VALUE="C" SELECTED="0">Create</OPTION>
+                <OPTION VALUE="L" SELECTED="0">Close</OPTION>
+                <OPTION VALUE="U" SELECTED="0">Undo</OPTION>
+                <OPTION VALUE="I" SELECTED="0">Increase</OPTION>
+                <OPTION VALUE="D" SELECTED="0">Decrease</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <NAME>ACTION</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>External Credit Approval Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ECA_DETAIL</BLOCK>
+              <WIDTH/>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_DETAIL" POSITION="template" TITLE="External Credit Approval Log Details" TMP_SCR_TYPE="M">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL/>
+        <SECTION ID="SEC_PART1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="ME" INDEX="1" ID="FST_BLK_DETAIL_HDR">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>External credit approval Reference</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>ECAREFNO</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ECA_DETAIL</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL/>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL/>
+        <SECTION ID="SEC_PART1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_BLK_DETAIL_LOG">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Account Branch</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CUSTACBRN</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Account Number</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CUSTACNO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Account Currency</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CUSTACCCY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>CUSTACCCY</RELATED_FIELD>
+                <MAXLENGTH>22,3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>AMT</NAME>
+                <LBL>Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>CUSTACCCY</RELATED_FIELD>
+                <MAXLENGTH>22,3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>OUTSTANDINGAMT</NAME>
+                <LBL>Outstanding Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Action</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ACTION</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Remarks</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>255</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>REMARKS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Status</LBL>
+                <SIZE/>
+                <OPTION VALUE="A" SELECTED="0">Active</OPTION>
+                <OPTION VALUE="S" SELECTED="0">Closed</OPTION>
+                <OPTION VALUE="K" SELECTED="0">Cancelled</OPTION>
+                <OPTION VALUE="E" SELECTED="0">Error</OPTION>
+                <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>ROSELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TXNSTAT</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Debit Release Type</LBL>
+                <SIZE/>
+                <OPTION VALUE="N" SELECTED="0">None</OPTION>
+                <OPTION VALUE="P" SELECTED="0">Partial</OPTION>
+                <OPTION VALUE="F" SELECTED="0">Full</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RELEASETYPE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Undo External Reference</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>UNDOEXTREFNO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Modify External Reference</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>MODIFYEXTREFNO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>CUSTACCCY</RELATED_FIELD>
+                <MAXLENGTH>22,3</MAXLENGTH>
+                <NAME>REQBLKAMOUNTLOG</NAME>
+                <LBL>Requested Block Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>CUSTACCCY</RELATED_FIELD>
+                <MAXLENGTH>22,3</MAXLENGTH>
+                <NAME>TXNAMOUNTLOG</NAME>
+                <LBL>Transaction Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <LBL>External Credit Approval Log Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ECA_DETAIL_LOG</BLOCK>
+              <WIDTH/>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+        <SECTION ID="SEC_PART2" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_BLK_ERR_OVD_LOG">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Account Branch</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CUSTACBRN</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Account Number</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CUSTACNO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Error Code</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ERRCODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Description</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>255</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ERRDESC</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Type</LBL>
+                <SIZE/>
+                <OPTION VALUE="E" SELECTED="0">Error</OPTION>
+                <OPTION VALUE="O" SELECTED="0">Override</OPTION>
+                <OPTION VALUE="I" SELECTED="0">Information</OPTION>
+                <OPTION VALUE="X" SELECTED="0">Error</OPTION>
+                <OPTION VALUE="D" SELECTED="0">Dual Authorization</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>ROSELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TYPE</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>External Credit Approval Error Override Log Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ECA_ERR_OVD_LOG</BLOCK>
+              <WIDTH/>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

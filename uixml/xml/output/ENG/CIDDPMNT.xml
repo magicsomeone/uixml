@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY POSITION="template" TITLE="SUMMARY">
+    <SUMMARY_BASE>M</SUMMARY_BASE>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <BLOCK VIEW="Single Entry" TYPE="Single Entry" SCREEN="SUMMARY">
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <FIELD TABPAGE="">
+      <SRC>Images/Exit2.gif</SRC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HALIGN>right</HALIGN>
+      <HIDDEN>0</HIDDEN>
+      <VALUE>Exit</VALUE>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <EVENT>
+        <FUNCTION>fnExit()</FUNCTION>
+        <NAME>onClick</NAME>
+      </EVENT>
+      <NAME>BTN_EXIT</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <VALIGN>bottom</VALIGN>
+      <LABEL></LABEL>
+      <ID>BTN_EXIT</ID>
+      <SHOWIN>All</SHOWIN>
+      <TYPE>BUTTON</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>CONTSTAT</DBC>
+      <WIDTH></WIDTH>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <MULTIPLE>0</MULTIPLE>
+      <UIBLOCK></UIBLOCK>
+      <SUMMARY>QRA</SUMMARY>
+      <ABS_POS></ABS_POS>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Contract Status</LABEL>
+      <ID>CIDDPMNT34</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>SELECT</TYPE>
+      <AUTHSCRN>0</AUTHSCRN>
+      <SIZE></SIZE>
+      <REQUIRED>0</REQUIRED>
+      <OPTION VALUE="O" SELECTED="0">Open</OPTION>
+      <OPTION VALUE="Y" SELECTED="0">Reversed</OPTION>
+      <HIDDEN>0</HIDDEN>
+      <COLS></COLS>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>CONTSTAT</NAME>
+      <DISABLED>0</DISABLED>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ROWS></ROWS>
+    </FIELD>
+    <FIELD TABPAGE="">
+      <DBC>AUTHSTAT</DBC>
+      <WIDTH></WIDTH>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <MULTIPLE>0</MULTIPLE>
+      <UIBLOCK></UIBLOCK>
+      <SUMMARY>QRA</SUMMARY>
+      <ABS_POS></ABS_POS>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Auth Status</LABEL>
+      <ID>CIDDPMNT35</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>SELECT</TYPE>
+      <AUTHSCRN>0</AUTHSCRN>
+      <SIZE></SIZE>
+      <REQUIRED>0</REQUIRED>
+      <OPTION VALUE="A" SELECTED="0">Authorize</OPTION>
+      <OPTION VALUE="U" SELECTED="0">Unauthorized</OPTION>
+      <OPTION VALUE="" SELECTED="-1"></OPTION>
+      <HIDDEN>0</HIDDEN>
+      <COLS></COLS>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>AUTHSTAT</NAME>
+      <DISABLED>0</DISABLED>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ROWS></ROWS>
+    </FIELD>
+    <REQUIRED></REQUIRED>
+    <LABEL></LABEL>
+    <WIDTH></WIDTH>
+    <ID>BLK_SUMMARY_EXIT</ID>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+  </BLOCK>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" TITLE="Down Payment Details" VERSION_BTN_REQD="N" TMP_SCR_TYPE="medium" WIDTH="780" POSITION="template" HEIGHT="516">
+    <SUBSCREEN>
+      <FORM TYPE="S" SEQ="1" id="CVS_DETAILS">
+        <LABEL>Details</LABEL>
+        <FUNCTION>fnShowSubscreen_CVS_DETAILS()</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="2" id="CSCBRENT">
+        <LABEL>Events</LABEL>
+        <FUNCTION>fnShowEvents('CSCBRENT','CVS_ACCENTRY')</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <TABPAGE_ALL HEIGHT="75">
+      <LABEL>All</LABEL>
+    </TABPAGE_ALL>
+    <TAB>
+      <PAGE NAME="All" HEIGHT="" ID="All">
+        <LABEL>All</LABEL>
+        <SECTION HEIGHT="200" ID="SEC1">
+          <PARTITION NAME="SEC1_PART1" ID="SEC1_PART1" WIDTH="100"></PARTITION>
+        </SECTION>
+      </PAGE>
+    </TAB>
+    <CS_BUTTON_ROWS></CS_BUTTON_ROWS>
+    <CS_BUTTONS_PER_ROW></CS_BUTTONS_PER_ROW>
+  </SCREEN>
+  <BLOCK TYPE="Audit Entry" SCREEN="CVS_MAIN">
+    <PROCESS_STATUS>0</PROCESS_STATUS>
+    <AUTH_STATUS>-1</AUTH_STATUS>
+    <CONTRACT_STATUS>-1</CONTRACT_STATUS>
+    <READ_ONLY></READ_ONLY>
+    <REVERSAL>0</REVERSAL>
+    <DEAL_STATUS>0</DEAL_STATUS>
+    <PAYMENT_STATUS>0</PAYMENT_STATUS>
+    <ABS_POS>426,1</ABS_POS>
+    <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+    <LABEL></LABEL>
+    <COLLECTION_STATUS>0</COLLECTION_STATUS>
+    <ID>BLK_AUDIT</ID>
+    <TYPE>T</TYPE>
+  </BLOCK>
+  <BLOCK TABPAGE="All" TYPE="Single Entry" SCREEN="CVS_MAIN" VIEW="Single Entry">
+    <FIELD TABPAGE="All" TYPE="FIELDSET" PARTITION="SEC1_PART1" INDEX="1" SECTION="SEC1">
+      <FIELD INDEX="1">
+        <DBC>PREFNO</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>20</SIZE>
+        <REQUIRED>-1</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>16</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>PREFNO</NAME>
+        <CASE>UPPER</CASE>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Reference Number~Hamish Jiddayah Reference ~Customer~Down Payment</REDUCTION_FLD_LABELS>
+          <TITLE>Process Ref No</TITLE>
+          <COL_HEADING>Reference Number~Hamish Jiddayah Reference ~Customer~Down Payment</COL_HEADING>
+          <NAME>LOV_PROC_REF_NO</NAME>
+        </LOV>
+        <SUMMARY>QRA</SUMMARY>
+        <ABS_POS>93,173</ABS_POS>
+        <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+        <LABEL>Reference Number</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>CLDDPMT1</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="6">
+        <DBC>DPREFNO</DBC>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>0</READ_ONLY>
+        <READ_ONLY>-1</READ_ONLY>
+        <EVENT>
+          <FUNCTION>fnDisableFields()</FUNCTION>
+          <NAME>onchange</NAME>
+        </EVENT>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY>QRA</SUMMARY>
+        <ABS_POS>114,140</ABS_POS>
+        <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+        <LABEL>Hamish Jiddayah Reference </LABEL>
+        <ID>CLDDPMT3</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>20</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>DPREFNO</NAME>
+        <CASE>UPPER</CASE>
+        <DISABLED>0</DISABLED>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Hamish Jiddayah Reference ~Customer~Currency~Customer Name</REDUCTION_FLD_LABELS>
+          <TITLE>Down Payment</TITLE>
+          <COL_HEADING>Hamish Jiddayah Reference ~Customer~Currency~Customer Name</COL_HEADING>
+          <NAME>LOV_DP_REF_NO</NAME>
+        </LOV>
+        <AMENDABLE>-1</AMENDABLE>
+        <INPUT_LOV>-1</INPUT_LOV>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <TABINDEX>1</TABINDEX>
+      </FIELD>
+      <FIELD INDEX="2">
+        <DBC>CUST</DBC>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>0</READ_ONLY>
+        <EVENT>
+          <FUNCTION>fnDisableFields()</FUNCTION>
+          <NAME>onfocus</NAME>
+        </EVENT>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY>QRA</SUMMARY>
+        <ABS_POS>134,203</ABS_POS>
+        <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+        <LABEL>Customer</LABEL>
+        <ID>CLDDPMT5</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>13</SIZE>
+        <REQUIRED>-1</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <MAXLENGTH>9</MAXLENGTH>
+        <NAME>CUST</NAME>
+        <CASE>UPPER</CASE>
+        <DISABLED>0</DISABLED>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Customer Id~Customer Name</REDUCTION_FLD_LABELS>
+          <TITLE>Customer</TITLE>
+          <COL_HEADING>Customer Id~Customer Name</COL_HEADING>
+          <NAME>LOV_CUSTOMER</NAME>
+        </LOV>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <TABINDEX>2</TABINDEX>
+      </FIELD>
+      <FIELD INDEX="3">
+        <DBC>BRN</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE></SIZE>
+        <HIDDEN>-1</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>BRN</NAME>
+        <DISABLED>0</DISABLED>
+        <SUMMARY></SUMMARY>
+        <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+        <LABEL>Branch Code</LABEL>
+        <ID>CLDDPMNT17</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>HIDDEN</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="4">
+        <DBC>CUSTNAME</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>20</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>0</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>CUSTNAME</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+        <LABEL></LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>CLDDPMNT19</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="5">
+        <DBC>CCY</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>3</SIZE>
+        <REQUIRED>-1</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>3</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <EVENT>
+          <FUNCTION>fnDisableFields()</FUNCTION>
+          <NAME>onfocusin</NAME>
+        </EVENT>
+        <NAME>CCY</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Currency Code~Currency</REDUCTION_FLD_LABELS>
+          <TITLE>Currency</TITLE>
+          <COL_HEADING>Currency Code~Currency</COL_HEADING>
+          <NAME>LOV_CURRENCY</NAME>
+        </LOV>
+        <SUMMARY>RA</SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+        <LABEL>LBL_HAMISH_JIND_CCY</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>CLDDPMT6</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX>3</TABINDEX>
+      </FIELD>
+      <FIELD INDEX="7">
+        <DBC>DPAMT</DBC>
+        <WIDTH></WIDTH>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>0</READ_ONLY>
+        <UIBLOCK></UIBLOCK>
+        <SUMMARY>RA</SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+        <LABEL>Down Payment</LABEL>
+        <ID>CLDDPMT7</ID>
+        <DTYPE>NUMBER</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>AMOUNT</TYPE>
+        <AUTHSCRN>0</AUTHSCRN>
+        <SIZE>22</SIZE>
+        <REQUIRED>-1</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <COLS></COLS>
+        <HEIGHT></HEIGHT>
+        <MAXLENGTH></MAXLENGTH>
+        <NAME>DPAMT</NAME>
+        <DISABLED>0</DISABLED>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ROWS></ROWS>
+      </FIELD>
+      <FIELD INDEX="8">
+        <DBC>VALDT</DBC>
+        <WIDTH></WIDTH>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>0</READ_ONLY>
+        <UIBLOCK></UIBLOCK>
+        <SUMMARY>QRA</SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+        <LABEL>Hamish Jiddayah Value Date </LABEL>
+        <ID>CLDDPMT10</ID>
+        <DTYPE>DATE</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>DATE</TYPE>
+        <AUTHSCRN>0</AUTHSCRN>
+        <SIZE>10</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <COLS></COLS>
+        <HEIGHT></HEIGHT>
+        <MAXLENGTH></MAXLENGTH>
+        <NAME>VALDT</NAME>
+        <DISABLED>0</DISABLED>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ROWS></ROWS>
+      </FIELD>
+      <FIELD INDEX="9">
+        <DBC>PAYBRN</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>3</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>3</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>PBRN</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Payment Branch</REDUCTION_FLD_LABELS>
+          <TITLE>Payment Branch</TITLE>
+          <COL_HEADING>Payment Branch</COL_HEADING>
+          <NAME>LOV_PAYABLE_BRN</NAME>
+        </LOV>
+        <SUMMARY>RA</SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+        <LABEL>Payment Branch</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>CIDDPMNT38</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="10">
+        <DBC>PAYMDE</DBC>
+        <WIDTH></WIDTH>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>0</READ_ONLY>
+        <MULTIPLE>0</MULTIPLE>
+        <UIBLOCK></UIBLOCK>
+        <SUMMARY>QRA</SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+        <LABEL>Payment mode</LABEL>
+        <ID>CLDDPMT11</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>SELECT</TYPE>
+        <AUTHSCRN>0</AUTHSCRN>
+        <SIZE></SIZE>
+        <REQUIRED>0</REQUIRED>
+        <OPTION VALUE="O" SELECTED="0">Own Account</OPTION>
+        <OPTION VALUE="A" SELECTED="0">Account</OPTION>
+        <OPTION VALUE="G" SELECTED="0">GL</OPTION>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <HIDDEN>0</HIDDEN>
+        <COLS></COLS>
+        <HEIGHT></HEIGHT>
+        <MAXLENGTH></MAXLENGTH>
+        <NAME>PAYMDE</NAME>
+        <DISABLED>0</DISABLED>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <TABINDEX>8</TABINDEX>
+        <ROWS></ROWS>
+      </FIELD>
+      <FIELD INDEX="11">
+        <DBC>PACC</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>20</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>20</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>PACC</NAME>
+        <CASE>UPPER</CASE>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <LOV>
+          <REDUCTION_FLD_LABELS>AC GL Number~Account Description~Customer~Currency~Account Type</REDUCTION_FLD_LABELS>
+          <TITLE>GL</TITLE>
+          <COL_HEADING>AC GL Number~Account Description~Customer~Currency~Account Type</COL_HEADING>
+          <NAME>LOV_GLACC</NAME>
+        </LOV>
+        <SUMMARY>RA</SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+        <LABEL>Settlement Account</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>CLDDPMT8</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX>5</TABINDEX>
+      </FIELD>
+      <FIELD INDEX="12">
+        <DBC>PCCY</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>3</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>3</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>PCCY</NAME>
+        <CASE>UPPER</CASE>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Currency Code~Currency</REDUCTION_FLD_LABELS>
+          <TITLE>Payable Currency</TITLE>
+          <COL_HEADING>Currency Code~Currency</COL_HEADING>
+          <NAME>LOV_PAY_CCY</NAME>
+        </LOV>
+        <SUMMARY>RA</SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+        <LABEL>Payment Currency</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>CLDDPMT9</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX>6</TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLD_MAIN</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ>0</HREQ>
+      <LABEL></LABEL>
+      <ID>CIDDPMNT36</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <FIELD TABPAGE="All" TYPE="FIELDSET" PARTITION="SEC1_PART1" INDEX="2" SECTION="SEC1">
+      <FIELD INDEX="1">
+        <DBC>EXCHRT</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>22</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>22</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>EXCHRT</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY>RA</SUMMARY>
+        <ABS_POS>278,176</ABS_POS>
+        <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+        <LABEL>Exchange Rate</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>CLDDPMT12</ID>
+        <DTYPE>NUMBER</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX>9</TABINDEX>
+      </FIELD>
+      <FIELD INDEX="2">
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE></SIZE>
+        <HALIGN>right</HALIGN>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>0</READ_ONLY>
+        <EVENT>
+          <FUNCTION>fnGetExchRate()</FUNCTION>
+          <NAME>onclick</NAME>
+        </EVENT>
+        <NAME>BTN_EXRT</NAME>
+        <DISABLED>0</DISABLED>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Reference Number~Hamish Jiddayah Reference ~Customer~Down Payment</REDUCTION_FLD_LABELS>
+          <TITLE>Process Ref No</TITLE>
+          <COL_HEADING>Reference Number~Hamish Jiddayah Reference ~Customer~Down Payment</COL_HEADING>
+          <NAME>LOV_PROC_REF_NO</NAME>
+        </LOV>
+        <SUMMARY></SUMMARY>
+        <ABS_POS>274,389</ABS_POS>
+        <VALIGN>bottom</VALIGN>
+        <LABEL>R</LABEL>
+        <ID>CIDDPMNT30</ID>
+        <SHOWIN></SHOWIN>
+        <TYPE>BUTTON</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLD_HORI</NAME>
+      <LOV>
+        <REDUCTION_FLD_LABELS>Reference Number~Hamish Jiddayah Reference ~Customer~Down Payment</REDUCTION_FLD_LABELS>
+        <TITLE>Process Ref No</TITLE>
+        <COL_HEADING>Reference Number~Hamish Jiddayah Reference ~Customer~Down Payment</COL_HEADING>
+        <NAME>LOV_PROC_REF_NO</NAME>
+      </LOV>
+      <ABS_POS></ABS_POS>
+      <HREQ>-1</HREQ>
+      <LABEL></LABEL>
+      <ID>CIDDPMNT37</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <DATASRC>CIVWS_ACCOUNT_DOWNPAYMENT</DATASRC>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <LABEL>Down Payment Details</LABEL>
+    <ID>BLK_ACCOUNT_DOWNPAYMENT</ID>
+  </BLOCK>
+  <SCREEN NAME="CVS_DETAILS" POSITION="template" TITLE="Hamish Jiddayah Details" HEIGHT="250" VERSION_BTN_REQD="N" TMP_SCR_TYPE="small" WIDTH="780">
+    <TAB>
+      <PAGE NAME="All" HEIGHT="" ID="All">
+        <LABEL>All</LABEL>
+        <SECTION HEIGHT="200" ID="SEC1">
+          <PARTITION NAME="SEC1_PART1" ID="SEC1_PART1" WIDTH="100"></PARTITION>
+        </SECTION>
+      </PAGE>
+    </TAB>
+    <CS_BUTTON_ROWS></CS_BUTTON_ROWS>
+    <TABPAGE_ALL HEIGHT="75">
+      <LABEL>All</LABEL>
+    </TABPAGE_ALL>
+    <CS_BUTTONS_PER_ROW></CS_BUTTONS_PER_ROW>
+  </SCREEN>
+  <BLOCK TABPAGE="All" TYPE="Multiple Entry" PARTITION="SEC1_PART1" SCREEN="CVS_DETAILS" SECTION="SEC1">
+    <FIELD TABPAGE="All">
+      <DBC>PREFNO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>20</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>16</MAXLENGTH>
+      <READ_ONLY>-1</READ_ONLY>
+      <NAME>PREFNO</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Reference Number</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>CLDDPMNT20</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>DPREFNO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>20</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>16</MAXLENGTH>
+      <READ_ONLY>-1</READ_ONLY>
+      <NAME>DPREFNO</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Hamish Jiddayah Reference </LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>CLDDPMNT21</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>CCY</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>3</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>3</MAXLENGTH>
+      <READ_ONLY>-1</READ_ONLY>
+      <NAME>CCY</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Currency 1</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>CLDDPMNT22</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>DPAMT</DBC>
+      <AUTHSCRN>0</AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <COLS></COLS>
+      <MAXLENGTH></MAXLENGTH>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>-1</READ_ONLY>
+      <NAME>DPAMT</NAME>
+      <DISABLED>0</DISABLED>
+      <UIBLOCK></UIBLOCK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Down Payment</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>CLDDPMNT23</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>AMOUNT</TYPE>
+      <ROWS></ROWS>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>VALDT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>7</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>7</MAXLENGTH>
+      <READ_ONLY>-1</READ_ONLY>
+      <NAME>VALDT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Hamish Jiddayah Value Date </LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>CLDDPMNT24</ID>
+      <DTYPE>DATE</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH>544</WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT>150</HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS>29,76</ABS_POS>
+    <DBT>CIVWS_ACCOUNT_DP_DET</DBT>
+    <LABEL>Account Down Payment Details</LABEL>
+    <ID>BLK_CIVWS_ACCOUNT_DP_DET</ID>
+  </BLOCK>
+  <BLOCK TYPE="Single Entry" SCREEN="CVS_MAIN">
+    <FIELD TABPAGE="All" PARTITION="SEC1_PART1" SECTION="SEC1">
+      <SRC>Images/Exit2.gif</SRC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HALIGN>right</HALIGN>
+      <HIDDEN></HIDDEN>
+      <VALUE>Exit</VALUE>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <EVENT>
+        <FUNCTION>fnExit()</FUNCTION>
+        <NAME>onclick</NAME>
+      </EVENT>
+      <NAME>BTN_EXIT</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <VALIGN>bottom</VALIGN>
+      <LABEL></LABEL>
+      <ID>CLDDPMT15</ID>
+      <SHOWIN></SHOWIN>
+      <TYPE>BUTTON</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <ID>BLK_STD_BUTTONS_IMG</ID>
+  </BLOCK>
+  <BLOCK TYPE="Single Entry" SCREEN="CVS_DETAILS">
+    <FIELD TABPAGE="All">
+      <SRC>Images/Exit2.gif</SRC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HALIGN>right</HALIGN>
+      <HIDDEN></HIDDEN>
+      <VALUE>Exit</VALUE>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <EVENT>
+        <FUNCTION>fnExit_CVS_DETAILS()</FUNCTION>
+        <NAME>onclick</NAME>
+      </EVENT>
+      <NAME>BTN_EXIT</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <VALIGN>bottom</VALIGN>
+      <LABEL></LABEL>
+      <ID>CIDDPMNT33</ID>
+      <SHOWIN></SHOWIN>
+      <TYPE>BUTTON</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <ID>BLK_STD_BUTTONS_IMG</ID>
+  </BLOCK>
+  <SUMBLOCK TABPAGE="QUERY" TYPE="Single Entry" SCREEN="SUMMARY">
+    <FIELD TYPE="MULTIPLE" ID="1">
+      <DBC>PREFNO</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Reference Number</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>16</MAXLENGTH>
+      <NAME>PREFNO</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="2">
+      <DBC>DPREFNO</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Hamish Jiddayah Reference </LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>16</MAXLENGTH>
+      <NAME>DPREFNO</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="3">
+      <DBC>CUST</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Customer</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>9</MAXLENGTH>
+      <NAME>CUST</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="4">
+      <DBC>VALDT</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Hamish Jiddayah Value Date </LABEL>
+      <TYPE>DATE</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>VALDT</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="5">
+      <DBC>PAYMDE</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Payment mode</LABEL>
+      <TYPE>SELECT</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>PAYMDE</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="6">
+      <DBC>CONTSTAT</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Contract Status</LABEL>
+      <TYPE>SELECT</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>CONTSTAT</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="7">
+      <DBC>AUTHSTAT</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Auth Status</LABEL>
+      <TYPE>SELECT</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>AUTHSTAT</NAME>
+    </FIELD>
+
+  </SUMBLOCK>
+  <SUMBLOCK TABPAGE="RESULT" TYPE="Multiple Entry" SCREEN="SUMMARY">
+    <FIELD TYPE="MULTIPLE" ID="1">
+      <ORDER></ORDER>
+      <DBC>PREFNO</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Reference Number</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>16</MAXLENGTH>
+      <NAME>PREFNO</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="2">
+      <ORDER></ORDER>
+      <DBC>DPREFNO</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Hamish Jiddayah Reference </LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>16</MAXLENGTH>
+      <NAME>DPREFNO</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="3">
+      <ORDER></ORDER>
+      <DBC>CUST</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Customer</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>9</MAXLENGTH>
+      <NAME>CUST</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="4">
+      <ORDER></ORDER>
+      <DBC>CCY</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>LBL_HAMISH_JIND_CCY</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>3</MAXLENGTH>
+      <NAME>CCY</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="5">
+      <ORDER></ORDER>
+      <DBC>DPAMT</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Down Payment</LABEL>
+      <TYPE>AMOUNT</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>DPAMT</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="6">
+      <ORDER></ORDER>
+      <DBC>PACC</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Settlement Account</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>20</MAXLENGTH>
+      <NAME>PACC</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="7">
+      <ORDER></ORDER>
+      <DBC>PCCY</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Payment Currency</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>3</MAXLENGTH>
+      <NAME>PCCY</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="8">
+      <ORDER></ORDER>
+      <DBC>VALDT</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Hamish Jiddayah Value Date </LABEL>
+      <TYPE>DATE</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>VALDT</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="9">
+      <ORDER></ORDER>
+      <DBC>PAYMDE</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Payment mode</LABEL>
+      <TYPE>SELECT</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>PAYMDE</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="10">
+      <ORDER></ORDER>
+      <DBC>EXCHRT</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Exchange Rate</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>22</MAXLENGTH>
+      <NAME>EXCHRT</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="11">
+      <ORDER></ORDER>
+      <DBC>CONTSTAT</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Contract Status</LABEL>
+      <TYPE>SELECT</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>CONTSTAT</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="12">
+      <ORDER></ORDER>
+      <DBC>AUTHSTAT</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Auth Status</LABEL>
+      <TYPE>SELECT</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>AUTHSTAT</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="13">
+      <ORDER></ORDER>
+      <DBC>PAYBRN</DBC>
+      <DBT>CIVWS_ACCOUNT_DOWNPAYMENT</DBT>
+      <LABEL>Payment Branch</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>3</MAXLENGTH>
+      <NAME>PBRN</NAME>
+    </FIELD>
+    <LEGENDS>
+      <OPTION VALUE="O">Open</OPTION>
+      <OPTION VALUE="R">Reversed</OPTION>
+      <LABEL>Contract Status</LABEL>
+      <WIDTH></WIDTH>
+      <FIELD_NAME>CONTSTAT</FIELD_NAME>
+    </LEGENDS>
+    <LEGENDS>
+      <OPTION VALUE="A">Authorize</OPTION>
+      <OPTION VALUE="U">Unauthorized</OPTION>
+      <LABEL>Auth Status</LABEL>
+      <WIDTH></WIDTH>
+      <FIELD_NAME>AUTHSTAT</FIELD_NAME>
+    </LEGENDS>
+
+  </SUMBLOCK>
+</FORM>

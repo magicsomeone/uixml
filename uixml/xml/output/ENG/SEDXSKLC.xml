@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="Safe Keeping Location Summary" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_SKLOC</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Authorization Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Authorized</OPTION>
+        <OPTION VALUE="U">Unauthorized</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Record Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">Open</OPTION>
+        <OPTION VALUE="C">Closed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>Safe Keeping Location Id</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>SKLOCID</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>Safe Keeping Location Description</LBL>
+        <SIZE>35</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>SKLOCDESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>Customer Id</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>9</MAXLENGTH>
+        <NAME>CUSTID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <REQD>-1</REQD>
+        <LBL>Internal or External</LBL>
+        <OPTION VALUE="I" SELECTED="0">Internal</OPTION>
+        <OPTION VALUE="E" SELECTED="0">External</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>INTEXT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>External Type</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="C" SELECTED="0">Cedel</OPTION>
+        <OPTION VALUE="E" SELECTED="0">Euroclear</OPTION>
+        <OPTION VALUE="O" SELECTED="0">Other</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>EXTTYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>Corporation Action Collection</LBL>
+        <OPTION COL="1" ROW="LBL_MANUAL">
+          <SELECTED>0</SELECTED>
+          <LBL>Manual</LBL>
+          <ID>M</ID>
+          <VALUE>M</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_AUTO">
+          <SELECTED>-1</SELECTED>
+          <LBL>Auto</LBL>
+          <ID>A</ID>
+          <VALUE>A</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CORPACTAUTOCOLL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>Exposure Line</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>SKLOCEXPLINE</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Authorization Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Authorized</OPTION>
+        <OPTION VALUE="U">Unauthorized</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Record Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">Open</OPTION>
+        <OPTION VALUE="C">Closed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>Safe Keeping Location Id</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>SKLOCID</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>Safe Keeping Location Description</LBL>
+        <SIZE>35</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>SKLOCDESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>Customer Id</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>9</MAXLENGTH>
+        <NAME>CUSTID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <REQD>-1</REQD>
+        <LBL>Internal or External</LBL>
+        <OPTION VALUE="I" SELECTED="0">Internal</OPTION>
+        <OPTION VALUE="E" SELECTED="0">External</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>INTEXT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>External Type</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="C" SELECTED="0">Cedel</OPTION>
+        <OPTION VALUE="E" SELECTED="0">Euroclear</OPTION>
+        <OPTION VALUE="O" SELECTED="0">Other</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>EXTTYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>Corporation Action Collection</LBL>
+        <OPTION COL="1" ROW="LBL_MANUAL">
+          <SELECTED>0</SELECTED>
+          <LBL>Manual</LBL>
+          <ID>M</ID>
+          <VALUE>M</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_AUTO">
+          <SELECTED>-1</SELECTED>
+          <LBL>Auto</LBL>
+          <ID>A</ID>
+          <VALUE>A</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CORPACTAUTOCOLL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>Exposure Line</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>SKLOCEXPLINE</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="I">Internal</OPTION>
+        <OPTION VALUE="E">External</OPTION>
+        <FIELD_NAME>INTEXT</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="C">Cedel</OPTION>
+        <OPTION VALUE="E">Euroclear</OPTION>
+        <OPTION VALUE="O">Other</OPTION>
+        <FIELD_NAME>EXTTYPE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="M">Manual</OPTION>
+        <OPTION VALUE="A">Auto</OPTION>
+        <FIELD_NAME>CORPACTAUTOCOLL</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="Securities Safe Keeping Location Maintenance" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>Maker</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>Checker</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>Date Time:</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>Date Time:</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>Mod No</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL></LBL>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="C">Closed</OPTION>
+                <OPTION VALUE="O">Open</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>Record Status</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="A">Authorized</OPTION>
+                <OPTION VALUE="R">Rejected</OPTION>
+                <OPTION VALUE="U">Unauthorized</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>Authorization Status</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_SKLOC</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="C" SEQ="1" id="CSCFNUDF">
+        <SCREEN>CVS_UDF</SCREEN>
+        <LBL>Fields</LBL>
+        <FUNCTION>CSCFNUDF</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_1">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>Safe Keeping Location Id</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>SKLOCID</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>Safe Keeping Location Description</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>Safe Keeping Location Description</LBL>
+                <SIZE>35</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>SKLOCDESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>G</TYPE>
+                  <NAME>LOV_CUSTOMER</NAME>
+                </LOV>
+                <LBL>Customer Id</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>9</MAXLENGTH>
+                <NAME>CUSTID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>Customer Name</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>Customer Name</LBL>
+                <SIZE>35</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>CUSTOMER_NAME</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_EXPO_LINE</NAME>
+                </LOV>
+                <LBL>Exposure Line</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>SKLOCEXPLINE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>BANKACCEP</NAME>
+                <LBL>Banker's Acceptance Issue</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>Branch</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>global.CurrentBranch</VALUE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>GLOBAL_BRANCH</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>Local Currency</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>global.Lcy</VALUE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>GLOABAL_LCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_SKLOC</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="P2" ID="P2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_2">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>Internal or External</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="I" SELECTED="0">Internal</OPTION>
+                <OPTION VALUE="E" SELECTED="0">External</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>INTEXT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>External Type</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="C" SELECTED="0">Cedel</OPTION>
+                <OPTION VALUE="E" SELECTED="0">Euroclear</OPTION>
+                <OPTION VALUE="O" SELECTED="0">Other</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>EXTTYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Safe Keeping Location Type</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_SKLOC</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="50">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_4">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Safe keeping Location Id</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>SKLOCID1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>Safe Keeping Location Account</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>Safe Keeping Location Account</LBL>
+                <SIZE>35</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>RESTRICTED_TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>SKACC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Safe Keeping Location Account</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_SKACC</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="P2" ID="P2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_3">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Corporation Action Collection</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_MANUAL">
+                  <SELECTED>0</SELECTED>
+                  <LBL>Manual</LBL>
+                  <ID>M</ID>
+                  <VALUE>M</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_AUTO">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>Auto</LBL>
+                  <ID>A</ID>
+                  <VALUE>A</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>A</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CORPACTAUTOCOLL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>MSGTOICS</NAME>
+                <LBL>Message to Incident Command System</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_SKLOC</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

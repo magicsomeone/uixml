@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="Knock In Knock Out Summary" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_KNINKNOT</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Authorization Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Authorized</OPTION>
+        <OPTION VALUE="U">Unauthorized</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Record Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">Open</OPTION>
+        <OPTION VALUE="C">Closed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>Contract Reference</LBL>
+        <SIZE>16</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CONTREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>Counterparty</LBL>
+        <SIZE>12</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>CNTPARTY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>Barrier Type</LBL>
+        <SIZE>4</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>4</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>BARTYPE</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Authorization Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Authorized</OPTION>
+        <OPTION VALUE="U">Unauthorized</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Record Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">Open</OPTION>
+        <OPTION VALUE="C">Closed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>Contract Reference</LBL>
+        <SIZE>16</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CONTREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>Counterparty</LBL>
+        <SIZE>12</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>CNTPARTY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>Barrier Type</LBL>
+        <SIZE>4</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>4</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>BARTYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>Branch</LBL>
+        <SIZE>3</SIZE>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BRN</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>ESN</LBL>
+        <SIZE>22</SIZE>
+        <MAX_VAL></MAX_VAL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>EVENTSEQNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <SIZE>22</SIZE>
+        <MAX_VAL></MAX_VAL>
+        <RELATED_FIELD>REBCCY</RELATED_FIELD>
+        <MAXLENGTH>22</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>REBAMT</NAME>
+        <LBL>Rebate Amount</LBL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MIN_VAL>0</MIN_VAL>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>Rebate Currency</LBL>
+        <SIZE>3</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>REBCCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <MAX_DECIMALS>7</MAX_DECIMALS>
+        <LBL>Barrier</LBL>
+        <SIZE>22</SIZE>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>BAR</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>Barrier Window Start Date</LBL>
+        <SIZE>7</SIZE>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>BARWINSTRDATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>Barrier Window End Date</LBL>
+        <SIZE>7</SIZE>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>BARWINENDDATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <MAX_DECIMALS>3</MAX_DECIMALS>
+        <LBL>Strike Price</LBL>
+        <SIZE>22</SIZE>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>STRPRICE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <REQD>-1</REQD>
+        <MAX_DECIMALS>3</MAX_DECIMALS>
+        <LBL>Spot Rate</LBL>
+        <SIZE>22</SIZE>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>SPOTRATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <MAX_DECIMALS>3</MAX_DECIMALS>
+        <LBL>Lower Barrier</LBL>
+        <SIZE>22</SIZE>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>LOWBAR</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="Knock In Knock Out" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>Maker</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>Checker</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>Date Time:</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>Date Time:</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>Mod No</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL></LBL>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="C">Closed</OPTION>
+                <OPTION VALUE="O">Open</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>Record Status</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="A">Authorized</OPTION>
+                <OPTION VALUE="R">Rejected</OPTION>
+                <OPTION VALUE="U">Unauthorized</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>Authorization Status</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_KNINKNOT</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="SEC1_PART1" ID="SEC1_PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_1">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Branch</LBL>
+                <SIZE>3</SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE>16</SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CONTREFNO</NAME>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CONTRACT_REF_NO</NAME>
+                </LOV>
+                <LBL>Contract Reference</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>22</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>EVENTSEQNO</NAME>
+                <LBL>ESN</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Counterparty</LBL>
+                <SIZE>12</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CNTPARTY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Barrier Type</LBL>
+                <SIZE>4</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BARTYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Rebate Currency</LBL>
+                <SIZE>3</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>REBCCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>22</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>REBCCY</RELATED_FIELD>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>REBAMT</NAME>
+                <LBL>Rebate Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL>0</MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS>7</MAX_DECIMALS>
+                <SIZE>22</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BAR</NAME>
+                <LBL>Barrier</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Barrier Window Start Date</LBL>
+                <SIZE>7</SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BARWINSTRDATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Barrier Window End Date</LBL>
+                <SIZE>7</SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BARWINENDDATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE>22</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>STRPRICE</NAME>
+                <LBL>Strike Price</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <REQD>-1</REQD>
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE>22</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>SPOTRATE</NAME>
+                <LBL>Spot Rate</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE>22</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>LOWBAR</NAME>
+                <LBL>Lower Barrier</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_KNINKNOT</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

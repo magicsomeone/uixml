@@ -1,0 +1,935 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="L">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS></BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fn_Cancel()</BUTTON_EVENT>
+        <BUTTON_LBL>流覽器序號</BUTTON_LBL>
+        <BUTTON_NAME>BTN_CANCEL</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fn_RateDetails()</BUTTON_EVENT>
+        <BUTTON_LBL>已啟用編輯</BUTTON_LBL>
+        <BUTTON_NAME>BTN_RATE_DETAILS</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="3">
+        <BUTTON_EVENT>fn_Resend()</BUTTON_EVENT>
+        <BUTTON_LBL>所需剩餘量</BUTTON_LBL>
+        <BUTTON_NAME>BTN_RESEND</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="4">
+        <BUTTON_EVENT>fn_CarryForward()</BUTTON_EVENT>
+        <BUTTON_LBL>取消天數</BUTTON_LBL>
+        <BUTTON_NAME>BTN_CARRY_FORWARD</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="5">
+        <BUTTON_EVENT>fn_Authorize()</BUTTON_EVENT>
+        <BUTTON_LBL>授權狀態</BUTTON_LBL>
+        <BUTTON_NAME>BTN_AUTHORIZE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="6">
+        <BUTTON_EVENT>fn_Delete()</BUTTON_EVENT>
+        <BUTTON_LBL>拖欠日期</BUTTON_LBL>
+        <BUTTON_NAME>BTN_DELETE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="7">
+        <BUTTON_EVENT>fn_ViewQueueActionLog()</BUTTON_EVENT>
+        <BUTTON_LBL>查看匹配詳細資訊</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEWACTIONLOG</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="8">
+        <BUTTON_EVENT>fn_ViewTransactions()</BUTTON_EVENT>
+        <BUTTON_LBL>查看狀態更新詳細資訊</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEWCONTRACTDETAILS</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW></BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_EXT_EXCH_RATE_QUEUE</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>名義交易</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>38</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXNREF</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>文件參考 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>FILEREF</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>佇列參考編號</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>26</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>允許回購池</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>CUYCCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>買入</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>CUYCCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>BUYAMT</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>出售</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>SELLCCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>其他貨幣</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>SELLCCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>SELLAMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>類型</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>EXEXCRATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>狀態</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">已批准</OPTION>
+        <OPTION VALUE="P" SELECTED="0">罰款類型</OPTION>
+        <OPTION VALUE="R" SELECTED="0">帳戶/總帳</OPTION>
+        <OPTION VALUE="T" SELECTED="0">SC 潛在搜索結果</OPTION>
+        <OPTION VALUE="K" SELECTED="0">保留</OPTION>
+        <OPTION VALUE="Q" SELECTED="0">佇列操作歷史記錄</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>RATEST</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>報表模組</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="PA" SELECTED="0">SEPA 成員</OPTION>
+        <OPTION VALUE="PB" SELECTED="0">獎金至現金</OPTION>
+        <OPTION VALUE="PC" SELECTED="0">塞帕洛斯迪爾</OPTION>
+        <OPTION VALUE="PG" SELECTED="0">清算日期</OPTION>
+        <OPTION VALUE="PI" SELECTED="0">金融工具編號</OPTION>
+        <OPTION VALUE="PN" SELECTED="0">N03號</OPTION>
+        <OPTION VALUE="PR" SELECTED="0">室溫硫化</OPTION>
+        <OPTION VALUE="PW" SELECTED="0">費德維爾</OPTION>
+        <OPTION VALUE="PX" SELECTED="0">債權銀行4</OPTION>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>MODULE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <MAX_DECIMALS>12</MAX_DECIMALS>
+        <LBL>異常交易金額</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>24</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>EXCRATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>授權狀態</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">授權</OPTION>
+        <OPTION VALUE="U" SELECTED="0">S820型</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>網路貨幣首選項摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETCODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>主機代碼維護摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>HOSTCODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>付款類型資訊</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">SEPA 成員</OPTION>
+        <OPTION VALUE="B" SELECTED="0">獎金至現金</OPTION>
+        <OPTION VALUE="D" SELECTED="0">塞帕洛斯迪爾</OPTION>
+        <OPTION VALUE="F" SELECTED="0">快速付款</OPTION>
+        <OPTION VALUE="G" SELECTED="0">清算</OPTION>
+        <OPTION VALUE="I" SELECTED="0">金融工具編號</OPTION>
+        <OPTION VALUE="N" SELECTED="0">N03號</OPTION>
+        <OPTION VALUE="R" SELECTED="0">反轉欄位</OPTION>
+        <OPTION VALUE="W" SELECTED="0">費德維爾</OPTION>
+        <OPTION VALUE="X" SELECTED="0">債權銀行4</OPTION>
+        <OPTION VALUE="T" SELECTED="0">印度</OPTION>
+        <OPTION VALUE="L" SELECTED="0">印度 IMPS</OPTION>
+        <OPTION VALUE="Y" SELECTED="0">ACH CT公司</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">每個DD</OPTION>
+        <OPTION VALUE="H" SELECTED="0">客戶名稱</OPTION>
+        <OPTION VALUE="S" SELECTED="0">LBL_US_CHIPS</OPTION>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LBL>支付參考編號</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="O" SELECTED="0">Outgoing</OPTION>
+        <OPTION VALUE="I" SELECTED="0">Incoming</OPTION>
+        <OPTION VALUE="S" SELECTED="0">LBL_INB_RETURN</OPTION>
+        <OPTION VALUE="X" SELECTED="0">LBL_ORIGINATED_REJECT</OPTION>
+        <OPTION VALUE="R" SELECTED="0">LBL_OUTB_RETURN</OPTION>
+        <OPTION VALUE="V" SELECTED="0">LBL_ORIGINATED_REVERSAL</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>PAYMENT_TXN_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LBL>已生成交易屬性參考編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXNBRN</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LBL>客戶編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>9</MAXLENGTH>
+        <NAME>CUSTNO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>客戶帳號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUACNO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <LBL>買入/賣出</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>BUYSELL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LBL>源序代碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>SOURCE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <LBL>客戶服務模式</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CUSTOMER_SERVICE_MODEL</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="23">
+        <LBL>匯率重估的匯率代碼參數</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>FX_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="24">
+        <LBL>來源參考編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>SOURCE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="25">
+        <LBL>公司 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>COMPANY_ID</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="26">
+        <LBL>批次處理標題</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>PMTINFID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="27">
+        <LBL>需要佇列授權</LBL>
+        <OPTION VALUE="ER" SELECTED="0">內部錯誤代碼</OPTION>
+        <OPTION VALUE="EE" SELECTED="0">外部匯率佇列</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>QUEUE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="28">
+        <LBL>收費帳號幣種</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>ACCCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="29">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_TYPE_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>網絡代碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>NETWORK_TYPE_CODE</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>名義交易</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>38</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXNREF</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>文件參考 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>FILEREF</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>佇列參考編號</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>26</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>允許回購池</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>CUYCCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>買入</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>CUYCCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>BUYAMT</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>出售</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>SELLCCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>其他貨幣</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>SELLCCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>SELLAMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>類型</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>EXEXCRATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>狀態</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">已批准</OPTION>
+        <OPTION VALUE="P" SELECTED="0">罰款類型</OPTION>
+        <OPTION VALUE="R" SELECTED="0">帳戶/總帳</OPTION>
+        <OPTION VALUE="T" SELECTED="0">SC 潛在搜索結果</OPTION>
+        <OPTION VALUE="K" SELECTED="0">保留</OPTION>
+        <OPTION VALUE="Q" SELECTED="0">佇列操作歷史記錄</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>RATEST</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>報表模組</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="PA" SELECTED="0">SEPA 成員</OPTION>
+        <OPTION VALUE="PB" SELECTED="0">獎金至現金</OPTION>
+        <OPTION VALUE="PC" SELECTED="0">塞帕洛斯迪爾</OPTION>
+        <OPTION VALUE="PG" SELECTED="0">清算日期</OPTION>
+        <OPTION VALUE="PI" SELECTED="0">金融工具編號</OPTION>
+        <OPTION VALUE="PN" SELECTED="0">N03號</OPTION>
+        <OPTION VALUE="PR" SELECTED="0">室溫硫化</OPTION>
+        <OPTION VALUE="PW" SELECTED="0">費德維爾</OPTION>
+        <OPTION VALUE="PX" SELECTED="0">債權銀行4</OPTION>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>MODULE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <MAX_DECIMALS>12</MAX_DECIMALS>
+        <LBL>異常交易金額</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>24</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>EXCRATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>備註</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>REMARKS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>說明</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>HOSTID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>授權狀態</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">授權</OPTION>
+        <OPTION VALUE="U" SELECTED="0">S820型</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>網路貨幣首選項摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETCODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LBL>主機代碼維護摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>HOSTCODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LBL>付款類型資訊</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">SEPA 成員</OPTION>
+        <OPTION VALUE="B" SELECTED="0">獎金至現金</OPTION>
+        <OPTION VALUE="D" SELECTED="0">塞帕洛斯迪爾</OPTION>
+        <OPTION VALUE="F" SELECTED="0">快速付款</OPTION>
+        <OPTION VALUE="G" SELECTED="0">清算</OPTION>
+        <OPTION VALUE="I" SELECTED="0">金融工具編號</OPTION>
+        <OPTION VALUE="N" SELECTED="0">N03號</OPTION>
+        <OPTION VALUE="R" SELECTED="0">反轉欄位</OPTION>
+        <OPTION VALUE="W" SELECTED="0">費德維爾</OPTION>
+        <OPTION VALUE="X" SELECTED="0">債權銀行4</OPTION>
+        <OPTION VALUE="T" SELECTED="0">印度</OPTION>
+        <OPTION VALUE="L" SELECTED="0">印度 IMPS</OPTION>
+        <OPTION VALUE="Y" SELECTED="0">ACH CT公司</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">每個DD</OPTION>
+        <OPTION VALUE="H" SELECTED="0">客戶名稱</OPTION>
+        <OPTION VALUE="S" SELECTED="0">LBL_US_CHIPS</OPTION>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LBL>支付參考編號</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="O" SELECTED="0">Outgoing</OPTION>
+        <OPTION VALUE="I" SELECTED="0">Incoming</OPTION>
+        <OPTION VALUE="S" SELECTED="0">LBL_INB_RETURN</OPTION>
+        <OPTION VALUE="X" SELECTED="0">LBL_ORIGINATED_REJECT</OPTION>
+        <OPTION VALUE="R" SELECTED="0">LBL_OUTB_RETURN</OPTION>
+        <OPTION VALUE="V" SELECTED="0">LBL_ORIGINATED_REVERSAL</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>PAYMENT_TXN_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>已生成交易屬性參考編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXNBRN</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <LBL>客戶編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>9</MAXLENGTH>
+        <NAME>CUSTNO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LBL>客戶帳號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUACNO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <LBL>買入/賣出</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>BUYSELL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="23">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>角色 ID</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>LATEST_QUEUE_SEQ</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="24">
+        <LBL>客戶編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTOMER_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="25">
+        <LBL>源序代碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>SOURCE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="26">
+        <LBL>啟動日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>ACTIVATION_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="27">
+        <LBL>客戶服務模式</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CUSTOMER_SERVICE_MODEL</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="28">
+        <LBL>匯率重估的匯率代碼參數</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>FX_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="29">
+        <LBL>錯誤序號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>255</MAXLENGTH>
+        <NAME>ERR_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="30">
+        <LBL>錯誤代碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>600</MAXLENGTH>
+        <NAME>ERR_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="31">
+        <LBL>來源參考編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>SOURCE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="32">
+        <LBL>公司 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>COMPANY_ID</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="33">
+        <LBL>批次處理標題</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>PMTINFID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="34">
+        <LBL>指令代碼 5</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>INSTR_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="35">
+        <LBL>帳戶說明</LBL>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>ACCOUNT_DESCRIPTION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="36">
+        <LBL>客戶名稱</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>CUSTOMER_NAME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="37">
+        <LBL>發送通知</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>SEND_REQ</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="38">
+        <LBL>熱門潛在客戶</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>CUTOFF_TIME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="39">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>重試</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>RETRY_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="40">
+        <LBL>通知單重試次數</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>100</MAXLENGTH>
+        <NAME>RETRY_ERROR</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="41">
+        <LBL>VR 重試次數</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>400</MAXLENGTH>
+        <NAME>RETRY_ERROR_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="42">
+        <LBL>需要佇列授權</LBL>
+        <OPTION VALUE="ER" SELECTED="0">內部錯誤代碼</OPTION>
+        <OPTION VALUE="EE" SELECTED="0">外部匯率佇列</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>QUEUE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="43">
+        <LBL>佇列類型</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>QUEUE_ACTION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="44">
+        <LBL>收費帳號幣種</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>ACCCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="45">
+        <LBL>交易帳號</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>TXN_ACTION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="46">
+        <LBL>支付參考編號</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>PMTXTYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="47">
+        <LBL>付款類型資訊</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PMTYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="48">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_TYPE_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>網絡代碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>NETWORK_TYPE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="49">
+        <LBL>轉移到詳細資訊</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TRANSFER_TYPE</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">已批准</OPTION>
+        <OPTION VALUE="P">罰款類型</OPTION>
+        <OPTION VALUE="R">帳戶/總帳</OPTION>
+        <OPTION VALUE="T">SC 潛在搜索結果</OPTION>
+        <OPTION VALUE="K">保留</OPTION>
+        <OPTION VALUE="Q">佇列操作歷史記錄</OPTION>
+        <FIELD_NAME>RATEST</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="PA">SEPA 成員</OPTION>
+        <OPTION VALUE="PB">獎金至現金</OPTION>
+        <OPTION VALUE="PC">塞帕洛斯迪爾</OPTION>
+        <OPTION VALUE="PG">清算日期</OPTION>
+        <OPTION VALUE="PI">金融工具編號</OPTION>
+        <OPTION VALUE="PN">N03號</OPTION>
+        <OPTION VALUE="PR">室溫硫化</OPTION>
+        <OPTION VALUE="PW">費德維爾</OPTION>
+        <OPTION VALUE="PX">債權銀行4</OPTION>
+        <FIELD_NAME>MODULE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">授權</OPTION>
+        <OPTION VALUE="U">S820型</OPTION>
+        <FIELD_NAME>AUTHSTAT</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">SEPA 成員</OPTION>
+        <OPTION VALUE="B">獎金至現金</OPTION>
+        <OPTION VALUE="D">塞帕洛斯迪爾</OPTION>
+        <OPTION VALUE="F">快速付款</OPTION>
+        <OPTION VALUE="G">清算</OPTION>
+        <OPTION VALUE="I">金融工具編號</OPTION>
+        <OPTION VALUE="N">N03號</OPTION>
+        <OPTION VALUE="R">反轉欄位</OPTION>
+        <OPTION VALUE="W">費德維爾</OPTION>
+        <OPTION VALUE="X">債權銀行4</OPTION>
+        <OPTION VALUE="T">印度</OPTION>
+        <OPTION VALUE="L">印度 IMPS</OPTION>
+        <OPTION VALUE="Y">ACH CT公司</OPTION>
+        <OPTION VALUE="Z">每個DD</OPTION>
+        <OPTION VALUE="H">客戶名稱</OPTION>
+        <OPTION VALUE="S">LBL_US_CHIPS</OPTION>
+        <FIELD_NAME>PAYMENT_TYPE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="O">Outgoing</OPTION>
+        <OPTION VALUE="I">Incoming</OPTION>
+        <OPTION VALUE="S">LBL_INB_RETURN</OPTION>
+        <OPTION VALUE="X">LBL_ORIGINATED_REJECT</OPTION>
+        <OPTION VALUE="R">LBL_OUTB_RETURN</OPTION>
+        <OPTION VALUE="V">LBL_ORIGINATED_REVERSAL</OPTION>
+        <FIELD_NAME>PAYMENT_TXN_TYPE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="ER">內部錯誤代碼</OPTION>
+        <OPTION VALUE="EE">外部匯率佇列</OPTION>
+        <FIELD_NAME>QUEUE_CODE</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_EXCHG_RATE_DETAILS" POSITION="template" TITLE="匯率" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART_1" ID="PART_1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_EXCHGRATE_DETAILS">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>EXCHRATE</NAME>
+                <LBL>匯率</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>備註</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <NAME>REMARK</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>使用匯率歷史記錄</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_UI_COLUMNS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

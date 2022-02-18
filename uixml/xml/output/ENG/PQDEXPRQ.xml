@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="L">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS>2</BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fn_Cancel()</BUTTON_EVENT>
+        <BUTTON_LBL>Cancel</BUTTON_LBL>
+        <BUTTON_NAME>BTN_CANCEL</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fn_Resend()</BUTTON_EVENT>
+        <BUTTON_LBL>Resend</BUTTON_LBL>
+        <BUTTON_NAME>BTN_RESEND</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="3">
+        <BUTTON_EVENT>fn_Delete()</BUTTON_EVENT>
+        <BUTTON_LBL>Delete</BUTTON_LBL>
+        <BUTTON_NAME>BTN_DELETE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="4">
+        <BUTTON_EVENT>fn_ViewQueueActionLog()</BUTTON_EVENT>
+        <BUTTON_LBL>View Queue Action</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEWACTIONLOG</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="5">
+        <BUTTON_EVENT>fn_ViewTransactions()</BUTTON_EVENT>
+        <BUTTON_LBL>View Transaction</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEWCONTRACTDETAILS</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="6">
+        <BUTTON_EVENT>fn_Authorize()</BUTTON_EVENT>
+        <BUTTON_LBL>Authorize</BUTTON_LBL>
+        <BUTTON_NAME>BTN_AUTHORIZE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW>5</BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_EXT_PRICING_SUMMARY</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Customer Number</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTOMER_NO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Source Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>SOURCE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>Queue Reference Number</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>38</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>Transaction Reference Number</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>38</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>Transaction Branch</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXN_BRANCH</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>Network Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>File Reference Number</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>FILE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>Transaction Type</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="O" SELECTED="0">Outgoing</OPTION>
+        <OPTION VALUE="I" SELECTED="0">Incoming</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TXN_TYPE_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>Authorization Status</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">Authorized</OPTION>
+        <OPTION VALUE="U" SELECTED="0">Unauthorized</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>Transfer Currency</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TRANSFER_CCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>Customer Service Model</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CUSTOMER_SERVICE_MODEL</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>Payment Type</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">SEPA CT</OPTION>
+        <OPTION VALUE="B" SELECTED="0">Book</OPTION>
+        <OPTION VALUE="D" SELECTED="0">SEPA DD</OPTION>
+        <OPTION VALUE="F" SELECTED="0">Faster Payments</OPTION>
+        <OPTION VALUE="G" SELECTED="0">Clearing</OPTION>
+        <OPTION VALUE="I" SELECTED="0">Instrument Payment</OPTION>
+        <OPTION VALUE="N" SELECTED="0">US NACHA</OPTION>
+        <OPTION VALUE="R" SELECTED="0">RTGS</OPTION>
+        <OPTION VALUE="W" SELECTED="0">Fedwire</OPTION>
+        <OPTION VALUE="X" SELECTED="0">Cross Border</OPTION>
+        <OPTION VALUE="T" SELECTED="0">India NEFT</OPTION>
+        <OPTION VALUE="L" SELECTED="0">India RTGS</OPTION>
+        <OPTION VALUE="J" SELECTED="0"> India IMPS</OPTION>
+        <OPTION VALUE="H" SELECTED="0">CNAPS</OPTION>
+        <OPTION VALUE="Y" SELECTED="0">ACH CT</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">ACH DD</OPTION>
+        <OPTION VALUE="S" SELECTED="0">US Chips</OPTION>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TYPE_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>Transfer Amount</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>TRANSFER_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TRANSFER_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>Requested Date</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>REQUEST_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>Response Date</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>RESPONSE_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LBL>Source Reference Number</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>SOURCE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LBL>Company ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>COMPANY_ID</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LBL>Batch ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>PMTINFID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_TYPE_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>Network Type Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>NETWORK_TYPE_CODE</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Customer Number</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTOMER_NO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Source Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>SOURCE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>Queue Reference Number</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>38</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>Transaction Reference Number</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>38</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>Transaction Branch</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXN_BRANCH</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>Host Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>HOST_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>Network Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>File Reference Number</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>FILE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>Transaction Type</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="O" SELECTED="0">Outgoing</OPTION>
+        <OPTION VALUE="I" SELECTED="0">Incoming</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TXN_TYPE_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>Authorization Status</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">Authorized</OPTION>
+        <OPTION VALUE="U" SELECTED="0">Unauthorized</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>Remarks</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>REMARKS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>Transfer Currency</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TRANSFER_CCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>Customer Service Model</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CUSTOMER_SERVICE_MODEL</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>Payment Type</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">SEPA CT</OPTION>
+        <OPTION VALUE="B" SELECTED="0">Book</OPTION>
+        <OPTION VALUE="D" SELECTED="0">SEPA DD</OPTION>
+        <OPTION VALUE="F" SELECTED="0">Faster Payments</OPTION>
+        <OPTION VALUE="G" SELECTED="0">Clearing</OPTION>
+        <OPTION VALUE="I" SELECTED="0">Instrument Payment</OPTION>
+        <OPTION VALUE="N" SELECTED="0">US NACHA</OPTION>
+        <OPTION VALUE="R" SELECTED="0">RTGS</OPTION>
+        <OPTION VALUE="W" SELECTED="0">Fedwire</OPTION>
+        <OPTION VALUE="X" SELECTED="0">Cross Border</OPTION>
+        <OPTION VALUE="T" SELECTED="0">India NEFT</OPTION>
+        <OPTION VALUE="L" SELECTED="0">India RTGS</OPTION>
+        <OPTION VALUE="J" SELECTED="0"> India IMPS</OPTION>
+        <OPTION VALUE="H" SELECTED="0">CNAPS</OPTION>
+        <OPTION VALUE="Y" SELECTED="0">ACH CT</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">ACH DD</OPTION>
+        <OPTION VALUE="S" SELECTED="0">US Chips</OPTION>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TYPE_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>Transfer Amount</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>TRANSFER_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TRANSFER_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LBL>Requested Date</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>REQUEST_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LBL>Response Date</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>RESPONSE_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LBL>Previous Status</LBL>
+        <OPTION VALUE="A" SELECTED="0">Approved</OPTION>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <OPTION VALUE="R" SELECTED="0">Rejected</OPTION>
+        <OPTION VALUE="F" SELECTED="0">Future-Dated </OPTION>
+        <OPTION VALUE="Q" SELECTED="0">Queue Exception</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>PREV_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>Current Status</LBL>
+        <OPTION VALUE="A" SELECTED="0">Approved</OPTION>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <OPTION VALUE="C" SELECTED="0">Canceled</OPTION>
+        <OPTION VALUE="R" SELECTED="0">Rejected</OPTION>
+        <OPTION VALUE="F" SELECTED="0">Future-Dated </OPTION>
+        <OPTION VALUE="Q" SELECTED="0">Queue Exception</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>CURRENT_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <LBL>Transaction Repair</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">Yes</OPTION>
+        <OPTION VALUE="N" SELECTED="0">No</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>IS_REPAIR_TXN</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LBL>Current Status Description</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>100</MAXLENGTH>
+        <NAME>CURRENT_STATUS_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <LBL>Response Status Description</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>100</MAXLENGTH>
+        <NAME>RESPONSE_STATUS_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="23">
+        <LBL>Response Message</LBL>
+        <DTYPE>CLOB</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>4000</MAXLENGTH>
+        <NAME>RESPONSE_MSG</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="24">
+        <LBL>Communication Mode</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="S" SELECTED="0">Synchronous</OPTION>
+        <OPTION VALUE="A" SELECTED="0">Asynchronous</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>5</MAXLENGTH>
+        <NAME>COMM_MODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="25">
+        <LBL>Module</LBL>
+        <OPTION VALUE="PA" SELECTED="0">SEPA CT</OPTION>
+        <OPTION VALUE="PB" SELECTED="0">Book</OPTION>
+        <OPTION VALUE="PC" SELECTED="0">SEPA DD</OPTION>
+        <OPTION VALUE="PG" SELECTED="0">Clearing</OPTION>
+        <OPTION VALUE="PI" SELECTED="0">Instrument Payment</OPTION>
+        <OPTION VALUE="PN" SELECTED="0">US NACHA</OPTION>
+        <OPTION VALUE="PR" SELECTED="0">RTGS</OPTION>
+        <OPTION VALUE="PW" SELECTED="0">Fedwire</OPTION>
+        <OPTION VALUE="PX" SELECTED="0">Cross Border</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>MODULE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="26">
+        <LBL>Transaction Price Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>PRICE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="27">
+        <LBL>Action</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>QUEUE_ACTION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="28">
+        <LBL>Payment Type</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="29">
+        <LBL>Transaction Type</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TXN_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="30">
+        <LBL>Maker ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>MAKER_ID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="31">
+        <LBL>Maker Date Stamp</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>MAKER_DT_STAMP</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="32">
+        <LBL>Checker ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>CHECKER_ID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="33">
+        <LBL>Checker Date Stamp</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>CHECKER_DT_STAMP</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="34">
+        <LBL>Error Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>255</MAXLENGTH>
+        <NAME>ERR_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="35">
+        <LBL>Error Description</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>600</MAXLENGTH>
+        <NAME>ERR_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="36">
+        <LBL>Source Reference Number</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>SOURCE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="37">
+        <LBL>Company ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>COMPANY_ID</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="38">
+        <LBL>Batch ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>PMTINFID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="39">
+        <LBL>Transaction Action</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>TXN_ACTION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="40">
+        <LBL>Cut Off Time</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>CUTOFF_TIME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="41">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_TYPE_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>Network Type Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>NETWORK_TYPE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="42">
+        <LBL>Transfer Type</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TRANSFER_TYPE</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="O">Outgoing</OPTION>
+        <OPTION VALUE="I">Incoming</OPTION>
+        <FIELD_NAME>PAYMENT_TXN_TYPE_DESC</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">Authorized</OPTION>
+        <OPTION VALUE="U">Unauthorized</OPTION>
+        <FIELD_NAME>AUTH_STAT</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">SEPA CT</OPTION>
+        <OPTION VALUE="B">Book</OPTION>
+        <OPTION VALUE="D">SEPA DD</OPTION>
+        <OPTION VALUE="F">Faster Payments</OPTION>
+        <OPTION VALUE="G">Clearing</OPTION>
+        <OPTION VALUE="I">Instrument Payment</OPTION>
+        <OPTION VALUE="N">US NACHA</OPTION>
+        <OPTION VALUE="R">RTGS</OPTION>
+        <OPTION VALUE="W">Fedwire</OPTION>
+        <OPTION VALUE="X">Cross Border</OPTION>
+        <OPTION VALUE="T">India NEFT</OPTION>
+        <OPTION VALUE="L">India RTGS</OPTION>
+        <OPTION VALUE="J"> India IMPS</OPTION>
+        <OPTION VALUE="H">CNAPS</OPTION>
+        <OPTION VALUE="Y">ACH CT</OPTION>
+        <OPTION VALUE="Z">ACH DD</OPTION>
+        <OPTION VALUE="S">US Chips</OPTION>
+        <FIELD_NAME>PAYMENT_TYPE_DESC</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">Approved</OPTION>
+        <OPTION VALUE="P">Pending</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <OPTION VALUE="F">Future-Dated </OPTION>
+        <OPTION VALUE="Q">Queue Exception</OPTION>
+        <FIELD_NAME>PREV_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">Approved</OPTION>
+        <OPTION VALUE="P">Pending</OPTION>
+        <OPTION VALUE="C">Canceled</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <OPTION VALUE="F">Future-Dated </OPTION>
+        <OPTION VALUE="Q">Queue Exception</OPTION>
+        <FIELD_NAME>CURRENT_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="Y">Yes</OPTION>
+        <OPTION VALUE="N">No</OPTION>
+        <FIELD_NAME>IS_REPAIR_TXN</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="S">Synchronous</OPTION>
+        <OPTION VALUE="A">Asynchronous</OPTION>
+        <FIELD_NAME>COMM_MODE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="PA">SEPA CT</OPTION>
+        <OPTION VALUE="PB">Book</OPTION>
+        <OPTION VALUE="PC">SEPA DD</OPTION>
+        <OPTION VALUE="PG">Clearing</OPTION>
+        <OPTION VALUE="PI">Instrument Payment</OPTION>
+        <OPTION VALUE="PN">US NACHA</OPTION>
+        <OPTION VALUE="PR">RTGS</OPTION>
+        <OPTION VALUE="PW">Fedwire</OPTION>
+        <OPTION VALUE="PX">Cross Border</OPTION>
+        <FIELD_NAME>MODULE</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100"></PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

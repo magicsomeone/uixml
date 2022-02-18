@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="L">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS></BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fn_viewbatchpmnt()</BUTTON_EVENT>
+        <BUTTON_LBL>LBL_VW_BATCH_PAYMENTS</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_BATCHPAY</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fn_viewconsol()</BUTTON_EVENT>
+        <BUTTON_LBL>LBL_VIEW_CONSOL_BATCHES</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_CONSOL</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="3">
+        <BUTTON_EVENT>fn_queueaction()</BUTTON_EVENT>
+        <BUTTON_LBL>LBL_QUEUE_ACTIONLOG</BUTTON_LBL>
+        <BUTTON_NAME>BTN_QUEUE_ACTION_LOG</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="4">
+        <BUTTON_EVENT>fn_cancebatch()</BUTTON_EVENT>
+        <BUTTON_LBL>LBL_CANCEL_BATCH</BUTTON_LBL>
+        <BUTTON_NAME>BTN_CANCEL_BATCH</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW></BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_BULK_FILEBATCHSUMMARY</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>批 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>PMTINFID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>文件名</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>100</MAXLENGTH>
+        <NAME>FILE_NAME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>文件参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>FILE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>批参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>40</MAXLENGTH>
+        <NAME>BATCH_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>异常队列</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="##" SELECTED="0">##</OPTION>
+        <OPTION VALUE="AC" SELECTED="0">会计队列</OPTION>
+        <OPTION VALUE="AL" SELECTED="0">授权额度队列</OPTION>
+        <OPTION VALUE="BO" SELECTED="0">业务授权队列</OPTION>
+        <OPTION VALUE="EC" SELECTED="0">ECA 队列</OPTION>
+        <OPTION VALUE="EE" SELECTED="0">外部汇率队列</OPTION>
+        <OPTION VALUE="EP" SELECTED="0">外部定价队列</OPTION>
+        <OPTION VALUE="ER" SELECTED="0">汇率队列</OPTION>
+        <OPTION VALUE="FV" SELECTED="0">仓库队列</OPTION>
+        <OPTION VALUE="NC" SELECTED="0">网络截止队列</OPTION>
+        <OPTION VALUE="PC" SELECTED="0">处理截止队列</OPTION>
+        <OPTION VALUE="PE" SELECTED="0">处理异常队列</OPTION>
+        <OPTION VALUE="SC" SELECTED="0">制裁检查队列</OPTION>
+        <OPTION VALUE="TR" SELECTED="0">交易修补</OPTION>
+        <OPTION VALUE="SI" SELECTED="0">结算复核队列</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>QUEUE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>批状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="N" SELECTED="0">初始状态</OPTION>
+        <OPTION VALUE="W" SELECTED="0">正在处理</OPTION>
+        <OPTION VALUE="E" SELECTED="0">已传入队列</OPTION>
+        <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+        <OPTION VALUE="P" SELECTED="0">已完成批处理</OPTION>
+        <OPTION VALUE="S" SELECTED="0">已创建合并</OPTION>
+        <OPTION VALUE="F" SELECTED="0">将来日期</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">已获取</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BATCH_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>债务人账号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>DR_AC_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>错误代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>250</MAXLENGTH>
+        <NAME>ERR_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>请求的执行日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>REQDEXCTNDT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>公司 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>CO_ID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>客户编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTOMER_NO</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>批 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>PMTINFID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>文件名</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>100</MAXLENGTH>
+        <NAME>FILE_NAME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>文件参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>FILE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>批参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>40</MAXLENGTH>
+        <NAME>BATCH_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>异常队列</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="##" SELECTED="0">##</OPTION>
+        <OPTION VALUE="AC" SELECTED="0">会计队列</OPTION>
+        <OPTION VALUE="AL" SELECTED="0">授权额度队列</OPTION>
+        <OPTION VALUE="BO" SELECTED="0">业务授权队列</OPTION>
+        <OPTION VALUE="EC" SELECTED="0">ECA 队列</OPTION>
+        <OPTION VALUE="EE" SELECTED="0">外部汇率队列</OPTION>
+        <OPTION VALUE="EP" SELECTED="0">外部定价队列</OPTION>
+        <OPTION VALUE="ER" SELECTED="0">汇率队列</OPTION>
+        <OPTION VALUE="FV" SELECTED="0">仓库队列</OPTION>
+        <OPTION VALUE="NC" SELECTED="0">网络截止队列</OPTION>
+        <OPTION VALUE="PC" SELECTED="0">处理截止队列</OPTION>
+        <OPTION VALUE="PE" SELECTED="0">处理异常队列</OPTION>
+        <OPTION VALUE="SC" SELECTED="0">制裁检查队列</OPTION>
+        <OPTION VALUE="TR" SELECTED="0">交易修补</OPTION>
+        <OPTION VALUE="SI" SELECTED="0">结算复核队列</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>QUEUE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>批状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="N" SELECTED="0">初始状态</OPTION>
+        <OPTION VALUE="W" SELECTED="0">正在处理</OPTION>
+        <OPTION VALUE="E" SELECTED="0">已传入队列</OPTION>
+        <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+        <OPTION VALUE="P" SELECTED="0">已完成批处理</OPTION>
+        <OPTION VALUE="S" SELECTED="0">已创建合并</OPTION>
+        <OPTION VALUE="F" SELECTED="0">将来日期</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">已获取</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BATCH_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>债务人账号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>DR_AC_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>错误代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>250</MAXLENGTH>
+        <NAME>ERR_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>请求的执行日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>REQDEXCTNDT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>公司 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>CO_ID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>客户编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTOMER_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>交易数</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>NBOFTXS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>控制金额</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>CTRLSUM</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>交易类型</LBL>
+        <OPTION VALUE="D" SELECTED="0">借记</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TXN_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>错误参数</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>255</MAXLENGTH>
+        <NAME>ERR_PARAM</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LBL>账户分行</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>DR_AC_BRN</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LBL>账户币种</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>DR_AC_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LBL>主机代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>HOST_CODE</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="##">##</OPTION>
+        <OPTION VALUE="AC">会计队列</OPTION>
+        <OPTION VALUE="AL">授权额度队列</OPTION>
+        <OPTION VALUE="BO">业务授权队列</OPTION>
+        <OPTION VALUE="EC">ECA 队列</OPTION>
+        <OPTION VALUE="EE">外部汇率队列</OPTION>
+        <OPTION VALUE="EP">外部定价队列</OPTION>
+        <OPTION VALUE="ER">汇率队列</OPTION>
+        <OPTION VALUE="FV">仓库队列</OPTION>
+        <OPTION VALUE="NC">网络截止队列</OPTION>
+        <OPTION VALUE="PC">处理截止队列</OPTION>
+        <OPTION VALUE="PE">处理异常队列</OPTION>
+        <OPTION VALUE="SC">制裁检查队列</OPTION>
+        <OPTION VALUE="TR">交易修补</OPTION>
+        <OPTION VALUE="SI">结算复核队列</OPTION>
+        <FIELD_NAME>QUEUE_CODE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="N">初始状态</OPTION>
+        <OPTION VALUE="W">正在处理</OPTION>
+        <OPTION VALUE="E">已传入队列</OPTION>
+        <OPTION VALUE="C">已取消</OPTION>
+        <OPTION VALUE="P">已完成批处理</OPTION>
+        <OPTION VALUE="S">已创建合并</OPTION>
+        <OPTION VALUE="F">将来日期</OPTION>
+        <OPTION VALUE="Z">已获取</OPTION>
+        <FIELD_NAME>BATCH_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="D">借记</OPTION>
+        <FIELD_NAME>TXN_TYPE</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

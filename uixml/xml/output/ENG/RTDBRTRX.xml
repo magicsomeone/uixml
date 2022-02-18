@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="Inter Branch Transaction Request Summary" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_INTRA_BRANCH</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Authorization Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Authorized</OPTION>
+        <OPTION VALUE="U">Unauthorized</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Record Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">Open</OPTION>
+        <OPTION VALUE="C">Closed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>Requesting Branch</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>FROM_BRANCH</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>To Branch</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>TO_BRANCH</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <REQD>-1</REQD>
+        <LBL>Requested Date</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>REQUEST_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>Request Status</LBL>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <OPTION VALUE="A" SELECTED="0">Accept</OPTION>
+        <OPTION VALUE="R" SELECTED="0">Reject</OPTION>
+        <OPTION VALUE="I" SELECTED="0">Initiated</OPTION>
+        <OPTION VALUE="C" SELECTED="0">Cancelled</OPTION>
+        <OPTION VALUE="L" SELECTED="0">Liquidated</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>REQUEST_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>Request For</LBL>
+        <OPTION COL="1" ROW="LBL_CASH_DELIVERY">
+          <SELECTED>-1</SELECTED>
+          <LBL>Cash Delivery</LBL>
+          <ID>D</ID>
+          <VALUE>D</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_CASH_PICKUP">
+          <SELECTED>0</SELECTED>
+          <LBL>Cash pickup</LBL>
+          <ID>P</ID>
+          <VALUE>P</VALUE>
+        </OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>ADV_REQ_FLAG</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <REQD>-1</REQD>
+        <LBL>Delivery/Pickup Date</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>DELIVERY_DATE</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Authorization Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Authorized</OPTION>
+        <OPTION VALUE="U">Unauthorized</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Record Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">Open</OPTION>
+        <OPTION VALUE="C">Closed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>Reference Number</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>REFERENCE_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>Requesting Branch</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>FROM_BRANCH</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <REQD>-1</REQD>
+        <LBL>To Branch</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>TO_BRANCH</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <REQD>-1</REQD>
+        <LBL>Transaction Currency</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXNCCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <REQD>-1</REQD>
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>Transaction Amount</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>TXNCCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXNAMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <REQD>-1</REQD>
+        <LBL>Requested Date</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>REQUEST_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>Request Status</LBL>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <OPTION VALUE="A" SELECTED="0">Accept</OPTION>
+        <OPTION VALUE="R" SELECTED="0">Reject</OPTION>
+        <OPTION VALUE="I" SELECTED="0">Initiated</OPTION>
+        <OPTION VALUE="C" SELECTED="0">Cancelled</OPTION>
+        <OPTION VALUE="L" SELECTED="0">Liquidated</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>REQUEST_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>Request For</LBL>
+        <OPTION COL="1" ROW="LBL_CASH_DELIVERY">
+          <SELECTED>-1</SELECTED>
+          <LBL>Cash Delivery</LBL>
+          <ID>D</ID>
+          <VALUE>D</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_CASH_PICKUP">
+          <SELECTED>0</SELECTED>
+          <LBL>Cash pickup</LBL>
+          <ID>P</ID>
+          <VALUE>P</VALUE>
+        </OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>ADV_REQ_FLAG</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <REQD>-1</REQD>
+        <LBL>Delivery/Pickup Date</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>DELIVERY_DATE</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="P">Pending</OPTION>
+        <OPTION VALUE="A">Accept</OPTION>
+        <OPTION VALUE="R">Reject</OPTION>
+        <OPTION VALUE="I">Initiated</OPTION>
+        <OPTION VALUE="C">Cancelled</OPTION>
+        <OPTION VALUE="L">Liquidated</OPTION>
+        <FIELD_NAME>REQUEST_STAT</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="D">Cash Delivery</OPTION>
+        <OPTION VALUE="P">Cash pickup</OPTION>
+        <FIELD_NAME>ADV_REQ_FLAG</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="Inter Branch Transaction Request" TMP_SCR_TYPE="M">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_INTRABRANCH">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Reference Number</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>REFERENCE_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>Description</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>Description</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>DESCRIPTION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Requesting Branch</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>10</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>FROM_BRANCH</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>FROM_BRANCH_NAME</NAME>
+                <CASE>UPPER</CASE>
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>Requesting Branch Name</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>Requesting Branch Name</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>TXNCCY</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>G</TYPE>
+                  <NAME>LOV_CCY</NAME>
+                </LOV>
+                <LBL>Transaction Currency</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>From Vault</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>FROM_VAULT_TIL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <REQD>-1</REQD>
+                <LBL>Requested Date</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>REQUEST_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <REQD>-1</REQD>
+                <LBL>Delivery/Pickup Date</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>DELIVERY_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Request Status</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+                <OPTION VALUE="A" SELECTED="0">Accept</OPTION>
+                <OPTION VALUE="R" SELECTED="0">Reject</OPTION>
+                <OPTION VALUE="I" SELECTED="0">Initiated</OPTION>
+                <OPTION VALUE="C" SELECTED="0">Cancelled</OPTION>
+                <OPTION VALUE="L" SELECTED="0">Liquidated</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REQUEST_STAT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>Remarks</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>Remarks</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXTAREA</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>REMARKS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_CASH_DELIVERY">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>Cash Delivery</LBL>
+                  <ID>D</ID>
+                  <VALUE>D</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_CASH_PICKUP">
+                  <SELECTED>0</SELECTED>
+                  <LBL>Cash pickup</LBL>
+                  <ID>P</ID>
+                  <VALUE>P</VALUE>
+                </OPTION>
+                <VALUE>D</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ADV_REQ_FLAG</NAME>
+                <LBL>Request For</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>RADIO</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>10</MAXLENGTH>
+                <NAME>TO_BRANCH</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_TO_BRANCH</NAME>
+                </LOV>
+                <LBL>To Branch</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TO_BRANCH_NAME</NAME>
+                <CASE>UPPER</CASE>
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>To Branch Name</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>To Branch Name</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>To Vault</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>TO_VAULT_TIL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <REQD>-1</REQD>
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>TXNCCY</RELATED_FIELD>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>TXNAMT</NAME>
+                <LBL>Transaction Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y" SPRT="2">
+                <LBL>Default Denomination</LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnPopulateDenom()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_P</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>DCN</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <NAME>DCN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>LBL_LATEST_EVENT_CODE</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>LATEST_EVENT_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Event Sequence Number</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>LATEST_EVENT_SEQ_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_INTRA_BRANCH</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>Maker</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>Checker</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>Date Time:</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>Date Time:</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>Mod No</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL></LBL>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="C">Closed</OPTION>
+                <OPTION VALUE="O">Open</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>Record Status</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="A">Authorized</OPTION>
+                <OPTION VALUE="R">Rejected</OPTION>
+                <OPTION VALUE="U">Unauthorized</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>Authorization Status</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_INTRA_BRANCH</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="LF" SEQ="1" id="CSDMSGVW">
+        <SCREEN>CVS_MESSAGES</SCREEN>
+        <LBL>Message</LBL>
+        <FUNCTION>CSDMSGVW</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_DMCD">
+        <LBL>Currency Denominations</LBL>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_DENOMSE">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Currency Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CDCCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>CDCCY</RELATED_FIELD>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DENOMTOTAL</NAME>
+                <LBL>Denomination Total</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Reference Number</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <NAME>REFERENCE_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Denomination Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_DENOMINATION_SE</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_DENOMDET">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Denomination Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>9</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CDDENOM</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DENMVAL</NAME>
+                <LBL>Denomination Value</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>30</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnComputeDenmVal(event);evaluatetotalamout(BLK_DENOMINATION_DETAILS)</FUNCTION>
+                  <NAME>onblur</NAME>
+                </EVENT>
+                <NAME>UNITS</NAME>
+                <LBL>Units</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>BLK_DENOMINATION_SE__CDCCY</RELATED_FIELD>
+                <MAXLENGTH>30,0</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>VALUE</NAME>
+                <LBL>Total Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Reference Number</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>REFERENCE_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_DENOMINATION_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>999</PGSIZE>
+              <HEIGHT></HEIGHT>
+              <READ_ONLY>-1</READ_ONLY>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

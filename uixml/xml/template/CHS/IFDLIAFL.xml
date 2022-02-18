@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="${FORM.SUMMARY.-TITLE}" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_IFTBS_CC_LIAB_BAL</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.0.FIELD.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>9</MAXLENGTH>
+        <NAME>CUSTOMER_NO</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.0.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>9</MAXLENGTH>
+        <NAME>CUSTOMER_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.1.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>TOT_CR_LIMIT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.2.LBL}</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>OUTSTANDING_BAL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.3.LBL}</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>LAST_TRN_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.4.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>DUNN_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.5.LBL}</LBL>
+        <MAX_VAL></MAX_VAL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>VERSION_NO</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="${FORM.SCREEN.-TITLE}" TMP_SCR_TYPE="M">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+        <SECTION ID="SEC_HEADER" COLLAPSE="N">
+          <PART NAME="SEC_P1" ID="SEC_P1" WIDTH="50"></PART>
+          <PART NAME="SEC_P2" ID="SEC_P2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_CONTROL">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>${FORM.SCREEN.HEADER.TAB.SECTION.PART.1.FLDSET.FIELD.0.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>LABEL</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>LBLVER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>${FORM.SCREEN.HEADER.TAB.SECTION.PART.1.FLDSET.FIELD.1.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_fetchprev()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_PREV</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>VERSION_NO</NAME>
+                <LBL>${FORM.SCREEN.HEADER.TAB.SECTION.PART.1.FLDSET.FIELD.2.LBL}</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>${FORM.SCREEN.HEADER.TAB.SECTION.PART.1.FLDSET.FIELD.3.LBL}</LBL>
+                <SIZE>1</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>LABEL</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>OF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="Y" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>LATERVER</NAME>
+                <LBL></LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>${FORM.SCREEN.HEADER.TAB.SECTION.PART.1.FLDSET.FIELD.5.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_fetchnext()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_NEXT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>-1</HREQ>
+              <BLOCK>BLK_IFTBS_CC_LIAB_BAL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_MAIN" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_IFTBS_CC_LIAB_BAL">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.0.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>9</MAXLENGTH>
+                <NAME>CUSTOMER_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.1.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>TOT_CR_LIMIT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>OUTSTANDING_BAL</NAME>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.2.LBL}</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>LAST_TRN_AMT</NAME>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.3.LBL}</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.4.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>DUNN_STAT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_IFTBS_CC_LIAB_BAL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_DETAIL" COLLAPSE="N">
+          <PART NAME="P2" ID="P2" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_STTMS_DEBIT_CARD_MASTER">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.1.PART.FLDSET.FIELD.0.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>19</MAXLENGTH>
+                <PRE_VAL>123456789</PRE_VAL>
+                <NAME>CARD_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.1.PART.FLDSET.FIELD.1.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <PRE_VAL>MATHEW HAYDEN</PRE_VAL>
+                <NAME>NAME_ON_CARD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>CREDIT_CARD_LIMIT</NAME>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.1.PART.FLDSET.FIELD.2.LBL}</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <PRE_VAL>40000</PRE_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.1.PART.FLDSET.FIELD.3.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <PRE_VAL>ACTIVE</PRE_VAL>
+                <NAME>CARD_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.1.PART.FLDSET.FIELD.4.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <PRE_VAL>31-DEC-15</PRE_VAL>
+                <NAME>CARD_EXPIRY_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTMS_DEBIT_CARD_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

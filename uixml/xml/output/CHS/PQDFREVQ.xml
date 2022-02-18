@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS>1</BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fn_vwTxn()</BUTTON_EVENT>
+        <BUTTON_LBL>LBL_VW_REV_TXN</BUTTON_LBL>
+        <BUTTON_NAME>VIEW_TXN</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fn_viewQueueAction()</BUTTON_EVENT>
+        <BUTTON_LBL>查看队列操作</BUTTON_LBL>
+        <BUTTON_NAME>VIEW QUEUE ACTION</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="3">
+        <BUTTON_EVENT>fn_manualMatch()</BUTTON_EVENT>
+        <BUTTON_LBL>手动匹配</BUTTON_LBL>
+        <BUTTON_NAME>MANUAL MATCH</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="4">
+        <BUTTON_EVENT>fn_accept()</BUTTON_EVENT>
+        <BUTTON_LBL>接受</BUTTON_LBL>
+        <BUTTON_NAME>ACCEPT</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="5">
+        <BUTTON_EVENT>fn_reject()</BUTTON_EVENT>
+        <BUTTON_LBL>拒绝</BUTTON_LBL>
+        <BUTTON_NAME>REJECT</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="6">
+        <BUTTON_EVENT>fn_authorize()</BUTTON_EVENT>
+        <BUTTON_LBL>授权</BUTTON_LBL>
+        <BUTTON_NAME>AUTHORIZE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="7">
+        <BUTTON_EVENT>fn_delete()</BUTTON_EVENT>
+        <BUTTON_LBL>删除</BUTTON_LBL>
+        <BUTTON_NAME>DELETE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW>3</BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_FW_QUEUE_FEDWIRE_REVERSAL</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>来源代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>SOURCE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>交易分行</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXN_BRANCH</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>主机代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>HOST_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>队列参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>授权状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">已授权</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授权</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>网络代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>交易参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>客户服务模型</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CUSTOMER_SERVICE_MODEL</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>队列状态</LBL>
+        <OPTION VALUE="P" SELECTED="0">等待</OPTION>
+        <OPTION VALUE="A" SELECTED="0">已接受</OPTION>
+        <OPTION VALUE="R" SELECTED="0">已拒绝</OPTION>
+        <OPTION VALUE="M" SELECTED="0">匹配</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>CURRENT_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_TYPE_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>网络类型代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>NETWORK_TYPE_CODE</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>客户编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTOMER_NO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>来源代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>SOURCE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>交易分行</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXN_BRANCH</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>主机代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>HOST_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>队列参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>交易类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="O" SELECTED="0">转出</OPTION>
+        <OPTION VALUE="I" SELECTED="0">转入</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>PAYMENT_TXN_TYPE1</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>授权状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">已授权</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授权</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>网络代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>备注</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>REMARKS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>交易参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>转账币种</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TRANSFER_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>客户服务模型</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CUSTOMER_SERVICE_MODEL</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>队列状态</LBL>
+        <OPTION VALUE="P" SELECTED="0">等待</OPTION>
+        <OPTION VALUE="A" SELECTED="0">已接受</OPTION>
+        <OPTION VALUE="R" SELECTED="0">已拒绝</OPTION>
+        <OPTION VALUE="M" SELECTED="0">匹配</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>CURRENT_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>转账份额</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>TRANSFER_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TRANSFER_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>激活日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>ACTIVATION_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LBL>修改原因</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2040</MAXLENGTH>
+        <NAME>REPAIR_REASON</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LBL>错误代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2040</MAXLENGTH>
+        <NAME>ERR_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LBL>支付类型</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>交易类型</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>PAYMENT_TXN_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <LBL>经办者 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>MAKER_ID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LBL>经办者日期戳记</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>MAKER_DT_STAMP</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <LBL>复核者 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>CHECKER_ID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="23">
+        <LBL>复核者日期戳记</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>CHECKER_DT_STAMP</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="24">
+        <LBL>队列操作</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>QUEUE_ACTION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="25">
+        <LBL>交易存档日期</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>TXN_ARCH_DT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="26">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_TYPE_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>网络类型代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>NETWORK_TYPE_CODE</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="O">转出</OPTION>
+        <OPTION VALUE="I">转入</OPTION>
+        <FIELD_NAME>PAYMENT_TXN_TYPE1</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <FIELD_NAME>AUTH_STAT</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="P">等待</OPTION>
+        <OPTION VALUE="A">已接受</OPTION>
+        <OPTION VALUE="R">已拒绝</OPTION>
+        <OPTION VALUE="M">匹配</OPTION>
+        <FIELD_NAME>CURRENT_STATUS</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_S1" COLLAPSE="N">
+          <PART NAME="S1P1" ID="S1P1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_F1">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>跟进</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>FOLLOWUP_ACTION_REQD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易分行</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>TXN_BRANCH</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>先前状态</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>PREV_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>备注</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>REMARKS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>NETWORK_ID</NAME>
+                <LBL>网络 ID</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>授权状态</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="A" SELECTED="0">已授权</OPTION>
+                <OPTION VALUE="U" SELECTED="0">未授权</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTH_STAT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>激活日期</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>ACTIVATION_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>客户服务模型</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CUSTOMER_SERVICE_MODEL</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>修改原因</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2040</MAXLENGTH>
+                <NAME>REPAIR_REASON</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>跨境合同参考编号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>PX_CONTRACT_REF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易类型</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="O" SELECTED="0">转出</OPTION>
+                <OPTION VALUE="I" SELECTED="0">转入</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>PAYMENT_TXN_TYPE1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>错误代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2040</MAXLENGTH>
+                <NAME>ERR_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>客户编号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>CUSTOMER_NO</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>模块</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>MODULE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>TRANSFER_CCY</RELATED_FIELD>
+                <MAXLENGTH>22,4</MAXLENGTH>
+                <NAME>TRANSFER_AMT</NAME>
+                <LBL>转账份额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>QUEUE_REF_NO</NAME>
+                <LBL>队列参考编号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>支付类型</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="A" SELECTED="0">ACH</OPTION>
+                <OPTION VALUE="B" SELECTED="0">账簿</OPTION>
+                <OPTION VALUE="D" SELECTED="0">直接借记</OPTION>
+                <OPTION VALUE="F" SELECTED="0">快速付款</OPTION>
+                <OPTION VALUE="G" SELECTED="0">清算</OPTION>
+                <OPTION VALUE="I" SELECTED="0">票据付款</OPTION>
+                <OPTION VALUE="N" SELECTED="0">US NACHA</OPTION>
+                <OPTION VALUE="R" SELECTED="0">RTGS</OPTION>
+                <OPTION VALUE="W" SELECTED="0">Fedwire</OPTION>
+                <OPTION VALUE="X" SELECTED="0">跨境</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PAYMENT_TYPE1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>LATEST_QUEUE_SEQ</NAME>
+                <LBL>最新队列序号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>来源代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>SOURCE</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>转账币种</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>TRANSFER_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>队列状态</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="P" SELECTED="0">等待</OPTION>
+                <OPTION VALUE="A" SELECTED="0">已接受</OPTION>
+                <OPTION VALUE="R" SELECTED="0">已拒绝</OPTION>
+                <OPTION VALUE="M" SELECTED="0">匹配</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>CURRENT_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>网络代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>NETWORK_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>文件参考编号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>FILE_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>主机代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>HOST_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>TXN_REF_NO</NAME>
+                <LBL>交易参考编号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_FW_QUEUE_FEDWIRE_REVERSAL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

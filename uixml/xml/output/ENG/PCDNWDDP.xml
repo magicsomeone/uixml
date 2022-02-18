@@ -1,0 +1,1724 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="Network Direct Debit Preferences Summary" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_NETWORK_DD_PREF</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Authorization Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Authorized</OPTION>
+        <OPTION VALUE="U">Unauthorized</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Record Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">Open</OPTION>
+        <OPTION VALUE="C">Closed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>Network Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>Transaction Type</LBL>
+        <OPTION VALUE="I" SELECTED="0">Incoming</OPTION>
+        <OPTION VALUE="O" SELECTED="0">Outgoing</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TXN_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <REQD>-1</REQD>
+        <LBL>Currency</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>CCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Authorization Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Authorized</OPTION>
+        <OPTION VALUE="U">Unauthorized</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Record Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">Open</OPTION>
+        <OPTION VALUE="C">Closed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>Creditor Id Required</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>CHECKBOX</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>CREDITOR_ID_REQD</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>Restrict   auto upload of Agreement</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>AUTO_UPLOD_AGMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>Earliest Collection Dispatch Days</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>ER_COLL_DAYS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>Earliest Collection Receipt Days</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>ER_COLL_RECEIPT_DAYS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>First Collection Dispatch Days</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>FRST_COLL_DISP_DAYS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>First Collection Receipt Days</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>FRST_COLL_RCPT_DAYS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>Recurrent Collection Dispatch Days</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>RECUR_COL_DISP_DAYS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>Recurrent Collection Receipt Days</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>RECUR_COL_RECPT_DAYS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>Calendar Basis</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CAL_BASIS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>Scheme Type</LBL>
+        <OPTION VALUE="C" SELECTED="0">CORE</OPTION>
+        <OPTION VALUE="B" SELECTED="0">B2B</OPTION>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>E_SCHEME_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>Return Days</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>RETURN_DAYS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>Refund Days</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>REFUND_DAYS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>Recall Days</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>RECAL_DAYS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>Reversal Days</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>REVERSAL_DAYS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LBL>Calendar Basis</LBL>
+        <OPTION VALUE="C" SELECTED="0">Currency</OPTION>
+        <OPTION VALUE="N" SELECTED="0">Network</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>E_CAL_BASIS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LBL>Process auto network reject</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>CHECKBOX</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>AUTO_NW_REJECT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>Return Charge Applicable</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>RETURN_PRICING</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <LBL>Refund Charge Applicable</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>REFUND_PRICING</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LBL>Recall charge applicable</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>RECAL_PRICING</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <LBL>Reverse charge applicable</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>REVERSAL_PRICING</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="23">
+        <LBL>Pricing Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>RETURN_PRICING_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="24">
+        <LBL>Pricing Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>REFUND_PRICING_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="25">
+        <LBL>Pricing Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>RECAL_PRICING_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="26">
+        <LBL>Pricing Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>REVERSAL_PRICING_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="27">
+        <REQD>-1</REQD>
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>Network Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="28">
+        <LBL>Host Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>HOST_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="29">
+        <REQD>-1</REQD>
+        <LBL>Transaction Type</LBL>
+        <OPTION VALUE="I" SELECTED="0">Incoming</OPTION>
+        <OPTION VALUE="O" SELECTED="0">Outgoing</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TXN_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="30">
+        <REQD>-1</REQD>
+        <LBL>Currency</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>CCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="31">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>Max Transaction Limit Amount</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>MAX_TXN_LIMIT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="32">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>Min Transaction Limit Amount</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>MIN_TXN_LIMIT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="33">
+        <LBL>FX Rate Type</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>FX_RATE_TYPE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="34">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>Rate Override Variance</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>RATE_OVD_VARIANCE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="35">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>Rate Stop Variance</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>RATE_STOP_VARIANCE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="36">
+        <LBL>Small FX Limit Currency</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>SMALL_FX_LIMIT_CCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="37">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>Small FX Limit Amount</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>SMALL_FX_LIMIT_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="38">
+        <LBL>External Exchange Rate Applicable</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>CHECKBOX</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>EXT_EX_RATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="39">
+        <REQD>-1</REQD>
+        <LBL>Debit Liquidation Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>DR_LIQD_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="40">
+        <REQD>-1</REQD>
+        <LBL>Credit Liquidation Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CR_LIQD_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="41">
+        <LBL>File Accounting Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>FILE_AC_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="42">
+        <LBL>Pricing Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>PRICING_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="43">
+        <LBL>Pricing Required</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PRICING_REQD</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="44">
+        <LBL>Agreement Required</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>CHECKBOX</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>AGREEMENT_REQD</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="45">
+        <LBL>Network Description</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>NETWORK_DESCRIPTION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="46">
+        <LBL>Collection Scheme Type</LBL>
+        <OPTION VALUE="C" SELECTED="0">CORE</OPTION>
+        <OPTION VALUE="B" SELECTED="0">B2B</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>SCHEME_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="47">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>In Days</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>INACTIVE_DAYS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="48">
+        <LBL>Sanction Check Required</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>SANCTION_CHECK_REQUIRED</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="C">CORE</OPTION>
+        <OPTION VALUE="B">B2B</OPTION>
+        <FIELD_NAME>E_SCHEME_TYPE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="C">Currency</OPTION>
+        <OPTION VALUE="N">Network</OPTION>
+        <FIELD_NAME>E_CAL_BASIS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="I">Incoming</OPTION>
+        <OPTION VALUE="O">Outgoing</OPTION>
+        <FIELD_NAME>TXN_TYPE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="C">CORE</OPTION>
+        <OPTION VALUE="B">B2B</OPTION>
+        <FIELD_NAME>SCHEME_TYPE</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="Network Direct Debit Preferences" TMP_SCR_TYPE="M">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+        <SECTION ID="SEC_HEADER" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HEADER">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Host Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>HOST_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>NETWORK_CODE</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_NETWORK_CODE</NAME>
+                </LOV>
+                <LBL>Network Code</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CCY</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CURRENCY</NAME>
+                </LOV>
+                <LBL>Currency</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Collection Scheme Type</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="C" SELECTED="0">CORE</OPTION>
+                <OPTION VALUE="B" SELECTED="0">B2B</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SCHEME_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Currency 1</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CCY1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>LBL_HOST_CODE1</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>HOST_CODE1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Host Code Description</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>HOST_DESCRIPTION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>LBL_TXN_TYPE1</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXN_TYPE1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>LBL_NETWORK_CODE1</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>NETWORK_CODE1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Network Description</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>NETWORK_DESCRIPTION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Network Type Description</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>NETWORK_TYPE_DESCRIPTION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <OPTION VALUE="I" SELECTED="0">Incoming</OPTION>
+                <OPTION VALUE="O" SELECTED="0">Outgoing</OPTION>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXN_TYPE</NAME>
+                <LBL>Transaction Type</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Priority</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="0" SELECTED="0">0 - Low</OPTION>
+                <OPTION VALUE="1" SELECTED="0">1</OPTION>
+                <OPTION VALUE="2" SELECTED="0">2</OPTION>
+                <OPTION VALUE="3" SELECTED="0">3</OPTION>
+                <OPTION VALUE="4" SELECTED="0">4</OPTION>
+                <OPTION VALUE="5" SELECTED="0">5</OPTION>
+                <OPTION VALUE="6" SELECTED="0">6</OPTION>
+                <OPTION VALUE="7" SELECTED="0">7</OPTION>
+                <OPTION VALUE="8" SELECTED="0">8</OPTION>
+                <OPTION VALUE="9" SELECTED="0">9 - High</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PRIORITY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NETWORK_DD_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>Maker</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>Checker</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>Date Time:</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>Date Time:</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>Mod No</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL></LBL>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="C">Closed</OPTION>
+                <OPTION VALUE="O">Open</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>Record Status</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="A">Authorized</OPTION>
+                <OPTION VALUE="R">Rejected</OPTION>
+                <OPTION VALUE="U">Unauthorized</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>Authorization Status</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NETWORK_DD_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL>Main</LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_COMMON_PREF">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>MAX_TXN_LIMIT</NAME>
+                <LBL>Max Transaction Limit Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>MIN_TXN_LIMIT</NAME>
+                <LBL>Min Transaction Limit Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Dispatch On Us Transfer</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>DISP_INT_XFER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Common Preferences</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NETWORK_DD_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="P2" ID="P2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_EXCH_RATE_PREF">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_FX_RATE</NAME>
+                </LOV>
+                <LBL>FX Rate Type</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>10</MAXLENGTH>
+                <NAME>FX_RATE_TYPE</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>RATE_OVD_VARIANCE</NAME>
+                <LBL>Rate Override Variance</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>RATE_STOP_VARIANCE</NAME>
+                <LBL>Rate Stop Variance</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_SMALL_FX_CCY</NAME>
+                </LOV>
+                <LBL>Small FX Limit Currency</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>SMALL_FX_LIMIT_CCY</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>SMALL_FX_LIMIT_AMT</NAME>
+                <LBL>Small FX Limit Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>External Exchange Rate Applicable</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>EXT_EX_RATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>External FX Cancel</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="A" SELECTED="0">Auto</OPTION>
+                <OPTION VALUE="M" SELECTED="0">Manual</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>EXT_FX_CANCEL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Exchange Rate Preference</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NETWORK_DD_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_ACCOUNTING_DET">
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>DR_LIQD_CODE</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_DR_LIQD_CODE</NAME>
+                </LOV>
+                <LBL>Debit Liquidation Code</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>CR_LIQD_CODE</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CR_LIQD_CODE</NAME>
+                </LOV>
+                <LBL>Credit Liquidation Code</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_FILE_ACC_CODE</NAME>
+                </LOV>
+                <LBL>File Accounting Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>FILE_AC_CODE</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_NETWORK_ACCOUNT</NAME>
+                </LOV>
+                <LBL>Network Account</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>NETWORK_AC</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Accounting Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NETWORK_DD_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="P2" ID="P2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_PRICING_DET">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_PRICING_CODE</NAME>
+                </LOV>
+                <LBL>Pricing Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>PRICING_CODE</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Pricing Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NETWORK_DD_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_3" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_SCHEME_TYP_PREF">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>ER_COLL_DAYS</NAME>
+                <LBL>Earliest Collection Dispatch Days</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>FRST_COLL_DISP_DAYS</NAME>
+                <LBL>First Collection Dispatch Days</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>RECUR_COL_DISP_DAYS</NAME>
+                <LBL>Recurrent Collection Dispatch Days</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>ER_COLL_RECEIPT_DAYS</NAME>
+                <LBL>Earliest Collection Receipt Days</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>FRST_COLL_RCPT_DAYS</NAME>
+                <LBL>First Collection Receipt Days</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>RECUR_COL_RECPT_DAYS</NAME>
+                <LBL>Recurrent Collection Receipt Days</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SANCTION_CHECK_REQUIRED</NAME>
+                <LBL>Sanction Check Required</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AGREEMENT_REQD</NAME>
+                <LBL>Agreement Required</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CREDITOR_ID_REQD</NAME>
+                <LBL>Creditor Id Required</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTO_UPLOD_AGMT</NAME>
+                <LBL>Restrict   auto upload of Agreement</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>DR_NAME_MATCH_REQ</NAME>
+                <LBL>Debtor Name Match Required</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Scheme Type Preferences</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NETWORK_DD_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_INACTIVE_PERIOD">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>INACTIVE_DAYS</NAME>
+                <LBL>In Days</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>INACTIVE_MONTHS</NAME>
+                <LBL>In Months</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Inactive Period</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NETWORK_DD_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="3" ID="FST_STLM_TIME">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL>23</MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>STTL_HR</NAME>
+                <LBL>Network Settlement Hour</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL>00</MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL>59</MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>STTL_MIN</NAME>
+                <LBL>Network Settlement Minute</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL>00</MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Settlement Time</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NETWORK_DD_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+      <TAB ID="TAB_EXCEPTION">
+        <LBL>Exceptions</LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_SCHEMW">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Scheme Type</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="C" SELECTED="0">CORE</OPTION>
+                <OPTION VALUE="B" SELECTED="0">B2B</OPTION>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>E_SCHEME_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NETWORK_DD_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_RET_DET">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>RETURN_DAYS</NAME>
+                <LBL>Return Days</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>RETURN_PRICING</NAME>
+                <LBL>Return Charge Applicable</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_RET_PRICING_CODE</NAME>
+                </LOV>
+                <LBL>Pricing Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>RETURN_PRICING_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Return Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NETWORK_DD_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="P2" ID="P2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_REF_DET">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Refund allowed period in</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="D" SELECTED="0">Days</OPTION>
+                <OPTION VALUE="M" SELECTED="0">Month</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REFUND_PERIOD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>REFUND_DAYS</NAME>
+                <LBL>Refund Days</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Unauthorized refund allowed period in</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="D" SELECTED="0">Days</OPTION>
+                <OPTION VALUE="M" SELECTED="0">Month</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>UN_AUTH_RFND_PERIOD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>UN_AUTH_RFND_DAYS</NAME>
+                <LBL>Refund Days</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_REF_CODE_DESC</NAME>
+                </LOV>
+                <LBL>Pricing Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>REFUND_PRICING_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Refund Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NETWORK_DD_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_3" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_REC_DET">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>RECAL_DAYS</NAME>
+                <LBL>Recall Days</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>RECAL_PRICING</NAME>
+                <LBL>Recall charge applicable</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_REC_PRICING_CODE</NAME>
+                </LOV>
+                <LBL>Pricing Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>RECAL_PRICING_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Recall details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NETWORK_DD_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="P2" ID="P2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_REV_DET">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>REVERSAL_DAYS</NAME>
+                <LBL>Reversal Days</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REVERSAL_PRICING</NAME>
+                <LBL>Reverse charge applicable</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_REVERSAL_PRICING_CODE</NAME>
+                </LOV>
+                <LBL>Pricing Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>REVERSAL_PRICING_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Reversal Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NETWORK_DD_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_4" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_E_COMMON_PREF">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTO_NW_REJECT</NAME>
+                <LBL>Process auto network reject</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Calendar Basis</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="C" SELECTED="0">Currency</OPTION>
+                <OPTION VALUE="N" SELECTED="0">Network</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>E_CAL_BASIS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>EXT_RATE_FOR_R</NAME>
+                <LBL>Re-Do FX for R Transactions</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Common Preferences</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NETWORK_DD_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

@@ -1,0 +1,1904 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="汇总" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_PRODUCT_DETAILS</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>产品代码 </LBL>
+        <SIZE>4</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>4</MAXLENGTH>
+        <NAME>PRDCD</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>产品说明</LBL>
+        <SIZE>22</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>PRDDESC</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>产品代码 </LBL>
+        <SIZE>4</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>4</MAXLENGTH>
+        <NAME>PRDCD</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>产品说明</LBL>
+        <SIZE>22</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>PRDDESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>终止日期</LBL>
+        <SIZE>7</SIZE>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>PRDENDDT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>产品组</LBL>
+        <SIZE>4</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>6</MAXLENGTH>
+        <NAME>PRDGRP</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>起始日期</LBL>
+        <SIZE>7</SIZE>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>PRDSTRTDT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>产品类型</LBL>
+        <SIZE>4</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>PRDTYP</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="期权产品定义" TMP_SCR_TYPE="M">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>经办者</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>复核者</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>日期时间：</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>日期时间：</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>模式编号</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL></LBL>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="C">已关闭</OPTION>
+                <OPTION VALUE="O">打开</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>记录状态</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="A">已授权</OPTION>
+                <OPTION VALUE="R">已拒付</OPTION>
+                <OPTION VALUE="U">未授权</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>授权状态</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="C" SEQ="1" id="CSCACRHM">
+        <SCREEN>CVS_ROLE_TO_HEAD_MAP</SCREEN>
+        <LBL>会计角色</LBL>
+        <FUNCTION>CSCACRHM</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="2" id="CSCACADD">
+        <SCREEN>CVS_EVENTS</SCREEN>
+        <LBL>事件</LBL>
+        <FUNCTION>CSCACADD</FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="5" id="CVS_PREFERENCES">
+        <SCREEN>CVS_PREFERENCES</SCREEN>
+        <LBL>偏好选项</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="6" id="CFCPRCHG">
+        <SCREEN>CVS_CHARGE_CLASS</SCREEN>
+        <LBL>计费</LBL>
+        <FUNCTION>CFCPRCHG</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="7" id="TACTAXCL">
+        <SCREEN>CVS_TAX</SCREEN>
+        <LBL>税额</LBL>
+        <FUNCTION>TACTAXCL</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="8" id="MICPRMNT">
+        <SCREEN>CVS_MIS_PRODUCT</SCREEN>
+        <LBL>MIS</LBL>
+        <FUNCTION>MICPRMNT</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="All">
+        <LBL>全部</LBL>
+        <SECTION ID="SEC1" COLLAPSE="N">
+          <PART NAME="SEC1_PART1" ID="SEC1_PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_SEC1_PART1">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>产品代码 </LBL>
+                <SIZE>4</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>PRDCD</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>产品说明</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>产品说明</LBL>
+                <SIZE>22</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>PRDDESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_PRODUCT_TYPE</NAME>
+                </LOV>
+                <LBL>产品类型</LBL>
+                <SIZE>4</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>PRDTYP</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>说明</LBL>
+                <SIZE>22</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PRDTYPDESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>广告语</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>广告语</LBL>
+                <SIZE>22</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>255</MAXLENGTH>
+                <NAME>PRDSLG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_PRODUCT_GROUP</NAME>
+                </LOV>
+                <LBL>产品组</LBL>
+                <SIZE>4</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>6</MAXLENGTH>
+                <NAME>PRDGRP</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>说明</LBL>
+                <SIZE>22</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PRODUCT_GROUP_DESCRIPTION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>起始日期</LBL>
+                <SIZE>7</SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>PRDSTRTDT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>终止日期</LBL>
+                <SIZE>7</SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>PRDENDDT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>备注</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>备注</LBL>
+                <SIZE>22</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>255</MAXLENGTH>
+                <NAME>PRDRMRKS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC1_PART2" ID="SEC1_PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_EXCHG_RATE">
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>12</SIZE>
+                <MAX_VAL>100</MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>NRMLRTVARI</NAME>
+                <LBL>超越限额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL>1</MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>12</SIZE>
+                <MAX_VAL>100</MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>MAXRTVARI</NAME>
+                <LBL>终止限额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL>1</MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>汇率代码</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="M" SELECTED="0">中间汇率</OPTION>
+                <OPTION VALUE="B" SELECTED="0">买入或卖出</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>RTCODEPRFERD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE>8</SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>RATE_TYPE_PREFERRED</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_RATE_TYPE</NAME>
+                </LOV>
+                <LBL>首选费率类型</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>汇率差异 (%)</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_PREFERENCES" POSITION="template" TITLE="产品偏好选项" TMP_SCR_TYPE="L">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="Head">
+        <LBL>Head</LBL>
+        <SECTION ID="PRF_SEC1" COLLAPSE="N">
+          <PART NAME="PRF_SEC1_PART1" ID="PRF_SEC1_PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_PRF_SEC1_PART1">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>产品代码</LBL>
+                <SIZE>5</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TXT_PRD_COD_PREF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>产品类型</LBL>
+                <SIZE>2</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TXT_PRD_TYP_PREF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PRF_SEC1_PART2" ID="PRF_SEC1_PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_PRF_SEC1_PART2">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>说明</LBL>
+                <SIZE>25</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TXT_PRD_COD_DSC_PREF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>说明</LBL>
+                <SIZE>25</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TXT_PRD_TYP_DSC_PREF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="Tab_1">
+        <LBL>Main</LBL>
+        <SECTION ID="PRF_MN_SEC1" COLLAPSE="N">
+          <PART NAME="PRF_MN_SEC1_PART1" ID="PRF_MN_SEC1_PART1" WIDTH="66">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_PRF_MN_SEC1_PRT1">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_BUY">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>买入</LBL>
+                  <ID>B</ID>
+                  <VALUE>B</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_SELL">
+                  <SELECTED>0</SELECTED>
+                  <LBL>出售</LBL>
+                  <ID>S</ID>
+                  <VALUE>S</VALUE>
+                </OPTION>
+                <VALUE>B</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>BUYORSELL</NAME>
+                <LBL>交易类型</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>RADIO</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_TRD">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>交易</LBL>
+                  <ID>T</ID>
+                  <VALUE>T</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_HDGE">
+                  <SELECTED>0</SELECTED>
+                  <LBL>对冲</LBL>
+                  <ID>H</ID>
+                  <VALUE>H</VALUE>
+                </OPTION>
+                <VALUE>T</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CONTRACTTYP</NAME>
+                <LBL>合同类型</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>RADIO</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE>1</SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>BROKERAGEALLOWED</NAME>
+                <LBL>允许经纪人佣金</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_PRF_MN_SEC1_PART2">
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <PART NAME="PRF_MN_SEC1_PART2" ID="PRF_MN_SEC1_PART2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_COMMON_DETAILS">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>过期类型</LBL>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="A" SELECTED="0">美式</OPTION>
+                <OPTION VALUE="E" SELECTED="-1">欧式</OPTION>
+                <OPTION VALUE="B" SELECTED="0">百慕大</OPTION>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>E</VALUE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>EXPIRSTYLE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>6</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>TENOR</NAME>
+                <LBL>期限</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>普通详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="PRF_MN_SEC2" COLLAPSE="N">
+          <PART NAME="PMS2P1" ID="PMS2P1" WIDTH="66">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_AMORTIZATION_DETAILS">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>Y</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AMORTINCEPGAIN</NAME>
+                <LBL>需要摊销初期收益</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE>1</SIZE>
+                <OPTION VALUE="D" SELECTED="0">每日</OPTION>
+                <OPTION VALUE="W" SELECTED="0">每周</OPTION>
+                <OPTION VALUE="M" SELECTED="-1">每月</OPTION>
+                <OPTION VALUE="Q" SELECTED="0">每季度</OPTION>
+                <OPTION VALUE="H" SELECTED="0">每半年</OPTION>
+                <OPTION VALUE="Y" SELECTED="0">每年</OPTION>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <VALUE>M</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AMORTFREQ</NAME>
+                <LBL>摊销频率</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>Y</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AMORTTERGAIN</NAME>
+                <LBL>需要摊销终期收益</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>摊销开始的星期</LBL>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="MON" SELECTED="0">周一</OPTION>
+                <OPTION VALUE="TUE" SELECTED="0">星期二</OPTION>
+                <OPTION VALUE="WED" SELECTED="0">星期三</OPTION>
+                <OPTION VALUE="THU" SELECTED="0">星期四</OPTION>
+                <OPTION VALUE="FRI" SELECTED="0">星期五</OPTION>
+                <OPTION VALUE="SAT" SELECTED="0">星期六</OPTION>
+                <OPTION VALUE="SUN" SELECTED="0">星期天</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>AMORTSTARTWEEKEND</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_CONTRACT">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>合同</LBL>
+                  <ID>C</ID>
+                  <VALUE>C</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_PRODUCT">
+                  <SELECTED>0</SELECTED>
+                  <LBL>产品</LBL>
+                  <ID>P</ID>
+                  <VALUE>P</VALUE>
+                </OPTION>
+                <VALUE>C</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AMORTLVL</NAME>
+                <LBL>摊销级别</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>RADIO</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>2</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>AMORTSTARTDAY</NAME>
+                <LBL>摊销开始日</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="1" SELECTED="0">JANUARY</OPTION>
+                <OPTION VALUE="2" SELECTED="0">FEBRUARY</OPTION>
+                <OPTION VALUE="3" SELECTED="0">MARCH</OPTION>
+                <OPTION VALUE="4" SELECTED="0">APRIL</OPTION>
+                <OPTION VALUE="5" SELECTED="0">MAY</OPTION>
+                <OPTION VALUE="6" SELECTED="0">JUNE</OPTION>
+                <OPTION VALUE="7" SELECTED="0">JULY</OPTION>
+                <OPTION VALUE="8" SELECTED="0">AUGUST</OPTION>
+                <OPTION VALUE="9" SELECTED="0">SEPTEMBER</OPTION>
+                <OPTION VALUE="10" SELECTED="0">OCTOBER</OPTION>
+                <OPTION VALUE="11" SELECTED="0">NOVEMBER</OPTION>
+                <OPTION VALUE="12" SELECTED="0">DECEMBER</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>AMORTSTARTMONTH</NAME>
+                <LBL>摊销开始月</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>摊销详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <PART NAME="PMS2P2" ID="PMS2P2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HOLIDAY_DETAILS">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>节假日处理</LBL>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="I" SELECTED="-1">忽略</OPTION>
+                <OPTION VALUE="L" SELECTED="0">本地</OPTION>
+                <OPTION VALUE="C" SELECTED="0">币种</OPTION>
+                <OPTION VALUE="F" SELECTED="0">金融中心</OPTION>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>I</VALUE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>HOLTREATMENT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_HOLIDAY_CCY</NAME>
+                </LOV>
+                <LBL>假日币种</LBL>
+                <SIZE>3</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>HOLCCY</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_FINANCIAL_CENTER</NAME>
+                </LOV>
+                <LBL>金融中心</LBL>
+                <SIZE>3</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>FINCENTRE</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>节假日移动</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_FORWARD">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>远期</LBL>
+                  <ID>F</ID>
+                  <VALUE>F</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_BACKWARD">
+                  <SELECTED>0</SELECTED>
+                  <LBL>向后</LBL>
+                  <ID>B</ID>
+                  <VALUE>B</VALUE>
+                </OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>F</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>HOLMOVEMENT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE>1</SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>MOVACROSSMON</NAME>
+                <LBL>跨月分配</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>节假日详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="PRF_MN_SEC3" COLLAPSE="N">
+          <PART NAME="PMS3P1" ID="PMS3P1" WIDTH="66">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_REVALUATION_DETAILS">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE>1</SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>Y</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REVALREQD</NAME>
+                <LBL>需要重估</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>重估开始工作日</LBL>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="MON" SELECTED="0">周一</OPTION>
+                <OPTION VALUE="TUE" SELECTED="0">星期二</OPTION>
+                <OPTION VALUE="WED" SELECTED="0">星期三</OPTION>
+                <OPTION VALUE="THU" SELECTED="0">星期四</OPTION>
+                <OPTION VALUE="FRI" SELECTED="0">星期五</OPTION>
+                <OPTION VALUE="SAT" SELECTED="0">星期六</OPTION>
+                <OPTION VALUE="SUN" SELECTED="0">星期天</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>REVALSTARTWEEKDAY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_CONTRACT">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>合同</LBL>
+                  <ID>C</ID>
+                  <VALUE>C</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_PRODUCT">
+                  <SELECTED>0</SELECTED>
+                  <LBL>产品</LBL>
+                  <ID>P</ID>
+                  <VALUE>P</VALUE>
+                </OPTION>
+                <VALUE>C</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REVALLVL</NAME>
+                <LBL>重估级别</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>RADIO</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>2</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>REVALSTARTDAY</NAME>
+                <LBL>重估开始日</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE>1</SIZE>
+                <OPTION VALUE="D" SELECTED="0">每日</OPTION>
+                <OPTION VALUE="W" SELECTED="0">每周</OPTION>
+                <OPTION VALUE="M" SELECTED="-1">每月</OPTION>
+                <OPTION VALUE="Q" SELECTED="0">每季度</OPTION>
+                <OPTION VALUE="H" SELECTED="0">每半年</OPTION>
+                <OPTION VALUE="Y" SELECTED="0">每年</OPTION>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <VALUE>M</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REVALFREQ</NAME>
+                <LBL>重估频率</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="1" SELECTED="0">JANUARY</OPTION>
+                <OPTION VALUE="2" SELECTED="0">FEBRUARY</OPTION>
+                <OPTION VALUE="3" SELECTED="0">MARCH</OPTION>
+                <OPTION VALUE="4" SELECTED="0">APRIL</OPTION>
+                <OPTION VALUE="5" SELECTED="0">MAY</OPTION>
+                <OPTION VALUE="6" SELECTED="0">JUNE</OPTION>
+                <OPTION VALUE="7" SELECTED="0">JULY</OPTION>
+                <OPTION VALUE="8" SELECTED="0">AUGUST</OPTION>
+                <OPTION VALUE="9" SELECTED="0">SEPTEMBER</OPTION>
+                <OPTION VALUE="10" SELECTED="0">OCTOBER</OPTION>
+                <OPTION VALUE="11" SELECTED="0">NOVEMBER</OPTION>
+                <OPTION VALUE="12" SELECTED="0">DECEMBER</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>REVALSTARTMON</NAME>
+                <LBL>重估开始月</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>重估详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <PART NAME="PMS3P2" ID="PMS3P2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_LIQD_DETAILS">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>分子方法</LBL>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="30-US" SELECTED="0">30-US</OPTION>
+                <OPTION VALUE="ACTUAL" SELECTED="-1">实际</OPTION>
+                <OPTION VALUE="30-ISDA" SELECTED="0">30-ISDA</OPTION>
+                <OPTION VALUE="30-PSA" SELECTED="0">30-PSA</OPTION>
+                <OPTION VALUE="ACTUAL-JAPANESE" SELECTED="0">实际 - 日本</OPTION>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>ACTUAL</VALUE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>NUMMETHOD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>分母方法</LBL>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="360" SELECTED="0">360</OPTION>
+                <OPTION VALUE="365" SELECTED="0">365</OPTION>
+                <OPTION VALUE="ACTUAL" SELECTED="-1">实际</OPTION>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>ACTUAL</VALUE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>DENOMMETHOD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>分母基准</LBL>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="A" SELECTED="-1">Per Annum</OPTION>
+                <OPTION VALUE="P" SELECTED="0">每个期间</OPTION>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>A</VALUE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>DENOMBASIS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>清算详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="PRF_MN_SEC4" COLLAPSE="N">
+          <PART NAME="PMS4P1" ID="PMS4P1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_REKEY_FIELDS">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE>1</SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>Y</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REKEYREQD</NAME>
+                <LBL>需要双敲复核</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE>1</SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>Y</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REKEYCONTCCY</NAME>
+                <LBL>合同币种</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="3" INDEX="">
+                <SIZE>1</SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>Y</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REKEYOPTPREM</NAME>
+                <LBL>期权升水</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE>1</SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>Y</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REKEYCOUNCCY</NAME>
+                <LBL>场外交易币种</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="3" INDEX="">
+                <SIZE>1</SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>Y</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REKEYMATDATE</NAME>
+                <LBL>到期日</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE>1</SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>Y</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REKEYPRECCY</NAME>
+                <LBL>升水币种</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="3" INDEX="">
+                <SIZE>1</SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>Y</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REKEYVALDATE</NAME>
+                <LBL>起息日</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>双敲复核字段</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>3</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_1">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>分行限制</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_DISALLOWED">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>不允许</LBL>
+                  <ID>D</ID>
+                  <VALUE>D</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_ALLOWED">
+                  <SELECTED>0</SELECTED>
+                  <LBL>允许</LBL>
+                  <ID>A</ID>
+                  <VALUE>A</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>D</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>BRANCHES_LIST</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>类别列表</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_DISALLOWED">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>不允许</LBL>
+                  <ID>D</ID>
+                  <VALUE>D</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_ALLOWED">
+                  <SELECTED>0</SELECTED>
+                  <LBL>允许</LBL>
+                  <ID>A</ID>
+                  <VALUE>A</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>D</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CATEGORIES_LIST</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>币种限制</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_DISALLOWED">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>不允许</LBL>
+                  <ID>D</ID>
+                  <VALUE>D</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_ALLOWED">
+                  <SELECTED>0</SELECTED>
+                  <LBL>允许</LBL>
+                  <ID>A</ID>
+                  <VALUE>A</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>D</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CCYLST</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>产品限制</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRODUCT_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50"></PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+      <TAB ID="Tab_2">
+        <LBL>Currency Option</LBL>
+        <SECTION ID="PRF_CO_SEC1" COLLAPSE="N">
+          <PART NAME="PCS1P1" ID="PCS1P1" WIDTH="66">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_CURRENCY_OPTIONS">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>期权类型</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_CALL">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>随时偿还</LBL>
+                  <ID>C</ID>
+                  <VALUE>C</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_PUT">
+                  <SELECTED>0</SELECTED>
+                  <LBL>看跌</LBL>
+                  <ID>P</ID>
+                  <VALUE>P</VALUE>
+                </OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>C</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>DEALTYP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交付类型</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_CASH_SETTLED">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>已结算现金</LBL>
+                  <ID>C</ID>
+                  <VALUE>C</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_PHYSICAL">
+                  <SELECTED>0</SELECTED>
+                  <LBL>实物清算</LBL>
+                  <ID>P</ID>
+                  <VALUE>P</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_EXTERNAL">
+                  <SELECTED>0</SELECTED>
+                  <LBL>外部</LBL>
+                  <ID>E</ID>
+                  <VALUE>E</VALUE>
+                </OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>C</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>DELIVERTYP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_FX_PRODUCT</NAME>
+                </LOV>
+                <LBL>外汇产品</LBL>
+                <SIZE>4</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>FXPRD</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>期权类型</LBL>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="P" SELECTED="-1">普通掉期交易</OPTION>
+                <OPTION VALUE="B" SELECTED="0">二进位</OPTION>
+                <OPTION VALUE="D" SELECTED="0">数字</OPTION>
+                <OPTION VALUE="N" SELECTED="0">请勿触摸</OPTION>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>P</VALUE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>OPTSTYLE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>币种期权</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PROD_CO_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PCS1P2" ID="PCS1P2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_EXOTICS">
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>BARRERALLOW</NAME>
+                <LBL>降低壁垒</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REBATEALLOW</NAME>
+                <LBL>允许回扣</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>壁垒类型</LBL>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="SKIN" SELECTED="0">单触碰生效</OPTION>
+                <OPTION VALUE="SKOT" SELECTED="0">单触碰失效</OPTION>
+                <OPTION VALUE="DKIN" SELECTED="0">双触碰生效</OPTION>
+                <OPTION VALUE="DKOT" SELECTED="0">双触碰失效</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>BARRIERTYP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>支付费率</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_HIT">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>搜索结果</LBL>
+                  <ID>H</ID>
+                  <VALUE>H</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_MATURITY">
+                  <SELECTED>0</SELECTED>
+                  <LBL>到期</LBL>
+                  <ID>M</ID>
+                  <VALUE>M</VALUE>
+                </OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>H</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PAYMENTAT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>国外项目</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PROD_CO_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+      <TAB ID="Tab_3">
+        <LBL>Interest Rate Option</LBL>
+        <SECTION ID="PRF_IO_SEC1" COLLAPSE="N">
+          <PART NAME="PIS1P1" ID="PIS1P1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_INT_RATE_OPT">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>利率期权类型</LBL>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="CAP" SELECTED="-1">资本</OPTION>
+                <OPTION VALUE="COL" SELECTED="0">衣领</OPTION>
+                <OPTION VALUE="FLR" SELECTED="0">最低</OPTION>
+                <OPTION VALUE="COR" SELECTED="0">走廊</OPTION>
+                <OPTION VALUE="SWP" SELECTED="0">掉期期权</OPTION>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>CAP</VALUE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>IROTYP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>5</SIZE>
+                <MAX_VAL>100</MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>MAXSPREAD</NAME>
+                <LBL>最大价差</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL>1</MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>支付方法</LBL>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="D" SELECTED="0">押汇</OPTION>
+                <OPTION VALUE="R" SELECTED="-1">欠款</OPTION>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>R</VALUE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PAYMETHOD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>EXTRATRVN</NAME>
+                <LBL>允许外部利率修订</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>利率期权</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PROD_IRO_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PIS1P2" ID="PIS1P2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_RATE_FIX_DET">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>6</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>RESETLAG</NAME>
+                <LBL>利率固定间隔（天数）</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>重置日期基准</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_PERIOD_START_DATE">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>期间起始日期</LBL>
+                  <ID>S</ID>
+                  <VALUE>S</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_PERIOD_END_DATE">
+                  <SELECTED>0</SELECTED>
+                  <LBL>期间终止日期</LBL>
+                  <ID>E</ID>
+                  <VALUE>E</VALUE>
+                </OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>S</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>RESETDATEBASIS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>重置日期变动</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_FORWARD">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>远期</LBL>
+                  <ID>N</ID>
+                  <VALUE>N</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_BACKWARD">
+                  <SELECTED>0</SELECTED>
+                  <LBL>向后</LBL>
+                  <ID>P</ID>
+                  <VALUE>P</VALUE>
+                </OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>RESETDATEMOVEMENT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>汇率固定详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PROD_IRO_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PIS2P1" ID="PIS2P1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_SWAPTION_DET">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>掉期期权类型</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_CASH_SETTLED">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>已结算现金</LBL>
+                  <ID>C</ID>
+                  <VALUE>C</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_PHYSICAL">
+                  <SELECTED>0</SELECTED>
+                  <LBL>实物清算</LBL>
+                  <ID>P</ID>
+                  <VALUE>P</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_EXTERNAL">
+                  <SELECTED>0</SELECTED>
+                  <LBL>外部</LBL>
+                  <ID>E</ID>
+                  <VALUE>E</VALUE>
+                </OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>C</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SWAPSTYLE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_SWAP_PRODUCT</NAME>
+                </LOV>
+                <LBL>掉期产品</LBL>
+                <SIZE>4</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>SWAPPRD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>掉期期权详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PROD_IRO_PREF</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+      <TAB ID="Tab_4">
+        <LBL>Interest Rate Option Schedules</LBL>
+        <SECTION ID="PRF_IO_SCH_SEC1" COLLAPSE="N">
+          <PART NAME="PSP1" ID="PSP1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_OT_PRODUCT_SCHEDULE">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>组件</LBL>
+                <SIZE>10</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>10</MAXLENGTH>
+                <NAME>COMPONENT</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>起始参考编号</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="C" SELECTED="0">日历</OPTION>
+                <OPTION VALUE="V" SELECTED="0">起息日</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>STARTREF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>频率</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="D" SELECTED="0">每日</OPTION>
+                <OPTION VALUE="W" SELECTED="0">每周</OPTION>
+                <OPTION VALUE="M" SELECTED="0">每月</OPTION>
+                <OPTION VALUE="Q" SELECTED="0">每季度</OPTION>
+                <OPTION VALUE="H" SELECTED="0">每半年</OPTION>
+                <OPTION VALUE="Y" SELECTED="0">每年</OPTION>
+                <OPTION VALUE="B" SELECTED="0">一次性还本贷款</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>FREQUENCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>4</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <VALUE>1</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>FREQUENCYUNIT</NAME>
+                <CASE>UPPER</CASE>
+                <LBL>频率单位</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL>1</MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>开始工作日</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="MON" SELECTED="0">周一</OPTION>
+                <OPTION VALUE="TUE" SELECTED="0">星期二</OPTION>
+                <OPTION VALUE="WED" SELECTED="0">星期三</OPTION>
+                <OPTION VALUE="THU" SELECTED="0">星期四</OPTION>
+                <OPTION VALUE="FRI" SELECTED="0">星期五</OPTION>
+                <OPTION VALUE="SAT" SELECTED="0">星期六</OPTION>
+                <OPTION VALUE="SUN" SELECTED="0">星期天</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>STARTWEEKDAY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>2</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>STARTDAY</NAME>
+                <CASE>UPPER</CASE>
+                <LBL>开始日</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <OPTION VALUE="1" SELECTED="0">JANUARY</OPTION>
+                <OPTION VALUE="2" SELECTED="0">FEBRUARY</OPTION>
+                <OPTION VALUE="3" SELECTED="0">MARCH</OPTION>
+                <OPTION VALUE="4" SELECTED="0">APRIL</OPTION>
+                <OPTION VALUE="5" SELECTED="0">MAY</OPTION>
+                <OPTION VALUE="6" SELECTED="0">JUNE</OPTION>
+                <OPTION VALUE="7" SELECTED="0">JULY</OPTION>
+                <OPTION VALUE="8" SELECTED="0">AUGUST</OPTION>
+                <OPTION VALUE="9" SELECTED="0">SEPTEMBER</OPTION>
+                <OPTION VALUE="10" SELECTED="0">OCTOBER</OPTION>
+                <OPTION VALUE="11" SELECTED="0">NOVEMBER</OPTION>
+                <OPTION VALUE="12" SELECTED="0">DECEMBER</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>STARTMONTH</NAME>
+                <CASE>UPPER</CASE>
+                <LBL>开始月</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ADHERETOMONEND</NAME>
+                <LBL>截止月末</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>计划详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PROD_SCHEDULE</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

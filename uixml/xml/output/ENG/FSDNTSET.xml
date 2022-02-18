@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="CLS Net Manual Settlement" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS>1</BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fnSettle(event)</BUTTON_EVENT>
+        <BUTTON_LBL>Settle</BUTTON_LBL>
+        <BUTTON_NAME>BTN_SETTLE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW></BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_NET_POSITION</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>CLS Currency</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>CLS_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Value Date</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>VALUE_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>Settlement Status</LBL>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <OPTION VALUE="S" SELECTED="0">Success</OPTION>
+        <OPTION VALUE="F" SELECTED="0">Failed</OPTION>
+        <OPTION VALUE="I" SELECTED="0">Intermediary Settled</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>SETTLE_STATUS</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Host Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>HOST_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>CLS Currency</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>CLS_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>Value Date</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>VALUE_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <MAX_DECIMALS>3</MAX_DECIMALS>
+        <LBL>Settled Amount</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>CLS_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,3</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>SETTLED_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <MAX_DECIMALS>3</MAX_DECIMALS>
+        <LBL>Settlement Amount</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>CLS_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,3</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>SETTLEMENT_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>Amount To Settle</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>CLS_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>AMOUNT_TO_SETTLE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>Settlement Indicator</LBL>
+        <OPTION VALUE="P" SELECTED="0">Pay</OPTION>
+        <OPTION VALUE="R" SELECTED="0">Receive</OPTION>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>SETTLE_FLAG</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>Settlement Status</LBL>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <OPTION VALUE="S" SELECTED="0">Success</OPTION>
+        <OPTION VALUE="F" SELECTED="0">Failed</OPTION>
+        <OPTION VALUE="I" SELECTED="0">Intermediary Settled</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>SETTLE_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>Failure Reason</LBL>
+        <SIZE>50</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXTAREA</TYPE>
+        <MAXLENGTH>4000</MAXLENGTH>
+        <NAME>FAILURE_REASON</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="P">Pay</OPTION>
+        <OPTION VALUE="R">Receive</OPTION>
+        <OPTION VALUE=""></OPTION>
+        <FIELD_NAME>SETTLE_FLAG</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="P">Pending</OPTION>
+        <OPTION VALUE="S">Success</OPTION>
+        <OPTION VALUE="F">Failed</OPTION>
+        <OPTION VALUE="I">Intermediary Settled</OPTION>
+        <FIELD_NAME>SETTLE_STATUS</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="CLS Net Manual Settlement" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_MAIN" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="SE" INDEX="1" ID="FST_NET_POSITION">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>HOST_CODE</NAME>
+                <CASE>UPPER</CASE>
+                <LBL>Host Code</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CLS_CCY</NAME>
+                </LOV>
+                <LBL>CLS Currency</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CLS_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Value Date</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>VALUE_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>CLS_CCY</RELATED_FIELD>
+                <MAXLENGTH>22,3</MAXLENGTH>
+                <NAME>SETTLED_AMT</NAME>
+                <LBL>Settled Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>CLS_CCY</RELATED_FIELD>
+                <MAXLENGTH>22,3</MAXLENGTH>
+                <NAME>SETTLEMENT_AMT</NAME>
+                <LBL>Settlement Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>CLS_CCY</RELATED_FIELD>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>AMOUNT_TO_SETTLE</NAME>
+                <LBL>Amount To Settle</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Settlement Indicator</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="P" SELECTED="0">Pay</OPTION>
+                <OPTION VALUE="R" SELECTED="0">Receive</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SETTLE_FLAG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Settlement Status</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+                <OPTION VALUE="S" SELECTED="0">Success</OPTION>
+                <OPTION VALUE="F" SELECTED="0">Failed</OPTION>
+                <OPTION VALUE="I" SELECTED="0">Intermediary Settled</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SETTLE_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>Failure Reason</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>Failure Reason</LBL>
+                <SIZE>50</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXTAREA</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <NAME>FAILURE_REASON</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NET_POSITION</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_DET" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_CLS_SETTLE_DETAILS">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>BLK_NET_POSITION__CLS_CCY</RELATED_FIELD>
+                <MAXLENGTH>22,3</MAXLENGTH>
+                <NAME>SETTLED_AMT</NAME>
+                <LBL>Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Pay/Receive</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="p" SELECTED="0">Pay</OPTION>
+                <OPTION VALUE="R" SELECTED="0">Receive</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PAY_RECV_FLAG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Settlement Reference No</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>SETTLEMENT_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Settlement Transaction Status</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="S" SELECTED="0">Success</OPTION>
+                <OPTION VALUE="F" SELECTED="0">Failure</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SETTLE_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>Failure Reason</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>Failure Reason</LBL>
+                <SIZE>50</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXTAREA</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <NAME>FAILURE_REASON</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Settlement Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CLS_SETTLE_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

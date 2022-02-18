@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="Payment by In House Cheque" TMP_SCR_TYPE="M">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PAR1" ID="PAR1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_1">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE>20</SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>CREDITCARDNO</NAME>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CREDITNO</NAME>
+                </LOV>
+                <LBL>Credit Card No</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Credit Card Holder Name</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CREDITCARDNAME</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Credit Card Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_TRANSACTION_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_3">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE>20</SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>20</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnSetOldValue(event)</FUNCTION>
+                  <NAME>onfocus</NAME>
+                </EVENT>
+                <EVENT>
+                  <FUNCTION>fnPickupReqd(event);this.oldvalue = this.value</FUNCTION>
+                  <NAME>onblur</NAME>
+                </EVENT>
+                <NAME>TXNACC</NAME>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_TXNACC</NAME>
+                </LOV>
+                <LBL>From Account Number</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ACCTITLE1</NAME>
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>Account Title</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>Account Title</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE>3</SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TXNBRN</NAME>
+                <CASE>UPPER</CASE>
+                <LBL>From Account Branch</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE>3</SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <EVENT>
+                  <FUNCTION>fnSetOldValue(event)</FUNCTION>
+                  <NAME>onfocus</NAME>
+                </EVENT>
+                <EVENT>
+                  <FUNCTION>fnPickupReqd(event);this.oldvalue = this.value</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>TXNCCY</NAME>
+                <CASE>UPPER</CASE>
+                <LBL>From Account Currency</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <REQD>-1</REQD>
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>TXNCCY</RELATED_FIELD>
+                <MAXLENGTH>22</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnSetOldValue(event)</FUNCTION>
+                  <NAME>onfocus</NAME>
+                </EVENT>
+                <EVENT>
+                  <FUNCTION>fnPickupReqd(event);this.oldvalue = this.value</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>TXNAMT</NAME>
+                <LBL>From Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>From Account Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_TRANSACTION_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="3" ID="FST_CHEQUE">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <REQD>-1</REQD>
+                <LBL>Cheque Number</LBL>
+                <SIZE>16</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>DRINSTCD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <REQD>-1</REQD>
+                <LBL>Cheque Date</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>CHEQUE_ISSUE_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y" SPRT="2">
+                <LBL>Pickup</LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnResetOffsetAmt();fnEnrich()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_RECALC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Cheque Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_TRANSACTION_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="4" ID="FST_2">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>To Account Number</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>OFFSETACC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE>3</SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>OFFSETCCY</NAME>
+                <CASE>UPPER</CASE>
+                <LBL>To Account Currency</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>22</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <RELATED_FIELD>OFFSETCCY</RELATED_FIELD>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>OFFSETAMT</NAME>
+                <LBL>To Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ACCTITLE2</NAME>
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>Account Title</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>Account Title</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>To Account Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_TRANSACTION_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="5" ID="FST_4">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>Narrative</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>Narrative</LBL>
+                <SIZE>20</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>255</MAXLENGTH>
+                <NAME>NARRATIVE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>22</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnSetOldValue(event)</FUNCTION>
+                  <NAME>onfocus</NAME>
+                </EVENT>
+                <EVENT>
+                  <FUNCTION>fnPickupReqd(event);this.oldvalue = this.value</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>XRATE</NAME>
+                <LBL>Exchange Rate</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Customer Id</LBL>
+                <SIZE>9</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>9</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RELCUST</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>External Reference</LBL>
+                <SIZE>20</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>XREF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Additional Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_TRANSACTION_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_HED2" COLLAPSE="N">
+          <PART NAME="HED2PRT1" ID="HED2PRT1" WIDTH="50"></PART>
+          <PART NAME="HED2PRT2" ID="HED2PRT2" WIDTH="50"></PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="HED1" COLLAPSE="N">
+          <PART NAME="HED1PAR1" ID="HED1PAR1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD1">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Module</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODULE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Transaction Code</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>TXNTRN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Offset Transaction Code</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>OFFSETRN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>LCYAMT</NAME>
+                <LBL>Local Currency Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>FT</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>FT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Branch</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BRN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_TRANSACTION_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="HED1PAR2" ID="HED1PAR2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD2">
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE>4</SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <VALUE>CRCM</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>4</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PRD</NAME>
+                <CASE>UPPER</CASE>
+                <LBL>Product</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>OFFSETBRN</NAME>
+                <CASE>UPPER</CASE>
+                <LBL>To Account Branch</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Cheque Date</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TXNDATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Check Date</LBL>
+                <SIZE>10</SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>INSTRDATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Rejected</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <NAME>REJECTFLAG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_TRANSACTION_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="C" SEQ="1" id="CHCD">
+        <SCREEN>CVS_CHCD</SCREEN>
+        <LBL>Charge</LBL>
+        <FUNCTION>CHCD</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="2" id="MDCD">
+        <SCREEN>CVS_MDCD</SCREEN>
+        <LBL>MIS</LBL>
+        <FUNCTION>MDCD</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="3" id="UDCD">
+        <SCREEN>CVS_UDCD</SCREEN>
+        <LBL>UDF</LBL>
+        <FUNCTION>UDCD</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

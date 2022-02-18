@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="${FORM.SCREEN.0.-TITLE}" TMP_SCR_TYPE="M">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HEADER">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>${FORM.SCREEN.0.HEADER.TAB.SECTION.PART.FLDSET.FIELD.0.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>500</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>REP_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="W" SELECTED="0">${FORM.SCREEN.0.HEADER.TAB.SECTION.PART.FLDSET.FIELD.1.OPTION.1.#text}</OPTION>
+                <OPTION VALUE="F" SELECTED="0">${FORM.SCREEN.0.HEADER.TAB.SECTION.PART.FLDSET.FIELD.1.OPTION.2.#text}</OPTION>
+                <OPTION VALUE="G" SELECTED="0">${FORM.SCREEN.0.HEADER.TAB.SECTION.PART.FLDSET.FIELD.1.OPTION.3.#text}</OPTION>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>STATUS</NAME>
+                <LBL>${FORM.SCREEN.0.HEADER.TAB.SECTION.PART.FLDSET.FIELD.1.LBL}</LBL>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ACTBS_ACCOUNT_REPORT</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="C" SEQ="1" id="CSCONCHG">
+        <SCREEN>CVS_CHARGE</SCREEN>
+        <LBL>${FORM.SCREEN.0.SUBSCREEN.FORM.0.LBL}</LBL>
+        <FUNCTION>CSCONCHG</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="2" id="CSCONEVT">
+        <SCREEN>CVS_MAIN</SCREEN>
+        <LBL>${FORM.SCREEN.0.SUBSCREEN.FORM.1.LBL}</LBL>
+        <FUNCTION>CSCONEVT</FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="3" id="CVS_SINGLE">
+        <SCREEN>CVS_SINGLE</SCREEN>
+        <LBL>${FORM.SCREEN.0.SUBSCREEN.FORM.2.LBL}</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="SEC1_PART1" ID="SEC1_PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_1">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_ONEACC">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.0.OPTION.0.LBL}</LBL>
+                  <ID>O</ID>
+                  <VALUE>O</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_MULACC">
+                  <SELECTED>0</SELECTED>
+                  <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.0.OPTION.1.LBL}</LBL>
+                  <ID>M</ID>
+                  <VALUE>M</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_RANGE">
+                  <SELECTED>0</SELECTED>
+                  <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.0.OPTION.2.LBL}</LBL>
+                  <ID>R</ID>
+                  <VALUE>R</VALUE>
+                </OPTION>
+                <VALUE>O</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnChangeAcsltype()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>ACSLTYPE</NAME>
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.0.LBL}</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>RADIO</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_BRIEF">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.1.OPTION.0.LBL}</LBL>
+                  <ID>B</ID>
+                  <VALUE>B</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_DETAILED">
+                  <SELECTED>0</SELECTED>
+                  <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.1.OPTION.1.LBL}</LBL>
+                  <ID>D</ID>
+                  <VALUE>D</VALUE>
+                </OPTION>
+                <VALUE>B</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>STMTTYPE</NAME>
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.1.LBL}</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>RADIO</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.2.LBL}</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <NAME>OVDSET</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ACTBS_ACCOUNT_REPORT</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="SEC2_PART1" ID="SEC2_PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_2">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.1.PART.FLDSET.FIELD.0.LBL}</LBL>
+                <SIZE>8</SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>FROMDT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.1.PART.FLDSET.FIELD.1.LBL}</LBL>
+                <SIZE>8</SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>TODT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.1.PART.FLDSET.LBL}</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ACTBS_ACCOUNT_REPORT</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_3" COLLAPSE="N">
+          <PART NAME="SEC3_PART1" ID="SEC3_PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_3">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE>20</SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>ACCNO</NAME>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_ACNO</NAME>
+                </LOV>
+                <HOTKEYREQ>Y</HOTKEYREQ>
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.0.LBL}</LBL>
+                <HOTKEYREQJA>Y</HOTKEYREQJA>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.1.LBL}</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>200</MAXLENGTH>
+                <NAME>DCN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.2.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BRN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE>3</SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>ACCCY</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CCY</NAME>
+                </LOV>
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.3.LBL}</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.4.LBL}</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="D" SELECTED="0">${FORM.SCREEN.0.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.4.OPTION.1.#text}</OPTION>
+                <OPTION VALUE="Y" SELECTED="0">${FORM.SCREEN.0.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.4.OPTION.2.#text}</OPTION>
+                <OPTION VALUE="O" SELECTED="0">${FORM.SCREEN.0.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.4.OPTION.3.#text}</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CHG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>LNKDACDTL</NAME>
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.5.LBL}</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_BOOK_DATE">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.6.OPTION.0.LBL}</LBL>
+                  <ID>B</ID>
+                  <VALUE>B</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_VALUE_DT">
+                  <SELECTED>0</SELECTED>
+                  <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.6.OPTION.1.LBL}</LBL>
+                  <ID>V</ID>
+                  <VALUE>V</VALUE>
+                </OPTION>
+                <VALUE>B</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>BKDT</NAME>
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.6.LBL}</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>RADIO</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>16</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TRN_REF_NO</NAME>
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.7.LBL}</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>VIRACCTRNS</NAME>
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.8.LBL}</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.2.PART.FLDSET.LBL}</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ACTBS_ACCOUNT_REPORT</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_4" COLLAPSE="N">
+          <PART NAME="SEC4_PART1" ID="SEC4_PART1" WIDTH="50">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_4">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.3.PART.0.FLDSET.FIELD.0.LBL}</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_MULACC</NAME>
+                </LOV>
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.3.PART.0.FLDSET.FIELD.1.LBL}</LBL>
+                <SIZE></SIZE>
+                <HOTKEYREQJA>Y</HOTKEYREQJA>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>26</MAXLENGTH>
+                <NAME>MULACC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.3.PART.0.FLDSET.FIELD.2.LBL}</LBL>
+                <SIZE>10</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BRNCD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.3.PART.0.FLDSET.FIELD.3.LBL}</LBL>
+                <SIZE>10</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>ACCCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.3.PART.0.FLDSET.FIELD.4.LBL}</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>500</MAXLENGTH>
+                <NAME>REP_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.3.PART.0.FLDSET.LBL}</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ACVW_MULTI_ACC_REPORT</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC4_PART2" ID="SEC4_PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_5">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.3.PART.1.FLDSET.FIELD.0.LBL}</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_VIEW">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.3.PART.1.FLDSET.FIELD.0.OPTION.0.LBL}</LBL>
+                  <ID>V</ID>
+                  <VALUE>V</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_SERVER_SPOOL">
+                  <SELECTED>0</SELECTED>
+                  <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.3.PART.1.FLDSET.FIELD.0.OPTION.1.LBL}</LBL>
+                  <ID>S</ID>
+                  <VALUE>S</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_PRNT">
+                  <SELECTED>0</SELECTED>
+                  <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.3.PART.1.FLDSET.FIELD.0.OPTION.2.LBL}</LBL>
+                  <ID>P</ID>
+                  <VALUE>P</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_REPORT">
+                  <SELECTED>0</SELECTED>
+                  <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.3.PART.1.FLDSET.FIELD.0.OPTION.3.LBL}</LBL>
+                  <ID>R</ID>
+                  <VALUE>R</VALUE>
+                </OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>V</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PRINTOT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.3.PART.1.FLDSET.FIELD.1.LBL}</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <NAME>SESSIONID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.3.PART.1.FLDSET.FIELD.2.LBL}</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ASYNC_REQ</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ACTBS_ACCOUNT_REPORT</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_5" COLLAPSE="N">
+          <PART NAME="SEC5_PART1" ID="SEC5_PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_6">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>FRMACCNO</NAME>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_FROM_ACCNO</NAME>
+                </LOV>
+                <HOTKEYREQ>Y</HOTKEYREQ>
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.4.PART.FLDSET.FIELD.0.LBL}</LBL>
+                <HOTKEYREQJA>Y</HOTKEYREQJA>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.4.PART.FLDSET.FIELD.1.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>FRMACBRNF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE>3</SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>FRMACCCY</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_FROM_CCY</NAME>
+                </LOV>
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.4.PART.FLDSET.FIELD.2.LBL}</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>TOACCNO</NAME>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_TO_ACCNO</NAME>
+                </LOV>
+                <HOTKEYREQ>Y</HOTKEYREQ>
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.4.PART.FLDSET.FIELD.3.LBL}</LBL>
+                <HOTKEYREQJA>Y</HOTKEYREQJA>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.4.PART.FLDSET.FIELD.4.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TOACBRNF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE>3</SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>TOACCCY</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_TO_CCY</NAME>
+                </LOV>
+                <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.4.PART.FLDSET.FIELD.5.LBL}</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>${FORM.SCREEN.0.BODY.TAB.SECTION.4.PART.FLDSET.LBL}</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ACTBS_ACCOUNT_REPORT</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_MUL" POSITION="template" TITLE="${FORM.SCREEN.1.-TITLE}" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_7">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.1.BODY.TAB.SECTION.PART.FLDSET.FIELD.0.LBL}</LBL>
+                <SIZE>26</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>26</MAXLENGTH>
+                <NAME>MULACC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.1.BODY.TAB.SECTION.PART.FLDSET.FIELD.1.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>200</MAXLENGTH>
+                <NAME>DCN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.1.BODY.TAB.SECTION.PART.FLDSET.FIELD.2.LBL}</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.1.BODY.TAB.SECTION.PART.FLDSET.FIELD.3.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_ShowCharges()</FUNCTION>
+                  <NAME>ondblclick</NAME>
+                </EVENT>
+                <NAME>CHG_TRN_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.1.BODY.TAB.SECTION.PART.FLDSET.FIELD.4.LBL}</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="W" SELECTED="0">${FORM.SCREEN.1.BODY.TAB.SECTION.PART.FLDSET.FIELD.4.OPTION.1.#text}</OPTION>
+                <OPTION VALUE="F" SELECTED="0">${FORM.SCREEN.1.BODY.TAB.SECTION.PART.FLDSET.FIELD.4.OPTION.2.#text}</OPTION>
+                <OPTION VALUE="G" SELECTED="0">${FORM.SCREEN.1.BODY.TAB.SECTION.PART.FLDSET.FIELD.4.OPTION.3.#text}</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.1.BODY.TAB.SECTION.PART.FLDSET.FIELD.5.LBL}</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>500</MAXLENGTH>
+                <NAME>REP_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ACVW_MULTI_ACC_DETAILS</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+              <READ_ONLY>-1</READ_ONLY>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_RANGE" POSITION="template" TITLE="${FORM.SCREEN.2.-TITLE}" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_8">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.2.BODY.TAB.SECTION.PART.FLDSET.FIELD.0.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>26</MAXLENGTH>
+                <NAME>MULACC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.2.BODY.TAB.SECTION.PART.FLDSET.FIELD.1.LBL}</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.2.BODY.TAB.SECTION.PART.FLDSET.FIELD.2.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>200</MAXLENGTH>
+                <NAME>DCN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.2.BODY.TAB.SECTION.PART.FLDSET.FIELD.3.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CHG_TRN_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.2.BODY.TAB.SECTION.PART.FLDSET.FIELD.4.LBL}</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="W" SELECTED="0">${FORM.SCREEN.2.BODY.TAB.SECTION.PART.FLDSET.FIELD.4.OPTION.1.#text}</OPTION>
+                <OPTION VALUE="F" SELECTED="0">${FORM.SCREEN.2.BODY.TAB.SECTION.PART.FLDSET.FIELD.4.OPTION.2.#text}</OPTION>
+                <OPTION VALUE="G" SELECTED="0">${FORM.SCREEN.2.BODY.TAB.SECTION.PART.FLDSET.FIELD.4.OPTION.3.#text}</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.2.BODY.TAB.SECTION.PART.FLDSET.FIELD.5.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>500</MAXLENGTH>
+                <NAME>REP_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ACVW_MULTI_ACC_DETAILS__A</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+              <READ_ONLY>-1</READ_ONLY>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_SINGLE" POSITION="template" TITLE="${FORM.SCREEN.3.-TITLE}" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART_1" ID="PART_1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_SINGLE">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.3.BODY.TAB.SECTION.PART.FLDSET.FIELD.0.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>26</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ACCOUNT_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.3.BODY.TAB.SECTION.PART.FLDSET.FIELD.1.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>200</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DCN</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.3.BODY.TAB.SECTION.PART.FLDSET.FIELD.2.LBL}</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHG_TRN_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>${FORM.SCREEN.3.BODY.TAB.SECTION.PART.FLDSET.FIELD.3.LBL}</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="W" SELECTED="0">${FORM.SCREEN.3.BODY.TAB.SECTION.PART.FLDSET.FIELD.3.OPTION.1.#text}</OPTION>
+                <OPTION VALUE="F" SELECTED="0">${FORM.SCREEN.3.BODY.TAB.SECTION.PART.FLDSET.FIELD.3.OPTION.2.#text}</OPTION>
+                <OPTION VALUE="G" SELECTED="0">${FORM.SCREEN.3.BODY.TAB.SECTION.PART.FLDSET.FIELD.3.OPTION.3.#text}</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ACVW_MULTI_ACC_DETAILS_B</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

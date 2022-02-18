@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="L">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS></BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fn_accept()</BUTTON_EVENT>
+        <BUTTON_LBL>查看</BUTTON_LBL>
+        <BUTTON_NAME>BTN_ACCEPT</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fn_reinitiate()</BUTTON_EVENT>
+        <BUTTON_LBL>償付銀行副本</BUTTON_LBL>
+        <BUTTON_NAME>BTN_REINITIATE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="3">
+        <BUTTON_EVENT>fn_dishonor()</BUTTON_EVENT>
+        <BUTTON_LBL>拒絕付款原因代碼</BUTTON_LBL>
+        <BUTTON_NAME>BTN_DISHONOR</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="4">
+        <BUTTON_EVENT>fn_authorize()</BUTTON_EVENT>
+        <BUTTON_LBL>和</BUTTON_LBL>
+        <BUTTON_NAME>BTN_AUTH</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="5">
+        <BUTTON_EVENT>fn_delete()</BUTTON_EVENT>
+        <BUTTON_LBL>拖欠日期</BUTTON_LBL>
+        <BUTTON_NAME>BTN_DELETE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="6">
+        <BUTTON_EVENT>fn_viewTransaction()</BUTTON_EVENT>
+        <BUTTON_LBL>消息</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_TXN</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="7">
+        <BUTTON_EVENT>fn_viewQueueAction()</BUTTON_EVENT>
+        <BUTTON_LBL>查看付款消息</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_Q_ACTION</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW></BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_NACHA_COR_QUEUE</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>啟動日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>ACTIVATION_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>金額級距和授權級別</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>公司分錄說明</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>COMPANY_ID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>客戶號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTOMER_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>客戶服務模式</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CUSTOMER_SERVICE_MODEL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>次級淨風險限額</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>ENTRY_CLASS_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>錄入時間</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>ENTRY_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>網路貨幣首選項摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>名義交易</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>38</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>ORG_TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>佇列參考號</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>38</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>來源參考編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>50</MAXLENGTH>
+        <NAME>SOURCE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>轉帳總帳</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TRANSFER_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>出納員轉帳</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TRANSFER_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>交易屬性 30</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXN_BRANCH</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>交易查詢</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>38</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_TYPE_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>網絡代碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>NETWORK_TYPE_CODE</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>啟動日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>ACTIVATION_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>金額級距和授權級別</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>銀行管道詳細資訊</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>BANKING_PRIORITY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>公司分錄說明</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>COMPANY_ID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>本期計提</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>CURRENT_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>客戶號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTOMER_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>客戶服務模式</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CUSTOMER_SERVICE_MODEL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>客戶對客戶</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>CUTOFF_TIME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>截止時間（小時）</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>CUTOFF_TIME_LIMIT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>次級淨風險限額</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>ENTRY_CLASS_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>錄入時間</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>ENTRY_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>錯誤序號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>255</MAXLENGTH>
+        <NAME>ERR_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>文件參考 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>FILE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>主機主金鑰</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>HOST_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>事件序號</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>LATEST_QUEUE_SEQ</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LBL>報表模組</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>MODULE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>網路貨幣首選項摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>名義交易</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>38</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>ORG_TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>付款/付款</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>PAYMENT_TXN_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <LBL>支付至</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LBL>批准上一個狀態</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>PREV_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>處理至下一個工作日-1</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>PROCESS_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="23">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>佇列參考號</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>38</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="24">
+        <LBL>拒絕回應代碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>REJECT_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="25">
+        <LBL>拒絕消息</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>REJECT_REASON</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="26">
+        <LBL>備註</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>REMARKS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="27">
+        <LBL>覆核確認</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>500</MAXLENGTH>
+        <NAME>REPAIR_REASON</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="28">
+        <LBL>退回截止（分鐘）</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>RETURN_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="29">
+        <LBL>源序代碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>SOURCE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="30">
+        <LBL>來源參考編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>50</MAXLENGTH>
+        <NAME>SOURCE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="31">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>轉帳總帳</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TRANSFER_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="32">
+        <LBL>出納員轉帳</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TRANSFER_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="33">
+        <LBL>交易帳號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>TXN_ACTION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="34">
+        <LBL>交易金額</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>TXN_ARCH_DT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="35">
+        <LBL>交易屬性 30</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXN_BRANCH</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="36">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>交易查詢</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>38</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="37">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_TYPE_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>網絡代碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>NETWORK_TYPE_CODE</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="L">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="Summary" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE/>
+    <SUMMARY_DATA_BLK>BLK_DRAWDET</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Authorization Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Authorized</OPTION>
+        <OPTION VALUE="U">Unauthorized</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+        <CASE></CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Record Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">Open</OPTION>
+        <OPTION VALUE="C">Closed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+        <CASE></CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>Draw Reference Number</LBL>
+        <SIZE>16</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>DRREFNO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>Cutoff Date</LBL>
+        <SIZE></SIZE>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>CUTOFFDT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <REQD>-1</REQD>
+        <LBL>Min No of MC</LBL>
+        <SIZE>8</SIZE>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL>0</MIN_VAL>
+        <NAME>MINMC</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Authorization Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Authorized</OPTION>
+        <OPTION VALUE="U">Unauthorized</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+        <CASE></CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Record Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">Open</OPTION>
+        <OPTION VALUE="C">Closed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+        <CASE></CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>Draw Reference Number</LBL>
+        <SIZE>16</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>DRREFNO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>Cutoff Date</LBL>
+        <SIZE></SIZE>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>CUTOFFDT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <REQD>-1</REQD>
+        <LBL>Min No of MC</LBL>
+        <SIZE>8</SIZE>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL>0</MIN_VAL>
+        <NAME>MINMC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>Product Restriction</LBL>
+        <SIZE>1</SIZE>
+        <OPTION COL="1" ROW="LBL_ALLOWED">
+          <SELECTED>-1</SELECTED>
+          <LBL>Allowed</LBL>
+          <ID>A</ID>
+          <VALUE>A</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_DISALLOWED">
+          <SELECTED>0</SELECTED>
+          <LBL>Disallowed</LBL>
+          <ID>D</ID>
+          <VALUE>D</VALUE>
+        </OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PRRES</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>Branch Restriction</LBL>
+        <SIZE>1</SIZE>
+        <OPTION COL="1" ROW="LBL_ALLOWED">
+          <SELECTED>-1</SELECTED>
+          <LBL>Allowed</LBL>
+          <ID>A</ID>
+          <VALUE>A</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_DISALLOWED">
+          <SELECTED>0</SELECTED>
+          <LBL>Disallowed</LBL>
+          <ID>D</ID>
+          <VALUE>D</VALUE>
+        </OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>BRNRES</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>Certificate Restriction</LBL>
+        <SIZE>1</SIZE>
+        <OPTION COL="1" ROW="LBL_ALLOWED">
+          <SELECTED>-1</SELECTED>
+          <LBL>Allowed</LBL>
+          <ID>A</ID>
+          <VALUE>A</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_DISALLOWED">
+          <SELECTED>0</SELECTED>
+          <LBL>Disallowed</LBL>
+          <ID>D</ID>
+          <VALUE>D</VALUE>
+        </OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CERTRES</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">Allowed</OPTION>
+        <OPTION VALUE="D">Disallowed</OPTION>
+        <FIELD_NAME>PRRES</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">Allowed</OPTION>
+        <OPTION VALUE="D">Disallowed</OPTION>
+        <FIELD_NAME>BRNRES</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">Allowed</OPTION>
+        <OPTION VALUE="D">Disallowed</OPTION>
+        <FIELD_NAME>CERTRES</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="L">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+        <SECTION ID="SEC_ONE" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HDR1">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Draw Reference Number</LBL>
+                <SIZE>16</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DRREFNO</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_DRAWDET</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HDR2">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>Cutoff Date</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>CUTOFFDT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_DRAWDET</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART3" ID="PART3" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HDR3">
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>8</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <VALUE>0</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>MINMC</NAME>
+                <LBL>Min No of MC</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL>0</MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_DRAWDET</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>Maker</LBL>
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>Checker</LBL>
+                <SIZE>12</SIZE>
+                <WIDTH/>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>Date Time:</LBL>
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>Date Time:</LBL>
+                <SIZE>15</SIZE>
+                <WIDTH/>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="3">
+                <LBL>Mod No</LBL>
+                <SIZE>4</SIZE>
+                <WIDTH/>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="3">
+                <LBL/>
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <ID>ONCEAUTH</ID>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"/>
+                <OPTION VALUE="C">Closed</OPTION>
+                <OPTION VALUE="O">Open</OPTION>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <CHECKED>N</CHECKED>
+                <NAME>TXNSTAT</NAME>
+                <LBL>Record Status</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"/>
+                <OPTION VALUE="A">Authorized</OPTION>
+                <OPTION VALUE="R">Rejected</OPTION>
+                <OPTION VALUE="U">Unauthorized</OPTION>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <CHECKED>N</CHECKED>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>Authorization Status</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_DRAWDET</BLOCK>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_ONE" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_PRDRES">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Product Restriction</LBL>
+                <SIZE>1</SIZE>
+                <OPTION COL="1" ROW="LBL_ALLOWED">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>Allowed</LBL>
+                  <ID>A</ID>
+                  <VALUE>A</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_DISALLOWED">
+                  <SELECTED>0</SELECTED>
+                  <LBL>Disallowed</LBL>
+                  <ID>D</ID>
+                  <VALUE>D</VALUE>
+                </OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>A</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PRRES</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_DRAWDET</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_BRRES">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Branch Restriction</LBL>
+                <SIZE>1</SIZE>
+                <OPTION COL="1" ROW="LBL_ALLOWED">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>Allowed</LBL>
+                  <ID>A</ID>
+                  <VALUE>A</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_DISALLOWED">
+                  <SELECTED>0</SELECTED>
+                  <LBL>Disallowed</LBL>
+                  <ID>D</ID>
+                  <VALUE>D</VALUE>
+                </OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>A</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>BRNRES</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_DRAWDET</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART3" ID="PART3" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_CERTRES">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Certificate Restriction</LBL>
+                <SIZE>1</SIZE>
+                <OPTION COL="1" ROW="LBL_ALLOWED">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>Allowed</LBL>
+                  <ID>A</ID>
+                  <VALUE>A</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_DISALLOWED">
+                  <SELECTED>0</SELECTED>
+                  <LBL>Disallowed</LBL>
+                  <ID>D</ID>
+                  <VALUE>D</VALUE>
+                </OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>A</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CERTRES</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_DRAWDET</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_TWO" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="33">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_PRD">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_PRDCD</NAME>
+                </LOV>
+                <LBL>Product Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>PRDCD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Product Description</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PRDDESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Draw Reference Number</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>DRREFNO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Product List</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PRD</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="33">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_BRN">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_BRN</NAME>
+                </LOV>
+                <LBL>Branch Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRNCD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_BRN</NAME>
+                </LOV>
+                <LBL>Branch Description</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BRNDESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Draw Reference Number</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>DRREFNO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Branch List</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_BRN</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART3" ID="PART3" WIDTH="33">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_CERT">
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>16</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CERTNUM</NAME>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CERTNO</NAME>
+                </LOV>
+                <LBL>Certificate Number</LBL>
+                <INPUT_LOV>-1</INPUT_LOV>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Product Code</LBL>
+                <SIZE>4</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PRCD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CERTNO</NAME>
+                </LOV>
+                <LBL>Draw Reference Number</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>DRREFNO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Certificate List</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CERT</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

@@ -1,0 +1,1292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="L">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS>2</BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fnViewdelete(event)</BUTTON_EVENT>
+        <BUTTON_LBL>查看執行操作</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_DETL</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fn_viewTxn()</BUTTON_EVENT>
+        <BUTTON_LBL>查看狀態更新詳細資訊</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_TXN</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="3">
+        <BUTTON_EVENT>fnEditMessage(event)</BUTTON_EVENT>
+        <BUTTON_LBL>EDIC</BUTTON_LBL>
+        <BUTTON_NAME>BTN_EDIT_MSG</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="4">
+        <BUTTON_EVENT>fnForce()</BUTTON_EVENT>
+        <BUTTON_LBL>FM參考號</BUTTON_LBL>
+        <BUTTON_NAME>BTN_FORCE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="5">
+        <BUTTON_EVENT>fnMovequeue()</BUTTON_EVENT>
+        <BUTTON_LBL>移動本金至未領</BUTTON_LBL>
+        <BUTTON_NAME>BTN_MOVE_QUEUE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="6">
+        <BUTTON_EVENT>fnAuthorise(event)</BUTTON_EVENT>
+        <BUTTON_LBL>授權狀態</BUTTON_LBL>
+        <BUTTON_NAME>BTN_AUTHORIZE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="7">
+        <BUTTON_EVENT>fnSupress()</BUTTON_EVENT>
+        <BUTTON_LBL>供應商名稱</BUTTON_LBL>
+        <BUTTON_NAME>BTN_SUPRESS</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="8">
+        <BUTTON_EVENT>fnRetry()</BUTTON_EVENT>
+        <BUTTON_LBL>檢索參考編號</BUTTON_LBL>
+        <BUTTON_NAME>BTN_RETRY</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW></BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_PMVWS_PMDINBRS</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>分行</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BRANCH</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <REQD>-1</REQD>
+        <LBL>通知單編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>DCN</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>參考編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>REFERENCE_NO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>LBL_BIZ_MSG_IDR</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>BIZ_MSG_IDR</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>發送方</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>SENDER</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>消息計時器頻率</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>SWIFT_MSG_TYPE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>與消息相關</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="S" SELECTED="0">供應商名稱</OPTION>
+        <OPTION VALUE="C" SELECTED="0">罰金基準</OPTION>
+        <OPTION VALUE="R" SELECTED="0">已再次打開</OPTION>
+        <OPTION VALUE="N" SELECTED="0">需要小額貸記</OPTION>
+        <OPTION VALUE="U" SELECTED="0">穆迪</OPTION>
+        <OPTION VALUE="Q" SELECTED="0">移動類型</OPTION>
+        <OPTION VALUE="E" SELECTED="0">LBL_MOV_TO_PE_Q</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>母合同</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="U" SELECTED="0">未處理</OPTION>
+        <OPTION VALUE="P" SELECTED="0">處理</OPTION>
+        <OPTION VALUE="R" SELECTED="0">已再次打開</OPTION>
+        <OPTION VALUE="X" SELECTED="0">異常原因</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PROCESS_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>網路貨幣首選項摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>網絡代碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>NETWORK_TYPE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>交易</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="I" SELECTED="0">Incoming</OPTION>
+        <OPTION VALUE="O" SELECTED="0">Outgoing</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>PAYMENT_TXN_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>結算欄位和模組自訂項</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>36</MAXLENGTH>
+        <NAME>UETR</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>問題說明</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>QUEUE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>授權狀態</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">授權</OPTION>
+        <OPTION VALUE="U" SELECTED="0">S820型</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>消息詳細資訊事實</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>MESSAGE_FORMAT</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>分行</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BRANCH</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <REQD>-1</REQD>
+        <LBL>通知單編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>DCN</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>參考編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>REFERENCE_NO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>LBL_BIZ_MSG_IDR</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>BIZ_MSG_IDR</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>發送方</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>SENDER</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>接收方</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>RECEIVER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>消息計時器頻率</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>SWIFT_MSG_TYPE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>與消息相關</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="S" SELECTED="0">供應商名稱</OPTION>
+        <OPTION VALUE="C" SELECTED="0">罰金基準</OPTION>
+        <OPTION VALUE="R" SELECTED="0">已再次打開</OPTION>
+        <OPTION VALUE="N" SELECTED="0">需要小額貸記</OPTION>
+        <OPTION VALUE="U" SELECTED="0">穆迪</OPTION>
+        <OPTION VALUE="Q" SELECTED="0">移動類型</OPTION>
+        <OPTION VALUE="E" SELECTED="0">LBL_MOV_TO_PE_Q</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>母合同</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="U" SELECTED="0">未處理</OPTION>
+        <OPTION VALUE="P" SELECTED="0">處理</OPTION>
+        <OPTION VALUE="R" SELECTED="0">已再次打開</OPTION>
+        <OPTION VALUE="X" SELECTED="0">異常原因</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PROCESS_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>網路貨幣首選項摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>網絡代碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>NETWORK_TYPE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>交易</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="I" SELECTED="0">Incoming</OPTION>
+        <OPTION VALUE="O" SELECTED="0">Outgoing</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>PAYMENT_TXN_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>幣種</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>CCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>費用金額</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>AMOUNT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>自訂定期指令的分支貨幣</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>BRANCH_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LBL>消息參考編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>25</MAXLENGTH>
+        <NAME>MESSAGE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LBL>生成日期</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>GENERATED_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LBL>外部參考號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>EXTERNAL_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>開始多幣種帳號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>MULTI_CREDIT_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <LBL>結算欄位和模組自訂項</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>36</MAXLENGTH>
+        <NAME>UETR</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LBL>覆核確認</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>REPAIR_REASON</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <LBL>問題說明</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>QUEUE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="23">
+        <LBL>PDE 存檔期間</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PDE_FLAG</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="24">
+        <LBL>gpi 接收方費用</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>GPI_SERVICE_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="25">
+        <LBL>具有將來起息日的 RTGS</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>RTGS_NETWORK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="26">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>正在運行批次</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>RUNNING_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="27">
+        <LBL>備註</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>4000</MAXLENGTH>
+        <NAME>REMARKS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="28">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>序號</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>SERIAL_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="29">
+        <LBL>測試幣種</LBL>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TESTING_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="30">
+        <LBL>列印選項</LBL>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PRINT_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="31">
+        <LBL>錯誤代碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>255</MAXLENGTH>
+        <NAME>REPAIR_REASON_PARAMS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="32">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>最新版本號</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>LATEST_VERSION_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="33">
+        <LBL>拒絕消息</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>4000</MAXLENGTH>
+        <NAME>REJECT_REASON</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="34">
+        <LBL>資金說明</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>FORCE_RELEASE_FUND</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="35">
+        <LBL>被指示的代理</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>INSTR_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="36">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>金融工具編號</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>INSTR_AMOUNT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="37">
+        <LBL>SWIFT GPI 定價代碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>64</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>SWIFT_LAU</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="38">
+        <LBL>需要 SWIFT LAU</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>64</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>LAU_VALIDATION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="39">
+        <LBL>內部黑名單檢查</LBL>
+        <OPTION VALUE="Y" SELECTED="0">年數</OPTION>
+        <OPTION VALUE="N" SELECTED="0">不設網</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>INTER_BRANCH</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="40">
+        <LBL>請求的詳細資訊</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>REQ_EXEC_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="41">
+        <LBL>權責發生制控制報表</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>MCS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="42">
+        <LBL>節點</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>NODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="43">
+        <LBL>通訊方式</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>MEDIA</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="44">
+        <LBL>姓名</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>NAME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="45">
+        <LBL>地址 1</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>ADDRESS1</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="46">
+        <LBL>地址 2</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>ADDRESS2</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="47">
+        <LBL>地址 3</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>ADDRESS3</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="48">
+        <LBL>地址 4</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>ADDRESS4</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="49">
+        <LBL>貸款年份</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>LOCATION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="50">
+        <LBL>已生成測試關鍵字</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>TESTWORD</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="51">
+        <LBL>授權狀態</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">授權</OPTION>
+        <OPTION VALUE="U" SELECTED="0">S820型</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="52">
+        <LBL>支付至</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="R" SELECTED="0">反轉欄位</OPTION>
+        <OPTION VALUE="X" SELECTED="0">債權銀行4</OPTION>
+        <OPTION VALUE="W" SELECTED="0">費德維爾</OPTION>
+        <OPTION VALUE="B" SELECTED="0">獎金至現金</OPTION>
+        <OPTION VALUE="A" SELECTED="0">ACH</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="53">
+        <LBL>LBL_PAYMENT_TXN_TYPE_VW</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>PAYMENT_TXN_TYPE_VW</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="54">
+        <LBL>LBL_PAYMENT_TYPE_VW</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TYPE_VW</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="55">
+        <LBL>LBL_PROCESS_STATUS_VW</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PROCESS_STATUS_VW</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="56">
+        <LBL>SWIFT 報文類型</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>SWIFT_MX_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="57">
+        <LBL>消息詳細資訊事實</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>MESSAGE_FORMAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="58">
+        <LBL>去味精</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>MSG_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="59">
+        <LBL>最小速率符號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>28</MAXLENGTH>
+        <NAME>MIR</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="60">
+        <LBL>狀態計數</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>STATUS_DESCR</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="S">供應商名稱</OPTION>
+        <OPTION VALUE="C">罰金基準</OPTION>
+        <OPTION VALUE="R">已再次打開</OPTION>
+        <OPTION VALUE="N">需要小額貸記</OPTION>
+        <OPTION VALUE="U">穆迪</OPTION>
+        <OPTION VALUE="Q">移動類型</OPTION>
+        <OPTION VALUE="E">LBL_MOV_TO_PE_Q</OPTION>
+        <FIELD_NAME>STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="U">未處理</OPTION>
+        <OPTION VALUE="P">處理</OPTION>
+        <OPTION VALUE="R">已再次打開</OPTION>
+        <OPTION VALUE="X">異常原因</OPTION>
+        <FIELD_NAME>PROCESS_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="I">Incoming</OPTION>
+        <OPTION VALUE="O">Outgoing</OPTION>
+        <FIELD_NAME>PAYMENT_TXN_TYPE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="Y">年數</OPTION>
+        <OPTION VALUE="N">不設網</OPTION>
+        <FIELD_NAME>INTER_BRANCH</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">授權</OPTION>
+        <OPTION VALUE="U">S820型</OPTION>
+        <FIELD_NAME>AUTH_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="R">反轉欄位</OPTION>
+        <OPTION VALUE="X">債權銀行4</OPTION>
+        <OPTION VALUE="W">費德維爾</OPTION>
+        <OPTION VALUE="B">獎金至現金</OPTION>
+        <OPTION VALUE="A">ACH</OPTION>
+        <FIELD_NAME>PAYMENT_TYPE</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>B</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="L">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_1">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>DCN</NAME>
+                <CASE>UPPER</CASE>
+                <LBL>通知單編號</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>REFERENCE_NO</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_REFERENCE</NAME>
+                </LOV>
+                <LBL>參考編號</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>發送方</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>SENDER</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>MEDIA</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_MEDIA</NAME>
+                </LOV>
+                <LBL>通訊方式</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>SWIFT_MSG_TYPE</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_SWIFT_MSG_TYPE</NAME>
+                </LOV>
+                <LBL>消息計時器頻率</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>10</MAXLENGTH>
+                <NAME>QUEUE</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_QUEUE</NAME>
+                </LOV>
+                <LBL>問題說明</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>與消息相關</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="S" SELECTED="0">供應商名稱</OPTION>
+                <OPTION VALUE="C" SELECTED="0">罰金基準</OPTION>
+                <OPTION VALUE="R" SELECTED="0">已再次打開</OPTION>
+                <OPTION VALUE="N" SELECTED="0">需要小額貸記</OPTION>
+                <OPTION VALUE="U" SELECTED="0">穆迪</OPTION>
+                <OPTION VALUE="Q" SELECTED="0">移動類型</OPTION>
+                <OPTION VALUE="E" SELECTED="0">LBL_MOV_TO_PE_Q</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>幣種</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CCY</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>AMOUNT</NAME>
+                <LBL>費用金額</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>到期餘額</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>VALUE_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>外部參考號</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>EXTERNAL_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>開始多幣種帳號</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>MULTI_CREDIT_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="3" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRANCH</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_BRANCH</NAME>
+                </LOV>
+                <LBL>分行</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="3">
+                <LBL>權責發生制控制報表</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>MCS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="3">
+                <LBL>節點</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>NODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="3">
+                <LBL>已生成測試關鍵字</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>TESTWORD</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="3">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>覆核確認</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>覆核確認</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>REPAIR_REASON</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>請求的詳細資訊</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>REQ_EXEC_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="3" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>REPAIR_REASON_DESC</NAME>
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>錯誤代碼</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>錯誤代碼</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>結算欄位和模組自訂項</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>36</MAXLENGTH>
+                <NAME>UETR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="3">
+                <LBL>gpi 接收方費用</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>GPI_SERVICE_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>LBL_BIZ_MSG_IDR</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>BIZ_MSG_IDR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>網絡代碼</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>NETWORK_TYPE_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PMVWS_PMDINBRS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>3</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_2">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>操作</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="F" SELECTED="0">FM參考號</OPTION>
+                <OPTION VALUE="C" SELECTED="0">更改授權人使用者Id/密碼</OPTION>
+                <OPTION VALUE="T" SELECTED="0">定期存款追加</OPTION>
+                <OPTION VALUE="A" SELECTED="0">更改地址</OPTION>
+                <OPTION VALUE="Q" SELECTED="0">移動付款計畫</OPTION>
+                <OPTION VALUE="L" SELECTED="0">連杆類型</OPTION>
+                <OPTION VALUE="E" SELECTED="0">編輯</OPTION>
+                <OPTION VALUE="AU" SELECTED="0">自動生成起息日不匹配分錄</OPTION>
+                <OPTION VALUE="U" SELECTED="0">上傳說明</OPTION>
+                <OPTION VALUE="S" SELECTED="0">停止發送</OPTION>
+                <OPTION VALUE="V" SELECTED="0">查看合同</OPTION>
+                <OPTION VALUE="VD" SELECTED="0">查看歷史記錄</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>TXT_OPERATION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PMVWS_PMDINBRS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_3" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_3">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>姓名</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>NAME</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址 1</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>ADDRESS1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址 2</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>ADDRESS2</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址 3</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>ADDRESS3</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址 4</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>ADDRESS4</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>貸款年份</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>LOCATION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PMVWS_PMDINBRS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50"></PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_4" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_4">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>母合同</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="U" SELECTED="0">未處理</OPTION>
+                <OPTION VALUE="P" SELECTED="0">處理</OPTION>
+                <OPTION VALUE="R" SELECTED="0">已再次打開</OPTION>
+                <OPTION VALUE="X" SELECTED="0">異常原因</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PROCESS_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>PDE 存檔期間</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PDE_FLAG</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PMVWS_PMDINBRS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="66">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_5">
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>備註</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>備註</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <NAME>REMARKS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="N" SELECTED="0">已成功上載</OPTION>
+                <OPTION VALUE="F" SELECTED="0">監管人</OPTION>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SUPPRESS_MESSAGE</NAME>
+                <LBL>監管人標識</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>停止通知單</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PMVWS_PMDINBRS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_5" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_6">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>強制解除</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>FORCE_COVER_MATCH</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>需要頭寸</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>FORCE_COVER_DESCR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="3">
+                <LBL>禁止生成消息</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SUPPRESS_DESCR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="3">
+                <LBL>資金說明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>FORCE_RELEASE_FUND</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="Y" SPRT="3" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>TXT_AUTH_STAT</NAME>
+                <LBL>授權規則</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PMVWS_PMDINBRS</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>3</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="Dispatch File Browser" TMP_SCR_TYPE="L">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS>1</BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fnGenerate()</BUTTON_EVENT>
+        <BUTTON_LBL>处理文件</BUTTON_LBL>
+        <BUTTON_NAME>RETRY</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fn_Message(event)</BUTTON_EVENT>
+        <BUTTON_LBL>查看文件</BUTTON_LBL>
+        <BUTTON_NAME>BTN_MESSAGE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="3">
+        <BUTTON_EVENT>fnQueueAction()</BUTTON_EVENT>
+        <BUTTON_LBL>查看队列操作</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_QUE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="4">
+        <BUTTON_EVENT>fnAccountingEntries()</BUTTON_EVENT>
+        <BUTTON_LBL>查看会计分录</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_ACCOUNTING</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="5">
+        <BUTTON_EVENT>fnVwValidationFile()</BUTTON_EVENT>
+        <BUTTON_LBL>查看验证文件</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VW_VALD_FILE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW>1</BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_DISP_MSG_BRWSR</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>文件参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>FILE_REF_NO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>网络代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>文件类型</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>FILE_TYPE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>文件状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="S" SELECTED="0">成功</OPTION>
+        <OPTION VALUE="E" SELECTED="0">错误</OPTION>
+        <OPTION VALUE="P" SELECTED="0">等待</OPTION>
+        <OPTION VALUE="H" SELECTED="0">已移交</OPTION>
+        <OPTION VALUE="A" SELECTED="0">已过账</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>HANDOFF_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>发送类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">批模式</OPTION>
+        <OPTION VALUE="N" SELECTED="0">批量模式</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>BATCH_PROCESSING</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>队列操作</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="GEN" SELECTED="0">生成</OPTION>
+        <OPTION VALUE="REGEN" SELECTED="0">重新生成</OPTION>
+        <OPTION VALUE="REJECT" SELECTED="0">拒绝</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>QUEUE_ACTION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>授权状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">已授权</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授权</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>发送日期</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>CREATION_DT_TIME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>网络状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="R" SELECTED="0">已拒绝</OPTION>
+        <OPTION VALUE="P" SELECTED="0">部分有效</OPTION>
+        <OPTION VALUE="A" SELECTED="0">已接受</OPTION>
+        <OPTION VALUE="N" SELECTED="0">等待</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>NETWORK_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>文件名</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>100</MAXLENGTH>
+        <NAME>FILE_NAME</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>队列参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>发送参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>DISP_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>上一个 ICF 文件参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>OLD_FILE_REF_NO</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>文件参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>FILE_REF_NO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>网络代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>文件类型</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>FILE_TYPE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>报文类型</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>MSG_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>文件状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="S" SELECTED="0">成功</OPTION>
+        <OPTION VALUE="E" SELECTED="0">错误</OPTION>
+        <OPTION VALUE="P" SELECTED="0">等待</OPTION>
+        <OPTION VALUE="H" SELECTED="0">已移交</OPTION>
+        <OPTION VALUE="A" SELECTED="0">已过账</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>HANDOFF_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>发送类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">批模式</OPTION>
+        <OPTION VALUE="N" SELECTED="0">批量模式</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>BATCH_PROCESSING</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>队列操作</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="GEN" SELECTED="0">生成</OPTION>
+        <OPTION VALUE="REGEN" SELECTED="0">重新生成</OPTION>
+        <OPTION VALUE="REJECT" SELECTED="0">拒绝</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>QUEUE_ACTION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>授权状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">已授权</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授权</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>发送日期</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>CREATION_DT_TIME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>发送时间</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>CREATION_TIME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>网络状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="R" SELECTED="0">已拒绝</OPTION>
+        <OPTION VALUE="P" SELECTED="0">部分有效</OPTION>
+        <OPTION VALUE="A" SELECTED="0">已接受</OPTION>
+        <OPTION VALUE="N" SELECTED="0">等待</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>NETWORK_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>网络拒绝代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>REJECT_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>文件名</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>100</MAXLENGTH>
+        <NAME>FILE_NAME</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>交易总数</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TOTAL_TXN_CNT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>结算金额合计</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TOTAL_SETLMNT_AMNT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>贷记/借记转账批量</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>CR_TRANSFER_BLK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>批量收回拒绝</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>RCL_REF_BLK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>批量收回请求</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>RCL_REQ_BLK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>批量退回</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>38</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>RET_BLK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>批量冲正</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>REV_BLK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LBL>错误说明</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2000</MAXLENGTH>
+        <NAME>ERROR_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>队列参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="23">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>发送参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>DISP_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="24">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>上一个 ICF 文件参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>OLD_FILE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="25">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>批量非接收查询</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>INQUIRY_BLK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="26">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>批量查询响应</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>INQ_RESP_BLK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="27">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>批量付款状态</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>STATUS_BLK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="28">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>批量起息日查询</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>VD_INQ_BLK</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="S">成功</OPTION>
+        <OPTION VALUE="E">错误</OPTION>
+        <OPTION VALUE="P">等待</OPTION>
+        <OPTION VALUE="H">已移交</OPTION>
+        <OPTION VALUE="A">已过账</OPTION>
+        <FIELD_NAME>HANDOFF_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="Y">批模式</OPTION>
+        <OPTION VALUE="N">批量模式</OPTION>
+        <FIELD_NAME>BATCH_PROCESSING</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="GEN">生成</OPTION>
+        <OPTION VALUE="REGEN">重新生成</OPTION>
+        <OPTION VALUE="REJECT">拒绝</OPTION>
+        <FIELD_NAME>QUEUE_ACTION</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <FIELD_NAME>AUTH_STAT</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="R">已拒绝</OPTION>
+        <OPTION VALUE="P">部分有效</OPTION>
+        <OPTION VALUE="A">已接受</OPTION>
+        <OPTION VALUE="N">等待</OPTION>
+        <FIELD_NAME>NETWORK_STATUS</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

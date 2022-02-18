@@ -1,0 +1,2381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_GLTMS_GLMASTER</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>总账代码</LBL>
+        <SIZE>26</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>GLCD</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>总账说明</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>GLDESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>父总账</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>PARENT_GL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>明细</LBL>
+        <OPTION COL="1" ROW="LBL_LEAF_GL">
+          <SELECTED>-1</SELECTED>
+          <LBL>明细科目</LBL>
+          <ID>Y</ID>
+          <VALUE>Y</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_TXTNODEGL">
+          <SELECTED>0</SELECTED>
+          <LBL>汇总科目</LBL>
+          <ID>N</ID>
+          <VALUE>N</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>LEAF</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>总账类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="1" SELECTED="0">往来账</OPTION>
+        <OPTION VALUE="2" SELECTED="0">其他借记</OPTION>
+        <OPTION VALUE="3" SELECTED="0">其他贷记</OPTION>
+        <OPTION VALUE="4" SELECTED="0">分行间</OPTION>
+        <OPTION VALUE="5" SELECTED="0">现金</OPTION>
+        <OPTION VALUE="6" SELECTED="0">正常</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>类别</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="1" SELECTED="0">资产</OPTION>
+        <OPTION VALUE="2" SELECTED="0">负债</OPTION>
+        <OPTION VALUE="3" SELECTED="0">收入</OPTION>
+        <OPTION VALUE="4" SELECTED="0">费用</OPTION>
+        <OPTION VALUE="5" SELECTED="0">或有资产</OPTION>
+        <OPTION VALUE="6" SELECTED="0">或有负债</OPTION>
+        <OPTION VALUE="7" SELECTED="0">备忘录</OPTION>
+        <OPTION VALUE="8" SELECTED="0">头寸</OPTION>
+        <OPTION VALUE="9" SELECTED="0">头寸等值</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CATEGORY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>LBL_ALT_GL_NO</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>ALT_GL_NO</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>总账代码</LBL>
+        <SIZE>26</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>GLCD</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>总账说明</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>GLDESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>父总账</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>PARENT_GL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>明细</LBL>
+        <OPTION COL="1" ROW="LBL_LEAF_GL">
+          <SELECTED>-1</SELECTED>
+          <LBL>明细科目</LBL>
+          <ID>Y</ID>
+          <VALUE>Y</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_TXTNODEGL">
+          <SELECTED>0</SELECTED>
+          <LBL>汇总科目</LBL>
+          <ID>N</ID>
+          <VALUE>N</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>LEAF</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>总账类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="1" SELECTED="0">往来账</OPTION>
+        <OPTION VALUE="2" SELECTED="0">其他借记</OPTION>
+        <OPTION VALUE="3" SELECTED="0">其他贷记</OPTION>
+        <OPTION VALUE="4" SELECTED="0">分行间</OPTION>
+        <OPTION VALUE="5" SELECTED="0">现金</OPTION>
+        <OPTION VALUE="6" SELECTED="0">正常</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>类别</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="1" SELECTED="0">资产</OPTION>
+        <OPTION VALUE="2" SELECTED="0">负债</OPTION>
+        <OPTION VALUE="3" SELECTED="0">收入</OPTION>
+        <OPTION VALUE="4" SELECTED="0">费用</OPTION>
+        <OPTION VALUE="5" SELECTED="0">或有资产</OPTION>
+        <OPTION VALUE="6" SELECTED="0">或有负债</OPTION>
+        <OPTION VALUE="7" SELECTED="0">备忘录</OPTION>
+        <OPTION VALUE="8" SELECTED="0">头寸</OPTION>
+        <OPTION VALUE="9" SELECTED="0">头寸等值</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CATEGORY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>币种限制</LBL>
+        <OPTION COL="1" ROW="LBL_SINGLE_CCY">
+          <SELECTED>0</SELECTED>
+          <LBL>单个币种</LBL>
+          <ID>S</ID>
+          <VALUE>S</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_ALL_FOREIGN_CCY">
+          <SELECTED>0</SELECTED>
+          <LBL>所有外币</LBL>
+          <ID>F</ID>
+          <VALUE>F</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_ALL_CURRENCIES">
+          <SELECTED>-1</SELECTED>
+          <LBL>所有币种</LBL>
+          <ID>A</ID>
+          <VALUE>A</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CCY_RES</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>币种</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>RES_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>客户账/内部账</LBL>
+        <OPTION COL="1" ROW="LBL_CUST_GL">
+          <SELECTED>0</SELECTED>
+          <LBL>客户总账</LBL>
+          <ID>C</ID>
+          <VALUE>C</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_GL_INTERNAL">
+          <SELECTED>-1</SELECTED>
+          <LBL>内部账</LBL>
+          <ID>I</ID>
+          <VALUE>I</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CUSTOMER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>分行限制</LBL>
+        <OPTION COL="1" ROW="LBL_HEAD_OFFICE_GL">
+          <SELECTED>0</SELECTED>
+          <LBL>总行总账</LBL>
+          <ID>H</ID>
+          <VALUE>H</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_BRANCH_GL">
+          <SELECTED>0</SELECTED>
+          <LBL>分行总账</LBL>
+          <ID>B</ID>
+          <VALUE>B</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_BOTH">
+          <SELECTED>-1</SELECTED>
+          <LBL>两者</LBL>
+          <ID>A</ID>
+          <VALUE>A</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>HO_RES</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>重估</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>CHECKBOX</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>REVAL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>利润账户</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>9</MAXLENGTH>
+        <NAME>PROFIT_ACC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>亏损账户</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>9</MAXLENGTH>
+        <NAME>LOSS_ACC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LBL>已冻结</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>CHECKBOX</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>BLOCK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LBL>分录限制</LBL>
+        <OPTION COL="1" ROW="LBL_DIRECT_POSTING">
+          <SELECTED>0</SELECTED>
+          <LBL>直接记账</LBL>
+          <ID>Y</ID>
+          <VALUE>Y</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_INDDIRECT_POST">
+          <SELECTED>0</SELECTED>
+          <LBL>间接记账</LBL>
+          <ID>N</ID>
+          <VALUE>N</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>POSTING_RES</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LBL>对账</LBL>
+        <OPTION COL="1" ROW="LBL_DI_RECON">
+          <SELECTED>-1</SELECTED>
+          <LBL>直接对账</LBL>
+          <ID>D</ID>
+          <VALUE>D</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_SPLIT_RECON">
+          <SELECTED>0</SELECTED>
+          <LBL>分拆对账</LBL>
+          <ID>S</ID>
+          <VALUE>S</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>RECON</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>需要核对头寸</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>CHECKBOX</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>FLG_POSITION_AC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <LBL>其他报表显示内容</LBL>
+        <OPTION COL="1" ROW="LBL_AST">
+          <SELECTED>-1</SELECTED>
+          <LBL>资产</LBL>
+          <ID>A</ID>
+          <VALUE>A</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_LIB">
+          <SELECTED>0</SELECTED>
+          <LBL>负债</LBL>
+          <ID>L</ID>
+          <VALUE>L</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_SEPARATE">
+          <SELECTED>0</SELECTED>
+          <LBL>分隔</LBL>
+          <ID>S</ID>
+          <VALUE>S</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CCY_POS_GL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LBL>需要报表</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>CHECKBOX</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>AC_STMT_REQUIRED</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <LBL>仅在有发生额时生成对账单</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>CHECKBOX</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>GEN_STMT_ONLY_ON_MVMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="23">
+        <LBL>LBL_ALT_GL_NO</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>ALT_GL_NO</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="Y">明细科目</OPTION>
+        <OPTION VALUE="N">汇总科目</OPTION>
+        <FIELD_NAME>LEAF</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="1">往来账</OPTION>
+        <OPTION VALUE="2">其他借记</OPTION>
+        <OPTION VALUE="3">其他贷记</OPTION>
+        <OPTION VALUE="4">分行间</OPTION>
+        <OPTION VALUE="5">现金</OPTION>
+        <OPTION VALUE="6">正常</OPTION>
+        <FIELD_NAME>TYPE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="1">资产</OPTION>
+        <OPTION VALUE="2">负债</OPTION>
+        <OPTION VALUE="3">收入</OPTION>
+        <OPTION VALUE="4">费用</OPTION>
+        <OPTION VALUE="5">或有资产</OPTION>
+        <OPTION VALUE="6">或有负债</OPTION>
+        <OPTION VALUE="7">备忘录</OPTION>
+        <OPTION VALUE="8">头寸</OPTION>
+        <OPTION VALUE="9">头寸等值</OPTION>
+        <FIELD_NAME>CATEGORY</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="S">单个币种</OPTION>
+        <OPTION VALUE="F">所有外币</OPTION>
+        <OPTION VALUE="A">所有币种</OPTION>
+        <FIELD_NAME>CCY_RES</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="C">客户总账</OPTION>
+        <OPTION VALUE="I">内部账</OPTION>
+        <FIELD_NAME>CUSTOMER</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="H">总行总账</OPTION>
+        <OPTION VALUE="B">分行总账</OPTION>
+        <OPTION VALUE="A">两者</OPTION>
+        <FIELD_NAME>HO_RES</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="Y">直接记账</OPTION>
+        <OPTION VALUE="N">间接记账</OPTION>
+        <FIELD_NAME>POSTING_RES</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="D">直接对账</OPTION>
+        <OPTION VALUE="S">分拆对账</OPTION>
+        <FIELD_NAME>RECON</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">资产</OPTION>
+        <OPTION VALUE="L">负债</OPTION>
+        <OPTION VALUE="S">分隔</OPTION>
+        <FIELD_NAME>CCY_POS_GL</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="会计科目表维护" TMP_SCR_TYPE="L">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_GL_HEADER">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="SEC_PART1" ID="SEC_PART1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HEAD_MASK">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>总账代码</LBL>
+                <SIZE>26</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>GLCD</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL></LBL>
+                <SIZE>26</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>GL_MASK</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_PART2" ID="SEC_PART2" WIDTH="33"></PART>
+          <PART NAME="SEC_PART3" ID="SEC_PART3" WIDTH="33"></PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="GL_HEAD_SEC_2_PART_1" ID="GL_HEAD_SEC_2_PART_1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HEAD_HEAD_DESC">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>总账说明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>GLDESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="GL_HEAD_SEC_2_PART_2" ID="GL_HEAD_SEC_2_PART_2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HEAD_EXTRNL">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>LBL_ALT_GL_NO</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>ALT_GL_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>外部代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>EXTERNAL_VALUE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>内部价值</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>INTERNAL_VALUE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="GL_HEAD_SEC_2_PART_3" ID="GL_HEAD_SEC_2_PART_3" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HEAD_LEAF">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>明细</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_LEAF_GL">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>明细科目</LBL>
+                  <ID>Y</ID>
+                  <VALUE>Y</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_TXTNODEGL">
+                  <SELECTED>0</SELECTED>
+                  <LBL>汇总科目</LBL>
+                  <ID>N</ID>
+                  <VALUE>N</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>Y</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>LEAF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>经办者</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>复核者</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>日期时间：</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>日期时间：</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>模式编号</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL></LBL>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="C">已关闭</OPTION>
+                <OPTION VALUE="O">打开</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>记录状态</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="A">已授权</OPTION>
+                <OPTION VALUE="R">已拒付</OPTION>
+                <OPTION VALUE="U">未授权</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>授权状态</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="S" SEQ="2" id="CVS_STATEMENT">
+        <SCREEN>CVS_STATEMENT</SCREEN>
+        <LBL>对账单</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="3" id="CVS_POSITION">
+        <SCREEN>CVS_POSITION</SCREEN>
+        <LBL>头寸科目维护</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="4" id="CVS_MIS">
+        <SCREEN>CVS_MIS</SCREEN>
+        <LBL>MIS 组关联</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="5" id="CVS_CLG_ACC">
+        <SCREEN>CVS_CLG_ACC</SCREEN>
+        <LBL>IBAN 账号</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="6" id="CVS_PARENT">
+        <SCREEN>CVS_PARENT</SCREEN>
+        <LBL>同级的其他科目</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="7" id="CVS_CHILD">
+        <SCREEN>CVS_CHILD</SCREEN>
+        <LBL>子总账</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="8" id="CSCFNUDF">
+        <SCREEN>CVS_UDF</SCREEN>
+        <LBL>字段</LBL>
+        <FUNCTION>CSCFNUDF</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_GL_DETAILS">
+        <LBL>总账详细信息</LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="SEC_1_PART_1" ID="SEC_1_PART_1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_1_PART_1">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>重估</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REVAL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>应计报表</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>IS_ACCRUAL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>需要平均余额</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AVG_BAL_REQD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_SUBSCREEN_BTN">
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CONTROL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_1_PART_2" ID="SEC_1_PART_2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_1_PART_2">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>客户账/内部账</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_CUST_GL">
+                  <SELECTED>0</SELECTED>
+                  <LBL>客户总账</LBL>
+                  <ID>C</ID>
+                  <VALUE>C</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_GL_INTERNAL">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>内部账</LBL>
+                  <ID>I</ID>
+                  <VALUE>I</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>I</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CUSTOMER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>总账类型</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="1" SELECTED="0">往来账</OPTION>
+                <OPTION VALUE="2" SELECTED="0">其他借记</OPTION>
+                <OPTION VALUE="3" SELECTED="0">其他贷记</OPTION>
+                <OPTION VALUE="4" SELECTED="0">分行间</OPTION>
+                <OPTION VALUE="5" SELECTED="0">现金</OPTION>
+                <OPTION VALUE="6" SELECTED="0">正常</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>类别</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="1" SELECTED="0">资产</OPTION>
+                <OPTION VALUE="2" SELECTED="0">负债</OPTION>
+                <OPTION VALUE="3" SELECTED="0">收入</OPTION>
+                <OPTION VALUE="4" SELECTED="0">费用</OPTION>
+                <OPTION VALUE="5" SELECTED="0">或有资产</OPTION>
+                <OPTION VALUE="6" SELECTED="0">或有负债</OPTION>
+                <OPTION VALUE="7" SELECTED="0">备忘录</OPTION>
+                <OPTION VALUE="8" SELECTED="0">头寸</OPTION>
+                <OPTION VALUE="9" SELECTED="0">头寸等值</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CATEGORY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_1_PART_3" ID="SEC_1_PART_3" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_1_PART_3">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>已冻结</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>BLOCK</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>MIS 重新分类的转账余额</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>BAL_TRFR_ON_MIS_RECLASS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>需要重估交割</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PL_SPLIT_REQD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="SEC_2_PART_1" ID="SEC_2_PART_1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_2_PART_1">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>日终重估外币分录（单个分录）</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ED_FCYRVL_SINGLEENTRY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>日终重估外币分录（分录配对）</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ED_FCYRVL_ENTRYPAIR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>日终重估外币冲正</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>EOD_FCYRVL_REVR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>重新按本币发布外币</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REPOST_FCY_ENTRIES</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_INTRA_DAY</NAME>
+                </LOV>
+                <LBL>日间分录账</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>INTRADAY_POSTING_GL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>损益重估详情</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_2_PART_2" ID="SEC_2_PART_2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_2_PART_2">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>需要核对头寸</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>FLG_POSITION_AC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>其他报表显示内容</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_AST">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>资产</LBL>
+                  <ID>A</ID>
+                  <VALUE>A</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_LIB">
+                  <SELECTED>0</SELECTED>
+                  <LBL>负债</LBL>
+                  <ID>L</ID>
+                  <VALUE>L</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_SEPARATE">
+                  <SELECTED>0</SELECTED>
+                  <LBL>分隔</LBL>
+                  <ID>S</ID>
+                  <VALUE>S</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>A</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CCY_POS_GL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>头寸会计详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_2_PART_3" ID="SEC_2_PART_3" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_2_PART_3">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>币种限制</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_SINGLE_CCY">
+                  <SELECTED>0</SELECTED>
+                  <LBL>单个币种</LBL>
+                  <ID>S</ID>
+                  <VALUE>S</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_ALL_FOREIGN_CCY">
+                  <SELECTED>0</SELECTED>
+                  <LBL>所有外币</LBL>
+                  <ID>F</ID>
+                  <VALUE>F</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_ALL_CURRENCIES">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>所有币种</LBL>
+                  <ID>A</ID>
+                  <VALUE>A</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>A</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CCY_RES</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>G</TYPE>
+                  <NAME>LOV_CURRENCY</NAME>
+                </LOV>
+                <LBL>币种</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>RES_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_3" COLLAPSE="N">
+          <PART NAME="SEC_3_PART_1" ID="SEC_3_PART_1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_3_PART_1">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>分行限制</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_HEAD_OFFICE_GL">
+                  <SELECTED>0</SELECTED>
+                  <LBL>总行总账</LBL>
+                  <ID>H</ID>
+                  <VALUE>H</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_BRANCH_GL">
+                  <SELECTED>0</SELECTED>
+                  <LBL>分行总账</LBL>
+                  <ID>B</ID>
+                  <VALUE>B</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_BOTH">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>两者</LBL>
+                  <ID>A</ID>
+                  <VALUE>A</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>A</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>HO_RES</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_3_PART_2" ID="SEC_3_PART_2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_3_PART_2">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>分录限制</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_DIRECT_POSTING">
+                  <SELECTED>0</SELECTED>
+                  <LBL>直接记账</LBL>
+                  <ID>Y</ID>
+                  <VALUE>Y</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_INDDIRECT_POST">
+                  <SELECTED>0</SELECTED>
+                  <LBL>间接记账</LBL>
+                  <ID>N</ID>
+                  <VALUE>N</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>POSTING_RES</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>允许倒起息录入</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ALLOW_BACK_PERIOD_ENTRY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_3_PART_3" ID="SEC_3_PART_3" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_3_PART_3">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>对账</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_DI_RECON">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>直接对账</LBL>
+                  <ID>D</ID>
+                  <VALUE>D</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_SPLIT_RECON">
+                  <SELECTED>0</SELECTED>
+                  <LBL>分拆对账</LBL>
+                  <ID>S</ID>
+                  <VALUE>S</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>D</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>RECON</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+      <TAB ID="TAB_GL_LINKAGES">
+        <LBL>总账关联</LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="SEC1_PART_1" ID="SEC1_PART_1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_LINK_PRV_YR_ADJ">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_PRV_YR_ADJ_GL</NAME>
+                </LOV>
+                <LBL>上年调整科目</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>PREV_YR_ADJ_GL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DESC_PRV_YR_ADJ_GL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>上年调整科目</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="SEC2_PART_1" ID="SEC2_PART_1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_LINK_PROFIT_LOSS">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_PROFIT_ACC</NAME>
+                </LOV>
+                <LBL>利润账户</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>9</MAXLENGTH>
+                <NAME>PROFIT_ACC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DESC_PROFIT_ACC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_LOSS_ACC</NAME>
+                </LOV>
+                <LBL>亏损账户</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>9</MAXLENGTH>
+                <NAME>LOSS_ACC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DESC_LOSS_ACC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>年终损益账户</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_3" COLLAPSE="N">
+          <PART NAME="SEC3_PART_1" ID="SEC3_PART_1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_LINK_PARENT_GL">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_PARENT_GL</NAME>
+                </LOV>
+                <LBL>父总账</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>PARENT_GL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>总账说明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DESC_PARENT_GL_DESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>类别</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DESC_PARENT_GL_CATEGORY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>父总账</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+      <TAB ID="TAB_GL_LINES">
+        <LBL>总账额度</LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="SEC1_PART1" ID="SEC1_PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_REPORT_LINE_CENTRAL">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CB_DR_LINE</NAME>
+                </LOV>
+                <LBL>借记额度</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CBANK_LINE_DR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DESC_CB_DR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CB_CR_LINE</NAME>
+                </LOV>
+                <LBL>信用额度</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CBANK_LINE_CR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>DESC_CB_CR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>央行报表科目</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="SEC2_PART1" ID="SEC2_PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_REPORT_LINE_HO">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_HO_DR_LINE</NAME>
+                </LOV>
+                <LBL>借记额度</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>HO_LINE_DR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DESC_HO_DR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_HO_CR_LINE</NAME>
+                </LOV>
+                <LBL>信用额度</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>HO_LINE_CR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>DESC_HO_CR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>总行报表科目</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_STATEMENT" POSITION="template" TITLE="对账单详细信息" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_ACC_ST_1" COLLAPSE="N">
+          <PART NAME="SEC_ACC_ST_1_PART1" ID="SEC_ACC_ST_1_PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_STAT_HEAD_1">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>AC_STMT_DAY</NAME>
+                <LBL>On</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>周期</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="A" SELECTED="0">每年</OPTION>
+                <OPTION VALUE="S" SELECTED="0">半年</OPTION>
+                <OPTION VALUE="Q" SELECTED="0">每季度</OPTION>
+                <OPTION VALUE="M" SELECTED="0">每月</OPTION>
+                <OPTION VALUE="F" SELECTED="0">每两周</OPTION>
+                <OPTION VALUE="W" SELECTED="0">每周</OPTION>
+                <OPTION VALUE="D" SELECTED="0">每日</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnselectCycle()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>AC_STMT_CYCLE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>类型</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_NONE">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>无</LBL>
+                  <ID>N</ID>
+                  <VALUE>N</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_SUMAMRY">
+                  <SELECTED>0</SELECTED>
+                  <LBL>汇总</LBL>
+                  <ID>S</ID>
+                  <VALUE>S</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_DET">
+                  <SELECTED>0</SELECTED>
+                  <LBL>详细信息</LBL>
+                  <ID>D</ID>
+                  <VALUE>D</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AC_STMT_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>账户对账单</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_ACC_ST_1_PART2" ID="SEC_ACC_ST_1_PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_STAT_HEAD_2">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>需要报表</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AC_STMT_REQUIRED</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>仅在有发生额时生成对账单</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>GEN_STMT_ONLY_ON_MVMT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_STATEMENT</NAME>
+                </LOV>
+                <LBL>媒介</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>MEDIA</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_ACC_ST_2" COLLAPSE="N">
+          <PART NAME="SEC_ACC_ST_2_PART1" ID="SEC_ACC_ST_2_PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_STAT_HEAD_SEC_2">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>ADDRESS1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址 1</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>ADDRESS2</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址 2</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>ADDRESS3</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址 3</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>ADDRESS4</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_ACC_ST_DET" COLLAPSE="N">
+          <PART NAME="SEC_ACC_ST_DET_PART1" ID="SEC_ACC_ST_DET_PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_STAT_DET_GRID">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>分行代码</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRANCH_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>总账代码</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>GL_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>日期</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>PREVIOUS_STATEMENT_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>币种代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CCY_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>PREVIOUS_STATEMENT_BALANCE</NAME>
+                <LBL>余额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>PREVIOUS_STATEMENT_NO</NAME>
+                <LBL>否</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>对账单详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ACC_STATEMENT</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+              <READ_ONLY>-1</READ_ONLY>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_POSITION" POSITION="template" TITLE="头寸科目维护" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_HEAD" COLLAPSE="N">
+          <PART NAME="SEC_HEAD_PART_1" ID="SEC_HEAD_PART_1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_POS_GL_HEAD">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>总账代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DIS_GL_POS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CONTROL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_POS_DET" COLLAPSE="N">
+          <PART NAME="SEC_POS_DET_PART_1" ID="SEC_POS_DET_PART_1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_POS_GL_DET">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>总账代码</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>GL_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_POS_CCY</NAME>
+                </LOV>
+                <LBL>币种</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CCY_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_POS_GL</NAME>
+                </LOV>
+                <LBL>头寸总账</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>POSITION_GL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_POS_EQ</NAME>
+                </LOV>
+                <LBL>头寸等值</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>POSITION_EQVGL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>头寸科目维护</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_POS_GL_MAINT</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_MIS" POSITION="template" TITLE="MIS 组关联" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_HEAD" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_MIS_HEAD">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>总账代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DIS_GL_MIS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CONTROL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_DET" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_MIS_GP_DET">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>总账代码</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>GL_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_MIS_GROUP</NAME>
+                </LOV>
+                <LBL>MIS 组</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>MIS_GROUP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>MIS Group Linkages</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_MIS_GROUP_LINK</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_CLG_ACC" POSITION="template" TITLE="其他信息" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_DET" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_IBAN_ACC_DET">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>总账账号</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>GL_AC_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>清算账号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>RESTRICTED_TEXT</TYPE>
+                <MAXLENGTH>32</MAXLENGTH>
+                <NAME>CLEARING_AC_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_IBAN_ADDINFO</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_DET_2" COLLAPSE="N">
+          <PART NAME="PART2" ID="PART2" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_IBAN_ACC_BANK_DET">
+              <FIELD INDEX="" CONTROL="Y">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_IBAN_BANK</NAME>
+                </LOV>
+                <LBL>银行代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>TXT_IBAN_BANK_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>账号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>TXT_IBAN_ACC_NUM</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CONTROL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_DET_3" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_IBAN_ACC_DET_2">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>填充</LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnPopulateIBAN()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_POPULATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>IBAN 账号</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>IBAN_AC_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_IBAN_ADDINFO</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_PARENT" POSITION="template" TITLE="同级的其他科目" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_DET" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_PARENT_GL_DET">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>总账代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>GL_CODE_E</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>总账说明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>GL_DESC_E</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>父总账</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>PARENT_GL_E</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>总账详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PARENT_GL</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+              <READ_ONLY>-1</READ_ONLY>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_CHILD" POSITION="template" TITLE="子总账" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_DET" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_CHILD_GL_DEET">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>总账代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>GL_CODE_F</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>总账说明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>GL_DESC_F</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>父总账</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>PARENT_GL_F</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>子总账</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CHILD_GL</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+              <READ_ONLY>-1</READ_ONLY>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

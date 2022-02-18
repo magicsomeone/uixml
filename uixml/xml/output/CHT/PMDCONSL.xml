@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS></BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fn_ViewBatchPayments()</BUTTON_EVENT>
+        <BUTTON_LBL>查看會計分錄</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VW_BATCH_PM</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fn_ViewQueueActionLog()</BUTTON_EVENT>
+        <BUTTON_LBL>查看 Pain002</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VW_Q_ACT_LOG</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW></BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_FILE_BATCH_CONSOLSUMMARY</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>批次處理標題</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>PMTINFID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>LBL_CONSOL_BATCH_REF</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>40</MAXLENGTH>
+        <NAME>FILE_CONSOL_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>處理分行</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>PROCESS_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>網路貨幣首選項摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>LBL_CONSOL_BATCH_STS</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="W" SELECTED="0">同月的上一/下一工作日</OPTION>
+        <OPTION VALUE="X" SELECTED="0">企業資源規劃</OPTION>
+        <OPTION VALUE="E" SELECTED="0">移動本金至未領</OPTION>
+        <OPTION VALUE="S" SELECTED="0">成功目錄</OPTION>
+        <OPTION VALUE="C" SELECTED="0">取消狀態標識</OPTION>
+        <OPTION VALUE="F" SELECTED="0">將來起息</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">段號</OPTION>
+        <OPTION VALUE="N" SELECTED="0">往來賬不匹配借記</OPTION>
+        <OPTION VALUE="M" SELECTED="0">移動至修復</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BATCH_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>僅異常</LBL>
+        <OPTION VALUE="##" SELECTED="0">處理截止佇列</OPTION>
+        <OPTION VALUE="AC" SELECTED="0">會計佇列</OPTION>
+        <OPTION VALUE="AL" SELECTED="0">手動拒絕</OPTION>
+        <OPTION VALUE="BO" SELECTED="0">使用小外匯</OPTION>
+        <OPTION VALUE="CR" SELECTED="0">清算相關</OPTION>
+        <OPTION VALUE="EA" SELECTED="0">EAC 幣種</OPTION>
+        <OPTION VALUE="EC" SELECTED="0">轉出佇列 JNDI 名稱</OPTION>
+        <OPTION VALUE="EE" SELECTED="0">CSU 處理佇列</OPTION>
+        <OPTION VALUE="EP" SELECTED="0">外部定價</OPTION>
+        <OPTION VALUE="ER" SELECTED="0">ECA 佇列</OPTION>
+        <OPTION VALUE="FV" SELECTED="0">未預約客戶自</OPTION>
+        <OPTION VALUE="NC" SELECTED="0">非必需</OPTION>
+        <OPTION VALUE="PC" SELECTED="0">主要銀行檢查佇列</OPTION>
+        <OPTION VALUE="PE" SELECTED="0">網路解析佇列</OPTION>
+        <OPTION VALUE="SC" SELECTED="0">批准檢查狀態</OPTION>
+        <OPTION VALUE="TR" SELECTED="0">SC 已拒絕</OPTION>
+        <OPTION VALUE="SI" SELECTED="0">SSI 標籤</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>QUEUE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>錯誤</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>800</MAXLENGTH>
+        <NAME>ERROR_CODE</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>批次處理標題</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>PMTINFID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>批次參考號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>40</MAXLENGTH>
+        <NAME>BATCH_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>LBL_CONSOL_BATCH_REF</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>40</MAXLENGTH>
+        <NAME>FILE_CONSOL_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>文件參考 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>40</MAXLENGTH>
+        <NAME>FILE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>處理分行</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>PROCESS_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>網路貨幣首選項摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>LBL_CONSOL_BATCH_STS</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="W" SELECTED="0">同月的上一/下一工作日</OPTION>
+        <OPTION VALUE="X" SELECTED="0">企業資源規劃</OPTION>
+        <OPTION VALUE="E" SELECTED="0">移動本金至未領</OPTION>
+        <OPTION VALUE="S" SELECTED="0">成功目錄</OPTION>
+        <OPTION VALUE="C" SELECTED="0">取消狀態標識</OPTION>
+        <OPTION VALUE="F" SELECTED="0">將來起息</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">段號</OPTION>
+        <OPTION VALUE="N" SELECTED="0">往來賬不匹配借記</OPTION>
+        <OPTION VALUE="M" SELECTED="0">移動至修復</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BATCH_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>僅異常</LBL>
+        <OPTION VALUE="##" SELECTED="0">處理截止佇列</OPTION>
+        <OPTION VALUE="AC" SELECTED="0">會計佇列</OPTION>
+        <OPTION VALUE="AL" SELECTED="0">手動拒絕</OPTION>
+        <OPTION VALUE="BO" SELECTED="0">使用小外匯</OPTION>
+        <OPTION VALUE="CR" SELECTED="0">清算相關</OPTION>
+        <OPTION VALUE="EA" SELECTED="0">EAC 幣種</OPTION>
+        <OPTION VALUE="EC" SELECTED="0">轉出佇列 JNDI 名稱</OPTION>
+        <OPTION VALUE="EE" SELECTED="0">CSU 處理佇列</OPTION>
+        <OPTION VALUE="EP" SELECTED="0">外部定價</OPTION>
+        <OPTION VALUE="ER" SELECTED="0">ECA 佇列</OPTION>
+        <OPTION VALUE="FV" SELECTED="0">未預約客戶自</OPTION>
+        <OPTION VALUE="NC" SELECTED="0">非必需</OPTION>
+        <OPTION VALUE="PC" SELECTED="0">主要銀行檢查佇列</OPTION>
+        <OPTION VALUE="PE" SELECTED="0">網路解析佇列</OPTION>
+        <OPTION VALUE="SC" SELECTED="0">批准檢查狀態</OPTION>
+        <OPTION VALUE="TR" SELECTED="0">SC 已拒絕</OPTION>
+        <OPTION VALUE="SI" SELECTED="0">SSI 標籤</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>QUEUE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>錯誤</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>800</MAXLENGTH>
+        <NAME>ERROR_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>錯誤序號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>255</MAXLENGTH>
+        <NAME>ERR_PARAM</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>LBL_FX_STATUS</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="S" SELECTED="0">子類型代碼</OPTION>
+        <OPTION VALUE="E" SELECTED="0">錯誤代碼</OPTION>
+        <OPTION VALUE="N" SELECTED="0">往來賬不匹配借記</OPTION>
+        <OPTION VALUE="T" SELECTED="0">SC 潛在搜索結果</OPTION>
+        <OPTION VALUE="R" SELECTED="0">拒絕</OPTION>
+        <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+        <OPTION VALUE="P" SELECTED="0">等待保險匹配</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>XCHG_RATE_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>重試選項</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">批准</OPTION>
+        <OPTION VALUE="O" SELECTED="0">總體情況</OPTION>
+        <OPTION VALUE="R" SELECTED="0">拒絕</OPTION>
+        <OPTION VALUE="T" SELECTED="0">SC 潛在搜索結果</OPTION>
+        <OPTION VALUE="E" SELECTED="0">錯誤代碼</OPTION>
+        <OPTION VALUE="P" SELECTED="0">等待保險匹配</OPTION>
+        <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+        <OPTION VALUE="N" SELECTED="0">未生成</OPTION>
+        <OPTION VALUE="O" SELECTED="0">臨時答覆</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>ECA_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>LBL_DEBIT_LQ_STATUS</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="S" SELECTED="0">子類型代碼</OPTION>
+        <OPTION VALUE="E" SELECTED="0">企業資源規劃</OPTION>
+        <OPTION VALUE="N" SELECTED="0">未生成</OPTION>
+        <OPTION VALUE="C" SELECTED="0">往來賬不匹配借記</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>DRLQ_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>貸記限額金額</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="S" SELECTED="0">子類型代碼</OPTION>
+        <OPTION VALUE="E" SELECTED="0">企業資源規劃</OPTION>
+        <OPTION VALUE="N" SELECTED="0">未生成</OPTION>
+        <OPTION VALUE="C" SELECTED="0">行詳細資訊</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CRLQ_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>LBL_AMNTT</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>DR_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LBL>LBL_CURRECY</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>DR_AC_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>通信類型</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>EXCH_RATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LBL>支付至</LBL>
+        <OPTION VALUE="Y" SELECTED="0">ACH CT公司</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>付款方式</LBL>
+        <OPTION VALUE="N" SELECTED="0">非交易性</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>PAYMENT_CATEGORY</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="W">同月的上一/下一工作日</OPTION>
+        <OPTION VALUE="X">企業資源規劃</OPTION>
+        <OPTION VALUE="E">移動本金至未領</OPTION>
+        <OPTION VALUE="S">成功目錄</OPTION>
+        <OPTION VALUE="C">取消狀態標識</OPTION>
+        <OPTION VALUE="F">將來起息</OPTION>
+        <OPTION VALUE="Z">段號</OPTION>
+        <OPTION VALUE="N">往來賬不匹配借記</OPTION>
+        <OPTION VALUE="M">移動至修復</OPTION>
+        <FIELD_NAME>BATCH_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="##">處理截止佇列</OPTION>
+        <OPTION VALUE="AC">會計佇列</OPTION>
+        <OPTION VALUE="AL">手動拒絕</OPTION>
+        <OPTION VALUE="BO">使用小外匯</OPTION>
+        <OPTION VALUE="CR">清算相關</OPTION>
+        <OPTION VALUE="EA">EAC 幣種</OPTION>
+        <OPTION VALUE="EC">轉出佇列 JNDI 名稱</OPTION>
+        <OPTION VALUE="EE">CSU 處理佇列</OPTION>
+        <OPTION VALUE="EP">外部定價</OPTION>
+        <OPTION VALUE="ER">ECA 佇列</OPTION>
+        <OPTION VALUE="FV">未預約客戶自</OPTION>
+        <OPTION VALUE="NC">非必需</OPTION>
+        <OPTION VALUE="PC">主要銀行檢查佇列</OPTION>
+        <OPTION VALUE="PE">網路解析佇列</OPTION>
+        <OPTION VALUE="SC">批准檢查狀態</OPTION>
+        <OPTION VALUE="TR">SC 已拒絕</OPTION>
+        <OPTION VALUE="SI">SSI 標籤</OPTION>
+        <FIELD_NAME>QUEUE_CODE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="S">子類型代碼</OPTION>
+        <OPTION VALUE="E">錯誤代碼</OPTION>
+        <OPTION VALUE="N">往來賬不匹配借記</OPTION>
+        <OPTION VALUE="T">SC 潛在搜索結果</OPTION>
+        <OPTION VALUE="R">拒絕</OPTION>
+        <OPTION VALUE="C">已取消</OPTION>
+        <OPTION VALUE="P">等待保險匹配</OPTION>
+        <FIELD_NAME>XCHG_RATE_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">批准</OPTION>
+        <OPTION VALUE="O">總體情況</OPTION>
+        <OPTION VALUE="R">拒絕</OPTION>
+        <OPTION VALUE="T">SC 潛在搜索結果</OPTION>
+        <OPTION VALUE="E">錯誤代碼</OPTION>
+        <OPTION VALUE="P">等待保險匹配</OPTION>
+        <OPTION VALUE="C">已取消</OPTION>
+        <OPTION VALUE="N">未生成</OPTION>
+        <OPTION VALUE="O">臨時答覆</OPTION>
+        <FIELD_NAME>ECA_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="S">子類型代碼</OPTION>
+        <OPTION VALUE="E">企業資源規劃</OPTION>
+        <OPTION VALUE="N">未生成</OPTION>
+        <OPTION VALUE="C">往來賬不匹配借記</OPTION>
+        <FIELD_NAME>DRLQ_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="S">子類型代碼</OPTION>
+        <OPTION VALUE="E">企業資源規劃</OPTION>
+        <OPTION VALUE="N">未生成</OPTION>
+        <OPTION VALUE="C">行詳細資訊</OPTION>
+        <FIELD_NAME>CRLQ_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="Y">ACH CT公司</OPTION>
+        <FIELD_NAME>PAYMENT_TYPE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="N">非交易性</OPTION>
+        <FIELD_NAME>PAYMENT_CATEGORY</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_1">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>批次參考號</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>40</MAXLENGTH>
+                <NAME>BATCH_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>LBL_CONSOL_BATCH_STS</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="W" SELECTED="0">同月的上一/下一工作日</OPTION>
+                <OPTION VALUE="X" SELECTED="0">企業資源規劃</OPTION>
+                <OPTION VALUE="E" SELECTED="0">移動本金至未領</OPTION>
+                <OPTION VALUE="S" SELECTED="0">成功目錄</OPTION>
+                <OPTION VALUE="C" SELECTED="0">取消狀態標識</OPTION>
+                <OPTION VALUE="F" SELECTED="0">將來起息</OPTION>
+                <OPTION VALUE="Z" SELECTED="0">段號</OPTION>
+                <OPTION VALUE="N" SELECTED="0">往來賬不匹配借記</OPTION>
+                <OPTION VALUE="M" SELECTED="0">移動至修復</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BATCH_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>LBL_CURRECY</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>DR_AC_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>DR_AMT</NAME>
+                <LBL>LBL_AMNTT</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>重試選項</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="A" SELECTED="0">批准</OPTION>
+                <OPTION VALUE="O" SELECTED="0">總體情況</OPTION>
+                <OPTION VALUE="R" SELECTED="0">拒絕</OPTION>
+                <OPTION VALUE="T" SELECTED="0">SC 潛在搜索結果</OPTION>
+                <OPTION VALUE="E" SELECTED="0">錯誤代碼</OPTION>
+                <OPTION VALUE="P" SELECTED="0">等待保險匹配</OPTION>
+                <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+                <OPTION VALUE="N" SELECTED="0">未生成</OPTION>
+                <OPTION VALUE="O" SELECTED="0">臨時答覆</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ECA_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>錯誤</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>800</MAXLENGTH>
+                <NAME>ERROR_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>錯誤序號</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>255</MAXLENGTH>
+                <NAME>ERR_PARAM</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>EXCH_RATE</NAME>
+                <LBL>通信類型</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>LBL_CONSOL_BATCH_REF</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>40</MAXLENGTH>
+                <NAME>FILE_CONSOL_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>網路貨幣首選項摘要</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>NETWORK_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>付款方式</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="N" SELECTED="0">非交易性</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>PAYMENT_CATEGORY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>支付至</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="Y" SELECTED="0">ACH CT公司</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PAYMENT_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>批次處理標題</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>PMTINFID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>處理分行</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>PROCESS_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>僅異常</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="##" SELECTED="0">處理截止佇列</OPTION>
+                <OPTION VALUE="AC" SELECTED="0">會計佇列</OPTION>
+                <OPTION VALUE="AL" SELECTED="0">手動拒絕</OPTION>
+                <OPTION VALUE="BO" SELECTED="0">使用小外匯</OPTION>
+                <OPTION VALUE="CR" SELECTED="0">清算相關</OPTION>
+                <OPTION VALUE="EA" SELECTED="0">EAC 幣種</OPTION>
+                <OPTION VALUE="EC" SELECTED="0">轉出佇列 JNDI 名稱</OPTION>
+                <OPTION VALUE="EE" SELECTED="0">CSU 處理佇列</OPTION>
+                <OPTION VALUE="EP" SELECTED="0">外部定價</OPTION>
+                <OPTION VALUE="ER" SELECTED="0">ECA 佇列</OPTION>
+                <OPTION VALUE="FV" SELECTED="0">未預約客戶自</OPTION>
+                <OPTION VALUE="NC" SELECTED="0">非必需</OPTION>
+                <OPTION VALUE="PC" SELECTED="0">主要銀行檢查佇列</OPTION>
+                <OPTION VALUE="PE" SELECTED="0">網路解析佇列</OPTION>
+                <OPTION VALUE="SC" SELECTED="0">批准檢查狀態</OPTION>
+                <OPTION VALUE="TR" SELECTED="0">SC 已拒絕</OPTION>
+                <OPTION VALUE="SI" SELECTED="0">SSI 標籤</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>QUEUE_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>貸記限額金額</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="S" SELECTED="0">子類型代碼</OPTION>
+                <OPTION VALUE="E" SELECTED="0">企業資源規劃</OPTION>
+                <OPTION VALUE="N" SELECTED="0">未生成</OPTION>
+                <OPTION VALUE="C" SELECTED="0">行詳細資訊</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CRLQ_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>LBL_DEBIT_LQ_STATUS</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="S" SELECTED="0">子類型代碼</OPTION>
+                <OPTION VALUE="E" SELECTED="0">企業資源規劃</OPTION>
+                <OPTION VALUE="N" SELECTED="0">未生成</OPTION>
+                <OPTION VALUE="C" SELECTED="0">往來賬不匹配借記</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>DRLQ_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>文件參考 ID</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>40</MAXLENGTH>
+                <NAME>FILE_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>LBL_FX_STATUS</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="S" SELECTED="0">子類型代碼</OPTION>
+                <OPTION VALUE="E" SELECTED="0">錯誤代碼</OPTION>
+                <OPTION VALUE="N" SELECTED="0">往來賬不匹配借記</OPTION>
+                <OPTION VALUE="T" SELECTED="0">SC 潛在搜索結果</OPTION>
+                <OPTION VALUE="R" SELECTED="0">拒絕</OPTION>
+                <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+                <OPTION VALUE="P" SELECTED="0">等待保險匹配</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>XCHG_RATE_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_FILE_BATCH_CONSOLSUMMARY</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

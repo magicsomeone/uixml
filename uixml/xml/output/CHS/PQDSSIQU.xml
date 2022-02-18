@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="L">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS></BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fn_Repair()</BUTTON_EVENT>
+        <BUTTON_LBL>维修</BUTTON_LBL>
+        <BUTTON_NAME>BTN_REPAIR</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fn_Approve()</BUTTON_EVENT>
+        <BUTTON_LBL>批准</BUTTON_LBL>
+        <BUTTON_NAME>BTN_APPROVE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="3">
+        <BUTTON_EVENT>fn_Cancel()</BUTTON_EVENT>
+        <BUTTON_LBL>取消</BUTTON_LBL>
+        <BUTTON_NAME>BTN_CANCEL</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="4">
+        <BUTTON_EVENT>fn_Authorize()</BUTTON_EVENT>
+        <BUTTON_LBL>授权</BUTTON_LBL>
+        <BUTTON_NAME>BTN_AUTHORIZE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="5">
+        <BUTTON_EVENT>fn_firstAuth()</BUTTON_EVENT>
+        <BUTTON_LBL>LBL_DUAL_VERIFY</BUTTON_LBL>
+        <BUTTON_NAME>FIRST AUTH</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="6">
+        <BUTTON_EVENT>fn_Delete()</BUTTON_EVENT>
+        <BUTTON_LBL>删除</BUTTON_LBL>
+        <BUTTON_NAME>BTN_DELETE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="7">
+        <BUTTON_EVENT>fn_reject()</BUTTON_EVENT>
+        <BUTTON_LBL>拒绝</BUTTON_LBL>
+        <BUTTON_NAME>REJECT</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="8">
+        <BUTTON_EVENT>fn_ViewQueueActionLog()</BUTTON_EVENT>
+        <BUTTON_LBL>查看队列操作</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEWACTIONLOG</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="9">
+        <BUTTON_EVENT>fn_ViewTransactions()</BUTTON_EVENT>
+        <BUTTON_LBL>查看交易</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEWCONTRACTDETAILS</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW></BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_SSI_QUEUE</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>队列参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUEREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>交易参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXNREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>SSI 标签</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>SSILABEL</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>队列状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">已批准</OPTION>
+        <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+        <OPTION VALUE="P" SELECTED="0">等待</OPTION>
+        <OPTION VALUE="R" SELECTED="0">修改完成</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>CURRENTSTATUS</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>交易类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="O" SELECTED="0">转出</OPTION>
+        <OPTION VALUE="I" SELECTED="0">转入</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>PAYMENT_TXN_TYPE_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>付款类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">LBL_SEPCT</OPTION>
+        <OPTION VALUE="B" SELECTED="0">账簿</OPTION>
+        <OPTION VALUE="F" SELECTED="0">快速付款</OPTION>
+        <OPTION VALUE="N" SELECTED="0">US NACHA</OPTION>
+        <OPTION VALUE="R" SELECTED="0">RTGS</OPTION>
+        <OPTION VALUE="X" SELECTED="0">跨境</OPTION>
+        <OPTION VALUE="T" SELECTED="0">印度 NEFT</OPTION>
+        <OPTION VALUE="L" SELECTED="0">印度 RTGS</OPTION>
+        <OPTION VALUE="W" SELECTED="0">Fedwire</OPTION>
+        <OPTION VALUE="Y" SELECTED="0">LBL_ACHCT</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">LBL_ACHDD</OPTION>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TYPE_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>授权状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">已授权</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授权</OPTION>
+        <OPTION VALUE="R" SELECTED="0">已拒绝</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>网络代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORKCODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>交易分行</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXNBRANCH</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>转账币种</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TRANSFERCCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>文件参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>FILEREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>错误代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>255</MAXLENGTH>
+        <NAME>ERRCODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>转账金额</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>TRANSFERCCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TRANSFERAMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>客户编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTOMERNO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>来源参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>SOURCE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LBL>验证状态</LBL>
+        <OPTION VALUE="N" SELECTED="0">不需要</OPTION>
+        <OPTION VALUE="A" SELECTED="0">已授权</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授权</OPTION>
+        <OPTION VALUE="R" SELECTED="0">已拒绝</OPTION>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>VERIFICATION_STAT1</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_TYPE_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>网络类型代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>NETWORK_TYPE_CODE</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>队列参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUEREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>交易参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXNREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>SSI 标签</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>SSILABEL</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>队列状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">已批准</OPTION>
+        <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+        <OPTION VALUE="P" SELECTED="0">等待</OPTION>
+        <OPTION VALUE="R" SELECTED="0">修改完成</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>CURRENTSTATUS</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>交易类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="O" SELECTED="0">转出</OPTION>
+        <OPTION VALUE="I" SELECTED="0">转入</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>PAYMENT_TXN_TYPE_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>付款类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">LBL_SEPCT</OPTION>
+        <OPTION VALUE="B" SELECTED="0">账簿</OPTION>
+        <OPTION VALUE="F" SELECTED="0">快速付款</OPTION>
+        <OPTION VALUE="N" SELECTED="0">US NACHA</OPTION>
+        <OPTION VALUE="R" SELECTED="0">RTGS</OPTION>
+        <OPTION VALUE="X" SELECTED="0">跨境</OPTION>
+        <OPTION VALUE="T" SELECTED="0">印度 NEFT</OPTION>
+        <OPTION VALUE="L" SELECTED="0">印度 RTGS</OPTION>
+        <OPTION VALUE="W" SELECTED="0">Fedwire</OPTION>
+        <OPTION VALUE="Y" SELECTED="0">LBL_ACHCT</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">LBL_ACHDD</OPTION>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TYPE_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>交易类型</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>PAYMENTTXNTYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>付款类型</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENTTYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>授权状态</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>授权状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">已授权</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授权</OPTION>
+        <OPTION VALUE="R" SELECTED="0">已拒绝</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>网络代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORKCODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>交易分行</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXNBRANCH</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>转账币种</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TRANSFERCCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>文件参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>FILEREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>错误代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>255</MAXLENGTH>
+        <NAME>ERRCODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>转账金额</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>TRANSFERCCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TRANSFERAMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LBL>客户服务模型</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CUSTOMERSERVICEMODEL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LBL>客户编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTOMERNO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>修改原因</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>600</MAXLENGTH>
+        <NAME>REPAIRREASON</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <LBL>激活日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>ACTIVATIONDATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LBL>来源代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>SOURCE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <LBL>队列操作</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>QUEUEACTION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="23">
+        <LBL>来源参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>SOURCE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="24">
+        <LBL>截止时间</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>CUTOFF_TIME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="25">
+        <LBL>交易存档日期</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>TXN_ARCH_DT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="26">
+        <LBL>验证状态</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>VERIFICATION_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="27">
+        <LBL>验证状态</LBL>
+        <OPTION VALUE="N" SELECTED="0">不需要</OPTION>
+        <OPTION VALUE="A" SELECTED="0">已授权</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授权</OPTION>
+        <OPTION VALUE="R" SELECTED="0">已拒绝</OPTION>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>VERIFICATION_STAT1</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="28">
+        <LBL>LBL_VERIFIER_ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>VERIFIER_ID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="29">
+        <LBL>审核人日期戳记</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>VERIFIER_DT_STAMP</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="30">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_TYPE_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>网络类型代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>NETWORK_TYPE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="31">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>处理类型</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>PROCESS_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="32">
+        <LBL>转账类型</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TRANSFER_TYPE</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">已批准</OPTION>
+        <OPTION VALUE="C">已取消</OPTION>
+        <OPTION VALUE="P">等待</OPTION>
+        <OPTION VALUE="R">修改完成</OPTION>
+        <FIELD_NAME>CURRENTSTATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="O">转出</OPTION>
+        <OPTION VALUE="I">转入</OPTION>
+        <FIELD_NAME>PAYMENT_TXN_TYPE_DESC</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">LBL_SEPCT</OPTION>
+        <OPTION VALUE="B">账簿</OPTION>
+        <OPTION VALUE="F">快速付款</OPTION>
+        <OPTION VALUE="N">US NACHA</OPTION>
+        <OPTION VALUE="R">RTGS</OPTION>
+        <OPTION VALUE="X">跨境</OPTION>
+        <OPTION VALUE="T">印度 NEFT</OPTION>
+        <OPTION VALUE="L">印度 RTGS</OPTION>
+        <OPTION VALUE="W">Fedwire</OPTION>
+        <OPTION VALUE="Y">LBL_ACHCT</OPTION>
+        <OPTION VALUE="Z">LBL_ACHDD</OPTION>
+        <FIELD_NAME>PAYMENT_TYPE_DESC</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒绝</OPTION>
+        <FIELD_NAME>AUTH_STAT_DESC</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="N">不需要</OPTION>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒绝</OPTION>
+        <FIELD_NAME>VERIFICATION_STAT1</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

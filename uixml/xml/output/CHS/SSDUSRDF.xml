@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="汇总" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE/>
+    <SUMMARY_DATA_BLK>BLK_STVW_SSTB_USER</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒绝</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">正常开放</OPTION>
+        <OPTION VALUE="C">关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>用户 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>RESTRICTED_TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>USER_ID</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>用户名</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>USER_NAME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>电子邮件</LBL>
+        <SIZE>35</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>50</MAXLENGTH>
+        <NAME>USER_EMAIL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>LDAP DN模板</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>500</MAXLENGTH>
+        <NAME>LDAP_USER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <REQD>-1</REQD>
+        <LBL>主页实体</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>50</MAXLENGTH>
+        <NAME>HOME_ENTITY</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒绝</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">正常开放</OPTION>
+        <OPTION VALUE="C">关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>用户 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>RESTRICTED_TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>USER_ID</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>用户名</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>USER_NAME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>电子邮件</LBL>
+        <SIZE>35</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>50</MAXLENGTH>
+        <NAME>USER_EMAIL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>LDAP DN模板</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>500</MAXLENGTH>
+        <NAME>LDAP_USER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>密码更改日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>PWD_CHANGED_ON</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <MAX_VAL/>
+        <HIDDEN>-1</HIDDEN>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>FORCE_PASSWD_CHANGE</NAME>
+        <LBL>强制更改密码</LBL>
+        <CUSTOM>
+          <OFF>2</OFF>
+          <ON>1</ON>
+        </CUSTOM>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MIN_VAL/>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <REQD>-1</REQD>
+        <LBL>主页实体</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>50</MAXLENGTH>
+        <NAME>HOME_ENTITY</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="L">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL/>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL/>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS/>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>经办者</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>复核者</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS/>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>日期时间：</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>日期时间：</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>修改编号</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS/>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL/>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"/>
+                <OPTION VALUE="C">关闭</OPTION>
+                <OPTION VALUE="O">正常开放</OPTION>
+                <COLS/>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>记录状态</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"/>
+                <OPTION VALUE="A">已授权</OPTION>
+                <OPTION VALUE="R">已拒绝</OPTION>
+                <OPTION VALUE="U">未授权</OPTION>
+                <COLS/>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>授权状态</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_USER</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="S" SEQ="1" id="CVS_RESTR_PWD">
+        <SCREEN>CVS_RESTR_PWD</SCREEN>
+        <LBL>限制性密码</LBL>
+        <FUNCTION/>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL/>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="SEC_1_PRT1" ID="SEC_1_PRT1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_USRDETAILS">
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE/>
+                <COLS/>
+                <MAXLENGTH>12</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnValidateUserID(event)</FUNCTION>
+                  <NAME>onblur</NAME>
+                </EVENT>
+                <NAME>USER_ID</NAME>
+                <CASE>UPPER</CASE>
+                <LBL>用户标识</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>RESTRICTED_TEXT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>姓名</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>USER_NAME</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC/>
+                  <TITLE>LDAP DN模板</TITLE>
+                  <CANCEL_IMG_SRC/>
+                </POPUPEDIT>
+                <LBL>LDAP DN模板</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>500</MAXLENGTH>
+                <NAME>LDAP_USER</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>验证</LBL>
+                <SIZE/>
+                <DTYPE/>
+                <COLS/>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH/>
+                <EVENT>
+                  <FUNCTION>fnValidateLDAPUser()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_VALIDATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>MFA标识</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>MFA_ID</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE/>
+                <OPTION VALUE="N" SELECTED="-1">已禁用</OPTION>
+                <OPTION VALUE="Y" SELECTED="0">启用</OPTION>
+                <OPTION VALUE="L" SELECTED="0">已锁定</OPTION>
+                <VALUE>N</VALUE>
+                <COLS/>
+                <MAXLENGTH>1</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_enable_mfa()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>MFA_ENBLD</NAME>
+                <LBL>启用 MFA</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE/>
+                <COLS/>
+                <MAXLENGTH>35</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_entityValueChange()</FUNCTION>
+                  <NAME>onpropertychange</NAME>
+                </EVENT>
+                <NAME>HOME_ENTITY</NAME>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_ENTITY</NAME>
+                </LOV>
+                <LBL>主页实体</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>Fetch AD</LBL>
+                <SIZE/>
+                <DTYPE/>
+                <COLS/>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH/>
+                <EVENT>
+                  <FUNCTION>fnFetchADDtls()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_FETCH</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>用户详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_USER</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_DT">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>起始日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>START_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>终止日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>END_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>日期</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_USER</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_1_PRT2" ID="SEC_1_PRT2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_PWD">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>密码</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>PASSWORD</TYPE>
+                <MAXLENGTH>250</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_Pwd_OnChange()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>USER_PASSWORD</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>密码更改日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PWD_CHANGED_ON</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>电子邮件</LBL>
+                <SIZE>35</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>50</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnvalidateMail(event)</FUNCTION>
+                  <NAME>onblur</NAME>
+                </EVENT>
+                <NAME>USER_EMAIL</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <HIDDEN>-1</HIDDEN>
+                <VALUE>0</VALUE>
+                <COLS/>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>FORCE_PASSWD_CHANGE</NAME>
+                <LBL>强制更改密码</LBL>
+                <CUSTOM>
+                  <OFF>0</OFF>
+                  <ON>1</ON>
+                </CUSTOM>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>额度自定义状态变更日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>STATUS_CHANGED_ON</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>参考编号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>REFERENCE_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE/>
+                <OPTION COL="1" ROW="LBL_ENABLED">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>已启用</LBL>
+                  <ID>E</ID>
+                  <VALUE>E</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_HOLD">
+                  <SELECTED>0</SELECTED>
+                  <LBL>暂挂</LBL>
+                  <ID>H</ID>
+                  <VALUE>H</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_DISABLE">
+                  <SELECTED>0</SELECTED>
+                  <LBL>已禁用</LBL>
+                  <ID>D</ID>
+                  <VALUE>D</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_LOCKED">
+                  <SELECTED>0</SELECTED>
+                  <LBL>已锁定</LBL>
+                  <ID>L</ID>
+                  <VALUE>L</VALUE>
+                </OPTION>
+                <VALUE>E</VALUE>
+                <COLS/>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>USER_STATUS</NAME>
+                <LBL>用户状态</LBL>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>RADIO</TYPE>
+                <ROWS/>
+              </FIELD>
+              <LBL>用户密码</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_USER</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_LSTSIGNED">
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_USERLOG_DETAILS</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="SEC_2_PRT1" ID="SEC_2_PRT1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_INVALIDLOGIN">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>NO_CUMULATIVE_LOGINS</NAME>
+                <LBL>累计登录次数</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>NO_SUCCESSIVE_LOGINS</NAME>
+                <LBL>连续登录次数</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>上次签订日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>LAST_SIGNED_ON</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>登录无效</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_USERLOG_DETAILS</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_2_PRT2" ID="SEC_2_PRT2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_SCREENSAVER">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>SCREEN_SAVER_TIMEOUT</NAME>
+                <LBL>屏幕保护程序间隔（秒）</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <LBL>屏幕保护程序详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_USER</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+        <SECTION ID="SEC_3" COLLAPSE="N">
+          <PART NAME="SEC_3_PRT1" ID="SEC_3_PRT1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_USRENTITY">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_ENTITY</NAME>
+                </LOV>
+                <LBL>实体 ID</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>ENTITY_ID</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>账户名称</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>DESCR</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>实体映射</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_USER_ENTITY</BLOCK>
+              <WIDTH/>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_RESTR_PWD" POSITION="template" TITLE="限制性密码" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL/>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL/>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL/>
+        <SECTION ID="SEC_4" COLLAPSE="N">
+          <PART NAME="SEC4_PRT1" ID="SEC4_PRT1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_RESTRICTIVE_PASSWD">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>密码</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>PASSWORD</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>类别 </LBL>
+                <SIZE/>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>CHAR</DTYPE>
+                <COLS/>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CATEGORY</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>限制性密码</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_RESTRICTIVE_PASS</BLOCK>
+              <WIDTH/>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT>500</HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

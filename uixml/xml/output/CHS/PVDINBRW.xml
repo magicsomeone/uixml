@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="L">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS>1</BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fnViewReqMsg()</BUTTON_EVENT>
+        <BUTTON_LBL>查看请求消息</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_REQ_MSG</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fnViewAck()</BUTTON_EVENT>
+        <BUTTON_LBL>查看确认</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_ACK</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="3">
+        <BUTTON_EVENT>fnViewTxn()</BUTTON_EVENT>
+        <BUTTON_LBL>查看交易</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_TXN</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="4">
+        <BUTTON_EVENT>fnViewRespMsg()</BUTTON_EVENT>
+        <BUTTON_LBL>查看响应消息</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_RESP_MSG</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="5">
+        <BUTTON_EVENT>fnReprocess()</BUTTON_EVENT>
+        <BUTTON_LBL>重新处理</BUTTON_LBL>
+        <BUTTON_NAME>BTN_REPROCESS</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW>1</BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_UPI_RQPAY_IN_MSG</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>消息参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>MSG_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>请求消息 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>100</MAXLENGTH>
+        <NAME>REQ_MSG_ID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>消息日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>MSG_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>消息状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="P" SELECTED="0">已处理</OPTION>
+        <OPTION VALUE="N" SELECTED="0">未处理</OPTION>
+        <OPTION VALUE="E" SELECTED="0">异常</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>MSG_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>确认状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">确认交易</OPTION>
+        <OPTION VALUE="N" SELECTED="0">NACK 交易</OPTION>
+        <OPTION VALUE="P" SELECTED="0">等待</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>ACK_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>交易类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="DEBIT" SELECTED="0">借记</OPTION>
+        <OPTION VALUE="CREDIT" SELECTED="0">贷记</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>25</MAXLENGTH>
+        <NAME>TXN_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>交易参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>消息参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>MSG_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>请求消息 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>100</MAXLENGTH>
+        <NAME>REQ_MSG_ID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>消息日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>MSG_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>消息状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="P" SELECTED="0">已处理</OPTION>
+        <OPTION VALUE="N" SELECTED="0">未处理</OPTION>
+        <OPTION VALUE="E" SELECTED="0">异常</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>MSG_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>确认状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">确认交易</OPTION>
+        <OPTION VALUE="N" SELECTED="0">NACK 交易</OPTION>
+        <OPTION VALUE="P" SELECTED="0">等待</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>ACK_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>交易类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="DEBIT" SELECTED="0">借记</OPTION>
+        <OPTION VALUE="CREDIT" SELECTED="0">贷记</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>25</MAXLENGTH>
+        <NAME>TXN_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>交易参考编号</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="P">已处理</OPTION>
+        <OPTION VALUE="N">未处理</OPTION>
+        <OPTION VALUE="E">异常</OPTION>
+        <FIELD_NAME>MSG_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">确认交易</OPTION>
+        <OPTION VALUE="N">NACK 交易</OPTION>
+        <OPTION VALUE="P">等待</OPTION>
+        <FIELD_NAME>ACK_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="DEBIT">借记</OPTION>
+        <OPTION VALUE="CREDIT">贷记</OPTION>
+        <FIELD_NAME>TXN_TYPE</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="L">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

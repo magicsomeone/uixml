@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="SUMMARY" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_STTM_PROVISION_RULE_DETAIL</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>账户分类</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>6</MAXLENGTH>
+        <NAME>ACCLS_OR_PROD</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>账户分类</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>6</MAXLENGTH>
+        <NAME>ACCLS_OR_PROD</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_RULE" POSITION="template" TITLE="账户计提维护" TMP_SCR_TYPE="L">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>经办者</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>复核者</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>日期时间：</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>日期时间：</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>模式编号</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL></LBL>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="C">已关闭</OPTION>
+                <OPTION VALUE="O">打开</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>记录状态</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="A">已授权</OPTION>
+                <OPTION VALUE="R">已拒付</OPTION>
+                <OPTION VALUE="U">未授权</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>授权状态</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTM_PROVISION_RULE_DETAIL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="C" SEQ="1" id="CSCFNUDF">
+        <SCREEN>CVS_UDF</SCREEN>
+        <LBL>字段</LBL>
+        <FUNCTION>CSCFNUDF</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_SEC1" COLLAPSE="N">
+          <PART NAME="SEC1_PART1" ID="SEC1_PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FIELD1">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_ACCOUNT_CLASS</NAME>
+                </LOV>
+                <LBL>账户分类</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>6</MAXLENGTH>
+                <NAME>ACCLS_OR_PROD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>RESTRICTED_TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DESCRIPTION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTM_PROVISION_RULE_DETAIL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_SEC2" COLLAPSE="N">
+          <PART NAME="SEC2_PART1" ID="SEC2_PART1" WIDTH="100"></PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_SEC3" COLLAPSE="N">
+          <PART NAME="SEC3_PART1" ID="SEC3_PART1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FS_RULE">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RULE1</NAME>
+                <LBL></LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXTAREA</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RULE2</NAME>
+                <LBL></LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXTAREA</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RULE3</NAME>
+                <LBL></LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXTAREA</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RULE4</NAME>
+                <LBL></LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXTAREA</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RULE5</NAME>
+                <LBL></LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXTAREA</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>规则编号</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTM_PROVISION_RULE_DETAIL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC3_PART2" ID="SEC3_PART2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FS_CASE">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXTAREA</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnCond1()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>COND1</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXTAREA</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnCond2()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>COND2</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXTAREA</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnCond3()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>COND3</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXTAREA</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnCond4()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>COND4</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXTAREA</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnCond5()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>COND5</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>案例</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTM_PROVISION_RULE_DETAIL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC3_PART3" ID="SEC3_PART3" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FS_RESULT">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXTAREA</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnResult1()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>RESULT1</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXTAREA</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnResult2()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>RESULT2</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXTAREA</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnResult3()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>RESULT3</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXTAREA</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnResult4()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>RESULT4</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXTAREA</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnResult5()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>RESULT5</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>结果</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTM_PROVISION_RULE_DETAIL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_SRC6" COLLAPSE="N">
+          <PART NAME="SEC6_PART1" ID="SEC6_PART1" WIDTH="100"></PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_SEC7" COLLAPSE="N">
+          <PART NAME="SEC7_PART1" ID="SEC7_PART1" WIDTH="100"></PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_SEC8" COLLAPSE="N">
+          <PART NAME="SEC8_PART1" ID="SEC8_PART1" WIDTH="66">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FIELD8">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>要素</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="@OUST_PRIN_ACY" SELECTED="0">Outstanding Balance ACY</OPTION>
+                <OPTION VALUE="@OUST_PRIN_LCY" SELECTED="0">Outstanding Balance LCY</OPTION>
+                <OPTION VALUE="@OVERDUE_INT" SELECTED="0">Receivable Interest</OPTION>
+                <OPTION VALUE="@ACCR_INT" SELECTED="0">Accrued Interest</OPTION>
+                <OPTION VALUE="@CONT_STAT" SELECTED="0">Account Status</OPTION>
+                <OPTION VALUE="@EXP_CATG" SELECTED="0">Exposure Category</OPTION>
+                <OPTION VALUE="@EXP_AMT" SELECTED="0">Risk-Free Exposure Amount</OPTION>
+                <OPTION VALUE="@PROV_PERC" SELECTED="0">Provision Percent</OPTION>
+                <OPTION VALUE="@LOSS_PERC" SELECTED="0">Loss Percentage</OPTION>
+                <OPTION VALUE="@STAT_SEQ" SELECTED="0">Status Sequence</OPTION>
+                <OPTION VALUE="@OVERDUE_INT_LCY" SELECTED="0">Receivable Interest LCY</OPTION>
+                <OPTION VALUE="@ACCR_INT_LCY" SELECTED="0">Accrued Interest LCY</OPTION>
+                <OPTION VALUE="@EXP_AMT_LCY" SELECTED="0">Risk-Free Exp Amt Lcy</OPTION>
+                <OPTION VALUE="@BANK_GUARANTEE_AMT" SELECTED="0">Bank Guarantee</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnElement()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>LST_ELEM</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>功能</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="ABS()" SELECTED="0">ABS</OPTION>
+                <OPTION VALUE="GREATEST()" SELECTED="0">最大</OPTION>
+                <OPTION VALUE="LEAST()" SELECTED="0">最少</OPTION>
+                <OPTION VALUE="ROUND()" SELECTED="0">四舍五入</OPTION>
+                <OPTION VALUE="TRUNC()" SELECTED="0">削减</OPTION>
+                <OPTION VALUE="FLOOR()" SELECTED="0">最低</OPTION>
+                <OPTION VALUE="CEIL()" SELECTED="0">最高</OPTION>
+                <OPTION VALUE="POWER()" SELECTED="0">幂</OPTION>
+                <OPTION VALUE="MOD()" SELECTED="0">模式</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnElement()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>LST_FUNC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTM_PROVISION_RULE_DETAIL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC8_PART2" ID="SEC8_PART2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FIELD9">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>运算符</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="+" SELECTED="0">+</OPTION>
+                <OPTION VALUE="-" SELECTED="0">-</OPTION>
+                <OPTION VALUE="*" SELECTED="0">*</OPTION>
+                <OPTION VALUE="/" SELECTED="0">/</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnElement()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>LST_OP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>逻辑运算符</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="&lt;" SELECTED="0"><</OPTION>
+                <OPTION VALUE="&gt;" SELECTED="0">></OPTION>
+                <OPTION VALUE="=" SELECTED="0">=</OPTION>
+                <OPTION VALUE="&lt;&gt;" SELECTED="0"><></OPTION>
+                <OPTION VALUE="&lt;=" SELECTED="0"><=</OPTION>
+                <OPTION VALUE="&gt;=" SELECTED="0">>=</OPTION>
+                <OPTION VALUE="AND" SELECTED="0">和</OPTION>
+                <OPTION VALUE="OR" SELECTED="0">OR</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnElement()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>LIST_LOP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>重置</LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnReset()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_RESET</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STTM_PROVISION_RULE_DETAIL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

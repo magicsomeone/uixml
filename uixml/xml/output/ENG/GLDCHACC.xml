@@ -1,0 +1,2381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_GLTMS_GLMASTER</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Authorization Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Authorized</OPTION>
+        <OPTION VALUE="U">Unauthorized</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Record Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">Open</OPTION>
+        <OPTION VALUE="C">Closed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>GL Code</LBL>
+        <SIZE>26</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>GLCD</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>General Ledger Description</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>GLDESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>Parent GL</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>PARENT_GL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>Leaf</LBL>
+        <OPTION COL="1" ROW="LBL_LEAF_GL">
+          <SELECTED>-1</SELECTED>
+          <LBL>Leaf GL</LBL>
+          <ID>Y</ID>
+          <VALUE>Y</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_TXTNODEGL">
+          <SELECTED>0</SELECTED>
+          <LBL>Node GL</LBL>
+          <ID>N</ID>
+          <VALUE>N</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>LEAF</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>GL Type</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="1" SELECTED="0">Nostro</OPTION>
+        <OPTION VALUE="2" SELECTED="0">Misc Dr</OPTION>
+        <OPTION VALUE="3" SELECTED="0">Misc Cr</OPTION>
+        <OPTION VALUE="4" SELECTED="0">Inter Branch</OPTION>
+        <OPTION VALUE="5" SELECTED="0">Cash</OPTION>
+        <OPTION VALUE="6" SELECTED="0">Normal</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>Category</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="1" SELECTED="0">Asset</OPTION>
+        <OPTION VALUE="2" SELECTED="0">Liability</OPTION>
+        <OPTION VALUE="3" SELECTED="0">Income</OPTION>
+        <OPTION VALUE="4" SELECTED="0">Expense</OPTION>
+        <OPTION VALUE="5" SELECTED="0">Contingent Asset</OPTION>
+        <OPTION VALUE="6" SELECTED="0">Contingent Liability</OPTION>
+        <OPTION VALUE="7" SELECTED="0">Memo</OPTION>
+        <OPTION VALUE="8" SELECTED="0">Position</OPTION>
+        <OPTION VALUE="9" SELECTED="0">Position Equivalent</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CATEGORY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>Alternate GL Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>ALT_GL_NO</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Authorization Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Authorized</OPTION>
+        <OPTION VALUE="U">Unauthorized</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Record Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">Open</OPTION>
+        <OPTION VALUE="C">Closed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>GL Code</LBL>
+        <SIZE>26</SIZE>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>GLCD</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>General Ledger Description</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>105</MAXLENGTH>
+        <NAME>GLDESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>Parent GL</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>PARENT_GL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>Leaf</LBL>
+        <OPTION COL="1" ROW="LBL_LEAF_GL">
+          <SELECTED>-1</SELECTED>
+          <LBL>Leaf GL</LBL>
+          <ID>Y</ID>
+          <VALUE>Y</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_TXTNODEGL">
+          <SELECTED>0</SELECTED>
+          <LBL>Node GL</LBL>
+          <ID>N</ID>
+          <VALUE>N</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>LEAF</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>GL Type</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="1" SELECTED="0">Nostro</OPTION>
+        <OPTION VALUE="2" SELECTED="0">Misc Dr</OPTION>
+        <OPTION VALUE="3" SELECTED="0">Misc Cr</OPTION>
+        <OPTION VALUE="4" SELECTED="0">Inter Branch</OPTION>
+        <OPTION VALUE="5" SELECTED="0">Cash</OPTION>
+        <OPTION VALUE="6" SELECTED="0">Normal</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>Category</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="1" SELECTED="0">Asset</OPTION>
+        <OPTION VALUE="2" SELECTED="0">Liability</OPTION>
+        <OPTION VALUE="3" SELECTED="0">Income</OPTION>
+        <OPTION VALUE="4" SELECTED="0">Expense</OPTION>
+        <OPTION VALUE="5" SELECTED="0">Contingent Asset</OPTION>
+        <OPTION VALUE="6" SELECTED="0">Contingent Liability</OPTION>
+        <OPTION VALUE="7" SELECTED="0">Memo</OPTION>
+        <OPTION VALUE="8" SELECTED="0">Position</OPTION>
+        <OPTION VALUE="9" SELECTED="0">Position Equivalent</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CATEGORY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>Currency Restrictions</LBL>
+        <OPTION COL="1" ROW="LBL_SINGLE_CCY">
+          <SELECTED>0</SELECTED>
+          <LBL>Single Currency</LBL>
+          <ID>S</ID>
+          <VALUE>S</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_ALL_FOREIGN_CCY">
+          <SELECTED>0</SELECTED>
+          <LBL>All Foreign Currencies</LBL>
+          <ID>F</ID>
+          <VALUE>F</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_ALL_CURRENCIES">
+          <SELECTED>-1</SELECTED>
+          <LBL>All Currencies</LBL>
+          <ID>A</ID>
+          <VALUE>A</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CCY_RES</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>Currency</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>RES_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>Customer/Internal GL</LBL>
+        <OPTION COL="1" ROW="LBL_CUST_GL">
+          <SELECTED>0</SELECTED>
+          <LBL>Customer GL</LBL>
+          <ID>C</ID>
+          <VALUE>C</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_GL_INTERNAL">
+          <SELECTED>-1</SELECTED>
+          <LBL>Internal GL</LBL>
+          <ID>I</ID>
+          <VALUE>I</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CUSTOMER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>Branch Restriction</LBL>
+        <OPTION COL="1" ROW="LBL_HEAD_OFFICE_GL">
+          <SELECTED>0</SELECTED>
+          <LBL>Head Office GL</LBL>
+          <ID>H</ID>
+          <VALUE>H</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_BRANCH_GL">
+          <SELECTED>0</SELECTED>
+          <LBL>Branch GL</LBL>
+          <ID>B</ID>
+          <VALUE>B</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_BOTH">
+          <SELECTED>-1</SELECTED>
+          <LBL>Both</LBL>
+          <ID>A</ID>
+          <VALUE>A</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>HO_RES</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>Revaluation</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>CHECKBOX</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>REVAL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>Profit Account</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>9</MAXLENGTH>
+        <NAME>PROFIT_ACC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>Loss Account</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>9</MAXLENGTH>
+        <NAME>LOSS_ACC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LBL>Blocked</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>CHECKBOX</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>BLOCK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LBL>Posting Restrictions</LBL>
+        <OPTION COL="1" ROW="LBL_DIRECT_POSTING">
+          <SELECTED>0</SELECTED>
+          <LBL>Direct Posting</LBL>
+          <ID>Y</ID>
+          <VALUE>Y</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_INDDIRECT_POST">
+          <SELECTED>0</SELECTED>
+          <LBL>Indirect Posting</LBL>
+          <ID>N</ID>
+          <VALUE>N</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>POSTING_RES</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LBL>Reconciliation</LBL>
+        <OPTION COL="1" ROW="LBL_DI_RECON">
+          <SELECTED>-1</SELECTED>
+          <LBL>Direct Reconciliation</LBL>
+          <ID>D</ID>
+          <VALUE>D</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_SPLIT_RECON">
+          <SELECTED>0</SELECTED>
+          <LBL>Split Reconciliation</LBL>
+          <ID>S</ID>
+          <VALUE>S</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>RECON</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>Positioning Required</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>CHECKBOX</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>FLG_POSITION_AC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <LBL>Display On Report With</LBL>
+        <OPTION COL="1" ROW="LBL_AST">
+          <SELECTED>-1</SELECTED>
+          <LBL>Asset</LBL>
+          <ID>A</ID>
+          <VALUE>A</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_LIB">
+          <SELECTED>0</SELECTED>
+          <LBL>Liability</LBL>
+          <ID>L</ID>
+          <VALUE>L</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="LBL_SEPARATE">
+          <SELECTED>0</SELECTED>
+          <LBL>Separate</LBL>
+          <ID>S</ID>
+          <VALUE>S</VALUE>
+        </OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>RADIO</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CCY_POS_GL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LBL>Statement Required</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>CHECKBOX</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>AC_STMT_REQUIRED</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <LBL>Generate Statement Only On Movement</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>CHECKBOX</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>GEN_STMT_ONLY_ON_MVMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="23">
+        <LBL>Alternate GL Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>ALT_GL_NO</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="Y">Leaf GL</OPTION>
+        <OPTION VALUE="N">Node GL</OPTION>
+        <FIELD_NAME>LEAF</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="1">Nostro</OPTION>
+        <OPTION VALUE="2">Misc Dr</OPTION>
+        <OPTION VALUE="3">Misc Cr</OPTION>
+        <OPTION VALUE="4">Inter Branch</OPTION>
+        <OPTION VALUE="5">Cash</OPTION>
+        <OPTION VALUE="6">Normal</OPTION>
+        <FIELD_NAME>TYPE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="1">Asset</OPTION>
+        <OPTION VALUE="2">Liability</OPTION>
+        <OPTION VALUE="3">Income</OPTION>
+        <OPTION VALUE="4">Expense</OPTION>
+        <OPTION VALUE="5">Contingent Asset</OPTION>
+        <OPTION VALUE="6">Contingent Liability</OPTION>
+        <OPTION VALUE="7">Memo</OPTION>
+        <OPTION VALUE="8">Position</OPTION>
+        <OPTION VALUE="9">Position Equivalent</OPTION>
+        <FIELD_NAME>CATEGORY</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="S">Single Currency</OPTION>
+        <OPTION VALUE="F">All Foreign Currencies</OPTION>
+        <OPTION VALUE="A">All Currencies</OPTION>
+        <FIELD_NAME>CCY_RES</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="C">Customer GL</OPTION>
+        <OPTION VALUE="I">Internal GL</OPTION>
+        <FIELD_NAME>CUSTOMER</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="H">Head Office GL</OPTION>
+        <OPTION VALUE="B">Branch GL</OPTION>
+        <OPTION VALUE="A">Both</OPTION>
+        <FIELD_NAME>HO_RES</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="Y">Direct Posting</OPTION>
+        <OPTION VALUE="N">Indirect Posting</OPTION>
+        <FIELD_NAME>POSTING_RES</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="D">Direct Reconciliation</OPTION>
+        <OPTION VALUE="S">Split Reconciliation</OPTION>
+        <FIELD_NAME>RECON</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">Asset</OPTION>
+        <OPTION VALUE="L">Liability</OPTION>
+        <OPTION VALUE="S">Separate</OPTION>
+        <FIELD_NAME>CCY_POS_GL</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="Chart of Accounts Maintenance" TMP_SCR_TYPE="L">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_GL_HEADER">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="SEC_PART1" ID="SEC_PART1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HEAD_MASK">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>GL Code</LBL>
+                <SIZE>26</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>GLCD</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL></LBL>
+                <SIZE>26</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>GL_MASK</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_PART2" ID="SEC_PART2" WIDTH="33"></PART>
+          <PART NAME="SEC_PART3" ID="SEC_PART3" WIDTH="33"></PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="GL_HEAD_SEC_2_PART_1" ID="GL_HEAD_SEC_2_PART_1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HEAD_HEAD_DESC">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>General Ledger Description</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>GLDESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="GL_HEAD_SEC_2_PART_2" ID="GL_HEAD_SEC_2_PART_2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HEAD_EXTRNL">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Alternate GL Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>ALT_GL_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>External Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>EXTERNAL_VALUE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Internal Value</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>INTERNAL_VALUE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="GL_HEAD_SEC_2_PART_3" ID="GL_HEAD_SEC_2_PART_3" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HEAD_LEAF">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Leaf</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_LEAF_GL">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>Leaf GL</LBL>
+                  <ID>Y</ID>
+                  <VALUE>Y</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_TXTNODEGL">
+                  <SELECTED>0</SELECTED>
+                  <LBL>Node GL</LBL>
+                  <ID>N</ID>
+                  <VALUE>N</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>Y</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>LEAF</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>Maker</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>Checker</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>Date Time:</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>Date Time:</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>Mod No</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL></LBL>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="C">Closed</OPTION>
+                <OPTION VALUE="O">Open</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>Record Status</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="A">Authorized</OPTION>
+                <OPTION VALUE="R">Rejected</OPTION>
+                <OPTION VALUE="U">Unauthorized</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>Authorization Status</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="S" SEQ="2" id="CVS_STATEMENT">
+        <SCREEN>CVS_STATEMENT</SCREEN>
+        <LBL>Statement</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="3" id="CVS_POSITION">
+        <SCREEN>CVS_POSITION</SCREEN>
+        <LBL>Position GL Maintenance</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="4" id="CVS_MIS">
+        <SCREEN>CVS_MIS</SCREEN>
+        <LBL>MIS Group Linkage</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="5" id="CVS_CLG_ACC">
+        <SCREEN>CVS_CLG_ACC</SCREEN>
+        <LBL>IBAN Account Number</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="6" id="CVS_PARENT">
+        <SCREEN>CVS_PARENT</SCREEN>
+        <LBL>Other GL Linked to This Parent</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="7" id="CVS_CHILD">
+        <SCREEN>CVS_CHILD</SCREEN>
+        <LBL>Child General Ledgers</LBL>
+        <FUNCTION></FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="8" id="CSCFNUDF">
+        <SCREEN>CVS_UDF</SCREEN>
+        <LBL>Fields</LBL>
+        <FUNCTION>CSCFNUDF</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_GL_DETAILS">
+        <LBL>GL Details</LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="SEC_1_PART_1" ID="SEC_1_PART_1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_1_PART_1">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Revaluation</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REVAL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Report As Accrual</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>IS_ACCRUAL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Average Bal Required</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AVG_BAL_REQD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_SUBSCREEN_BTN">
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CONTROL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_1_PART_2" ID="SEC_1_PART_2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_1_PART_2">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Customer/Internal GL</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_CUST_GL">
+                  <SELECTED>0</SELECTED>
+                  <LBL>Customer GL</LBL>
+                  <ID>C</ID>
+                  <VALUE>C</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_GL_INTERNAL">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>Internal GL</LBL>
+                  <ID>I</ID>
+                  <VALUE>I</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>I</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CUSTOMER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>GL Type</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="1" SELECTED="0">Nostro</OPTION>
+                <OPTION VALUE="2" SELECTED="0">Misc Dr</OPTION>
+                <OPTION VALUE="3" SELECTED="0">Misc Cr</OPTION>
+                <OPTION VALUE="4" SELECTED="0">Inter Branch</OPTION>
+                <OPTION VALUE="5" SELECTED="0">Cash</OPTION>
+                <OPTION VALUE="6" SELECTED="0">Normal</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Category</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="1" SELECTED="0">Asset</OPTION>
+                <OPTION VALUE="2" SELECTED="0">Liability</OPTION>
+                <OPTION VALUE="3" SELECTED="0">Income</OPTION>
+                <OPTION VALUE="4" SELECTED="0">Expense</OPTION>
+                <OPTION VALUE="5" SELECTED="0">Contingent Asset</OPTION>
+                <OPTION VALUE="6" SELECTED="0">Contingent Liability</OPTION>
+                <OPTION VALUE="7" SELECTED="0">Memo</OPTION>
+                <OPTION VALUE="8" SELECTED="0">Position</OPTION>
+                <OPTION VALUE="9" SELECTED="0">Position Equivalent</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CATEGORY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_1_PART_3" ID="SEC_1_PART_3" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_1_PART_3">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Blocked</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>BLOCK</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Transfer Balance on MIS Reclassification</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>BAL_TRFR_ON_MIS_RECLASS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Revaluation Split Required</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PL_SPLIT_REQD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="SEC_2_PART_1" ID="SEC_2_PART_1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_2_PART_1">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>EOD Revaluation Of FCY Entries(Single Entry)</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ED_FCYRVL_SINGLEENTRY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>EOD Revaluation Of FCY Entries(Entry Pair)</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ED_FCYRVL_ENTRYPAIR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>EOD Revaluation Of FCY Reversals</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>EOD_FCYRVL_REVR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Repost FCY Entries in LCY</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REPOST_FCY_ENTRIES</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_INTRA_DAY</NAME>
+                </LOV>
+                <LBL>Intraday Posting GL</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>INTRADAY_POSTING_GL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>PNL Revaluation Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_2_PART_2" ID="SEC_2_PART_2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_2_PART_2">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Positioning Required</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>FLG_POSITION_AC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Display On Report With</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_AST">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>Asset</LBL>
+                  <ID>A</ID>
+                  <VALUE>A</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_LIB">
+                  <SELECTED>0</SELECTED>
+                  <LBL>Liability</LBL>
+                  <ID>L</ID>
+                  <VALUE>L</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_SEPARATE">
+                  <SELECTED>0</SELECTED>
+                  <LBL>Separate</LBL>
+                  <ID>S</ID>
+                  <VALUE>S</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>A</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CCY_POS_GL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Position Accounting Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_2_PART_3" ID="SEC_2_PART_3" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_2_PART_3">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Currency Restrictions</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_SINGLE_CCY">
+                  <SELECTED>0</SELECTED>
+                  <LBL>Single Currency</LBL>
+                  <ID>S</ID>
+                  <VALUE>S</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_ALL_FOREIGN_CCY">
+                  <SELECTED>0</SELECTED>
+                  <LBL>All Foreign Currencies</LBL>
+                  <ID>F</ID>
+                  <VALUE>F</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_ALL_CURRENCIES">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>All Currencies</LBL>
+                  <ID>A</ID>
+                  <VALUE>A</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>A</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CCY_RES</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>G</TYPE>
+                  <NAME>LOV_CURRENCY</NAME>
+                </LOV>
+                <LBL>Currency</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>RES_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_3" COLLAPSE="N">
+          <PART NAME="SEC_3_PART_1" ID="SEC_3_PART_1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_3_PART_1">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Branch Restriction</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_HEAD_OFFICE_GL">
+                  <SELECTED>0</SELECTED>
+                  <LBL>Head Office GL</LBL>
+                  <ID>H</ID>
+                  <VALUE>H</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_BRANCH_GL">
+                  <SELECTED>0</SELECTED>
+                  <LBL>Branch GL</LBL>
+                  <ID>B</ID>
+                  <VALUE>B</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_BOTH">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>Both</LBL>
+                  <ID>A</ID>
+                  <VALUE>A</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>A</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>HO_RES</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_3_PART_2" ID="SEC_3_PART_2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_3_PART_2">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Posting Restrictions</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_DIRECT_POSTING">
+                  <SELECTED>0</SELECTED>
+                  <LBL>Direct Posting</LBL>
+                  <ID>Y</ID>
+                  <VALUE>Y</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_INDDIRECT_POST">
+                  <SELECTED>0</SELECTED>
+                  <LBL>Indirect Posting</LBL>
+                  <ID>N</ID>
+                  <VALUE>N</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>POSTING_RES</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Allow Back Period Entry</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ALLOW_BACK_PERIOD_ENTRY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_3_PART_3" ID="SEC_3_PART_3" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_DET_SEC_3_PART_3">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Reconciliation</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_DI_RECON">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>Direct Reconciliation</LBL>
+                  <ID>D</ID>
+                  <VALUE>D</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_SPLIT_RECON">
+                  <SELECTED>0</SELECTED>
+                  <LBL>Split Reconciliation</LBL>
+                  <ID>S</ID>
+                  <VALUE>S</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>D</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>RECON</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+      <TAB ID="TAB_GL_LINKAGES">
+        <LBL>GL Linkages</LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="SEC1_PART_1" ID="SEC1_PART_1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_LINK_PRV_YR_ADJ">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_PRV_YR_ADJ_GL</NAME>
+                </LOV>
+                <LBL>Previous Year Adjustment GL</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>PREV_YR_ADJ_GL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DESC_PRV_YR_ADJ_GL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Previous Year Adjustment GL</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="SEC2_PART_1" ID="SEC2_PART_1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_LINK_PROFIT_LOSS">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_PROFIT_ACC</NAME>
+                </LOV>
+                <LBL>Profit Account</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>9</MAXLENGTH>
+                <NAME>PROFIT_ACC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DESC_PROFIT_ACC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_LOSS_ACC</NAME>
+                </LOV>
+                <LBL>Loss Account</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>9</MAXLENGTH>
+                <NAME>LOSS_ACC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DESC_LOSS_ACC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Year End Profit and Loss Accounts</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_3" COLLAPSE="N">
+          <PART NAME="SEC3_PART_1" ID="SEC3_PART_1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_GL_LINK_PARENT_GL">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_PARENT_GL</NAME>
+                </LOV>
+                <LBL>Parent GL</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>PARENT_GL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>General Ledger Description</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DESC_PARENT_GL_DESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Category</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DESC_PARENT_GL_CATEGORY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Parent GL</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+      <TAB ID="TAB_GL_LINES">
+        <LBL>GL Lines</LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="SEC1_PART1" ID="SEC1_PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_REPORT_LINE_CENTRAL">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CB_DR_LINE</NAME>
+                </LOV>
+                <LBL>Debit Line</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CBANK_LINE_DR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DESC_CB_DR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CB_CR_LINE</NAME>
+                </LOV>
+                <LBL>Credit Line</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CBANK_LINE_CR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>DESC_CB_CR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Central Bank Lines</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="SEC2_PART1" ID="SEC2_PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_REPORT_LINE_HO">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_HO_DR_LINE</NAME>
+                </LOV>
+                <LBL>Debit Line</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>HO_LINE_DR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DESC_HO_DR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_HO_CR_LINE</NAME>
+                </LOV>
+                <LBL>Credit Line</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>HO_LINE_CR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>DESC_HO_CR</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Head Office lines</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_STATEMENT" POSITION="template" TITLE="Statement Details" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_ACC_ST_1" COLLAPSE="N">
+          <PART NAME="SEC_ACC_ST_1_PART1" ID="SEC_ACC_ST_1_PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_STAT_HEAD_1">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>AC_STMT_DAY</NAME>
+                <LBL>On</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Cycle</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="A" SELECTED="0">Annual</OPTION>
+                <OPTION VALUE="S" SELECTED="0">Semiannual</OPTION>
+                <OPTION VALUE="Q" SELECTED="0">Quarterly</OPTION>
+                <OPTION VALUE="M" SELECTED="0">Monthly</OPTION>
+                <OPTION VALUE="F" SELECTED="0">Fortnightly</OPTION>
+                <OPTION VALUE="W" SELECTED="0">Weekly</OPTION>
+                <OPTION VALUE="D" SELECTED="0">Daily</OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnselectCycle()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>AC_STMT_CYCLE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Type</LBL>
+                <SIZE></SIZE>
+                <OPTION COL="1" ROW="LBL_NONE">
+                  <SELECTED>-1</SELECTED>
+                  <LBL>None</LBL>
+                  <ID>N</ID>
+                  <VALUE>N</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_SUMAMRY">
+                  <SELECTED>0</SELECTED>
+                  <LBL>Summary</LBL>
+                  <ID>S</ID>
+                  <VALUE>S</VALUE>
+                </OPTION>
+                <OPTION COL="1" ROW="LBL_DET">
+                  <SELECTED>0</SELECTED>
+                  <LBL>Detail</LBL>
+                  <ID>D</ID>
+                  <VALUE>D</VALUE>
+                </OPTION>
+                <DTYPE>CHAR</DTYPE>
+                <VALUE>N</VALUE>
+                <COLS></COLS>
+                <TYPE>RADIO</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AC_STMT_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Account Statement</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC_ACC_ST_1_PART2" ID="SEC_ACC_ST_1_PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_STAT_HEAD_2">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Statement Required</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AC_STMT_REQUIRED</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Generate Statement Only On Movement</LBL>
+                <SIZE></SIZE>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>GEN_STMT_ONLY_ON_MVMT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_STATEMENT</NAME>
+                </LOV>
+                <LBL>Media</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>MEDIA</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_ACC_ST_2" COLLAPSE="N">
+          <PART NAME="SEC_ACC_ST_2_PART1" ID="SEC_ACC_ST_2_PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_STAT_HEAD_SEC_2">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Address</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>ADDRESS1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Address 1</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>ADDRESS2</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Address 2</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>ADDRESS3</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Address 3</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>ADDRESS4</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GLTMS_GLMASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_ACC_ST_DET" COLLAPSE="N">
+          <PART NAME="SEC_ACC_ST_DET_PART1" ID="SEC_ACC_ST_DET_PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_STAT_DET_GRID">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Branch Code</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRANCH_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>General Ledger Code</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>GL_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Date</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>PREVIOUS_STATEMENT_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Currency Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CCY_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>PREVIOUS_STATEMENT_BALANCE</NAME>
+                <LBL>Balance</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>PREVIOUS_STATEMENT_NO</NAME>
+                <LBL>No</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Statement Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ACC_STATEMENT</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+              <READ_ONLY>-1</READ_ONLY>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_POSITION" POSITION="template" TITLE="Position GL Maintenance" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_HEAD" COLLAPSE="N">
+          <PART NAME="SEC_HEAD_PART_1" ID="SEC_HEAD_PART_1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_POS_GL_HEAD">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>GL Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DIS_GL_POS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CONTROL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_POS_DET" COLLAPSE="N">
+          <PART NAME="SEC_POS_DET_PART_1" ID="SEC_POS_DET_PART_1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_POS_GL_DET">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>General Ledger Code</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>GL_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_POS_CCY</NAME>
+                </LOV>
+                <LBL>Currency</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CCY_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_POS_GL</NAME>
+                </LOV>
+                <LBL>Position GL</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>POSITION_GL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_POS_EQ</NAME>
+                </LOV>
+                <LBL>Position Equivalent</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>POSITION_EQVGL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Position GL Maintenance</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_POS_GL_MAINT</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_MIS" POSITION="template" TITLE="MIS Group Linkage" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_HEAD" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_MIS_HEAD">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>GL Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DIS_GL_MIS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CONTROL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_DET" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_MIS_GP_DET">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>General Ledger Code</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>GL_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_MIS_GROUP</NAME>
+                </LOV>
+                <LBL>MIS Group</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>MIS_GROUP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>MIS Group Linkages</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_MIS_GROUP_LINK</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_CLG_ACC" POSITION="template" TITLE="Additional Information" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_DET" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_IBAN_ACC_DET">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>GL Account Number</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>GL_AC_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Clearing Account Number</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>RESTRICTED_TEXT</TYPE>
+                <MAXLENGTH>32</MAXLENGTH>
+                <NAME>CLEARING_AC_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_IBAN_ADDINFO</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_DET_2" COLLAPSE="N">
+          <PART NAME="PART2" ID="PART2" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_IBAN_ACC_BANK_DET">
+              <FIELD INDEX="" CONTROL="Y">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_IBAN_BANK</NAME>
+                </LOV>
+                <LBL>Bank Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>TXT_IBAN_BANK_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>Account Number</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <NAME>TXT_IBAN_ACC_NUM</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CONTROL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_DET_3" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_IBAN_ACC_DET_2">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>Populate</LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnPopulateIBAN()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_POPULATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>IBAN Account Number</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>IBAN_AC_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_IBAN_ADDINFO</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_PARENT" POSITION="template" TITLE="Other GL Linked to This Parent" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_DET" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_PARENT_GL_DET">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>GL Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>GL_CODE_E</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>General Ledger Description</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>GL_DESC_E</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Parent GL</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>PARENT_GL_E</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>GL Details</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PARENT_GL</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+              <READ_ONLY>-1</READ_ONLY>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_CHILD" POSITION="template" TITLE="Child General Ledgers" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_DET" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_CHILD_GL_DEET">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LBL>GL Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>GL_CODE_F</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>General Ledger Description</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <NAME>GL_DESC_F</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Parent GL</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>PARENT_GL_F</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>Child General Ledgers</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CHILD_GL</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+              <READ_ONLY>-1</READ_ONLY>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

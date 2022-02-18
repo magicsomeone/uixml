@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS>3</BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fnView(event)</BUTTON_EVENT>
+        <BUTTON_LBL>View Message</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VW_MSG</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fnViewAck(event)</BUTTON_EVENT>
+        <BUTTON_LBL>View Acknowledgement</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_ACK</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="3">
+        <BUTTON_EVENT>fnViewTxn()</BUTTON_EVENT>
+        <BUTTON_LBL>View Transaction</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW TXN</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW></BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_PW_FEDWIRE_MSG_OUT</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>Transaction Reference Number</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>IMAD</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <NAME>IMAD</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>Transaction Branch</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BRANCH_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>Business Function Code</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="BTR" SELECTED="0">Bank Transfer</OPTION>
+        <OPTION VALUE="CTR" SELECTED="0">Customer Transfer</OPTION>
+        <OPTION VALUE="CTP" SELECTED="0">Customer Transfer Plus</OPTION>
+        <OPTION VALUE="DRW" SELECTED="0">Drawdown Payment</OPTION>
+        <OPTION VALUE="DRC" SELECTED="0">Customer Drawdown Request</OPTION>
+        <OPTION VALUE="SVC" SELECTED="0">Service Message</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BUSINESS_FUNCTION_CD</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>Receiver DI</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>RECEIVER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>Handoff Date</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>RELEASE_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>Originator Account</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>ORG_ACCOUNT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>Type Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>TYPE_CD</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>Message Status</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="H" SELECTED="0">Handed Off</OPTION>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>MESSAGE_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>Ack Nak Status</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="N" SELECTED="0">Rejected</OPTION>
+        <OPTION VALUE="2" SELECTED="0">Accepted with fund transfer accounting</OPTION>
+        <OPTION VALUE="7" SELECTED="0">Accepted without accounting</OPTION>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>ACK_NACK_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>Message Generate Status</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="G" SELECTED="0">Generated</OPTION>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <OPTION VALUE="S" SELECTED="0">Suppressed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>MSG_GENERATE_STATUS</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>Transaction Reference Number</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>IMAD</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <NAME>IMAD</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>Transaction Branch</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BRANCH_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>Business Function Code</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="BTR" SELECTED="0">Bank Transfer</OPTION>
+        <OPTION VALUE="CTR" SELECTED="0">Customer Transfer</OPTION>
+        <OPTION VALUE="CTP" SELECTED="0">Customer Transfer Plus</OPTION>
+        <OPTION VALUE="DRW" SELECTED="0">Drawdown Payment</OPTION>
+        <OPTION VALUE="DRC" SELECTED="0">Customer Drawdown Request</OPTION>
+        <OPTION VALUE="SVC" SELECTED="0">Service Message</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BUSINESS_FUNCTION_CD</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>Receiver DI</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>RECEIVER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>Handoff Date</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>RELEASE_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>Handoff Time</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>RELEASE_TIME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>Originator Account</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>ORG_ACCOUNT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>Type Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>TYPE_CD</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>Message Status</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="H" SELECTED="0">Handed Off</OPTION>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>MESSAGE_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>Host Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>HOST_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>Network Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>URC</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>URC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>Ack Nak Status</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="N" SELECTED="0">Rejected</OPTION>
+        <OPTION VALUE="2" SELECTED="0">Accepted with fund transfer accounting</OPTION>
+        <OPTION VALUE="7" SELECTED="0">Accepted without accounting</OPTION>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>ACK_NACK_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>Message Generate Status</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="G" SELECTED="0">Generated</OPTION>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <OPTION VALUE="S" SELECTED="0">Suppressed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>MSG_GENERATE_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>Message Reference Number</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>MSG_REFERENCE_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LBL>Message Type</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>MESSAGE_TYPE</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="BTR">Bank Transfer</OPTION>
+        <OPTION VALUE="CTR">Customer Transfer</OPTION>
+        <OPTION VALUE="CTP">Customer Transfer Plus</OPTION>
+        <OPTION VALUE="DRW">Drawdown Payment</OPTION>
+        <OPTION VALUE="DRC">Customer Drawdown Request</OPTION>
+        <OPTION VALUE="SVC">Service Message</OPTION>
+        <FIELD_NAME>BUSINESS_FUNCTION_CD</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="H">Handed Off</OPTION>
+        <OPTION VALUE="P">Pending</OPTION>
+        <FIELD_NAME>MESSAGE_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="N">Rejected</OPTION>
+        <OPTION VALUE="2">Accepted with fund transfer accounting</OPTION>
+        <OPTION VALUE="7">Accepted without accounting</OPTION>
+        <OPTION VALUE="P">Pending</OPTION>
+        <FIELD_NAME>ACK_NACK_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="G">Generated</OPTION>
+        <OPTION VALUE="P">Pending</OPTION>
+        <OPTION VALUE="S">Suppressed</OPTION>
+        <FIELD_NAME>MSG_GENERATE_STATUS</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="SUMMARY" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE/>
+    <SUMMARY_DATA_BLK>BLK_CCY_RATE_MASTER</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Authorization Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Authorized</OPTION>
+        <OPTION VALUE="U">Unauthorized</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Record Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">Open</OPTION>
+        <OPTION VALUE="C">Closed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>Branch Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <RELATED_FIELD>BRNCD</RELATED_FIELD>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>BRNCD</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>Currency 1</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <RELATED_FIELD>CCY1</RELATED_FIELD>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>CCY1</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <REQD>-1</REQD>
+        <LBL>Currency 2</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <RELATED_FIELD>CCY2</RELATED_FIELD>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>CCY2</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Authorization Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">Authorized</OPTION>
+        <OPTION VALUE="U">Unauthorized</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Record Status</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">Open</OPTION>
+        <OPTION VALUE="C">Closed</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>Branch Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <RELATED_FIELD>BRNCD</RELATED_FIELD>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>BRNCD</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <REQD>-1</REQD>
+        <LBL>Currency 1</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <RELATED_FIELD>CCY1</RELATED_FIELD>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>CCY1</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <REQD>-1</REQD>
+        <LBL>Currency 2</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <RELATED_FIELD>CCY2</RELATED_FIELD>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>CCY2</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="Currency Exchange Rates Input" TMP_SCR_TYPE="M">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL/>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL/>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS/>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>Maker</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>Checker</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS/>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>Date Time:</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>Date Time:</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>Mod No</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS/>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL/>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"/>
+                <OPTION VALUE="C">Closed</OPTION>
+                <OPTION VALUE="O">Open</OPTION>
+                <COLS/>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>Record Status</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"/>
+                <OPTION VALUE="A">Authorized</OPTION>
+                <OPTION VALUE="R">Rejected</OPTION>
+                <OPTION VALUE="U">Unauthorized</OPTION>
+                <COLS/>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>Authorization Status</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CCY_RATE_MASTER</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="C" SEQ="1" id="CSCFNUDF">
+        <SCREEN>CVS_UDF</SCREEN>
+        <LBL>Field</LBL>
+        <FUNCTION>CSCFNUDF</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL/>
+        <SECTION ID="SEC_CURRENCY" COLLAPSE="N">
+          <PART NAME="CCY_MASTER" ID="CCY_MASTER" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_CCY_RATE_MASTER">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE/>
+                <COLS/>
+                <RELATED_FIELD>CCY1</RELATED_FIELD>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CCY1</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CCY_PAIR</NAME>
+                </LOV>
+                <LBL>Currency 1</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE/>
+                <COLS/>
+                <RELATED_FIELD>CCY2</RELATED_FIELD>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CCY2</NAME>
+                <CASE>UPPER</CASE>
+                <LBL>Currency 2</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE/>
+                <COLS/>
+                <RELATED_FIELD>BRNCD</RELATED_FIELD>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BRNCD</NAME>
+                <LBL>Branch Code</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>-1</HREQ>
+              <BLOCK>BLK_CCY_RATE_MASTER</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+        <SECTION ID="SEC_CCY_RATE_DETAILS" COLLAPSE="N">
+          <PART NAME="CCYRATE_DETAILS" ID="CCYRATE_DETAILS" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_CCY_RATE_DETAILS">
+              <FIELD CONTROL="N" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE/>
+                <COLS/>
+                <RELATED_FIELD>RATETYPE</RELATED_FIELD>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>RATETYPE</NAME>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_RATE_TYPE</NAME>
+                </LOV>
+                <LBL>Rate Type</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>12</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>MIDRATE</RELATED_FIELD>
+                <MAXLENGTH>24</MAXLENGTH>
+                <NAME>MIDRATE</NAME>
+                <LBL>Mid Rate</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>BUYSPRD</RELATED_FIELD>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>BUYSPRD</NAME>
+                <LBL>Buy Spread</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>SALESPRD</RELATED_FIELD>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>SALESPRD</NAME>
+                <LBL>Sell Spread</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>12</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>BUYRATE</RELATED_FIELD>
+                <MAXLENGTH>24</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BUYRATE</NAME>
+                <LBL>Buy Rate</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>12</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>SALERATE</RELATED_FIELD>
+                <MAXLENGTH>24</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>SALERATE</NAME>
+                <LBL>Sale Rate</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>Rate Date</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <RELATED_FIELD>RATEDATE</RELATED_FIELD>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RATEDATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>RATESER</RELATED_FIELD>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>RATESER</NAME>
+                <LBL>Rate Sequence</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>12</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <HIDDEN>-1</HIDDEN>
+                <COLS/>
+                <MAXLENGTH>24</MAXLENGTH>
+                <NAME>UNAUTHMIDRATE</NAME>
+                <LBL>LBL_UNAUTHMIDRATE</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <HIDDEN>-1</HIDDEN>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>UNAUTHBUYSPRD</NAME>
+                <LBL>LBL_UNAUTHBUYSPRD</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <HIDDEN>-1</HIDDEN>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>UNAUTHSALESPRD</NAME>
+                <LBL>LBL_UNAUTHSALESPRD</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>12</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <HIDDEN>-1</HIDDEN>
+                <COLS/>
+                <MAXLENGTH>24</MAXLENGTH>
+                <NAME>UNAUTHBUYRATE</NAME>
+                <LBL>LBL_UNAUTHBUYRATE</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>12</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <HIDDEN>-1</HIDDEN>
+                <COLS/>
+                <MAXLENGTH>24</MAXLENGTH>
+                <NAME>UNAUTHSALERATE</NAME>
+                <LBL>LBL_UNAUTHSALERATE</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>LBL_INTAUTHSTAT</LBL>
+                <SIZE/>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>CHAR</DTYPE>
+                <COLS/>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>INTAUTHSTAT</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>Currency Rate</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CCY_RATE_DETAILS</BLOCK>
+              <WIDTH/>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+        <SECTION ID="SEC_ENRCH_BTN" COLLAPSE="N">
+          <PART NAME="ENRCH_BTN" ID="ENRCH_BTN" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_ENRICH">
+              <FIELD CONTROL="Y" SPRT="2" INDEX="">
+                <SIZE/>
+                <COLS/>
+                <RELATED_FIELD>BTNENRICH</RELATED_FIELD>
+                <MAXLENGTH/>
+                <EVENT>
+                  <FUNCTION>fn_enrich()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTNENRICH</NAME>
+                <LBL>Enrich</LBL>
+                <DTYPE/>
+                <TYPE>BUTTON</TYPE>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CCY_RATE_MASTER</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

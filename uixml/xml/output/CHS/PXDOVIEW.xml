@@ -1,0 +1,4819 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="L">
+    <SUMMARY_BASE/>
+    <SUMBUTTONS>
+      <BUTTON_ROWS/>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fn_GPITrackEnQ()</BUTTON_EVENT>
+        <BUTTON_LBL>gpi跟踪器查询</BUTTON_LBL>
+        <BUTTON_NAME>GPI_TRACKER_ENQUIRY</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fn_CancelRequest()</BUTTON_EVENT>
+        <BUTTON_LBL>取消请求</BUTTON_LBL>
+        <BUTTON_NAME>BTN_CANCEL_REQUEST</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="3">
+        <BUTTON_EVENT>fn_GenerateMTn99()</BUTTON_EVENT>
+        <BUTTON_LBL>生成N99</BUTTON_LBL>
+        <BUTTON_NAME>BTN_GEN_MTN99</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="4">
+        <BUTTON_EVENT>fn_Reverse()</BUTTON_EVENT>
+        <BUTTON_LBL>冲正</BUTTON_LBL>
+        <BUTTON_NAME>BTN_REVERSE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="5">
+        <BUTTON_EVENT>fn_GenerateConfirmation()</BUTTON_EVENT>
+        <BUTTON_LBL>生成确认</BUTTON_LBL>
+        <BUTTON_NAME>BTN_CONFIRM_GENERATE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW/>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_PXVWS_OUT_TXN_SUMMARY</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS/>
+        <LBL>交易参考编号</LBL>
+        <MAX_VAL/>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL/>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>登记日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>BOOK_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>转账类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="C" SELECTED="0">MT103+（MT202COV)</OPTION>
+        <OPTION VALUE="B" SELECTED="0">MT202</OPTION>
+        <OPTION VALUE="V" SELECTED="0">MT202COV</OPTION>
+        <OPTION VALUE="O" SELECTED="0">MT200</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TRANSFER_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>多贷记参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>MULTI_CR_REF_NO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>付款指示日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>INSTRUCTION_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>交易分行</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BRANCH_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>交易来源参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>EXTERNAL_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>会计分录生成日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>ACTIVATION_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>付款人账号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>DR_AC_NO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>相关参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>RELATED_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>交易币种</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXN_CCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>客户号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTOMER_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <MAX_DECIMALS/>
+        <LBL>文件参考编号</LBL>
+        <MAX_VAL/>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL/>
+        <NAME>FILE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>交易金额</LBL>
+        <MAX_VAL/>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>TXN_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL/>
+        <NAME>TXN_AMOUNT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>客户类型</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CUSTOMER_SERVICE_MODEL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LBL>端到端流水号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>40</MAXLENGTH>
+        <NAME>UETR</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LBL>交易状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="P" SELECTED="0">正在处理中</OPTION>
+        <OPTION VALUE="E" SELECTED="0">异常</OPTION>
+        <OPTION VALUE="S" SELECTED="0">处理</OPTION>
+        <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+        <OPTION VALUE="F" SELECTED="0">将来日交易</OPTION>
+        <OPTION VALUE="B" SELECTED="0">已合并</OPTION>
+        <OPTION VALUE="V" SELECTED="0">已冲正</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">筛查选中</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>TXN_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LBL>收款方账号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CR_AC_NO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>付款批 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>PMTINFID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <LBL>接收方 BIC</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>RECEIVER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LBL>汇款管道</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORK</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <LBL>账号开户行BIC1</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>ACC_WITH_INST2_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="23">
+        <LBL>交易来源</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>SOURCE_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="24">
+        <LBL>优先级：普通、紧急、特急</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="H" SELECTED="0">特急</OPTION>
+        <OPTION VALUE="U" SELECTED="0">紧急</OPTION>
+        <OPTION VALUE="N" SELECTED="0">普通</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>BANKING_PRIORITY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="25">
+        <LBL>范本 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>TEMPLATE_ID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="26">
+        <LBL>异常队列</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="##" SELECTED="0">##</OPTION>
+        <OPTION VALUE="AC" SELECTED="0">账务队列</OPTION>
+        <OPTION VALUE="AL" SELECTED="0">授权额度队列</OPTION>
+        <OPTION VALUE="BB" SELECTED="0">批量交易队列</OPTION>
+        <OPTION VALUE="BO" SELECTED="0">业务授权队列</OPTION>
+        <OPTION VALUE="CR" SELECTED="0">清算退回队列</OPTION>
+        <OPTION VALUE="EA" SELECTED="0">外部帐户检查队列</OPTION>
+        <OPTION VALUE="EC" SELECTED="0">外部贷记审批队列</OPTION>
+        <OPTION VALUE="EE" SELECTED="0">外部汇率队列</OPTION>
+        <OPTION VALUE="EP" SELECTED="0">外部定价队列</OPTION>
+        <OPTION VALUE="ER" SELECTED="0">汇率队列</OPTION>
+        <OPTION VALUE="FV" SELECTED="0">将来日交易</OPTION>
+        <OPTION VALUE="NC" SELECTED="0">管道且日队列</OPTION>
+        <OPTION VALUE="PC" SELECTED="0">处理截止队列</OPTION>
+        <OPTION VALUE="PE" SELECTED="0">处理异常队列</OPTION>
+        <OPTION VALUE="SC" SELECTED="0">制裁检查队列</OPTION>
+        <OPTION VALUE="TR" SELECTED="0">交易信息修改</OPTION>
+        <OPTION VALUE="SI" SELECTED="0">结算复核队列</OPTION>
+        <OPTION VALUE="EQ" SELECTED="0">欧盟支付人队列</OPTION>
+        <OPTION VALUE="NS" SELECTED="0">非 直通 队列</OPTION>
+        <OPTION VALUE="CQ" SELECTED="0">来账请求取消队列</OPTION>
+        <OPTION VALUE="IR" SELECTED="0">来账请求取消</OPTION>
+        <OPTION VALUE="VQ" SELECTED="0">验证队列</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>QUEUE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="27">
+        <LBL>gpi 代理</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">是</OPTION>
+        <OPTION VALUE="N" SELECTED="0">否</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>GPI_ENABLED</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="28">
+        <LBL>SSI 标签</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>SSI_LABEL</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="29">
+        <LBL>预拨款支付</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">是</OPTION>
+        <OPTION VALUE="N" SELECTED="0">否</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PREFUNDED_PAYMENTS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="30">
+        <LBL>撤销状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="R" SELECTED="0">请求收回</OPTION>
+        <OPTION VALUE="A" SELECTED="0">已接受收回</OPTION>
+        <OPTION VALUE="X" SELECTED="0">已拒绝收回</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>RECALL_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="31">
+        <LBL>网络状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">已收到确认</OPTION>
+        <OPTION VALUE="N" SELECTED="0">收到NAK</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>NETWORK_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="32">
+        <LBL>合并状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="C" SELECTED="0">关闭</OPTION>
+        <OPTION VALUE="E" SELECTED="0">异常</OPTION>
+        <OPTION VALUE="P" SELECTED="0">等待</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CONSOL_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="33">
+        <LBL>资金状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="F" SELECTED="0">直接融资</OPTION>
+        <OPTION VALUE="N" SELECTED="0">资金未到账</OPTION>
+        <OPTION VALUE="X" SELECTED="0">通知待定</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>FUNDING_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="34">
+        <LBL>外汇参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>FX_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="35">
+        <MAX_DECIMALS/>
+        <LBL>合并参考编号</LBL>
+        <MAX_VAL/>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL/>
+        <NAME>CONSOL_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="36">
+        <LBL>要求 PSD 处理</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">是</OPTION>
+        <OPTION VALUE="N" SELECTED="0">否</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PSD_HANDLING_REQUIRED</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="37">
+        <LBL>gpi 付款类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="gCCT" SELECTED="0">gCCT</OPTION>
+        <OPTION VALUE="gCOV" SELECTED="0">gCOV</OPTION>
+        <OPTION VALUE="gFIT" SELECTED="0">gFIT</OPTION>
+        <OPTION VALUE="gLowValue" SELECTED="0"></OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>GPI_PAYMENT</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS/>
+        <LBL>交易参考编号</LBL>
+        <MAX_VAL/>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL/>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>登记日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>BOOK_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>转账类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="C" SELECTED="0">MT103+（MT202COV)</OPTION>
+        <OPTION VALUE="B" SELECTED="0">MT202</OPTION>
+        <OPTION VALUE="V" SELECTED="0">MT202COV</OPTION>
+        <OPTION VALUE="O" SELECTED="0">MT200</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TRANSFER_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>多贷记参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>MULTI_CR_REF_NO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>付款指示日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>INSTRUCTION_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>交易分行</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BRANCH_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>交易来源参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>EXTERNAL_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>会计分录生成日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>ACTIVATION_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>付款人账号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>DR_AC_NO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>相关参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>RELATED_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>交易币种</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXN_CCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>客户号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTOMER_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <MAX_DECIMALS/>
+        <LBL>文件参考编号</LBL>
+        <MAX_VAL/>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL/>
+        <NAME>FILE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>交易金额</LBL>
+        <MAX_VAL/>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>TXN_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL/>
+        <NAME>TXN_AMOUNT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>客户类型</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CUSTOMER_SERVICE_MODEL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LBL>端到端流水号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>40</MAXLENGTH>
+        <NAME>UETR</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LBL>交易状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="P" SELECTED="0">正在处理中</OPTION>
+        <OPTION VALUE="E" SELECTED="0">异常</OPTION>
+        <OPTION VALUE="S" SELECTED="0">处理</OPTION>
+        <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+        <OPTION VALUE="F" SELECTED="0">将来日交易</OPTION>
+        <OPTION VALUE="B" SELECTED="0">已合并</OPTION>
+        <OPTION VALUE="V" SELECTED="0">已冲正</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">筛查选中</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>TXN_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LBL>收款方账号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CR_AC_NO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>付款批 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>PMTINFID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <LBL>接收方 BIC</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>RECEIVER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LBL>汇款管道</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORK</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <LBL>账号开户行BIC1</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>ACC_WITH_INST2_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="23">
+        <LBL>交易来源</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>SOURCE_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="24">
+        <LBL>优先级：普通、紧急、特急</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="H" SELECTED="0">特急</OPTION>
+        <OPTION VALUE="U" SELECTED="0">紧急</OPTION>
+        <OPTION VALUE="N" SELECTED="0">普通</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>BANKING_PRIORITY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="25">
+        <LBL>范本 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>TEMPLATE_ID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="26">
+        <LBL>异常队列</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="##" SELECTED="0">##</OPTION>
+        <OPTION VALUE="AC" SELECTED="0">账务队列</OPTION>
+        <OPTION VALUE="AL" SELECTED="0">授权额度队列</OPTION>
+        <OPTION VALUE="BB" SELECTED="0">批量交易队列</OPTION>
+        <OPTION VALUE="BO" SELECTED="0">业务授权队列</OPTION>
+        <OPTION VALUE="CR" SELECTED="0">清算退回队列</OPTION>
+        <OPTION VALUE="EA" SELECTED="0">外部帐户检查队列</OPTION>
+        <OPTION VALUE="EC" SELECTED="0">外部贷记审批队列</OPTION>
+        <OPTION VALUE="EE" SELECTED="0">外部汇率队列</OPTION>
+        <OPTION VALUE="EP" SELECTED="0">外部定价队列</OPTION>
+        <OPTION VALUE="ER" SELECTED="0">汇率队列</OPTION>
+        <OPTION VALUE="FV" SELECTED="0">将来日交易</OPTION>
+        <OPTION VALUE="NC" SELECTED="0">管道且日队列</OPTION>
+        <OPTION VALUE="PC" SELECTED="0">处理截止队列</OPTION>
+        <OPTION VALUE="PE" SELECTED="0">处理异常队列</OPTION>
+        <OPTION VALUE="SC" SELECTED="0">制裁检查队列</OPTION>
+        <OPTION VALUE="TR" SELECTED="0">交易信息修改</OPTION>
+        <OPTION VALUE="SI" SELECTED="0">结算复核队列</OPTION>
+        <OPTION VALUE="EQ" SELECTED="0">欧盟支付人队列</OPTION>
+        <OPTION VALUE="NS" SELECTED="0">非 直通 队列</OPTION>
+        <OPTION VALUE="CQ" SELECTED="0">来账请求取消队列</OPTION>
+        <OPTION VALUE="IR" SELECTED="0">来账请求取消</OPTION>
+        <OPTION VALUE="VQ" SELECTED="0">验证队列</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>QUEUE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="27">
+        <LBL>gpi 代理</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">是</OPTION>
+        <OPTION VALUE="N" SELECTED="0">否</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>GPI_ENABLED</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="28">
+        <LBL>SSI 标签</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>SSI_LABEL</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="29">
+        <LBL>预拨款支付</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">是</OPTION>
+        <OPTION VALUE="N" SELECTED="0">否</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PREFUNDED_PAYMENTS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="30">
+        <LBL>撤销状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="R" SELECTED="0">请求收回</OPTION>
+        <OPTION VALUE="A" SELECTED="0">已接受收回</OPTION>
+        <OPTION VALUE="X" SELECTED="0">已拒绝收回</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>RECALL_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="31">
+        <LBL>网络状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">已收到确认</OPTION>
+        <OPTION VALUE="N" SELECTED="0">收到NAK</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>NETWORK_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="32">
+        <LBL>合并状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="C" SELECTED="0">关闭</OPTION>
+        <OPTION VALUE="E" SELECTED="0">异常</OPTION>
+        <OPTION VALUE="P" SELECTED="0">等待</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CONSOL_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="33">
+        <LBL>资金状态</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="F" SELECTED="0">直接融资</OPTION>
+        <OPTION VALUE="N" SELECTED="0">资金未到账</OPTION>
+        <OPTION VALUE="X" SELECTED="0">通知待定</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>FUNDING_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="34">
+        <LBL>外汇参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>FX_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="35">
+        <MAX_DECIMALS/>
+        <LBL>合并参考编号</LBL>
+        <MAX_VAL/>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL/>
+        <NAME>CONSOL_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="36">
+        <LBL>要求 PSD 处理</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">是</OPTION>
+        <OPTION VALUE="N" SELECTED="0">否</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PSD_HANDLING_REQUIRED</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="37">
+        <LBL>主机代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>HOST_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="38">
+        <LBL>交易存盘日期</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>TXN_ARCH_DT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="39">
+        <LBL>gpi 付款类型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="gCCT" SELECTED="0">gCCT</OPTION>
+        <OPTION VALUE="gCOV" SELECTED="0">gCOV</OPTION>
+        <OPTION VALUE="gFIT" SELECTED="0">gFIT</OPTION>
+        <OPTION VALUE="gLowValue" SELECTED="0"></OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>GPI_PAYMENT</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL/>
+        <OPTION VALUE="C">MT103+（MT202COV)</OPTION>
+        <OPTION VALUE="B">MT202</OPTION>
+        <OPTION VALUE="V">MT202COV</OPTION>
+        <OPTION VALUE="O">MT200</OPTION>
+        <FIELD_NAME>TRANSFER_TYPE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL/>
+        <OPTION VALUE="P">正在处理中</OPTION>
+        <OPTION VALUE="E">异常</OPTION>
+        <OPTION VALUE="S">处理</OPTION>
+        <OPTION VALUE="C">已取消</OPTION>
+        <OPTION VALUE="F">将来日交易</OPTION>
+        <OPTION VALUE="B">已合并</OPTION>
+        <OPTION VALUE="V">已冲正</OPTION>
+        <OPTION VALUE="Z">筛查选中</OPTION>
+        <OPTION VALUE="R">请求收回</OPTION>
+        <OPTION VALUE="A">已接受收回</OPTION>
+        <FIELD_NAME>TXN_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL/>
+        <OPTION VALUE="H">特急</OPTION>
+        <OPTION VALUE="U">紧急</OPTION>
+        <OPTION VALUE="N">普通</OPTION>
+        <FIELD_NAME>BANKING_PRIORITY</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL/>
+        <OPTION VALUE="##">##</OPTION>
+        <OPTION VALUE="AC">账务队列</OPTION>
+        <OPTION VALUE="AL">授权额度队列</OPTION>
+        <OPTION VALUE="BB">批量交易队列</OPTION>
+        <OPTION VALUE="BO">业务授权队列</OPTION>
+        <OPTION VALUE="CR">清算退回队列</OPTION>
+        <OPTION VALUE="EA">外部帐户检查队列</OPTION>
+        <OPTION VALUE="EC">外部贷记审批队列</OPTION>
+        <OPTION VALUE="EE">外部汇率队列</OPTION>
+        <OPTION VALUE="EP">外部定价队列</OPTION>
+        <OPTION VALUE="ER">汇率队列</OPTION>
+        <OPTION VALUE="FV">将来日交易</OPTION>
+        <OPTION VALUE="NC">管道且日队列</OPTION>
+        <OPTION VALUE="PB">主要银行检查队列</OPTION>
+        <OPTION VALUE="PC">处理截止队列</OPTION>
+        <OPTION VALUE="PE">处理异常队列</OPTION>
+        <OPTION VALUE="PQ">打印队列</OPTION>
+        <OPTION VALUE="SC">制裁检查队列</OPTION>
+        <OPTION VALUE="TR">交易信息修改</OPTION>
+        <OPTION VALUE="SI">结算复核队列</OPTION>
+        <OPTION VALUE="EQ">欧盟支付人队列</OPTION>
+        <OPTION VALUE="NS">非 直通 队列</OPTION>
+        <OPTION VALUE="CQ">来账请求取消队列</OPTION>
+        <OPTION VALUE="IR">来账请求取消</OPTION>
+        <OPTION VALUE="VQ">验证队列</OPTION>
+        <FIELD_NAME>QUEUE_CODE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL/>
+        <OPTION VALUE="Y">是</OPTION>
+        <OPTION VALUE="N">否</OPTION>
+        <FIELD_NAME>GPI_ENABLED</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL/>
+        <OPTION VALUE="Y">是</OPTION>
+        <OPTION VALUE="N">否</OPTION>
+        <FIELD_NAME>PREFUNDED_PAYMENTS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL/>
+        <OPTION VALUE="R">请求收回</OPTION>
+        <OPTION VALUE="A">已接受收回</OPTION>
+        <OPTION VALUE="X">已拒绝收回</OPTION>
+        <FIELD_NAME>RECALL_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL/>
+        <OPTION VALUE="A">已收到确认</OPTION>
+        <OPTION VALUE="N">收到NAK</OPTION>
+        <FIELD_NAME>NETWORK_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL/>
+        <OPTION VALUE="C">关闭</OPTION>
+        <OPTION VALUE="E">异常</OPTION>
+        <OPTION VALUE="P">等待</OPTION>
+        <FIELD_NAME>CONSOL_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL/>
+        <OPTION VALUE="F">直接融资</OPTION>
+        <OPTION VALUE="N">资金未到账</OPTION>
+        <OPTION VALUE="X">通知待定</OPTION>
+        <FIELD_NAME>FUNDING_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL/>
+        <OPTION VALUE="Y">是</OPTION>
+        <OPTION VALUE="N">否</OPTION>
+        <FIELD_NAME>PSD_HANDLING_REQUIRED</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL/>
+        <OPTION VALUE="gCCT">gCCT</OPTION>
+        <OPTION VALUE="gCOV">gCOV</OPTION>
+        <OPTION VALUE="gFIT">gFIT</OPTION>
+        <OPTION VALUE="gLowValue"></OPTION>
+        <FIELD_NAME>GPI_PAYMENT</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="L">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL/>
+        <SECTION ID="SEC_ONE" COLLAPSE="N">
+          <PART NAME="PAR1" ID="PAR1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HDR_LEFT">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_BRANCH_CODE</NAME>
+                </LOV>
+                <LBL>交易分行代码</LBL>
+                <SIZE>3</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BRANCH_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>分行名称</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BRANCH_NAME</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_HOST_CODE</NAME>
+                </LOV>
+                <LBL>主机代码</LBL>
+                <SIZE>8</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>HOST_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>主机代码说明</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>HOST_DESCRIPTION</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_HOST_CODE</NAME>
+                </LOV>
+                <LBL>交易来源</LBL>
+                <SIZE>16</SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>SOURCE_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易来源说明</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>SOURCE_DESCRIPTION</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_NETWORK_CODE</NAME>
+                </LOV>
+                <LBL>汇款渠道</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>NETWORK</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>汇款渠道说明</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>NETWORK_DESCRIPTION</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易参考编号</LBL>
+                <SIZE/>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TXN_REF_NO1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>转账类型</LBL>
+                <SIZE/>
+                <OPTION VALUE="C" SELECTED="0">MT103+（MT202COV)</OPTION>
+                <OPTION VALUE="B" SELECTED="0">MT202</OPTION>
+                <OPTION VALUE="V" SELECTED="0">MT202COV</OPTION>
+                <OPTION VALUE="O" SELECTED="0">MT200</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TRANSFER_TYPE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易归档日期</LBL>
+                <SIZE/>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>TXN_ARCH_DT1</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PAR2" ID="PAR2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HDR_CENTER">
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_TXN_REF_NO</NAME>
+                </LOV>
+                <LBL>交易参考编号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>TXN_REF_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>相关参考编号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>RELATED_REF_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易来源参考编号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>EXTERNAL_REF_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>文件参考编号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>FILE_REF_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>合并参考编号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CONSOL_REF_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>多贷记参考编号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>MULTI_CR_REF_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>批量汇款号码</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>PMTINFID</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>常用交易模板</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>TEMPLATE_ID</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>连接选项</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="INTER" SELECTED="0">分行间</OPTION>
+                <OPTION VALUE="INTRA" SELECTED="0">分行内部</OPTION>
+                <OPTION VALUE="EXT" SELECTED="0">外部</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>5</MAXLENGTH>
+                <NAME>GLOBAL_TRANSFER_TYPE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易存盘日期</LBL>
+                <SIZE/>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>TXN_ARCH_DT</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PAR3" ID="PAR3" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HDR_RIGHT">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>金融机构间多贷记转账</LBL>
+                <SIZE/>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>MULTI_CUSTOMER_TRANSFER</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>gpi 付款类型</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="gCCT" SELECTED="0">gCCT</OPTION>
+                <OPTION VALUE="gCOV" SELECTED="0">gCOV</OPTION>
+                <OPTION VALUE="gFIT" SELECTED="0">gFIT</OPTION>
+                <OPTION VALUE="gLowValue" SELECTED="0"/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>10</MAXLENGTH>
+                <NAME>GPI_PAYMENT</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>gpi 代理</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="Y" SELECTED="0">是</OPTION>
+                <OPTION VALUE="N" SELECTED="0">否</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>GPI_ENABLED</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>转入 gpi</LBL>
+                <SIZE/>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>GPI_IN_ENABLED</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>gpi UETR</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS>20</COLS>
+                <TYPE>TEXTAREA</TYPE>
+                <MAXLENGTH>40</MAXLENGTH>
+                <NAME>UETR</NAME>
+                <ROWS>2</ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE/>
+                <VALUE>N</VALUE>
+                <COLS/>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PSD_HANDLING_REQUIRED</NAME>
+                <LBL>要求 PSD 处理</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>PSD 国家/地区选项</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="I" SELECTED="0">欧盟内部</OPTION>
+                <OPTION VALUE="O" SELECTED="0">one leg out</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PSD_COUNTRY_OPTION</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>PSD 币种选项</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="E" SELECTED="0">欧盟/欧洲经济区币种</OPTION>
+                <OPTION VALUE="N" SELECTED="0">非欧盟/欧洲经济区币种</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PSD_CCY_OPTION</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>生成 gpi 确认</LBL>
+                <SIZE/>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>GEN_GPI_CONFIRMATION</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL/>
+        <SECTION ID="SEC_F1" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FOOTER">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>经办者 ID</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>MAKER_ID</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>经办者日期戳记</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>MAKER_DT_STAMP</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>复核者 ID</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>CHECKER_ID</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>复核者日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>CHECKER_DT_STAMP</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="3" INDEX="">
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="A" SELECTED="0">已授权</OPTION>
+                <OPTION VALUE="U" SELECTED="0">未授权</OPTION>
+                <COLS/>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>AUTH_STATUS</NAME>
+                <LBL>授权状态</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <SPRTCNT>3</SPRTCNT>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="S" SEQ="1" id="CVS_MORE_DTLS">
+        <SCREEN>CVS_MORE_DTLS</SCREEN>
+        <LBL>其他详细信息</LBL>
+        <FUNCTION/>
+      </FORM>
+      <FORM TYPE="S" SEQ="2" id="CVS_COVER_INFO">
+        <SCREEN>CVS_COVER_INFO</SCREEN>
+        <LBL>sequence B -cover转账的补充信息</LBL>
+        <FUNCTION/>
+      </FORM>
+      <FORM TYPE="LF" SEQ="6" id="PMDACENT">
+        <SCREEN>CVS_ACCOUNTS</SCREEN>
+        <LBL>会计分录</LBL>
+        <FUNCTION>PMDACENT</FUNCTION>
+      </FORM>
+      <FORM TYPE="LF" SEQ="7" id="PXDALMSG">
+        <SCREEN>CVS_MESGS</SCREEN>
+        <LBL>所有消息</LBL>
+        <FUNCTION>PXDALMSG</FUNCTION>
+      </FORM>
+      <FORM TYPE="LF" SEQ="8" id="PXDONRCL">
+        <SCREEN>CVS_MAIN</SCREEN>
+        <LBL>异常</LBL>
+        <FUNCTION>PXDONRCL</FUNCTION>
+      </FORM>
+      <FORM TYPE="LF" SEQ="9" id="PXDGPCNO">
+        <SCREEN>CVS_MAIN</SCREEN>
+        <LBL>gpi 确认</LBL>
+        <FUNCTION>PXDGPCNO</FUNCTION>
+      </FORM>
+      <FORM TYPE="LF" SEQ="10" id="PXDORMSG">
+        <SCREEN>CVS_MAIN</SCREEN>
+        <LBL>收回消息</LBL>
+        <FUNCTION>PXDORMSG</FUNCTION>
+      </FORM>
+      <FORM TYPE="LF" SEQ="11" id="PQDQUACL">
+        <SCREEN>CVS_QACT</SCREEN>
+        <LBL>查看队列操作</LBL>
+        <FUNCTION>PQDQUACL</FUNCTION>
+      </FORM>
+      <FORM TYPE="LF" SEQ="12" id="PMDTRUDF">
+        <SCREEN>CVS_UDF</SCREEN>
+        <LBL>字段</LBL>
+        <FUNCTION>PMDTRUDF</FUNCTION>
+      </FORM>
+      <FORM TYPE="LF" SEQ="13" id="PMDTRMIS">
+        <SCREEN>CVS_MIS</SCREEN>
+        <LBL>N/A</LBL>
+        <FUNCTION>PMDTRMIS</FUNCTION>
+      </FORM>
+      <FORM TYPE="LF" SEQ="14" id="PQDVRFLD">
+        <SCREEN>CVS_REPLOG</SCREEN>
+        <LBL>查看修改日志</LBL>
+        <FUNCTION>PQDVRFLD</FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="15" id="CVS_PAYMENT_CHAIN">
+        <SCREEN>CVS_PAYMENT_CHAIN</SCREEN>
+        <LBL>付款链</LBL>
+        <FUNCTION/>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL>主要</LBL>
+        <SECTION ID="SEC_MAIN" COLLAPSE="N">
+          <PART NAME="PART_LEFT" ID="PART_LEFT" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_INSTRUCTED CCY_IND">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易币种</LBL>
+                <SIZE/>
+                <OPTION VALUE="T" SELECTED="0">转账币种</OPTION>
+                <OPTION VALUE="D" SELECTED="0">借记币种</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>INSTRUCTED_CCY_IND</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_PMNT_DTLS">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>登记日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>BOOK_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>原始指令日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ORG_INSTRUCTION_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>付款指示日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>INSTRUCTION_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>会计分录生成日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>ACTIVATION_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>转账币种</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_DefaultCurrency()</FUNCTION>
+                  <NAME>onfocusout</NAME>
+                </EVENT>
+                <NAME>TXN_CCY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易币种名称</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TXN_CCY_NAME</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>TXN_CCY</RELATED_FIELD>
+                <MAXLENGTH>22,4</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TXN_AMOUNT</NAME>
+                <LBL>转账金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE/>
+                <HIDDEN>-1</HIDDEN>
+                <COLS/>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>INSTCCY_TFRCCY_CHK</NAME>
+                <LBL>与转账币种相同</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_DR_ACCOUNT</NAME>
+                </LOV>
+                <LBL>N/A</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DR_AC_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>付款人名称</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DR_AC_NAME</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>借記帳戶幣種</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DR_AC_CCY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>借记币种名称</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DR_AC_CCY_NAME</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>DR_AC_CCY</RELATED_FIELD>
+                <MAXLENGTH>22,4</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DR_AMOUNT</NAME>
+                <LBL>借记金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>发送方银行</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>SENDER_BANK</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>8</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>EXCH_RATE</NAME>
+                <LBL>汇率</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>外汇参考编号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>FX_REF_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22,4</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>LCY_EQUIVALENT</NAME>
+                <LBL>本币等值</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CR_ACCOUNT</NAME>
+                </LOV>
+                <LBL>贷记账户</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>CR_AC_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>收款人名称</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CR_AC_NAME</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>贷记账户币种</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CR_AC_CCY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>贷记币种名称</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CR_AC_CCY_NAME</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>CR_AC_CCY</RELATED_FIELD>
+                <MAXLENGTH>22,4</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CR_AMOUNT</NAME>
+                <LBL>贷记金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>常用匯款人</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>SSI_LABEL</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>客户号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>CUSTOMER_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>客户类型</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CUSTOMER_SERVICE_MODEL</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>计费账号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>INPUT_CHRG_AC_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>计费账户分行</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>INPUT_CHRG_AC_BRN</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>计费账户币种</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>INPUT_CHRG_CCY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>借记起息日</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>DR_VALUE_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>贷记起息日</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>CR_VALUE_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>借记分录日期</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="A" SELECTED="0">会计分录生成日期</OPTION>
+                <OPTION VALUE="V" SELECTED="0">起息日</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>DEBIT_ENTRY_ON</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>贷记起息日</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="A" SELECTED="0">会计分录生成日期</OPTION>
+                <OPTION VALUE="V" SELECTED="0">起息日</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CREDIT_ENTRY_ON</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MESSAGE_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>借记分录日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DEBIT_ENTRY_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>贷记分录日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CREDIT_ENTRY_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>BLK_CHARGE__CHARGE_CCY</RELATED_FIELD>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHARGE_AMT</NAME>
+                <LBL>计费合计</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行操作代码</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>CRED</VALUE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>BANK_OPER_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>优先级：普通、紧急、特急</LBL>
+                <SIZE/>
+                <OPTION VALUE="N" SELECTED="-1">普通</OPTION>
+                <OPTION VALUE="U" SELECTED="0">紧急</OPTION>
+                <OPTION VALUE="H" SELECTED="0">特急</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>N</VALUE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>BANKING_PRIORITY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>费用承担方式</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="O" SELECTED="0">OUR</OPTION>
+                <OPTION VALUE="B" SELECTED="0">BEN</OPTION>
+                <OPTION VALUE="S" SELECTED="0">SHA</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CHARGE_WHOM</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>计费币种</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CHARGE_CCY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>内部备注</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>255</MAXLENGTH>
+                <NAME>INTERNAL_REMARKS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>专有目的</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>PURPOSE_VALUE</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>支付详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="3" ID="FST_CHARGE_EXCH_RATE">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>8</MAX_DECIMALS>
+                <SIZE>16</SIZE>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>16</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHARGE_EXCH_RATE</NAME>
+                <LBL>费用汇率</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN_CUSTOM</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+              <READ_ONLY>-1</READ_ONLY>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART_CENTER" ID="PART_CENTER" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_50_ORD_CUST">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>账号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>ORDERING_CUSTOMER1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_BIC_CODE</NAME>
+                </LOV>
+                <LBL>BIC/名称和地址 1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>ORDERING_CUSTOMER2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>BIC 名称</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ORDERING_CUSTOMER2_DESC</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>ORDERING_CUSTOMER3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>ORDERING_CUSTOMER4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>ORDERING_CUSTOMER5</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>50：汇款客户</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_56_INTERM">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>账号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>INTERMEDIARY1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_BIC_CODE</NAME>
+                </LOV>
+                <LBL>银行BIC</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>INTERMEDIARY2_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>BIC 名称</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>INTERMEDIARY2_CODE_DESC</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>名称和地址 1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>INTERMEDIARY3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>INTERMEDIARY4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>INTERMEDIARY5</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>56：中间行</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="3" ID="FST_58_BENF_INST">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>账号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>BENEFICIARY_INST1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_BIC_CODE</NAME>
+                </LOV>
+                <LBL>会快人名称和地址</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>BENEFICIARY_INST2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>BIC 代码说明</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BENEFICIARY_INST2_DESC</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>BENEFICIARY_INST3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>BENEFICIARY_INST4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>BENEFICIARY_INST5</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>58：受益人银行</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="4" ID="FST_SYSTEM_STATUS">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>外部审批状态</LBL>
+                <SIZE/>
+                <OPTION VALUE="N" SELECTED="0">不适用</OPTION>
+                <OPTION VALUE="P" SELECTED="0">等待</OPTION>
+                <OPTION VALUE="A" SELECTED="0">已批准</OPTION>
+                <OPTION VALUE="O" SELECTED="0">临时</OPTION>
+                <OPTION VALUE="R" SELECTED="0">已拒绝</OPTION>
+                <OPTION VALUE="T" SELECTED="0">超时</OPTION>
+                <OPTION VALUE="S" SELECTED="0">筛查选中</OPTION>
+                <OPTION VALUE="F" SELECTED="0">承接</OPTION>
+                <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+                <OPTION VALUE="K" SELECTED="0">保留在队列中</OPTION>
+                <OPTION VALUE="Q" SELECTED="0">队列异常</OPTION>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SNCK_STATUS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>SNCK_CHK_REF</NAME>
+                <LBL>外部审批参考编号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>外部贷记审批状态</LBL>
+                <SIZE/>
+                <OPTION VALUE="N" SELECTED="0">不适用</OPTION>
+                <OPTION VALUE="P" SELECTED="0">等待</OPTION>
+                <OPTION VALUE="A" SELECTED="0">已批准</OPTION>
+                <OPTION VALUE="O" SELECTED="0">临时</OPTION>
+                <OPTION VALUE="R" SELECTED="0">已拒绝</OPTION>
+                <OPTION VALUE="T" SELECTED="0">超时</OPTION>
+                <OPTION VALUE="F" SELECTED="0">承接</OPTION>
+                <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+                <OPTION VALUE="Q" SELECTED="0">队列异常</OPTION>
+                <OPTION VALUE="K" SELECTED="0">保留在队列中</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ECA_STATUS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>EXT_CR_APP_REF</NAME>
+                <LBL>外部贷记审批参考编号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>外部外汇状态</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="N" SELECTED="0">不适用</OPTION>
+                <OPTION VALUE="P" SELECTED="0">等待</OPTION>
+                <OPTION VALUE="A" SELECTED="0">已批准</OPTION>
+                <OPTION VALUE="O" SELECTED="0">已批准并授权</OPTION>
+                <OPTION VALUE="R" SELECTED="0">已拒绝</OPTION>
+                <OPTION VALUE="T" SELECTED="0">超时</OPTION>
+                <OPTION VALUE="F" SELECTED="0">承接</OPTION>
+                <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+                <OPTION VALUE="K" SELECTED="0">保留在队列中</OPTION>
+                <OPTION VALUE="Q" SELECTED="0">队列异常</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>RATE_STATUS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>EXT_RATE_REF</NAME>
+                <LBL>外部汇率参考编号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>查看队列</LBL>
+                <SIZE/>
+                <DTYPE/>
+                <COLS/>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH/>
+                <EVENT>
+                  <FUNCTION>fnViewQueue()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_VIEW_QUEUE</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>外部系统状态</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="5" ID="FST_RCVR_DTLS">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>收报行</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>RECEIVER</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>接收方说明</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RCVR_DESC</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>头寸接收方</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>RECEIVER_OF_COVER</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>头寸接收方说明</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RCVR_OF_COVR_DESC</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>接收方详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="6" ID="FST_REVERSAL_DETAILS">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>拒绝代码</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>REJECT_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>拒绝原因</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>250</MAXLENGTH>
+                <NAME>REJECT_REASON</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>备注</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>250</MAXLENGTH>
+                <NAME>REMARKS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>冲正日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>REVERSAL_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>冲正信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_REVERSE_TXN_DETAILS</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART_RIGHT" ID="PART_RIGHT" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_52_ORD_INST">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>账号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>ORDERING_INSTITUTION1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_BIC_CODE</NAME>
+                </LOV>
+                <LBL>BIC/名称和地址 1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>ORDERING_INSTITUTION2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>BIC 名称</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ORDERING_INSTITUTION2_DESC</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>ORDERING_INSTITUTION3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>ORDERING_INSTITUTION4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>ORDERING_INSTITUTION5</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>52：汇款银行</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_57_AWI">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>账号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>ACC_WITH_INST1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_BIC_CODE</NAME>
+                </LOV>
+                <LBL>银行BIC</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>ACC_WITH_INST2_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>BIC 名称</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ACC_WITH_INST2_CODE_DESC</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>名称和地址 1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>ACC_WITH_INST3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>帐户开户行 附加信息2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>ACC_WITH_INST4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>帐户开户行 附加信息3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>ACC_WITH_INST5</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>帐户开户行 附加信息4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>ACC_WITH_INST6</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>57：收款行</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="3" ID="FST_59_ULT_BEN">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>账户</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>BENEFICIARY1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_BIC_CODE</NAME>
+                </LOV>
+                <LBL>BIC/名称和地址 1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>BENEFICIARY2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>BIC 名称</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BENEFICIARY2_DESC</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>BENEFICIARY3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>BENEFICIARY4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>BENEFICIARY5</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>国家/地区</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BENEFICIARY_COUNTRY</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>59：最终受益人</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="4" ID="FST_TXN_STATUS">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易状态</LBL>
+                <SIZE/>
+                <OPTION VALUE="P" SELECTED="0">正在处理中</OPTION>
+                <OPTION VALUE="E" SELECTED="0">异常</OPTION>
+                <OPTION VALUE="S" SELECTED="0">处理</OPTION>
+                <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+                <OPTION VALUE="F" SELECTED="0">将来日交易</OPTION>
+                <OPTION VALUE="B" SELECTED="0">已合并</OPTION>
+                <OPTION VALUE="V" SELECTED="0">已冲正</OPTION>
+                <OPTION VALUE="Z" SELECTED="0">筛查选中</OPTION>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>TXN_STATUS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>借记清算状态</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="R" SELECTED="0">异常</OPTION>
+                <OPTION VALUE="N" SELECTED="0">不适用</OPTION>
+                <OPTION VALUE="S" SELECTED="0">已清算</OPTION>
+                <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+                <OPTION VALUE="V" SELECTED="0">已冲正</OPTION>
+                <OPTION VALUE="M" SELECTED="0">后收</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXN_DRLQ_STATUS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>贷记清算状态</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="R" SELECTED="0">异常</OPTION>
+                <OPTION VALUE="N" SELECTED="0">不适用</OPTION>
+                <OPTION VALUE="S" SELECTED="0">已清算</OPTION>
+                <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+                <OPTION VALUE="V" SELECTED="0">已冲正</OPTION>
+                <OPTION VALUE="M" SELECTED="0">后收</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXN_CRLQ_STATUS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>放款待拨款预先记账</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="Y" SELECTED="0">是</OPTION>
+                <OPTION VALUE="N" SELECTED="0">否</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PREFUNDED_PAYMENTS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>撤销状态</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="R" SELECTED="0">请求收回</OPTION>
+                <OPTION VALUE="A" SELECTED="0">已接受收回</OPTION>
+                <OPTION VALUE="X" SELECTED="0">已拒绝收回</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>RECALL_STATUS</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>交易状态</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="5" ID="FST_GPI_STATUS">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>状态代码</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>GPI_STATUS_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>原因代码</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>GPI_REASON_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>最新 gCCT 确认状态</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="6" ID="FST_QUEUE_STAT">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>队列代码</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="##" SELECTED="0">##</OPTION>
+                <OPTION VALUE="AC" SELECTED="0">账务队列</OPTION>
+                <OPTION VALUE="AL" SELECTED="0">授权额度队列</OPTION>
+                <OPTION VALUE="BB" SELECTED="0">批量交易队列</OPTION>
+                <OPTION VALUE="BO" SELECTED="0">业务授权队列</OPTION>
+                <OPTION VALUE="CR" SELECTED="0">清算退回队列</OPTION>
+                <OPTION VALUE="EA" SELECTED="0">外部帐户检查队列</OPTION>
+                <OPTION VALUE="EC" SELECTED="0">外部贷记审批队列</OPTION>
+                <OPTION VALUE="EE" SELECTED="0">外部汇率队列</OPTION>
+                <OPTION VALUE="EP" SELECTED="0">外部定价队列</OPTION>
+                <OPTION VALUE="ER" SELECTED="0">汇率队列</OPTION>
+                <OPTION VALUE="FV" SELECTED="0">将来日交易</OPTION>
+                <OPTION VALUE="NC" SELECTED="0">管道且日队列</OPTION>
+                <OPTION VALUE="PC" SELECTED="0">处理截止队列</OPTION>
+                <OPTION VALUE="PE" SELECTED="0">处理异常队列</OPTION>
+                <OPTION VALUE="SC" SELECTED="0">制裁检查队列</OPTION>
+                <OPTION VALUE="TR" SELECTED="0">交易信息修改</OPTION>
+                <OPTION VALUE="SI" SELECTED="0">结算复核队列</OPTION>
+                <OPTION VALUE="EQ" SELECTED="0">欧盟支付人队列</OPTION>
+                <OPTION VALUE="NS" SELECTED="0">非 直通 队列</OPTION>
+                <OPTION VALUE="CQ" SELECTED="0">来账请求取消队列</OPTION>
+                <OPTION VALUE="IR" SELECTED="0">来账请求取消</OPTION>
+                <OPTION VALUE="VQ" SELECTED="0">验证队列</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>QUEUE_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>待定队列详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="7" ID="FST_SC_SEIZURE">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>制裁获取</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="Y" SELECTED="0">是</OPTION>
+                <OPTION VALUE="N" SELECTED="0">否</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SC_SEIZURE</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>制裁获取</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="8" ID="FST_CANC_REQ_DETAILS">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>CANC_REQ_REF_NO</NAME>
+                <LBL>取消授权参考编号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>取消授权日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>REQ_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>79：报文详述</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>50</MAXLENGTH>
+                <NAME>CANC_REASON_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>取消请求状态</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="P" SELECTED="0">已请求取消</OPTION>
+                <OPTION VALUE="R" SELECTED="0">已拒绝取消</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CANC_REQ_STATUS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>取消状态</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+                <OPTION VALUE="E" SELECTED="0">异常</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CANC_PROC_STATUS</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>取消报文详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="9" ID="FST_GPI_CONFIRM_STATUS">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>确认状态</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="U" SELECTED="0">未生成</OPTION>
+                <OPTION VALUE="G" SELECTED="0">已生成</OPTION>
+                <OPTION VALUE="S" SELECTED="0">停止</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CONFIRMATION_STATUS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>确认类型</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="I" SELECTED="0">临时</OPTION>
+                <OPTION VALUE="R" SELECTED="0">拒绝</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CONFIRMATION_TYPE</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>gpi 通用确认状态</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+      <TAB ID="TAB_PRICING_DTLS">
+        <LBL>手续费</LBL>
+        <SECTION ID="SEC_CHG" COLLAPSE="N">
+          <PART NAME="PART_1" ID="PART_1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_CHARGES">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>定价代码</LBL>
+                <SIZE/>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>10</MAXLENGTH>
+                <NAME>PRICING_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>定价组件</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>10</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>COMPONENT_NAME</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>费用币种</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PRICING_CCY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>3</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>PRICING_CCY</RELATED_FIELD>
+                <MAXLENGTH>22,3</MAXLENGTH>
+                <NAME>AMOUNT</NAME>
+                <LBL>费用金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>豁免</LBL>
+                <SIZE/>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>WAIVER</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>借记币种</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DR_CHG_CCY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>DR_CHG_CCY</RELATED_FIELD>
+                <MAXLENGTH>22,4</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DR_CHG_AMT</NAME>
+                <LBL>借记金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>会计代码</LBL>
+                <SIZE/>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>ACCOUNTING_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <HIDDEN>-1</HIDDEN>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>TXN_LCY_AMOUNT</NAME>
+                <LBL>以本币计的金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>12</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <HIDDEN>-1</HIDDEN>
+                <COLS/>
+                <MAXLENGTH>24</MAXLENGTH>
+                <NAME>EXCH_RATE</NAME>
+                <LBL>汇率</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>延迟</LBL>
+                <SIZE/>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>DEFERRED_YN</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>承担银行</LBL>
+                <SIZE/>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>BORNE_BY_BANK_YN</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>计费清算状态</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="N" SELECTED="0">不适用</OPTION>
+                <OPTION VALUE="P" SELECTED="0">等待</OPTION>
+                <OPTION VALUE="L" SELECTED="0">成功</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CHG_LIQ_STATUS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <HIDDEN>-1</HIDDEN>
+                <COLS/>
+                <MAXLENGTH>38</MAXLENGTH>
+                <NAME>TXN_REF_NO</NAME>
+                <LBL>交易参考编号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易存盘日期</LBL>
+                <SIZE/>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>TXN_ARCH_DT</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN_CHG</BLOCK>
+              <WIDTH/>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_MORE_DTLS" POSITION="template" TITLE="其他详细信息" TMP_SCR_TYPE="L">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL/>
+        <SECTION ID="SEC_MDH1" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="100">
+            <SPRTCNT>3</SPRTCNT>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL/>
+        <SECTION ID="SEC_MDF" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="100">
+            <SPRTCNT>3</SPRTCNT>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL/>
+        <SECTION ID="SEC_PARTIES" COLLAPSE="N">
+          <PART NAME="PART_LEFT" ID="PART_LEFT" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_53_SNDR_CORRESP">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>账号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>OUR_CORRESPONDENT</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_BIC_CODE</NAME>
+                </LOV>
+                <LBL>BIC/名称和地址 1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>OUR_CORRESPONDENT2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>BIC 名称</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>OUR_CORRESPONDENT2_DESC</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>OUR_CORRESPONDENT3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>OUR_CORRESPONDENT4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>OUR_CORRESPONDENT5</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>53：发送方代理行</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_13_TIME_IND">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>CLS时间</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>TIME_IND_1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>接收时间</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>TIME_IND_2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>发送时间</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>TIME_IND_3</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>13C：时间表示详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="3" ID="FST_23E_INSTR_CD">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>指令代码 1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>INSTR_CODE1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>指令代码 2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>INSTR_CODE2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>指令代码 3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>INSTR_CODE3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>指令代码 4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>INSTR_CODE4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>指令代码 5</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>INSTR_CODE5</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>指令代码 6</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>INSTR_CODE6</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>23E：指令代码</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="4" ID="FST_71G_RCVR_CHG">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>币种</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>RCVR_CHG_CCY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>RCVR_CHG_AMT</NAME>
+                <LBL>费用金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RCVR_CHG_COLLECTED</NAME>
+                <LBL>已收账金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RCVR_CHG_SENT</NAME>
+                <LBL>已发送金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <LBL>71G：接收方费用</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="5" ID="FST_TRNSACTION_TYPE">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易类型</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>TRANSACTION_TYPE</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>26T：交易类型</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="6" ID="FST_MSG_SUPR_PREF">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>MT103+MT202</LBL>
+                <SIZE/>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SUPPRESS_PAYMENT_MESSAGE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>MT202</LBL>
+                <SIZE/>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SUPPRESS_COVER_MESSAGE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>MT900</LBL>
+                <SIZE/>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SUPPRESS_DEBIT_CONFIRMATION</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>MT210</LBL>
+                <SIZE/>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>CHECKBOX</TYPE>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>SUPPRESS_RECEIVE_NOTICE</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>选择不发送报文</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART_CENTER" ID="PART_CENTER" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_54_RCVR_CORRESP">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>账号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>RCVR_CORRESP1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_BIC_CODE</NAME>
+                </LOV>
+                <LBL>BIC/名称和地址 1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>RCVR_CORRESP2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>BIC 名称</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RCVR_CORRESP2_DESC</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>RCVR_CORRESP3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>RCVR_CORRESP4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>RCVR_CORRESP5</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>54a：接收方代理行</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_70_REM_DTLS">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>汇款附言1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>PAYMENT_DETAILS1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>汇款附言2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>PAYMENT_DETAILS2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行行号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>PAYMENT_DETAILS3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>汇款摘要</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>PAYMENT_DETAILS4</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>70：汇款信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="3" ID="FST_71F_SNDR_CHG">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>计费币种 1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>SNDR_CHG_CCY1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>SNDR_CHG_AMT1</NAME>
+                <LBL>计费金额 1</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>计费币种 2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>SNDR_CHG_CCY2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>SNDR_CHG_AMT2</NAME>
+                <LBL>计费金额 2</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>计费币种 3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>SNDR_CHG_CCY3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>SNDR_CHG_AMT3</NAME>
+                <LBL>计费金额 3</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>计费币种 4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>SNDR_CHG_CCY4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>SNDR_CHG_AMT4</NAME>
+                <LBL>计费金额 4</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>计费币种 5</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>SNDR_CHG_CCY5</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>SNDR_CHG_AMT5</NAME>
+                <LBL>计费金额 5</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>计费币种 6</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>SNDR_CHG_CCY6</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>SNDR_CHG_AMT6</NAME>
+                <LBL>计费金额 6</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <LBL>71F：发送方费用</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="4" ID="FST_CVR_DTLS">
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE/>
+                <HIDDEN>-1</HIDDEN>
+                <COLS/>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>COVER</NAME>
+                <LBL>头寸调拨适用</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>结算方法</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1">无偏好选项</OPTION>
+                <OPTION VALUE="Y" SELECTED="0">期数</OPTION>
+                <OPTION VALUE="N" SELECTED="0">cover 头寸调拨</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PROCESS_WITHOUT_COVER</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>结算偏好选项</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART_RIGHT" ID="PART_RIGHT" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_55_THRD_REM">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>账号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>THIRD_REIMB_INST1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_BIC_CODE</NAME>
+                </LOV>
+                <LBL>BIC/名称和地址 1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>THIRD_REIMB_INST2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>BIC 名称</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>THIRD_REIMB_INST2_DESC</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>THIRD_REIMB_INST3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>THIRD_REIMB_INST4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>THIRD_REIMB_INST5</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>55：第三方偿付机构</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_72_SNDR_RCVR">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行间信息1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>SNDR_TO_RCVR_INFO1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行间信息2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>SNDR_TO_RCVR_INFO2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行间信息3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>SNDR_TO_RCVR_INFO3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行间信息4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>SNDR_TO_RCVR_INFO4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行间信息5</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>SNDR_TO_RCVR_INFO5</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行间信息6</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>SNDR_TO_RCVR_INFO6</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>72：发送方至接收方信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="3" ID="FST_77B_REG_REP">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>监管报表 1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>REGULATORY_DETAILS1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>监管报表 2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>REGULATORY_DETAILS2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>监管报表 3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>REGULATORY_DETAILS3</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>77B：监管报告详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="4" ID="FST_77T_ENV">
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC/>
+                  <TITLE>信封内容 1</TITLE>
+                  <CANCEL_IMG_SRC/>
+                </POPUPEDIT>
+                <LBL>信封内容 1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2000</MAXLENGTH>
+                <NAME>ENVELOPE_CONTENTS1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC/>
+                  <TITLE>信封内容 2</TITLE>
+                  <CANCEL_IMG_SRC/>
+                </POPUPEDIT>
+                <LBL>信封内容 2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2000</MAXLENGTH>
+                <NAME>ENVELOPE_CONTENTS2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC/>
+                  <TITLE>信封内容 3</TITLE>
+                  <CANCEL_IMG_SRC/>
+                </POPUPEDIT>
+                <LBL>信封内容 3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2000</MAXLENGTH>
+                <NAME>ENVELOPE_CONTENTS3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC/>
+                  <TITLE>信封内容 4</TITLE>
+                  <CANCEL_IMG_SRC/>
+                </POPUPEDIT>
+                <LBL>信封内容 4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2000</MAXLENGTH>
+                <NAME>ENVELOPE_CONTENTS4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC/>
+                  <TITLE>信封内容 5</TITLE>
+                  <CANCEL_IMG_SRC/>
+                </POPUPEDIT>
+                <LBL>信封内容 5</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1000</MAXLENGTH>
+                <NAME>ENVELOPE_CONTENTS5</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>77T：信封内容详细信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="5" ID="FST_72_SNDR_RCVR_COV">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>信息 1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>SNDR_TO_RCVR_INFO_COV_1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>信息 2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>SNDR_TO_RCVR_INFO_COV_2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>信息 3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>SNDR_TO_RCVR_INFO_COV_3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>信息 4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>SNDR_TO_RCVR_INFO_COV_4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>信息 5</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>SNDR_TO_RCVR_INFO_COV_5</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>信息 6</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>150</MAXLENGTH>
+                <NAME>SNDR_TO_RCVR_INFO_COV_6</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>72：发送者到接受者的信息-cover 信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_PAYMENT_CHAIN" POSITION="template" TITLE="付款链" TMP_SCR_TYPE="S">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL/>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="100"/>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL/>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL/>
+        <SECTION ID="SEC_PAYCH1" COLLAPSE="N">
+          <PART NAME="PAYCHH1" ID="PAYCHH1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_PAYCHN">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHAIN_ORDER</NAME>
+                <LBL>中间行代理详细信息</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>BIC 代码</LBL>
+                <SIZE/>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ALPHA_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行代码</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>BANK_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>RMA/RMA Plus</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>SK_ARRANGEMENT</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>账户分行</LBL>
+                <SIZE/>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>AC_BRN</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>账号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>AC_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>字段编号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>FIELD_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易参考编号</LBL>
+                <SIZE/>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>TXN_REF_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易存盘日期</LBL>
+                <SIZE/>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>TXN_ARCH_DT</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_PAYMENT_CHAIN</BLOCK>
+              <WIDTH/>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+        <SECTION ID="SEC_PAYCH2" COLLAPSE="N">
+          <PART NAME="PAYCHH2" ID="PAYCHH2" WIDTH="100"/>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+  <SCREEN MAIN_WIN="N" NAME="CVS_COVER_INFO" POSITION="template" TITLE="序列B-封面细节" TMP_SCR_TYPE="L">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL/>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_COV_PK">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易存盘日期</LBL>
+                <SIZE/>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>TXN_ARCH_DT</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易参考编号</LBL>
+                <SIZE/>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>40</MAXLENGTH>
+                <NAME>TXN_REF_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN_COVER_INFO</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL/>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL/>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_COV_ORD_CUST">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>账号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_ORDERING_CUSTOMER1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>BIC/名称和地址 1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_ORDERING_CUSTOMER2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_ORDERING_CUSTOMER3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_ORDERING_CUSTOMER4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行 4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_ORDERING_CUSTOMER5</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>50：汇款客户</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN_COVER_INFO</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_COV_ORD_INST">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>对手方识别码</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_ORDERING_INSTITUTION1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>BIC/名称和地址 1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_ORDERING_INSTITUTION2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_ORDERING_INSTITUTION3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_ORDERING_INSTITUTION4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_ORDERING_INSTITUTION5</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>52：汇款银行</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN_COVER_INFO</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="3" ID="FST_COV_SEND_REC">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行间信息1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_SNDR_TO_RCVR_INFO1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行间信息2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_SNDR_TO_RCVR_INFO2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行间信息3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_SNDR_TO_RCVR_INFO3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行间信息4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_SNDR_TO_RCVR_INFO4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行间信息5</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_SNDR_TO_RCVR_INFO5</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行间信息6</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_SNDR_TO_RCVR_INFO6</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>72：发送方至接收方信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN_COVER_INFO</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="P2" ID="P2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_COV_ULT_BEN">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>cov收款人</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_BENEFICIARY1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>BIC/名称和地址 1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_BENEFICIARY2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_BENEFICIARY3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_BENEFICIARY4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_BENEFICIARY5</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>59：最终受益人</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN_COVER_INFO</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_COV_INT_BANK">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>账号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_INTERMEDIARY1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行BIC</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_INTERMEDIARY2_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行标识符名称</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>COV_INTERMEDIARY_BANK_NAME</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>姓名和地址1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_INTERMEDIARY3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_INTERMEDIARY4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_INTERMEDIARY5</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_INTERMEDIARY6</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>56：中间行</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN_COVER_INFO</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="3" ID="FST_COV_CURR_INST_AMT">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>指令币种</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>COV_33B_CCY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <RELATED_FIELD>COV_33B_CCY</RELATED_FIELD>
+                <MAXLENGTH>22,4</MAXLENGTH>
+                <NAME>COV_33B_AMT</NAME>
+                <LBL>指令金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <LBL>33：货币/指令金额</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN_COVER_INFO</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="P3" ID="P3" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_COV_ACC_INST">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>账号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_ACC_WITH_INSTN1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>银行BIC</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_ACC_WITH_INST2_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>姓名和地址1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_ACC_WITH_INSTN3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_ACC_WITH_INSTN4</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_ACC_WITH_INSTN5</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>地址行4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_ACC_WITH_INSTN6</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>57：收款行</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN_COVER_INFO</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_COV_REMMIT_INFO">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>汇款附言1</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_REMITTANCE_INFO1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>汇款附言2</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_REMITTANCE_INFO2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>汇款附言3</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_REMITTANCE_INFO3</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>汇款附言4</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COV_REMITTANCE_INFO4</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>70：汇款信息</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_PXVWS_OUT_TXN_COVER_INFO</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

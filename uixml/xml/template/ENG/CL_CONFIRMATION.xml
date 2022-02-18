@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<!DOCTYPE advice SYSTEM "advtags.dtd" >
+	-->
+<advice advice_name="CL_CONFIRMATION">
+  <global_tags>
+    <tag tag_desc="Todays Date">
+      <val>:global.application_date</val>
+      <tag_name>TDATE</tag_name>
+      <data_type>D</data_type>
+
+    </tag>
+  </global_tags>
+  <!-- This generates an advice on book of a CL loan account-->
+  <!--  end of group Account schedule details  -->${advice.#text}<!-- custmast contains basic data of customer and loan account -->
+  <!-- Global tags are usable anywhere in the advice -->
+  <!-- The Parameters include branch and account number-->
+  <param_list>
+    <parameter data_type="V">${advice.param_list.parameter.0.#text}</parameter>
+    <parameter data_type="V">${advice.param_list.parameter.1.#text}</parameter>
+  </param_list>
+  <group group_name="custmast">
+    <tag_list>
+      <tag tag_desc="CustomerAddress">
+        <val>:custmast.ADDR</val>
+        <tag_name>ADDR</tag_name>
+
+      </tag>
+      <tag tag_desc="CustomerName">
+        <val>:custmast.cust_name</val>
+        <tag_name>CUSTNAME</tag_name>
+
+      </tag>
+      <tag tag_desc="Address1">
+        <val>:custmast.address1</val>
+        <tag_name>ADD1</tag_name>
+
+      </tag>
+      <tag tag_desc="Address2">
+        <val>:custmast.address2</val>
+        <tag_name>ADD2</tag_name>
+
+      </tag>
+      <tag tag_desc="Address3">
+        <val>:custmast.address3</val>
+        <tag_name>ADD3</tag_name>
+
+      </tag>
+      <tag tag_desc="Address4">
+        <val>:custmast.address4</val>
+        <tag_name>ADD4</tag_name>
+
+      </tag>
+      <tag tag_desc="CustomerID">
+        <val>:custmast.CUSTID</val>
+        <tag_name>CUSTID</tag_name>
+
+      </tag>
+      <tag tag_desc="Account Number">
+        <val>:custmast.account_number</val>
+        <tag_name>LNACNO</tag_name>
+
+      </tag>
+      <tag tag_desc="Fax No">
+        <val>:custmast.fax_number</val>
+        <tag_name>FAXNO</tag_name>
+
+      </tag>
+      <tag tag_desc="Telephone No">
+        <val>:custmast.tel_no</val>
+        <tag_name>TELNO</tag_name>
+
+      </tag>
+      <tag tag_desc="Loan Currency">
+        <val>:custmast.ccy</val>
+        <tag_name>LNCCY</tag_name>
+
+      </tag>
+      <tag tag_desc="Principal">
+        <val>:custmast.AMOUNT_FINANCED</val>
+        <tag_name>AMTFIN</tag_name>
+
+      </tag>
+      <tag tag_desc="Value Date">
+        <val>:custmast.VALUE_DATE</val>
+        <tag_name>VALUEDT</tag_name>
+
+      </tag>
+      <tag tag_desc="Final Mat Dt">
+        <val>:custmast.MATURITY_DATE</val>
+        <tag_name>MATDT</tag_name>
+
+      </tag>
+      <tag tag_desc="TODAY'S DATE">
+        <val>:custmast.TDYDT</val>
+        <tag_name>TDYDATE</tag_name>
+
+      </tag>
+    </tag_list>
+    <query><![CDATA[
+           SELECT a.Customer_ID custid,
+		            a.PRODUCT_CODE AS prdcd,
+					a.account_number account_number ,    
+					a.currency ccy ,
+					a.branch_code,	
+					TO_CHAR(a.VALUE_DATE,'DD MON YYYY') VALUE_DATE,
+					TO_CHAR(a.MATURITY_DATE,'DD MON YYYY') MATURITY_DATE,
+					a.AMOUNT_FINANCED,
+					b.pincode || ', ' || b.country AS ADDR,
+					b.customer_name1 cust_name ,
+					b.address_line1 address1 ,
+					b.address_line2 address2,
+					b.address_line3 address3 ,
+					b.address_line4 address4,
+					b.fax_number  fax_number,
+					TO_CHAR(TDATE,'DD MON YYYY') TDYDT,					
+					cp.tel_isd_no || '-' || cp.telephone AS tel_no
+					FROM   CLTB_ACCOUNT_MASTER a,
+							STTM_CUSTOMER b,
+							STTM_CUST_PERSONAL cp 
+					WHERE  a.BRANCH_CODE= :parameter.in_branch_code
+					AND    a.ACCOUNT_NUMBER = :parameter.in_account_number
+					AND    a.Customer_ID = b.Customer_No
+					AND    cp.Customer_No = b.Customer_No
+		]]></query>
+
+  </group>
+  <!-- end of group custmast  -->
+  <!-- This gives data for derived rates-->
+  <group group_name="ratemast">
+    <tag_list>
+      <tag tag_desc="Interest Rate">
+        <val>:ratemast.INTRATE</val>
+        <tag_name>RATE</tag_name>
+
+      </tag>
+    </tag_list>
+    <query><![CDATA[SELECT C3PK#_PRD_SHELL.FN_GET_INTREST_RATE(:parameter.in_account_number,:parameter.in_branch_code,TDATE,clpkss_nls.Z_INTRMDT_RATE,:custmast.prdcd,'N') INTRATE
+		from dual  ]]></query>
+
+  </group>
+  <!--  end of group Derived ratesmast  -->
+  <!-- This gives first interest repayment date-->
+  <group group_name="FIRSTINTRPDT">
+    <tag_list>
+      <tag tag_desc="First Interest Repayment Dt">
+        <val>:FIRSTINTRPDT.first_int_scdl_dt</val>
+        <tag_name>FIRSTINTSCHDLDT</tag_name>
+
+      </tag>
+    </tag_list>
+    <query><![CDATA[select TO_CHAR(MIN(SCHEDULE_DUE_DATE),'DD MON YYYY') first_int_scdl_dt from cltb_account_schedules where BRANCH_CODE= :parameter.in_branch_code and account_number = :parameter.in_account_number and component_name in ('MAIN_INT')  
+		]]></query>
+
+  </group>
+  <!--  end of group first interest repayment date  -->${advice.group.8.#item.#text}<!-- This gives Customer CASA account-->
+  <group group_name="custcasa">
+    <tag_list>
+      <tag tag_desc="Customer CASA account">
+        <val>:custcasa.cr_prod_ac</val>
+        <tag_name>CASA</tag_name>
+
+      </tag>
+    </tag_list>
+    <query><![CDATA[SELECT cr_prod_ac from cltb_account_components where branch_code =:parameter.in_branch_code and account_number = :parameter.in_account_number and component_name ='PRINCIPAL'  
+		]]></query>
+
+  </group>
+  <!--  end of group Customer CASA account  -->${advice.group.12.#item.#text}<!-- This gives Account schedule details-->
+  <group group_name="account_schedules">
+    <tag_list>
+      <tag tag_desc="Principal Due Amt">
+        <val>:account_schedules.PRN_DUE</val>
+        <tag_name>PRNAMT</tag_name>
+
+      </tag>
+      <tag tag_desc="Interest Due Amt">
+        <val>:account_schedules.INT_DUE</val>
+        <tag_name>INTAMT</tag_name>
+
+      </tag>
+      <tag tag_desc="Due Date">
+        <val>:account_schedules.DUE_DATE</val>
+        <tag_name>DUEDT</tag_name>
+
+      </tag>
+      <tag tag_desc="Schedule currency">
+        <val>:account_schedules.SETTLEMENT_CCY</val>
+        <tag_name>STCCY</tag_name>
+
+      </tag>
+    </tag_list>
+    <query><![CDATA[SELECT MAX(PRNCPL_DUE) PRN_DUE, MAX(INTRST_DUE) INT_DUE, TO_CHAR (SCHEDULE_DUE_DATE,'DD MON YYYY') DUE_DATE, SETTLEMENT_CCY
+						FROM ( SELECT DECODE(component_name,'PRINCIPAL', AMOUNT_DUE,0) PRNCPL_DUE, DECODE(component_name,'MAIN_INT', AMOUNT_DUE, 0) INTRST_DUE,
+								SCHEDULE_DUE_DATE, SETTLEMENT_CCY
+								from cltb_account_schedules 
+								where branch_code =:parameter.in_branch_code 
+								and account_number = :parameter.in_account_number 
+								and component_name in ('PRINCIPAL', 'MAIN_INT')
+							)
+						GROUP BY SCHEDULE_DUE_DATE, SETTLEMENT_CCY
+						ORDER BY SCHEDULE_DUE_DATE 
+		]]></query>
+
+  </group>
+</advice>

@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="汇总" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_MFTMS_MEETING_SCH_MASTER</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>会议代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>MEETING_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>类型</LBL>
+        <OPTION VALUE="G" SELECTED="0">组</OPTION>
+        <OPTION VALUE="C" SELECTED="0">中心</OPTION>
+        <OPTION VALUE="I" SELECTED="0">客户端</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>MEETING_TYPE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>会议室</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>MEETING_ENTITY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>会议代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>MEETING_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>类型</LBL>
+        <OPTION VALUE="G" SELECTED="0">组</OPTION>
+        <OPTION VALUE="C" SELECTED="0">中心</OPTION>
+        <OPTION VALUE="I" SELECTED="0">客户端</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>MEETING_TYPE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>会议室</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>MEETING_ENTITY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="G">组</OPTION>
+        <OPTION VALUE="C">中心</OPTION>
+        <OPTION VALUE="I">客户端</OPTION>
+        <FIELD_NAME>MEETING_TYPE</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="会议计划定义" TMP_SCR_TYPE="L">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>经办者</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>复核者</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>日期时间：</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>日期时间：</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>模式编号</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL></LBL>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="C">已关闭</OPTION>
+                <OPTION VALUE="O">打开</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>记录状态</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="A">已授权</OPTION>
+                <OPTION VALUE="R">已拒付</OPTION>
+                <OPTION VALUE="U">未授权</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>授权状态</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_MFTMS_MEETING_SCH_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="SEC1_PART1" ID="SEC1_PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_1">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>MEETING_CODE</NAME>
+                <CASE>UPPER</CASE>
+                <LBL>会议代码</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <OPTION VALUE="G" SELECTED="0">组</OPTION>
+                <OPTION VALUE="C" SELECTED="0">中心</OPTION>
+                <OPTION VALUE="I" SELECTED="0">客户端</OPTION>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>MEETING_TYPE</NAME>
+                <CASE>UPPER</CASE>
+                <LBL>类型</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>MEETING_ENTITY</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_MEETING_OF</NAME>
+                </LOV>
+                <LBL>会议室</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>对贷款和存款的分级更改</LBL>
+                <SIZE></SIZE>
+                <CUSTOM></CUSTOM>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>CHECKBOX</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CASCADE_CHANGES</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <OPTION VALUE="0" SELECTED="-1">0</OPTION>
+                <OPTION VALUE="1" SELECTED="0">1</OPTION>
+                <OPTION VALUE="2" SELECTED="0">2</OPTION>
+                <OPTION VALUE="3" SELECTED="0">3</OPTION>
+                <OPTION VALUE="4" SELECTED="0">4</OPTION>
+                <OPTION VALUE="5" SELECTED="0">5</OPTION>
+                <OPTION VALUE="6" SELECTED="0">6</OPTION>
+                <OPTION VALUE="7" SELECTED="0">7</OPTION>
+                <OPTION VALUE="8" SELECTED="0">8</OPTION>
+                <OPTION VALUE="9" SELECTED="0">9</OPTION>
+                <OPTION VALUE="10" SELECTED="0">10</OPTION>
+                <OPTION VALUE="11" SELECTED="0">11</OPTION>
+                <OPTION VALUE="12" SELECTED="0">12</OPTION>
+                <OPTION VALUE="13" SELECTED="0">13</OPTION>
+                <OPTION VALUE="14" SELECTED="0">14</OPTION>
+                <OPTION VALUE="15" SELECTED="0">15</OPTION>
+                <OPTION VALUE="16" SELECTED="0">16</OPTION>
+                <OPTION VALUE="17" SELECTED="0">17</OPTION>
+                <OPTION VALUE="18" SELECTED="0">18</OPTION>
+                <OPTION VALUE="19" SELECTED="0">19</OPTION>
+                <OPTION VALUE="20" SELECTED="0">20</OPTION>
+                <OPTION VALUE="21" SELECTED="0">21</OPTION>
+                <OPTION VALUE="22" SELECTED="0">22</OPTION>
+                <OPTION VALUE="23" SELECTED="0">23</OPTION>
+                <MAX_VAL></MAX_VAL>
+                <VALUE>0</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>MEETING_HOURS</NAME>
+                <LBL>会议小时数</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <OPTION VALUE="0" SELECTED="-1">0</OPTION>
+                <OPTION VALUE="1" SELECTED="0">1</OPTION>
+                <OPTION VALUE="2" SELECTED="0">2</OPTION>
+                <OPTION VALUE="3" SELECTED="0">3</OPTION>
+                <OPTION VALUE="4" SELECTED="0">4</OPTION>
+                <OPTION VALUE="5" SELECTED="0">5</OPTION>
+                <OPTION VALUE="6" SELECTED="0">6</OPTION>
+                <OPTION VALUE="7" SELECTED="0">7</OPTION>
+                <OPTION VALUE="8" SELECTED="0">8</OPTION>
+                <OPTION VALUE="9" SELECTED="0">9</OPTION>
+                <OPTION VALUE="10" SELECTED="0">10</OPTION>
+                <OPTION VALUE="11" SELECTED="0">11</OPTION>
+                <OPTION VALUE="12" SELECTED="0">12</OPTION>
+                <OPTION VALUE="13" SELECTED="0">13</OPTION>
+                <OPTION VALUE="14" SELECTED="0">14</OPTION>
+                <OPTION VALUE="15" SELECTED="0">15</OPTION>
+                <OPTION VALUE="16" SELECTED="0">16</OPTION>
+                <OPTION VALUE="17" SELECTED="0">17</OPTION>
+                <OPTION VALUE="18" SELECTED="0">18</OPTION>
+                <OPTION VALUE="19" SELECTED="0">19</OPTION>
+                <OPTION VALUE="20" SELECTED="0">20</OPTION>
+                <OPTION VALUE="21" SELECTED="0">21</OPTION>
+                <OPTION VALUE="22" SELECTED="0">22</OPTION>
+                <OPTION VALUE="23" SELECTED="0">23</OPTION>
+                <OPTION VALUE="24" SELECTED="0">24</OPTION>
+                <OPTION VALUE="25" SELECTED="0">25</OPTION>
+                <OPTION VALUE="26" SELECTED="0">26</OPTION>
+                <OPTION VALUE="27" SELECTED="0">27</OPTION>
+                <OPTION VALUE="28" SELECTED="0">28</OPTION>
+                <OPTION VALUE="29" SELECTED="0">29</OPTION>
+                <OPTION VALUE="30" SELECTED="0">30</OPTION>
+                <OPTION VALUE="31" SELECTED="0">31</OPTION>
+                <OPTION VALUE="32" SELECTED="0">32</OPTION>
+                <OPTION VALUE="33" SELECTED="0">33</OPTION>
+                <OPTION VALUE="34" SELECTED="0">34</OPTION>
+                <OPTION VALUE="35" SELECTED="0">35</OPTION>
+                <OPTION VALUE="36" SELECTED="0">36</OPTION>
+                <OPTION VALUE="37" SELECTED="0">37</OPTION>
+                <OPTION VALUE="38" SELECTED="0">38</OPTION>
+                <OPTION VALUE="39" SELECTED="0">39</OPTION>
+                <OPTION VALUE="40" SELECTED="0">40</OPTION>
+                <OPTION VALUE="41" SELECTED="0">41</OPTION>
+                <OPTION VALUE="42" SELECTED="0">42</OPTION>
+                <OPTION VALUE="43" SELECTED="0">43</OPTION>
+                <OPTION VALUE="44" SELECTED="0">44</OPTION>
+                <OPTION VALUE="45" SELECTED="0">45</OPTION>
+                <OPTION VALUE="46" SELECTED="0">46</OPTION>
+                <OPTION VALUE="47" SELECTED="0">47</OPTION>
+                <OPTION VALUE="48" SELECTED="0">48</OPTION>
+                <OPTION VALUE="49" SELECTED="0">49</OPTION>
+                <OPTION VALUE="50" SELECTED="0">50</OPTION>
+                <OPTION VALUE="51" SELECTED="0">51</OPTION>
+                <OPTION VALUE="52" SELECTED="0">52</OPTION>
+                <OPTION VALUE="53" SELECTED="0">53</OPTION>
+                <OPTION VALUE="54" SELECTED="0">54</OPTION>
+                <OPTION VALUE="55" SELECTED="0">55</OPTION>
+                <OPTION VALUE="56" SELECTED="0">56</OPTION>
+                <OPTION VALUE="57" SELECTED="0">57</OPTION>
+                <OPTION VALUE="58" SELECTED="0">58</OPTION>
+                <OPTION VALUE="59" SELECTED="0">59</OPTION>
+                <MAX_VAL></MAX_VAL>
+                <VALUE>0</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>MEETING_MINUTES</NAME>
+                <LBL>会议分钟数</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>LOCATION_CODE</NAME>
+                <CASE>UPPER</CASE>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_LOCATION_CODE</NAME>
+                </LOV>
+                <LBL>地点</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>说明</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>DESCRIPTION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>VAMI 执行</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="C" SELECTED="0">更改分期</OPTION>
+                <OPTION VALUE="D" SELECTED="0">现有 EMI</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>VAMI_ACTION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_MFTMS_MEETING_SCH_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="SEC2_PART1" ID="SEC2_PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_2">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>2</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>NUMBER_OF_SCHEDULES</NAME>
+                <LBL>计划编号</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>单位</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="D" SELECTED="0">每日</OPTION>
+                <OPTION VALUE="W" SELECTED="0">每周</OPTION>
+                <OPTION VALUE="M" SELECTED="0">每月</OPTION>
+                <OPTION VALUE="Q" SELECTED="0">每季度</OPTION>
+                <OPTION VALUE="H" SELECTED="0">每半年</OPTION>
+                <OPTION VALUE="Y" SELECTED="0">每年</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>UNIT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>FREQUENCY</NAME>
+                <LBL>频率</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>2</SIZE>
+                <MAX_VAL>31</MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>DUE_DATE_ON</NAME>
+                <LBL>到期日</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL>1</MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <OPTION VALUE="S" SELECTED="-1">同一天</OPTION>
+                <OPTION VALUE="N" SELECTED="0">下一工作日</OPTION>
+                <VALUE>S</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ON_HOLIDAY</NAME>
+                <LBL>假日</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>起始日期</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>START_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>上次会议日期</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>LAST_MEETING_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y" SPRT="2">
+                <LBL>拆分</LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fn_Explode()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_EXPLODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_MFTMS_MEETING_SCH_MASTER</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_3" COLLAPSE="N">
+          <PART NAME="SEC3_PART1" ID="SEC3_PART1" WIDTH="100">
+            <FLDSET VIEW="ME" TYPE="ME" INDEX="1" ID="FST_3">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>生成日期</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>GENERATED_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>实际会议日期</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>ACTUAL_MEETING_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>会议状态</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="P" SELECTED="-1">等待</OPTION>
+                <OPTION VALUE="C" SELECTED="0">已完成</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <VALUE>P</VALUE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>MEETING_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <SIZE></SIZE>
+                <OPTION VALUE="P" SELECTED="-1">已处理</OPTION>
+                <OPTION VALUE="U" SELECTED="0">未处理</OPTION>
+                <HIDDEN>-1</HIDDEN>
+                <VALUE>P</VALUE>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CASCADE_STATUS</NAME>
+                <LBL>分级状态</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_MEETING_PHASE</NAME>
+                </LOV>
+                <LBL>会议阶段</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>MEETING_PHASE</NAME>
+                <CASE>UPPER</CASE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE>备注</TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL>备注</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>COMMENTS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <OPTION VALUE="0" SELECTED="0">0</OPTION>
+                <OPTION VALUE="1" SELECTED="0">1</OPTION>
+                <OPTION VALUE="2" SELECTED="0">2</OPTION>
+                <OPTION VALUE="3" SELECTED="0">3</OPTION>
+                <OPTION VALUE="4" SELECTED="0">4</OPTION>
+                <OPTION VALUE="5" SELECTED="0">5</OPTION>
+                <OPTION VALUE="6" SELECTED="0">6</OPTION>
+                <OPTION VALUE="7" SELECTED="0">7</OPTION>
+                <OPTION VALUE="8" SELECTED="0">8</OPTION>
+                <OPTION VALUE="9" SELECTED="0">9</OPTION>
+                <OPTION VALUE="10" SELECTED="0">10</OPTION>
+                <OPTION VALUE="11" SELECTED="0">11</OPTION>
+                <OPTION VALUE="12" SELECTED="0">12</OPTION>
+                <OPTION VALUE="13" SELECTED="0">13</OPTION>
+                <OPTION VALUE="14" SELECTED="0">14</OPTION>
+                <OPTION VALUE="15" SELECTED="0">15</OPTION>
+                <OPTION VALUE="16" SELECTED="0">16</OPTION>
+                <OPTION VALUE="17" SELECTED="0">17</OPTION>
+                <OPTION VALUE="18" SELECTED="0">18</OPTION>
+                <OPTION VALUE="19" SELECTED="0">19</OPTION>
+                <OPTION VALUE="20" SELECTED="0">20</OPTION>
+                <OPTION VALUE="21" SELECTED="0">21</OPTION>
+                <OPTION VALUE="22" SELECTED="0">22</OPTION>
+                <OPTION VALUE="23" SELECTED="0">23</OPTION>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>HOURS</NAME>
+                <LBL>小时数</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <OPTION VALUE="0" SELECTED="0">0</OPTION>
+                <OPTION VALUE="1" SELECTED="0">1</OPTION>
+                <OPTION VALUE="2" SELECTED="0">2</OPTION>
+                <OPTION VALUE="3" SELECTED="0">3</OPTION>
+                <OPTION VALUE="4" SELECTED="0">4</OPTION>
+                <OPTION VALUE="5" SELECTED="0">5</OPTION>
+                <OPTION VALUE="6" SELECTED="0">6</OPTION>
+                <OPTION VALUE="7" SELECTED="0">7</OPTION>
+                <OPTION VALUE="8" SELECTED="0">8</OPTION>
+                <OPTION VALUE="9" SELECTED="0">9</OPTION>
+                <OPTION VALUE="10" SELECTED="0">10</OPTION>
+                <OPTION VALUE="11" SELECTED="0">11</OPTION>
+                <OPTION VALUE="12" SELECTED="0">12</OPTION>
+                <OPTION VALUE="13" SELECTED="0">13</OPTION>
+                <OPTION VALUE="14" SELECTED="0">14</OPTION>
+                <OPTION VALUE="15" SELECTED="0">15</OPTION>
+                <OPTION VALUE="16" SELECTED="0">16</OPTION>
+                <OPTION VALUE="17" SELECTED="0">17</OPTION>
+                <OPTION VALUE="18" SELECTED="0">18</OPTION>
+                <OPTION VALUE="19" SELECTED="0">19</OPTION>
+                <OPTION VALUE="20" SELECTED="0">20</OPTION>
+                <OPTION VALUE="21" SELECTED="0">21</OPTION>
+                <OPTION VALUE="22" SELECTED="0">22</OPTION>
+                <OPTION VALUE="23" SELECTED="0">23</OPTION>
+                <OPTION VALUE="24" SELECTED="0">24</OPTION>
+                <OPTION VALUE="25" SELECTED="0">25</OPTION>
+                <OPTION VALUE="26" SELECTED="0">26</OPTION>
+                <OPTION VALUE="27" SELECTED="0">27</OPTION>
+                <OPTION VALUE="28" SELECTED="0">28</OPTION>
+                <OPTION VALUE="29" SELECTED="0">29</OPTION>
+                <OPTION VALUE="30" SELECTED="0">30</OPTION>
+                <OPTION VALUE="31" SELECTED="0">31</OPTION>
+                <OPTION VALUE="32" SELECTED="0">32</OPTION>
+                <OPTION VALUE="33" SELECTED="0">33</OPTION>
+                <OPTION VALUE="34" SELECTED="0">34</OPTION>
+                <OPTION VALUE="35" SELECTED="0">35</OPTION>
+                <OPTION VALUE="36" SELECTED="0">36</OPTION>
+                <OPTION VALUE="37" SELECTED="0">37</OPTION>
+                <OPTION VALUE="38" SELECTED="0">38</OPTION>
+                <OPTION VALUE="39" SELECTED="0">39</OPTION>
+                <OPTION VALUE="40" SELECTED="0">40</OPTION>
+                <OPTION VALUE="41" SELECTED="0">41</OPTION>
+                <OPTION VALUE="42" SELECTED="0">42</OPTION>
+                <OPTION VALUE="43" SELECTED="0">43</OPTION>
+                <OPTION VALUE="44" SELECTED="0">44</OPTION>
+                <OPTION VALUE="45" SELECTED="0">45</OPTION>
+                <OPTION VALUE="46" SELECTED="0">46</OPTION>
+                <OPTION VALUE="47" SELECTED="0">47</OPTION>
+                <OPTION VALUE="48" SELECTED="0">48</OPTION>
+                <OPTION VALUE="49" SELECTED="0">49</OPTION>
+                <OPTION VALUE="50" SELECTED="0">50</OPTION>
+                <OPTION VALUE="51" SELECTED="0">51</OPTION>
+                <OPTION VALUE="52" SELECTED="0">52</OPTION>
+                <OPTION VALUE="53" SELECTED="0">53</OPTION>
+                <OPTION VALUE="54" SELECTED="0">54</OPTION>
+                <OPTION VALUE="55" SELECTED="0">55</OPTION>
+                <OPTION VALUE="56" SELECTED="0">56</OPTION>
+                <OPTION VALUE="57" SELECTED="0">57</OPTION>
+                <OPTION VALUE="58" SELECTED="0">58</OPTION>
+                <OPTION VALUE="59" SELECTED="0">59</OPTION>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>MINUTES</NAME>
+                <LBL>分钟</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>ATTENDANCE_EXPECTED</NAME>
+                <LBL>预计出席人数</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>ATTENDANCE</NAME>
+                <LBL>出席人数</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>会议代码</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>MEETING_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>会议时间</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_MFTMS_MEETING_SCH_DETAIL</BLOCK>
+              <WIDTH></WIDTH>
+              <PGSIZE>15</PGSIZE>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="L">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS></BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fn_ViewMessage()</BUTTON_EVENT>
+        <BUTTON_LBL>計畫移動</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEWNETWORK</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fn_SelectNetwork()</BUTTON_EVENT>
+        <BUTTON_LBL>已選消息</BUTTON_LBL>
+        <BUTTON_NAME>BTN_SELECTNETWORK</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="3">
+        <BUTTON_EVENT>fn_Cancel()</BUTTON_EVENT>
+        <BUTTON_LBL>取消</BUTTON_LBL>
+        <BUTTON_NAME>BTN_CANCEL</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="4">
+        <BUTTON_EVENT>fn_Authorize()</BUTTON_EVENT>
+        <BUTTON_LBL>授權狀態</BUTTON_LBL>
+        <BUTTON_NAME>BTN_AUTHORIZE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="5">
+        <BUTTON_EVENT>fn_firstAuth()</BUTTON_EVENT>
+        <BUTTON_LBL>雙幣存款</BUTTON_LBL>
+        <BUTTON_NAME>FIRST AUTH</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="6">
+        <BUTTON_EVENT>fn_reject()</BUTTON_EVENT>
+        <BUTTON_LBL>已拒絕</BUTTON_LBL>
+        <BUTTON_NAME>REJECT</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="7">
+        <BUTTON_EVENT>fn_ViewQueueActionLog()</BUTTON_EVENT>
+        <BUTTON_LBL>查看匹配詳細資訊</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEWACTIONLOG</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="8">
+        <BUTTON_EVENT>fn_ViewCancelDtls()</BUTTON_EVENT>
+        <BUTTON_LBL>LBL_VWCANCELDTLS</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_CANCEL_DTLS</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW></BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_NW_RULE_DERIVATION</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授權狀態</LBL>
+        <OPTION VALUE="U" SELECTED="0">S820型</OPTION>
+        <OPTION VALUE="A" SELECTED="0">授權</OPTION>
+        <OPTION VALUE="R" SELECTED="0">拒絕</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTHSTATDESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>客戶編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTOMER</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>借記帳戶幣種</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>DEBITACCOUNT</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>金融機構成員 ID</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>REQEXECDATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>發起方</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>INTIATIONDATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>原始程式碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>SOURCECODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>交易屬性 30</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXNBRANCH</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>產品類型說明</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">年數</OPTION>
+        <OPTION VALUE="N" SELECTED="0">不設網</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PREFUNDEDPAYMENTS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>轉讓條款</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TRANSFERCCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>來源參考編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>SOURCEREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>交易查詢</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>文件參考編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>FILEREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>公司 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>COMPANY_ID</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>批次處理標題</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>PMTINFID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>本期計提</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">批准</OPTION>
+        <OPTION VALUE="P" SELECTED="0">罰款類型</OPTION>
+        <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>CURRENTSTATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LBL>管道子類型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="SWIFT" SELECTED="0">SWIFT地址</OPTION>
+        <OPTION VALUE="C2B" SELECTED="0">成本代碼 2</OPTION>
+        <OPTION VALUE="SPS" SELECTED="0">雪碧</OPTION>
+        <OPTION VALUE="MT204" SELECTED="0">MT200型</OPTION>
+        <OPTION VALUE="MT101" SELECTED="0">已收到 MT019</OPTION>
+        <OPTION VALUE="pain.008" SELECTED="0">LBL_PAIN008</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CHANNEL_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LBL>企業詳細資訊</LBL>
+        <OPTION VALUE="N" SELECTED="0">不喜歡</OPTION>
+        <OPTION VALUE="A" SELECTED="0">授權</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授權</OPTION>
+        <OPTION VALUE="R" SELECTED="0">拒絕</OPTION>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>VERIFICATION_STAT1</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授權狀態</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>授權狀態</LBL>
+        <OPTION VALUE="U" SELECTED="0">S820型</OPTION>
+        <OPTION VALUE="A" SELECTED="0">授權</OPTION>
+        <OPTION VALUE="R" SELECTED="0">拒絕</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTHSTATDESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>佇列參考編號</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUEREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>客戶編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTOMER</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>借記帳戶幣種</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>DEBITACCOUNT</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>金融機構成員 ID</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>REQEXECDATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>發起方</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>INTIATIONDATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>債權人地址2</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>CREDITORAGENTBIC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>創建活動合同</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>CREDITORAGENTMEMBERID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>原始程式碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>SOURCECODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>交易屬性 30</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXNBRANCH</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>產品類型說明</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">年數</OPTION>
+        <OPTION VALUE="N" SELECTED="0">不設網</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PREFUNDEDPAYMENTS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>轉讓條款</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TRANSFERCCY</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>IB貨幣</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>TRANSFERCCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TRANSFERAMOUNT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>來源參考編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>SOURCEREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>交易查詢</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LBL>文件參考編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>FILEREFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LBL>公司 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>COMPANY_ID</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>批次處理標題</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>PMTINFID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <LBL>交易帳號</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>TXN_ACTION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LBL>本期計提</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">批准</OPTION>
+        <OPTION VALUE="P" SELECTED="0">罰款類型</OPTION>
+        <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>CURRENTSTATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <LBL>管道子類型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="SWIFT" SELECTED="0">SWIFT地址</OPTION>
+        <OPTION VALUE="C2B" SELECTED="0">成本代碼 2</OPTION>
+        <OPTION VALUE="SPS" SELECTED="0">雪碧</OPTION>
+        <OPTION VALUE="MT204" SELECTED="0">MT200型</OPTION>
+        <OPTION VALUE="MT101" SELECTED="0">已收到 MT019</OPTION>
+        <OPTION VALUE="pain.008" SELECTED="0">LBL_PAIN008</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CHANNEL_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="23">
+        <LBL>主機代碼維護摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>HOSTCODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="24">
+        <LBL>支付日期</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>PMNT_INITCHANNEL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="25">
+        <LBL>941</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>SWIFT_MSG_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="26">
+        <LBL>事件指令系統消息</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>255</MAXLENGTH>
+        <NAME>MSG_ID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="27">
+        <LBL>驗證資金</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>VERIFIER_DT_STAMP</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="28">
+        <LBL>LBL_VERIFIER_ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>VERIFIER_ID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="29">
+        <LBL>企業詳細資訊</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>VERIFICATION_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="30">
+        <LBL>企業詳細資訊</LBL>
+        <OPTION VALUE="N" SELECTED="0">不喜歡</OPTION>
+        <OPTION VALUE="A" SELECTED="0">授權</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授權</OPTION>
+        <OPTION VALUE="R" SELECTED="0">拒絕</OPTION>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>VERIFICATION_STAT1</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="31">
+        <LBL>授權人 ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1000</MAXLENGTH>
+        <NAME>AUTHORIZER_REMARKS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="32">
+        <LBL>驗證限制（天）</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>1000</MAXLENGTH>
+        <NAME>VERIFIER_REMARKS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="33">
+        <LBL>佇列類型</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>QUEUEACTION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="34">
+        <LBL>轉移到詳細資訊</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TRANSFER_TYPE</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="U">S820型</OPTION>
+        <OPTION VALUE="A">授權</OPTION>
+        <OPTION VALUE="R">拒絕</OPTION>
+        <FIELD_NAME>AUTHSTATDESC</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="Y">年數</OPTION>
+        <OPTION VALUE="N">不設網</OPTION>
+        <FIELD_NAME>PREFUNDEDPAYMENTS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">批准</OPTION>
+        <OPTION VALUE="P">罰款類型</OPTION>
+        <OPTION VALUE="C">已取消</OPTION>
+        <FIELD_NAME>CURRENTSTATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="SWIFT">SWIFT地址</OPTION>
+        <OPTION VALUE="C2B">成本代碼 2</OPTION>
+        <OPTION VALUE="SPS">雪碧</OPTION>
+        <OPTION VALUE="MT204">MT200型</OPTION>
+        <OPTION VALUE="MT101">已收到 MT019</OPTION>
+        <OPTION VALUE="pain.008">LBL_PAIN008</OPTION>
+        <FIELD_NAME>CHANNEL_TYPE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="N">不喜歡</OPTION>
+        <OPTION VALUE="A">授權</OPTION>
+        <OPTION VALUE="U">未授權</OPTION>
+        <OPTION VALUE="R">拒絕</OPTION>
+        <FIELD_NAME>VERIFICATION_STAT1</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

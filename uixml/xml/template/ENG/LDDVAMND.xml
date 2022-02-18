@@ -1,0 +1,2061 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY POSITION="absolute" TITLE="${FORM.SUMMARY.-TITLE}">
+    <SUMMARY_BASE>V</SUMMARY_BASE>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <BLOCK TABPAGE="All" TYPE="Single Entry" SCREEN="SUMMARY" VIEW="Single Entry">
+    <FIELD TABPAGE="All">
+      <SRC>Images/Exit2.gif</SRC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HALIGN>right</HALIGN>
+      <HIDDEN>0</HIDDEN>
+      <VALUE>Exit</VALUE>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <EVENT>
+        <FUNCTION>fnExit()</FUNCTION>
+        <NAME>onClick</NAME>
+      </EVENT>
+      <NAME>BTN_EXIT</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY/>
+      <ABS_POS></ABS_POS>
+      <VALIGN>bottom</VALIGN>
+      <LABEL/>
+      <ID>BTN_EXIT</ID>
+      <SHOWIN>All</SHOWIN>
+      <TYPE>BUTTON</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED/>
+    <WIDTH></WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <LABEL></LABEL>
+    <ID>BLK_SUMMARY_EXIT</ID>
+  </BLOCK>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" TITLE="${FORM.BLOCK.1.#item.SCREEN.-TITLE}" VERSION_BTN_REQD="N" TMP_SCR_TYPE="medium" WIDTH="760" POSITION="template" HEIGHT="450">
+    <HEADER>
+      <PAGE NAME="TAB_HEADER" HEIGHT="130" ID="TAB_HEADER">
+        <LABEL></LABEL>
+        <SECTION HEIGHT="" ID="MSEC1">
+          <PARTITION NAME="" ID="MSEC1_PART1" WIDTH="50"></PARTITION>
+          <PARTITION NAME="" ID="MSEC_PART2" WIDTH="50"></PARTITION>
+        </SECTION>
+      </PAGE>
+    </HEADER>
+    <SUBSCREEN>
+      <FORM TYPE="S" SEQ="1" id="CVS_PAYM">
+        <LABEL>Payment Details</LABEL>
+        <FUNCTION>fnShowSubscreen_CVS_PAYM()</FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="2" id="CVS_REVS">
+        <LABEL>Revision Details</LABEL>
+        <FUNCTION>fnShowSubscreen_CVS_REVS()</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="3" id="ISCONDET">
+        <LABEL>Settlement</LABEL>
+        <FUNCTION>fnShowSubSystem('ISCONDET','CVS_SETTLMENT')</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="4" id="CSCADVCE">
+        <LABEL>Advice</LABEL>
+        <FUNCTION>fnShowSubSystem('CSCADVCE','CVS_CONTRACT_ADVICE')</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="5" id="CFCINCHG">
+        <LABEL>Interest</LABEL>
+        <FUNCTION>fnShowSubSystem('CFCINCHG','CVS_INTEREST')</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="6" id="CFCONCHG">
+        <LABEL>Charges</LABEL>
+        <FUNCTION>fnShowSubSystem('CFCONCHG','CVS_CFCONCHG')</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="7" id="TACETFRM">
+        <LABEL>Tax</LABEL>
+        <FUNCTION>fnShowSubSystem('TACETFRM','CVS_MAINTXN')</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="8" id="MICTXMIS">
+        <LABEL>MIS</LABEL>
+        <FUNCTION>fnShowSubSystem('MICTXMIS','CVS_MICTXMIS')</FUNCTION>
+      </FORM>
+      <FORM TYPE="C" SEQ="9" id="CSCCNFDM">
+        <LABEL>Fields</LABEL>
+        <FUNCTION>fnShowSubSystem('CSCCNFDM','CVS_MAINT')</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <TABPAGE_ALL HEIGHT="0">
+      <LABEL>All</LABEL>
+    </TABPAGE_ALL>
+    <TAB>
+      <PAGE NAME="TAB_AMEND" HEIGHT="70" ID="TAB_AMEND">
+        <LABEL>Amendments</LABEL>
+        <SECTION HEIGHT="" ID="SEC1">
+          <PARTITION NAME="" ID="SEC1_PART1" WIDTH="50"></PARTITION>
+          <PARTITION NAME="" ID="SEC1_PART2" WIDTH="50"></PARTITION>
+        </SECTION>
+      </PAGE>
+      <PAGE NAME="TAB_SCHE" HEIGHT="70" ID="TAB_SCHE">
+        <LABEL>Schedules</LABEL>
+        <SECTION HEIGHT="" ID="SEC1">
+          <PARTITION NAME="" ID="SEC1_PART1" WIDTH="100"></PARTITION>
+        </SECTION>
+      </PAGE>
+      <PAGE NAME="TAB_SIM" HEIGHT="70" ID="TAB_SIM">
+        <LABEL>Contract Schedules</LABEL>
+        <SECTION HEIGHT="" ID="SEC1">
+          <PARTITION NAME="PART1" ID="PART1" WIDTH="100"></PARTITION>
+        </SECTION>
+      </PAGE>
+    </TAB>
+    <CS_BUTTON_ROWS>2</CS_BUTTON_ROWS>
+    <CS_BUTTONS_PER_ROW>6</CS_BUTTONS_PER_ROW>
+  </SCREEN>
+  <BLOCK TYPE="Audit Entry" SCREEN="CVS_MAIN">
+    <PROCESS_STATUS>0</PROCESS_STATUS>
+    <AUTH_STATUS>-1</AUTH_STATUS>
+    <CONTRACT_STATUS>-1</CONTRACT_STATUS>
+    <READ_ONLY></READ_ONLY>
+    <REVERSAL>0</REVERSAL>
+    <DEAL_STATUS>0</DEAL_STATUS>
+    <PAYMENT_STATUS>0</PAYMENT_STATUS>
+    <ABS_POS>360,1</ABS_POS>
+    <DBT>CSVWS_CONTRACT_EVENT_LOG</DBT>
+    <LABEL></LABEL>
+    <COLLECTION_STATUS>0</COLLECTION_STATUS>
+    <ID>BLK_AUDIT</ID>
+    <TYPE>T</TYPE>
+  </BLOCK>
+  <BLOCK TABPAGE="TAB_AMEND" TYPE="Single Entry" SCREEN="CVS_MAIN" VIEW="Single Entry">
+    <FIELD TABPAGE="TAB_AMEND" TYPE="FIELDSET" PARTITION="SEC1_PART1" INDEX="1" SECTION="SEC1">
+      <FIELD INDEX="1">
+        <UIBLOCK></UIBLOCK>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MMVAMND9</ID>
+        <COLS></COLS>
+        <HEIGHT></HEIGHT>
+        <TYPE>AMOUNT</TYPE>
+        <NAME>AMT</NAME>
+        <ROWS></ROWS>
+        <COLS></COLS>
+        <LABEL>Principal</LABEL>
+        <SHOWIN></SHOWIN>
+        <REQUIRED>0</REQUIRED>
+        <MAXLENGTH></MAXLENGTH>
+        <AUTHSCRN>0</AUTHSCRN>
+        <READ_ONLY>0</READ_ONLY>
+        <DISABLED>0</DISABLED>
+        <HIDDEN>0</HIDDEN>
+        <RELATED_FIELD>CONTCCY</RELATED_FIELD>
+        <DTYPE>NUMBER</DTYPE>
+        <SIZE>22</SIZE>
+        <WIDTH></WIDTH>
+        <CHECKED>0</CHECKED>
+        <DBC>AMT</DBC>
+        <SUMMARY/>
+        <ABS_POS>47,129</ABS_POS>
+        <DBT>LDVWS_CONTRACT_MASTER</DBT>
+        <ROWS></ROWS>
+      </FIELD>
+      <FIELD INDEX="2">
+        <DBC>ORIG</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>10</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>0</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>ORIG</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY/>
+        <ABS_POS>105,147</ABS_POS>
+        <DBT>LDVWS_CONTRACT_MASTER</DBT>
+        <LABEL>Rate</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MMVAMND10</ID>
+        <DTYPE>CHAR</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="3">
+        <UIBLOCK></UIBLOCK>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MMVAMND13</ID>
+        <COLS></COLS>
+        <HEIGHT></HEIGHT>
+        <TYPE>DATE</TYPE>
+        <NAME>MATDT</NAME>
+        <ROWS></ROWS>
+        <COLS></COLS>
+        <LABEL>Maturity Date</LABEL>
+        <SHOWIN></SHOWIN>
+        <REQUIRED>0</REQUIRED>
+        <MAXLENGTH></MAXLENGTH>
+        <AUTHSCRN>0</AUTHSCRN>
+        <READ_ONLY>0</READ_ONLY>
+        <DISABLED>0</DISABLED>
+        <HIDDEN>0</HIDDEN>
+        <AMENDABLE>-1</AMENDABLE>
+        <DTYPE>DATE</DTYPE>
+        <SIZE>9</SIZE>
+        <WIDTH></WIDTH>
+        <CHECKED>0</CHECKED>
+        <DBC>MATDT</DBC>
+        <SUMMARY/>
+        <ABS_POS>75,106</ABS_POS>
+        <DBT>LDVWS_CONTRACT_MASTER</DBT>
+        <ROWS></ROWS>
+      </FIELD>
+      <WIDTH>330</WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT>130</HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLD_CURR</NAME>
+      <ABS_POS>24,20</ABS_POS>
+      <HREQ/>
+      <LABEL>Current Values</LABEL>
+      <ID>MMVAMND18</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <FIELD TABPAGE="TAB_AMEND" TYPE="FIELDSET" PARTITION="SEC1_PART2" INDEX="1" SECTION="SEC1">
+      <FIELD INDEX="1">
+        <UIBLOCK></UIBLOCK>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MMVAMND15</ID>
+        <COLS></COLS>
+        <HEIGHT></HEIGHT>
+        <TYPE>DATE</TYPE>
+        <NAME>MDATE</NAME>
+        <ROWS></ROWS>
+        <COLS></COLS>
+        <LABEL>Maturity Date</LABEL>
+        <SHOWIN></SHOWIN>
+        <REQUIRED>0</REQUIRED>
+        <MAXLENGTH></MAXLENGTH>
+        <AUTHSCRN>0</AUTHSCRN>
+        <READ_ONLY>0</READ_ONLY>
+        <DISABLED>0</DISABLED>
+        <HIDDEN>0</HIDDEN>
+        <AMENDABLE>-1</AMENDABLE>
+        <DTYPE>DATE</DTYPE>
+        <SIZE>9</SIZE>
+        <WIDTH></WIDTH>
+        <CHECKED>0</CHECKED>
+        <DBC>MDATE</DBC>
+        <SUMMARY/>
+        <ABS_POS>105,479</ABS_POS>
+        <DBT>LDVWS_CONTRACT_MASTER</DBT>
+        <ROWS></ROWS>
+      </FIELD>
+      <FIELD INDEX="2">
+        <UIBLOCK></UIBLOCK>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MMVAMND16</ID>
+        <COLS></COLS>
+        <HEIGHT></HEIGHT>
+        <TYPE>AMOUNT</TYPE>
+        <NAME>DAMNT</NAME>
+        <ROWS></ROWS>
+        <COLS></COLS>
+        <LABEL>Change in principal</LABEL>
+        <SHOWIN></SHOWIN>
+        <REQUIRED>0</REQUIRED>
+        <MAXLENGTH></MAXLENGTH>
+        <AUTHSCRN>0</AUTHSCRN>
+        <READ_ONLY>0</READ_ONLY>
+        <DISABLED>0</DISABLED>
+        <HIDDEN>0</HIDDEN>
+        <RELATED_FIELD>CONTCCY</RELATED_FIELD>
+        <MAX_VAL>9999999999999999999.999</MAX_VAL>
+        <MAX_DECIMAL>3</MAX_DECIMAL>
+        <AMENDABLE>-1</AMENDABLE>
+        <DTYPE>NUMBER</DTYPE>
+        <SIZE>22</SIZE>
+        <WIDTH></WIDTH>
+        <CHECKED>0</CHECKED>
+        <DBC>DAMNT</DBC>
+        <SUMMARY/>
+        <ABS_POS>47,451</ABS_POS>
+        <DBT>LDVWS_CONTRACT_MASTER</DBT>
+        <ROWS></ROWS>
+      </FIELD>
+      <FIELD INDEX="3">
+        <DBC>EQVT</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>10</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>0</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>EQVT</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY/>
+        <ABS_POS>75,415</ABS_POS>
+        <DBT>LDVWS_CONTRACT_MASTER</DBT>
+        <LABEL>Local Currency Equivalent</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MMVAMND17</ID>
+        <DTYPE>CHAR</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <WIDTH>350</WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT>130</HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLD_MODF</NAME>
+      <ABS_POS>24,357</ABS_POS>
+      <HREQ/>
+      <LABEL>Modification</LABEL>
+      <ID>MMVAMND19</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <FIELD TABPAGE="TAB_HEADER">
+      <DBC>CUSTNO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>CUSTNO_1</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY/>
+      <DBT>STVWS_CUSTOMER</DBT>
+      <ID>LDDVAMND116</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="TAB_HEADER" TYPE="FIELDSET" PARTITION="MSEC1_PART1" INDEX="1" SECTION="MSEC1">
+      <FIELD INDEX="1">
+        <DBC>FCCREF</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>18</SIZE>
+        <REQUIRED>-1</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>16</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>FCCREF</NAME>
+        <CASE>UPPER</CASE>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY/>
+        <ABS_POS>12,19</ABS_POS>
+        <DBT>LDVWS_CONTRACT_MASTER</DBT>
+        <LABEL>Contract Reference</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MMVAMND1</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="2">
+        <DBC>CPTY</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>9</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>9</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>CPTY</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY/>
+        <ABS_POS>38,89</ABS_POS>
+        <DBT>LDVWS_CONTRACT_MASTER</DBT>
+        <LABEL>Counterparty</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MMVAMND4</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="3">
+        <DBC>CONTCCY</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>3</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>3</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>CONTCCY</NAME>
+        <CASE>UPPER</CASE>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY/>
+        <ABS_POS>67,107</ABS_POS>
+        <DBT>LDVWS_CONTRACT_MASTER</DBT>
+        <LABEL>Currency</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MMDVAMND87</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="4">
+        <DBC>LATVERNO</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>4</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>4</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>LATVERNO</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY/>
+        <ABS_POS>12,262</ABS_POS>
+        <DBT>LDVWS_CONTRACT_MASTER</DBT>
+        <LABEL>Latest Version Number</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MMDVAMND97</ID>
+        <DTYPE>NUMBER</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="5">
+        <DBC>SUBSYSTEMSTAT</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE></SIZE>
+        <HIDDEN>-1</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>SUBSYSTEMSTAT</NAME>
+        <DISABLED>0</DISABLED>
+        <SUMMARY/>
+        <DBT>LDVWS_CONTRACT_MASTER</DBT>
+        <ID>MMDVAMND100</ID>
+        <DTYPE>CHAR</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>HIDDEN</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="6">
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>25</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>25</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>NAME</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY/>
+        <ABS_POS></ABS_POS>
+        <LABEL>Customer Name</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MMVAMND22</ID>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLD_1</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ/>
+      <LABEL></LABEL>
+      <ID>LDDVAMND137</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <FIELD TABPAGE="TAB_HEADER" TYPE="FIELDSET" PARTITION="MSEC_PART2" INDEX="1" SECTION="MSEC1">
+      <FIELD INDEX="2">
+        <UIBLOCK></UIBLOCK>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MMVAMND12</ID>
+        <COLS></COLS>
+        <HEIGHT></HEIGHT>
+        <TYPE>DATE</TYPE>
+        <NAME>AMTDT</NAME>
+        <ROWS></ROWS>
+        <COLS></COLS>
+        <LABEL>Amendment Date</LABEL>
+        <SHOWIN></SHOWIN>
+        <REQUIRED>0</REQUIRED>
+        <MAXLENGTH></MAXLENGTH>
+        <AUTHSCRN>0</AUTHSCRN>
+        <READ_ONLY>0</READ_ONLY>
+        <DISABLED>0</DISABLED>
+        <HIDDEN>0</HIDDEN>
+        <AMENDABLE>-1</AMENDABLE>
+        <DTYPE>CHAR</DTYPE>
+        <SIZE>10</SIZE>
+        <WIDTH></WIDTH>
+        <CHECKED>0</CHECKED>
+        <DBC>AMTDT</DBC>
+        <SUMMARY/>
+        <ABS_POS>67,471</ABS_POS>
+        <DBT>LDVWS_CONTRACT_MASTER</DBT>
+        <ROWS></ROWS>
+      </FIELD>
+      <FIELD INDEX="3">
+        <UIBLOCK></UIBLOCK>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MMDVAMND88</ID>
+        <COLS></COLS>
+        <HEIGHT></HEIGHT>
+        <TYPE>DATE</TYPE>
+        <NAME>VALDT</NAME>
+        <ROWS></ROWS>
+        <COLS></COLS>
+        <LABEL>Start Date</LABEL>
+        <SHOWIN></SHOWIN>
+        <REQUIRED>0</REQUIRED>
+        <MAXLENGTH></MAXLENGTH>
+        <AUTHSCRN>0</AUTHSCRN>
+        <READ_ONLY>0</READ_ONLY>
+        <DISABLED>0</DISABLED>
+        <HIDDEN>0</HIDDEN>
+        <DTYPE>DATE</DTYPE>
+        <SIZE>9</SIZE>
+        <WIDTH></WIDTH>
+        <CHECKED>0</CHECKED>
+        <DBC>VALDT</DBC>
+        <SUMMARY/>
+        <ABS_POS>38,505</ABS_POS>
+        <DBT>LDVWS_CONTRACT_MASTER</DBT>
+        <ROWS></ROWS>
+      </FIELD>
+      <FIELD INDEX="4">
+        <DBC>PRD</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>4</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>4</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>PRD</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY/>
+        <ABS_POS>13,479</ABS_POS>
+        <DBT>LDVWS_CONTRACT_MASTER</DBT>
+        <LABEL>Product</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MMDVAMND98</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="5">
+        <DBC>PROTYPEDESC</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>30</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>30</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>PROTYPEDESC</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY/>
+        <ABS_POS>13,556</ABS_POS>
+        <DBT>LDVWS_CONTRACT_MASTER</DBT>
+        <LABEL>Product Description</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MMDVAMND99</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLD_2</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ/>
+      <LABEL></LABEL>
+      <ID>LDDVAMND138</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <DATASRC>LDVWS_CONTRACT_MASTER</DATASRC>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <LABEL></LABEL>
+    <ID>BLK_LDVWS_CONTRACT_MASTER</ID>
+  </BLOCK>
+  <BLOCK TABPAGE="TAB_SCHE" TYPE="Single Entry" SCREEN="CVS_MAIN" VIEW="Single Entry">
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <DATASRC>LDVWS_CONTRACT_MASTER</DATASRC>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <LABEL></LABEL>
+    <ID>BLK_BUTTONS</ID>
+  </BLOCK>
+  <BLOCK TABPAGE="TAB_SCHE" TYPE="Multiple Entry" PARTITION="SEC1_PART1" SCREEN="CVS_MAIN" SECTION="SEC1">
+    <FIELD TABPAGE="TAB_AMEND">
+      <DBC>FCCREF</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>FCCREF</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY/>
+      <LABEL>Contract Reference</LABEL>
+      <ID>MMDVAMND89</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>SCHD_TYPE</DBC>
+      <AUTHSCRN>0</AUTHSCRN>
+      <SIZE></SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <VALUE>N</VALUE>
+      <COLS></COLS>
+      <MAXLENGTH></MAXLENGTH>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>SCHD_TYPE</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL>Type</LABEL>
+      <ID>MMDVAMND91</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>CHECKBOX</TYPE>
+      <ROWS></ROWS>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>SCOMP</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>10</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>10</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>SCOMP</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Component</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>MMDVAMND90</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>STDT</DBC>
+      <AUTHSCRN>0</AUTHSCRN>
+      <SIZE>9</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <COLS></COLS>
+      <MAXLENGTH></MAXLENGTH>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>STDT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL>Start Date</LABEL>
+      <ID>MMDVAMND92</ID>
+      <DTYPE>DATE</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>DATE</TYPE>
+      <ROWS></ROWS>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>NO_OF_SCHD</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>12</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>NO_OF_SCHD</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Number</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>MMDVAMND93</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>FREQ</DBC>
+      <AUTHSCRN>0</AUTHSCRN>
+      <SIZE></SIZE>
+      <REQUIRED>0</REQUIRED>
+      <OPTION VALUE="" SELECTED="-1"></OPTION>
+      <OPTION VALUE="D" SELECTED="0">${FORM.BLOCK.5.FIELD.5.OPTION.1.#text}</OPTION>
+      <OPTION VALUE="M" SELECTED="0">${FORM.BLOCK.5.FIELD.5.OPTION.2.#text}</OPTION>
+      <OPTION VALUE="Q" SELECTED="0">${FORM.BLOCK.5.FIELD.5.OPTION.3.#text}</OPTION>
+      <OPTION VALUE="H" SELECTED="0">${FORM.BLOCK.5.FIELD.5.OPTION.4.#text}</OPTION>
+      <OPTION VALUE="Y" SELECTED="0">${FORM.BLOCK.5.FIELD.5.OPTION.5.#text}</OPTION>
+      <OPTION VALUE="B" SELECTED="0">${FORM.BLOCK.5.FIELD.5.OPTION.6.#text}</OPTION>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <COLS></COLS>
+      <MAXLENGTH></MAXLENGTH>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>FREQ</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL>Frequency</LABEL>
+      <ID>MMDVAMND94</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>SELECT</TYPE>
+      <ROWS></ROWS>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>FREQ_UNIT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>16</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>FREQ_UNIT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Unit</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>MMDVAMND95</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>AMT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>16</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>AMT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Amount</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>MMDVAMND96</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH>615</WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT>120</HEIGHT>
+    <READ_ONLY>-1</READ_ONLY>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS>43,41</ABS_POS>
+    <DBT>LDVWS_CONTRACT_SCHEDULES</DBT>
+    <LABEL>Contract Schedules</LABEL>
+    <ID>BLK_LDVWS_CONTRACT_SCHEDULES</ID>
+  </BLOCK>
+  <BLOCK TABPAGE="TAB_AMEND" TYPE="Multiple Entry" PARTITION="SEC1_PART1" SCREEN="CVS_MAIN" SECTION="SEC1">
+    <FIELD TABPAGE="TAB_AMEND">
+      <DBC>FCCREF</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>FCCREF</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY/>
+      <LABEL>Contract Reference</LABEL>
+      <ID>LDDVAMND100</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="TAB_LINKAGES">
+      <DBC>VERNO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>VERNO</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY/>
+      <LABEL>Version Number</LABEL>
+      <ID>LDDVAMND101</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>LINK_TYPE</DBC>
+      <AUTHSCRN>0</AUTHSCRN>
+      <SIZE></SIZE>
+      <REQUIRED>0</REQUIRED>
+      <OPTION VALUE="C" SELECTED="0">${FORM.BLOCK.6.FIELD.2.OPTION.0.#text}</OPTION>
+      <OPTION VALUE="D" SELECTED="0">${FORM.BLOCK.6.FIELD.2.OPTION.1.#text}</OPTION>
+      <OPTION VALUE="A" SELECTED="0">${FORM.BLOCK.6.FIELD.2.OPTION.2.#text}</OPTION>
+      <OPTION VALUE="" SELECTED="-1"></OPTION>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <COLS></COLS>
+      <MAXLENGTH></MAXLENGTH>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>LINK_TYPE</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL>Type</LABEL>
+      <ID>LDDVAMND103</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>SELECT</TYPE>
+      <ROWS></ROWS>
+    </FIELD>
+    <FIELD TABPAGE="TAB_AMEND">
+      <DBC>LINK_REF</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>20</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>20</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>LINK_REF</NAME>
+      <CASE>UPPER</CASE>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Link Reference</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LDDVAMND102</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="TAB_AMEND">
+      <DBC>LINK_CCY</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>5</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>3</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>LINK_CCY</NAME>
+      <CASE>UPPER</CASE>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Currency</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LDDVAMND104</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>AVLAMT</DBC>
+      <AUTHSCRN>0</AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <COLS></COLS>
+      <MAXLENGTH></MAXLENGTH>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>AVLAMT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL>Available Amount</LABEL>
+      <ID>LDDVAMND107</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>AMOUNT</TYPE>
+      <ROWS></ROWS>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>XRATE</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>XRATE</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Exchange Rate</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LDDVAMND106</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>LINK_AMT</DBC>
+      <AUTHSCRN>0</AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <COLS></COLS>
+      <MAXLENGTH></MAXLENGTH>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>LINK_AMT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL>Linked Amount</LABEL>
+      <ID>LDDVAMND105</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>AMOUNT</TYPE>
+      <ROWS></ROWS>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH>645</WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT>120</HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS>11,19</ABS_POS>
+    <DBT>LDVWS_CONTRACT_LINKAGES</DBT>
+    <LABEL>Contract Linkages Details</LABEL>
+    <ID>BLK_LDVWS_CONTRACT_LINKAGES</ID>
+  </BLOCK>
+  <BLOCK TABPAGE="TAB_AMEND" TYPE="Single Entry" SCREEN="CVS_MAIN" VIEW="Single Entry">
+    <FIELD TABPAGE="TAB_AMEND" PARTITION="SEC1_PART1" SECTION="SEC1">
+      <DBC>VERNO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>VERNO</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY/>
+      <DBT>LDVWS_VIEW_LINKAGES</DBT>
+      <LABEL>Version Number</LABEL>
+      <ID>LDDVAMND109</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="TAB_LINKAGES">
+      <DBC>COVAMT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>COVAMT</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY/>
+      <DBT>LDVWS_VIEW_LINKAGES</DBT>
+      <LABEL>Cover Amount</LABEL>
+      <ID>LDDVAMND112</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="TAB_LINKAGES" TYPE="FIELDSET" PARTITION="SEC2_PART1" INDEX="1" SECTION="SEC2">
+      <FIELD INDEX="">
+        <DBC>LINKTYP</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>22</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>10</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>LINKTYP</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY/>
+        <ABS_POS>165,128</ABS_POS>
+        <DBT>LDVWS_VIEW_LINKAGES</DBT>
+        <LABEL>Type</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LDDVAMND110</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="">
+        <DBC>UNCOVAMT</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>22</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>22</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>UNCOVAMT</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY/>
+        <ABS_POS>210,60</ABS_POS>
+        <DBT>LDVWS_VIEW_LINKAGES</DBT>
+        <LABEL>Uncovered Amount</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LDDVAMND113</ID>
+        <DTYPE>NUMBER</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="">
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE></SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH></MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXT_LINKTYP</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY/>
+        <ABS_POS>163,299</ABS_POS>
+        <LABEL/>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LDDVAMND114</ID>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLD_1</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ/>
+      <LABEL></LABEL>
+      <ID>LDDVAMND140</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <FIELD TABPAGE="TAB_LINKAGES" TYPE="FIELDSET" PARTITION="SEC2_PART2" INDEX="1" SECTION="SEC2">
+      <FIELD INDEX="">
+        <DBC>LINKAMT</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>22</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>22</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>LINKAMT</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY/>
+        <ABS_POS>187,55</ABS_POS>
+        <DBT>LDVWS_VIEW_LINKAGES</DBT>
+        <LABEL>Total Linked Amount</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LDDVAMND111</ID>
+        <DTYPE>NUMBER</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="">
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE></SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH></MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXT_LINKAMT</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY/>
+        <ABS_POS>187,298</ABS_POS>
+        <LABEL/>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LDDVAMND115</ID>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLD_2</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ/>
+      <LABEL></LABEL>
+      <ID>LDDVAMND141</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <DATASRC>LDVWS_VIEW_LINKAGES</DATASRC>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <LABEL></LABEL>
+    <ID>BLK_LDVWS_VIEW_LINKAGES</ID>
+  </BLOCK>
+  <BLOCK TABPAGE="TAB_SIM" TYPE="Multiple Entry" PARTITION="PART1" SCREEN="CVS_MAIN" SECTION="SEC1">
+    <FIELD TABPAGE="TAB_SIM">
+      <DBC>REFNO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>REFNO</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY/>
+      <LABEL>Reference Number</LABEL>
+      <ID>LDDVAMND178</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="TAB_SIM">
+      <DBC>COMP</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>20</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>20</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>COMP</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Comp</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LDDVAMND179</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="TAB_SIM">
+      <DBC>DUEDT</DBC>
+      <AUTHSCRN>0</AUTHSCRN>
+      <SIZE></SIZE>
+      <REQUIRED>0</REQUIRED>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <COLS></COLS>
+      <MAXLENGTH></MAXLENGTH>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>DUEDT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL>Due Date</LABEL>
+      <ID>LDDVAMND180</ID>
+      <DTYPE>DATE</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>DATE</TYPE>
+      <ROWS></ROWS>
+    </FIELD>
+    <FIELD TABPAGE="TAB_SIM">
+      <DBC>AMTDUE</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>AMTDUE</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Amount Due</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LDDVAMND181</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="TAB_SIM">
+      <DBC>AMTSTD</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>AMTSTD</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Amount Settled</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LDDVAMND182</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="TAB_SIM">
+      <DBC>ADJAMT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>ADJAMT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Amount Adjusted</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LDDVAMND183</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <READ_ONLY>-1</READ_ONLY>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <DBT>LDVWS_AMOUNTDUE_SIM</DBT>
+    <LABEL>Amount Due</LABEL>
+    <ID>BLK_LDVWS_AMOUNTDUE_SIM</ID>
+  </BLOCK>
+  <SCREEN NAME="CVS_REVS" POSITION="template" TITLE="${FORM.BLOCK.9.#item.SCREEN.-TITLE}" HEIGHT="300" VERSION_BTN_REQD="N" TMP_SCR_TYPE="small" WIDTH="500">
+    <TAB>
+      <PAGE NAME="All" HEIGHT="" ID="All">
+        <LABEL>All</LABEL>
+        <SECTION HEIGHT="" ID="SEC1">
+          <PARTITION NAME="" ID="SEC1_PART1" WIDTH="100"></PARTITION>
+        </SECTION>
+      </PAGE>
+    </TAB>
+    <TABPAGE_ALL HEIGHT="75">
+      <LABEL>All</LABEL>
+    </TABPAGE_ALL>
+
+  </SCREEN>
+  <BLOCK TABPAGE="All" TYPE="Multiple Entry" PARTITION="SEC1_PART1" SCREEN="CVS_REVS" SECTION="SEC1">
+    <FIELD TABPAGE="All">
+      <DBC>REFNO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>REFNO</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY/>
+      <LABEL>Reference Number</LABEL>
+      <ID>MMVAMND48</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>COMP</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>10</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>10</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>COMP</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Component</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>MMVAMND49</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>RDATE</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>7</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>7</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>RDATE</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Revision Date</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>MMVAMND50</ID>
+      <DTYPE>DATE</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH></MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TXT_REV_DATE</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Applied</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>MMVAMND51</ID>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH>360</WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT>120</HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS>34,30</ABS_POS>
+    <DBT>LDVWS_REVISION</DBT>
+    <LABEL>Revision Details</LABEL>
+    <ID>BLK_LDVWS_REVISION</ID>
+  </BLOCK>
+  <SCREEN NAME="CVS_PAYM" POSITION="template" TITLE="${FORM.BLOCK.11.#item.SCREEN.-TITLE}" HEIGHT="450" VERSION_BTN_REQD="N" TMP_SCR_TYPE="medium" WIDTH="760">
+    <TAB>
+      <PAGE NAME="All" HEIGHT="" ID="All">
+        <LABEL>All</LABEL>
+        <SECTION HEIGHT="" ID="SEC1">
+          <PARTITION NAME="" ID="SEC1_PART1" WIDTH="100"></PARTITION>
+        </SECTION>
+      </PAGE>
+    </TAB>
+    <TABPAGE_ALL HEIGHT="75">
+      <LABEL>All</LABEL>
+    </TABPAGE_ALL>
+
+  </SCREEN>
+  <BLOCK TABPAGE="All" TYPE="Multiple Entry" PARTITION="SEC1_PART1" SCREEN="CVS_PAYM" SECTION="SEC1">
+    <FIELD TABPAGE="All">
+      <DBC>REFNO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>REFNO</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY/>
+      <LABEL>Reference Number</LABEL>
+      <ID>MMVAMND55</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>COMP</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>20</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>20</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>COMP</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Component</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>MMVAMND56</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>DUEDT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>7</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>7</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>DUEDT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Due Date</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>MMVAMND57</ID>
+      <DTYPE>DATE</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>AMTDUE</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>AMTDUE</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Amount Due</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>MMVAMND58</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>AMTSTD</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>AMTSTD</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Amount Settled</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>MMVAMND59</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>ADJAMT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>ADJAMT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Amount Adjusted</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>MMVAMND60</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH>450</WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT>760</HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS>55,20</ABS_POS>
+    <DBT>LDVWS_AMOUNTDUE</DBT>
+    <LABEL>Amount Due</LABEL>
+    <ID>BLK_LDVWS_AMOUNTDUE</ID>
+  </BLOCK>
+  <SCREEN NAME="CVS_CIF" POSITION="template" TITLE="${FORM.BLOCK.13.#item.SCREEN.-TITLE}" HEIGHT="300" VERSION_BTN_REQD="N" TMP_SCR_TYPE="small" WIDTH="650">
+    <TAB>
+      <PAGE NAME="All" HEIGHT="" ID="All">
+        <LABEL>All</LABEL>
+        <SECTION HEIGHT="" ID="SEC1">
+          <PARTITION NAME="" ID="SEC1_PART1" WIDTH="50"></PARTITION>
+          <PARTITION NAME="" ID="SEC1_PART2" WIDTH="50"></PARTITION>
+        </SECTION>
+        <SECTION HEIGHT="" ID="SEC2">
+          <PARTITION NAME="" ID="SEC2_PART1" WIDTH="100"></PARTITION>
+        </SECTION>
+      </PAGE>
+    </TAB>
+    <TABPAGE_ALL HEIGHT="75">
+      <LABEL>All</LABEL>
+    </TABPAGE_ALL>
+
+  </SCREEN>
+  <BLOCK TABPAGE="All" TYPE="Multiple Entry" PARTITION="SEC2_PART1" SCREEN="CVS_CIF" SECTION="SEC2">
+    <FIELD TABPAGE="All">
+      <DBC>FCCREF</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>FCCREF</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY/>
+      <LABEL>Contract Reference</LABEL>
+      <ID>MMVAMND64</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>CIFID</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>9</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>9</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>CIFID</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Customer Number</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>MMVAMND65</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>OAMT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>0</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>0</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>OAMT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Principal</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>MMVAMND67</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>NAMT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>NAMT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Change in principal</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>MMVAMND66</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>NEWP</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>NEWP</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY/>
+      <LABEL>Percentage</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>MMVAMND68</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH>465</WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT>120</HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS>57,74</ABS_POS>
+    <DBT>LDVWS_REFINAMT</DBT>
+    <LABEL>Refine Amount Details</LABEL>
+    <ID>BLK_LDVWS_REFINAMT</ID>
+  </BLOCK>
+  <BLOCK TABPAGE="All" TYPE="Single Entry" SCREEN="CVS_CIF" VIEW="Single Entry">
+    <FIELD PARTITION="SEC1_PART1" TABPAGE="All" SECTION="SEC1">
+      <DBC>PAYTYPE</DBC>
+      <WIDTH>550</WIDTH>
+      <VALUE></VALUE>
+      <COLSPAN>2</COLSPAN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <SUMMARY/>
+      <ABS_POS>8,65</ABS_POS>
+      <DBT>LDVWS_CONTRACT_MASTER</DBT>
+      <LABEL/>
+      <ID>MMVAMND73</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>RADIO</TYPE>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <REQUIRED>0</REQUIRED>
+      <OPTION COL="1" ROW="1">
+        <SELECTED/>
+        <ABS_POS>11,30</ABS_POS>
+        <LABEL>Amount</LABEL>
+        <ID>MMVAMND73_1</ID>
+        <VALUE>A</VALUE>
+      </OPTION>
+      <OPTION COL="1" ROW="2">
+        <SELECTED/>
+        <ABS_POS>11,121</ABS_POS>
+        <LABEL>Percentage</LABEL>
+        <ID>MMVAMND73_2</ID>
+        <VALUE>P</VALUE>
+      </OPTION>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT>210</HEIGHT>
+      <NAME>PAYTYPE</NAME>
+      <DISABLED>0</DISABLED>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All" PARTITION="SEC1_PART2" SECTION="SEC1">
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HALIGN>right</HALIGN>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>BTN_CALC</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY/>
+      <ABS_POS>21,330</ABS_POS>
+      <VALIGN>bottom</VALIGN>
+      <LABEL>Calculate Amount/Percentage</LABEL>
+      <ID>MMVAMND74</ID>
+      <SHOWIN></SHOWIN>
+      <TYPE>BUTTON</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <DATASRC>LDVWS_CONTRACT_MASTER</DATASRC>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <LABEL></LABEL>
+    <ID>BLK_LDVWS_CONTRACT_MASTER</ID>
+  </BLOCK>
+  <BLOCK TYPE="Single Entry" SCREEN="CVS_MAIN">
+    <FIELD TABPAGE="All">
+      <SRC>Images/Exit2.gif</SRC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN/>
+      <VALUE>Exit</VALUE>
+      <CHECKED/>
+      <READ_ONLY/>
+      <EVENT>
+        <FUNCTION>fnExit()</FUNCTION>
+        <NAME>onclick</NAME>
+      </EVENT>
+      <NAME>BTN_EXIT</NAME>
+      <DISABLED/>
+      <SUMMARY/>
+      <ABS_POS></ABS_POS>
+      <LABEL/>
+      <ID>MMVAMND35</ID>
+      <SHOWIN></SHOWIN>
+      <TYPE>BUTTON</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <ID>BLK_STD_BUTTONS_IMG</ID>
+  </BLOCK>
+  <BLOCK TYPE="Single Entry" SCREEN="CVS_REVS">
+    <FIELD TABPAGE="All">
+      <SRC>Images/Exit2.gif</SRC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN/>
+      <VALUE>Exit</VALUE>
+      <CHECKED/>
+      <READ_ONLY/>
+      <EVENT>
+        <FUNCTION>fnExit_CVS_REVS()</FUNCTION>
+        <NAME>onclick</NAME>
+      </EVENT>
+      <NAME>BTN_EXIT</NAME>
+      <DISABLED/>
+      <SUMMARY/>
+      <LABEL/>
+      <ID>MMVAMND54</ID>
+      <SHOWIN></SHOWIN>
+      <TYPE>BUTTON</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <ID>BLK_STD_BUTTONS_IMG</ID>
+  </BLOCK>
+  <BLOCK TYPE="Single Entry" SCREEN="CVS_PAYM">
+    <FIELD TABPAGE="All">
+      <SRC>Images/Exit2.gif</SRC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HALIGN>right</HALIGN>
+      <HIDDEN/>
+      <VALUE>Exit</VALUE>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <EVENT>
+        <FUNCTION>fnExit_CVS_PAYM()</FUNCTION>
+        <NAME>onclick</NAME>
+      </EVENT>
+      <NAME>BTN_EXIT</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY/>
+      <VALIGN>bottom</VALIGN>
+      <LABEL/>
+      <ID>MMVAMND63</ID>
+      <SHOWIN></SHOWIN>
+      <TYPE>BUTTON</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <ID>BLK_STD_BUTTONS_IMG</ID>
+  </BLOCK>
+  <BLOCK TYPE="Single Entry" SCREEN="CVS_CIF">
+    <FIELD TABPAGE="All">
+      <SRC>Images/Exit2.gif</SRC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN/>
+      <VALUE>Exit</VALUE>
+      <CHECKED/>
+      <READ_ONLY/>
+      <EVENT>
+        <FUNCTION>fnExit_CVS_CIF()</FUNCTION>
+        <NAME>onclick</NAME>
+      </EVENT>
+      <NAME>BTN_EXIT</NAME>
+      <DISABLED/>
+      <SUMMARY/>
+      <LABEL/>
+      <ID>MMVAMND72</ID>
+      <SHOWIN></SHOWIN>
+      <TYPE>BUTTON</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <ID>BLK_STD_BUTTONS_IMG</ID>
+  </BLOCK>
+  <SUMBLOCK TABPAGE="QUERY" TYPE="Single Entry" SCREEN="SUMMARY">
+    <FIELD TYPE="MULTIPLE" ID="1">
+      <DBC>TXTASTAT</DBC>
+      <OPTION VALUE="A" SELECTED="0">${FORM.SUMBLOCK.0.FIELD.0.OPTION.0.#text}</OPTION>
+      <OPTION VALUE="U" SELECTED="0">${FORM.SUMBLOCK.0.FIELD.0.OPTION.1.#text}</OPTION>
+      <OPTION VALUE="" SELECTED="-1"></OPTION>
+      <REQUIRED>0</REQUIRED>
+      <MAXLENGTH></MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TXTASTAT</NAME>
+      <CASE>LOWER</CASE>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <LABEL>Authorization Status</LABEL>
+      <DTYPE>CHAR</DTYPE>
+      <TYPE>SELECT</TYPE>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="2">
+      <DBC>TXTCSTAT</DBC>
+      <OPTION VALUE="A" SELECTED="0">${FORM.SUMBLOCK.0.FIELD.1.OPTION.0.#text}</OPTION>
+      <OPTION VALUE="Y" SELECTED="0">${FORM.SUMBLOCK.0.FIELD.1.OPTION.1.#text}</OPTION>
+      <OPTION VALUE="L" SELECTED="0">${FORM.SUMBLOCK.0.FIELD.1.OPTION.2.#text}</OPTION>
+      <OPTION VALUE="R" SELECTED="0">${FORM.SUMBLOCK.0.FIELD.1.OPTION.3.#text}</OPTION>
+      <OPTION VALUE="H" SELECTED="0">${FORM.SUMBLOCK.0.FIELD.1.OPTION.4.#text}</OPTION>
+      <OPTION VALUE="" SELECTED="-1"></OPTION>
+      <REQUIRED>0</REQUIRED>
+      <MAXLENGTH></MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TXTCSTAT</NAME>
+      <CASE>LOWER</CASE>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <LABEL>Contract Status</LABEL>
+      <DTYPE>CHAR</DTYPE>
+      <TYPE>SELECT</TYPE>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="3">
+      <DBC>FCCREF</DBC>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <REQUIRED>0</REQUIRED>
+      <LABEL>Contract Reference</LABEL>
+      <DTYPE>VARCHAR2</DTYPE>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>16</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>FCCREF</NAME>
+      <CASE>LOWER</CASE>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="4">
+      <DBC>PRD</DBC>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <REQUIRED>0</REQUIRED>
+      <LABEL>Product</LABEL>
+      <DTYPE>VARCHAR2</DTYPE>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>4</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>PRD</NAME>
+      <CASE>UPPER</CASE>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="5">
+      <DBC>CPTY</DBC>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <REQUIRED>0</REQUIRED>
+      <LABEL>Counterparty</LABEL>
+      <DTYPE>VARCHAR2</DTYPE>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>9</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>CPTY</NAME>
+      <CASE>LOWER</CASE>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="6">
+      <DBC>CCY</DBC>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <REQUIRED>0</REQUIRED>
+      <LABEL>Currency</LABEL>
+      <DTYPE>VARCHAR2</DTYPE>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>3</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>CCY</NAME>
+      <CASE>UPPER</CASE>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="7">
+      <DBC>AMT</DBC>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <REQUIRED>0</REQUIRED>
+      <LABEL>Amount</LABEL>
+      <DTYPE>NUMBER</DTYPE>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>AMT</NAME>
+      <CASE>LOWER</CASE>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="8">
+      <DBC>VALDT</DBC>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <REQUIRED>0</REQUIRED>
+      <LABEL>Value Date</LABEL>
+      <DTYPE>DATE</DTYPE>
+      <TYPE>DATE</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>VALDT</NAME>
+      <CASE>LOWER</CASE>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="9">
+      <DBC>MATDT</DBC>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <REQUIRED>0</REQUIRED>
+      <LABEL>Maturity Date</LABEL>
+      <DTYPE>DATE</DTYPE>
+      <TYPE>DATE</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>MATDT</NAME>
+      <CASE>LOWER</CASE>
+    </FIELD>
+
+  </SUMBLOCK>
+  <SUMBLOCK TABPAGE="RESULT" TYPE="Multiple Entry" SCREEN="SUMMARY">
+    <FIELD TYPE="MULTIPLE" ID="1">
+      <ORDER>1</ORDER>
+      <DBC>TXTASTAT</DBC>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <LABEL>Authorization Status</LABEL>
+      <DTYPE>CHAR</DTYPE>
+      <TYPE>SELECT</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>TXTASTAT</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="2">
+      <ORDER>2</ORDER>
+      <DBC>TXTCSTAT</DBC>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <LABEL>Contract Status</LABEL>
+      <DTYPE>CHAR</DTYPE>
+      <TYPE>SELECT</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>TXTCSTAT</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="3">
+      <ORDER>3</ORDER>
+      <DBC>FCCREF</DBC>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <LABEL>Contract Reference</LABEL>
+      <DTYPE>VARCHAR2</DTYPE>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>16</MAXLENGTH>
+      <NAME>FCCREF</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="4">
+      <ORDER>4</ORDER>
+      <DBC>PRD</DBC>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <LABEL>Product</LABEL>
+      <DTYPE>VARCHAR2</DTYPE>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>4</MAXLENGTH>
+      <NAME>PRD</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="5">
+      <ORDER>5</ORDER>
+      <DBC>CPTY</DBC>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <LABEL>Counterparty</LABEL>
+      <DTYPE>VARCHAR2</DTYPE>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>9</MAXLENGTH>
+      <NAME>CPTY</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="6">
+      <ORDER>6</ORDER>
+      <DBC>CCY</DBC>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <LABEL>Currency</LABEL>
+      <DTYPE>VARCHAR2</DTYPE>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>3</MAXLENGTH>
+      <NAME>CCY</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="7">
+      <ORDER>7</ORDER>
+      <DBC>AMT</DBC>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <LABEL>Amount</LABEL>
+      <DTYPE>NUMBER</DTYPE>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>22</MAXLENGTH>
+      <NAME>AMT</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="8">
+      <ORDER>8</ORDER>
+      <DBC>VALDT</DBC>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <LABEL>Value Date</LABEL>
+      <DTYPE>DATE</DTYPE>
+      <TYPE>DATE</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>VALDT</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="9">
+      <ORDER>9</ORDER>
+      <DBC>MATDT</DBC>
+      <DBT>LDVWS_CONTRACT_SUMM</DBT>
+      <LABEL>Maturity Date</LABEL>
+      <DTYPE>DATE</DTYPE>
+      <TYPE>DATE</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>MATDT</NAME>
+    </FIELD>
+    <LEGENDS>
+      <OPTION VALUE="A">${FORM.SUMBLOCK.1.LEGENDS.0.OPTION.0.#text}</OPTION>
+      <OPTION VALUE="U">${FORM.SUMBLOCK.1.LEGENDS.0.OPTION.1.#text}</OPTION>
+      <LABEL>Authorization Status</LABEL>
+      <WIDTH></WIDTH>
+      <FIELD_NAME>TXTASTAT</FIELD_NAME>
+    </LEGENDS>
+    <LEGENDS>
+      <OPTION VALUE="A">${FORM.SUMBLOCK.1.LEGENDS.1.OPTION.0.#text}</OPTION>
+      <OPTION VALUE="Y">${FORM.SUMBLOCK.1.LEGENDS.1.OPTION.1.#text}</OPTION>
+      <OPTION VALUE="L">${FORM.SUMBLOCK.1.LEGENDS.1.OPTION.2.#text}</OPTION>
+      <OPTION VALUE="R">${FORM.SUMBLOCK.1.LEGENDS.1.OPTION.3.#text}</OPTION>
+      <OPTION VALUE="H">${FORM.SUMBLOCK.1.LEGENDS.1.OPTION.4.#text}</OPTION>
+      <LABEL>Contract Status</LABEL>
+      <WIDTH></WIDTH>
+      <FIELD_NAME>TXTCSTAT</FIELD_NAME>
+    </LEGENDS>
+
+  </SUMBLOCK>
+</FORM>

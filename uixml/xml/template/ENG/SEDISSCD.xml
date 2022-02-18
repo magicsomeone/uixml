@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="${FORM.SUMMARY.-TITLE}" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE/>
+    <SUMMARY_DATA_BLK>BLK_MAIN</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.0.FIELD.0.LBL}</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">${FORM.SUMMARY.SUMBLOCK.0.FIELD.0.OPTION.0.#text}</OPTION>
+        <OPTION VALUE="U">${FORM.SUMMARY.SUMBLOCK.0.FIELD.0.OPTION.1.#text}</OPTION>
+        <OPTION VALUE="R">${FORM.SUMMARY.SUMBLOCK.0.FIELD.0.OPTION.2.#text}</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.0.FIELD.1.LBL}</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">${FORM.SUMMARY.SUMBLOCK.0.FIELD.1.OPTION.0.#text}</OPTION>
+        <OPTION VALUE="C">${FORM.SUMMARY.SUMBLOCK.0.FIELD.1.OPTION.1.#text}</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>${FORM.SUMMARY.SUMBLOCK.0.FIELD.2.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>9</MAXLENGTH>
+        <NAME>ISSUER_GUAR_CODE</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.0.LBL}</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">${FORM.SUMMARY.SUMBLOCK.1.FIELD.0.OPTION.0.#text}</OPTION>
+        <OPTION VALUE="U">${FORM.SUMMARY.SUMBLOCK.1.FIELD.0.OPTION.1.#text}</OPTION>
+        <OPTION VALUE="R">${FORM.SUMMARY.SUMBLOCK.1.FIELD.0.OPTION.2.#text}</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.1.LBL}</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">${FORM.SUMMARY.SUMBLOCK.1.FIELD.1.OPTION.0.#text}</OPTION>
+        <OPTION VALUE="C">${FORM.SUMMARY.SUMBLOCK.1.FIELD.1.OPTION.1.#text}</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.2.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>9</MAXLENGTH>
+        <NAME>ISSUER_GUAR_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.3.LBL}</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>110</MAXLENGTH>
+        <NAME>ISSUER_GUAR_NAME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.4.LBL}</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>CHECKBOX</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>ISSUER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>${FORM.SUMMARY.SUMBLOCK.1.FIELD.5.LBL}</LBL>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>CHECKBOX</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <NAME>GUARANTOR</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="${FORM.SCREEN.-TITLE}" TMP_SCR_TYPE="L">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL/>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL/>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS/>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>${FORM.SCREEN.FOOTER.TAB.SECTION.PART.FLDSET.FIELD.0.LBL}</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>${FORM.SCREEN.FOOTER.TAB.SECTION.PART.FLDSET.FIELD.1.LBL}</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS/>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>${FORM.SCREEN.FOOTER.TAB.SECTION.PART.FLDSET.FIELD.2.LBL}</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>${FORM.SCREEN.FOOTER.TAB.SECTION.PART.FLDSET.FIELD.3.LBL}</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>${FORM.SCREEN.FOOTER.TAB.SECTION.PART.FLDSET.FIELD.4.LBL}</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS/>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL/>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"/>
+                <OPTION VALUE="C">${FORM.SCREEN.FOOTER.TAB.SECTION.PART.FLDSET.FIELD.6.OPTION.1.#text}</OPTION>
+                <OPTION VALUE="O">${FORM.SCREEN.FOOTER.TAB.SECTION.PART.FLDSET.FIELD.6.OPTION.2.#text}</OPTION>
+                <COLS/>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>${FORM.SCREEN.FOOTER.TAB.SECTION.PART.FLDSET.FIELD.6.LBL}</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"/>
+                <OPTION VALUE="A">${FORM.SCREEN.FOOTER.TAB.SECTION.PART.FLDSET.FIELD.7.OPTION.1.#text}</OPTION>
+                <OPTION VALUE="R">${FORM.SCREEN.FOOTER.TAB.SECTION.PART.FLDSET.FIELD.7.OPTION.2.#text}</OPTION>
+                <OPTION VALUE="U">${FORM.SCREEN.FOOTER.TAB.SECTION.PART.FLDSET.FIELD.7.OPTION.3.#text}</OPTION>
+                <COLS/>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>${FORM.SCREEN.FOOTER.TAB.SECTION.PART.FLDSET.FIELD.7.LBL}</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_MAIN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL/>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_1">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <REQD>-1</REQD>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.0.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>9</MAXLENGTH>
+                <NAME>ISSUER_GUAR_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.1.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>110</MAXLENGTH>
+                <NAME>ISSUER_GUAR_NAME</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.2.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>140</MAXLENGTH>
+                <NAME>ADDRESS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE/>
+                <COLS/>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ISSUER</NAME>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.3.LBL}</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="2" INDEX="">
+                <SIZE/>
+                <COLS/>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>GUARANTOR</NAME>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.0.PART.FLDSET.FIELD.4.LBL}</LBL>
+                <CUSTOM>
+                  <OFF>N</OFF>
+                  <ON>Y</ON>
+                </CUSTOM>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>CHECKBOX</TYPE>
+                <ROWS/>
+              </FIELD>
+              <LBL>${FORM.SCREEN.BODY.TAB.SECTION.0.PART.FLDSET.LBL}</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_MAIN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <SPRTCNT>3</SPRTCNT>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PART2" ID="PART2" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_2">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_ISS_TYPE</NAME>
+                </LOV>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.1.PART.FLDSET.FIELD.0.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>65</MAXLENGTH>
+                <NAME>ISSUER_TYPE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.1.PART.FLDSET.FIELD.1.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>ISSUER_BIC_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_COUNTRY</NAME>
+                </LOV>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.1.PART.FLDSET.FIELD.2.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>ISSUER_LOC_COUNTRY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_COUNTRY</NAME>
+                </LOV>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.1.PART.FLDSET.FIELD.3.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>ISSUER_HQ_COUNTRY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.1.PART.FLDSET.FIELD.4.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>ISSUER_RISK</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.1.PART.FLDSET.FIELD.5.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>ISSUER_RISK_RATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_ISS_SCALE</NAME>
+                </LOV>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.1.PART.FLDSET.FIELD.6.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>65</MAXLENGTH>
+                <NAME>ISSUER_SCALE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="3">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.1.PART.FLDSET.FIELD.7.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>RISK_WEIGHT_MOODYS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="3">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.1.PART.FLDSET.FIELD.8.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>RISK_WEIGHT_SP</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="3">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.1.PART.FLDSET.FIELD.9.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>RISK_WEIGHT_FITCH</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>${FORM.SCREEN.BODY.TAB.SECTION.1.PART.FLDSET.LBL}</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_ISSUER</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <SPRTCNT>3</SPRTCNT>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+        <SECTION ID="SEC_3" COLLAPSE="N">
+          <PART NAME="PART3" ID="PART3" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_3">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_GUA_TYPE</NAME>
+                </LOV>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.0.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>65</MAXLENGTH>
+                <NAME>GUARANTOR_TYPE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.1.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>GUARANTOR_BIC_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_COUNTRY</NAME>
+                </LOV>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.2.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>GUARANTOR_LOC_COUNTRY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_COUNTRY</NAME>
+                </LOV>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.3.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>GUARANTOR_HQ_COUNTRY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.4.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>GUARANTOR_RISK</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.5.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>GUARANTOR_RISK_RATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_GUA_SCALE</NAME>
+                </LOV>
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.6.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>65</MAXLENGTH>
+                <NAME>GUARANTOR_SCALE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.7.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>CUSTODIAN_SWIFT_CODE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="3">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.8.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>RISK_WEIGHT_MOODYS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="3">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.9.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>RISK_WEIGHT_SP</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="3">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.2.PART.FLDSET.FIELD.10.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>RISK_WEIGHT_FITCH</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>${FORM.SCREEN.BODY.TAB.SECTION.2.PART.FLDSET.LBL}</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_GUARANTOR</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <SPRTCNT>3</SPRTCNT>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+        <SECTION ID="SEC_4" COLLAPSE="N">
+          <PART NAME="PART4" ID="PART4" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_4">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.3.PART.FLDSET.FIELD.0.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>65</MAXLENGTH>
+                <NAME>ADDL_FIELD1</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.3.PART.FLDSET.FIELD.1.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>65</MAXLENGTH>
+                <NAME>ADDL_FIELD2</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="3">
+                <LBL>${FORM.SCREEN.BODY.TAB.SECTION.3.PART.FLDSET.FIELD.2.LBL}</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>65</MAXLENGTH>
+                <NAME>ADDL_FIELD3</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL>${FORM.SCREEN.BODY.TAB.SECTION.3.PART.FLDSET.LBL}</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_MAIN</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <SPRTCNT>3</SPRTCNT>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

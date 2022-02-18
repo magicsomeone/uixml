@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY POSITION="template" TITLE="SUMMARY">
+    <SUMMARY_BASE>M</SUMMARY_BASE>
+    <TYPE>Q</TYPE>
+  </SUMMARY>
+  <SUMBUTTONS>
+    <BUTTON_ROWS>1</BUTTON_ROWS>
+    <BUTTON ID="1">
+      <BUTTON_EVENT>fnReleaseAll()</BUTTON_EVENT>
+      <BUTTON_LABEL>Release All</BUTTON_LABEL>
+      <BUTTON_NAME>BTN_RELEASE_ALL</BUTTON_NAME>
+    </BUTTON>
+    <BUTTON ID="2">
+      <BUTTON_EVENT>fnReleaseMsg()</BUTTON_EVENT>
+      <BUTTON_LABEL>Release Messages</BUTTON_LABEL>
+      <BUTTON_NAME>BTN_RELEASE_MSG</BUTTON_NAME>
+    </BUTTON>
+    <BUTTONS_PER_ROW></BUTTONS_PER_ROW>
+  </SUMBUTTONS>
+  <BLOCK TABPAGE="" TYPE="Single Entry" SCREEN="SUMMARY" VIEW="Single Entry">
+    <FIELD TABPAGE="All">
+      <SRC>Images/Exit2.gif</SRC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>0</HIDDEN>
+      <VALUE>Exit</VALUE>
+      <CHECKED/>
+      <READ_ONLY/>
+      <EVENT>
+        <FUNCTION>fnExit()</FUNCTION>
+        <NAME>onClick</NAME>
+      </EVENT>
+      <NAME>BTN_EXIT</NAME>
+      <DISABLED/>
+      <SUMMARY/>
+      <ABS_POS></ABS_POS>
+      <LABEL/>
+      <ID>BTN_EXIT</ID>
+      <SHOWIN>All</SHOWIN>
+      <TYPE>BUTTON</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED/>
+    <WIDTH></WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <LABEL></LABEL>
+    <ID>BLK_SUMMARY_EXIT</ID>
+  </BLOCK>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" TITLE="Hold & Release Maintenance" VERSION_BTN_REQD="N" TMP_SCR_TYPE="small" WIDTH="760" POSITION="template" HEIGHT="550">
+    <SUBSCREEN>
+      <FORM TYPE="C" SEQ="1" id="CSCUFVAL">
+        <LABEL>Fields</LABEL>
+        <FUNCTION>fnShowUDFScreen('CSCUFVAL','CVS_UDF')</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <TABPAGE_ALL HEIGHT="75">
+      <LABEL>All</LABEL>
+    </TABPAGE_ALL>
+    <TAB>
+      <PAGE NAME="All" HEIGHT="" ID="All">
+        <LABEL>All</LABEL>
+        <SECTION HEIGHT="" ID="S1">
+          <PARTITION NAME="P1" ID="P1" WIDTH="50"></PARTITION>
+          <PARTITION NAME="P2" ID="P2" WIDTH="50"></PARTITION>
+        </SECTION>
+        <SECTION HEIGHT="" ID="S2">
+          <PARTITION NAME="P1" ID="P1" WIDTH="50"></PARTITION>
+          <PARTITION NAME="P2" ID="P2" WIDTH="50"></PARTITION>
+        </SECTION>
+      </PAGE>
+    </TAB>
+    <CS_BUTTON_ROWS></CS_BUTTON_ROWS>
+    <CS_BUTTONS_PER_ROW></CS_BUTTONS_PER_ROW>
+  </SCREEN>
+  <BLOCK TYPE="Audit Entry" SCREEN="CVS_MAIN">
+    <ABS_POS>460,1</ABS_POS>
+    <DBT>MSTBS_HOLD_RELEASE</DBT>
+    <LABEL></LABEL>
+    <ID>BLK_AUDIT</ID>
+    <TYPE>M</TYPE>
+    <READ_ONLY></READ_ONLY>
+  </BLOCK>
+  <BLOCK TABPAGE="All" TYPE="Single Entry" SCREEN="CVS_MAIN" VIEW="Single Entry">
+    <FIELD TABPAGE="All" TYPE="FIELDSET" PARTITION="P1" INDEX="1" SECTION="S1">
+      <FIELD INDEX="1">
+        <DBC>HLD_RLS_MEDIA</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>15</SIZE>
+        <REQUIRED>-1</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>15</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>HLD_RLS_MEDIA</NAME>
+        <CASE>UPPER</CASE>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Media~Description</REDUCTION_FLD_LABELS>
+          <TITLE>Select Media</TITLE>
+          <COL_HEADING>Media~Description</COL_HEADING>
+          <NAME>LOV_MEDIA</NAME>
+        </LOV>
+        <SUMMARY>QRA</SUMMARY>
+        <ABS_POS>82,172</ABS_POS>
+        <DBT>MSTBS_HOLD_RELEASE</DBT>
+        <LABEL>Media</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MSDHR2</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX>1</TABINDEX>
+      </FIELD>
+      <FIELD INDEX="2">
+        <DBC>HLD_RLS_MSG_TYPE</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>15</SIZE>
+        <REQUIRED>-1</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>15</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>HLD_RLS_MSG_TYPE</NAME>
+        <CASE>UPPER</CASE>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Message Type~Description</REDUCTION_FLD_LABELS>
+          <TITLE>Select Message Type</TITLE>
+          <COL_HEADING>Message Type~Description</COL_HEADING>
+          <NAME>LOV_MSG_TYPE</NAME>
+        </LOV>
+        <SUMMARY>QRA</SUMMARY>
+        <ABS_POS>117,129</ABS_POS>
+        <DBT>MSTBS_HOLD_RELEASE</DBT>
+        <LABEL>Message Type</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MSDHR3</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX>2</TABINDEX>
+      </FIELD>
+      <FIELD INDEX="3">
+        <DBC>HLD_RLS_CCY</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>9</SIZE>
+        <REQUIRED>-1</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>3</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>HLD_RLS_CCY</NAME>
+        <CASE>UPPER</CASE>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Currency~Currency Name</REDUCTION_FLD_LABELS>
+          <TITLE>Select Currency</TITLE>
+          <COL_HEADING>Currency~Currency Name</COL_HEADING>
+          <NAME>LOV_CCY</NAME>
+        </LOV>
+        <SUMMARY>QRA</SUMMARY>
+        <ABS_POS>152,155</ABS_POS>
+        <DBT>MSTBS_HOLD_RELEASE</DBT>
+        <LABEL>Currency</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MSDHR4</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX>3</TABINDEX>
+      </FIELD>
+      <FIELD INDEX="4">
+        <DBC>HLD_RLS_PRODUCT</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>9</SIZE>
+        <REQUIRED>-1</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>4</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>HLD_RLS_PRODUCT</NAME>
+        <CASE>UPPER</CASE>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Product~Description</REDUCTION_FLD_LABELS>
+          <TITLE>Select Product</TITLE>
+          <COL_HEADING>Product~Description</COL_HEADING>
+          <NAME>LOV_PRODUCT</NAME>
+        </LOV>
+        <SUMMARY>QRA</SUMMARY>
+        <ABS_POS>187,135</ABS_POS>
+        <DBT>MSTBS_HOLD_RELEASE</DBT>
+        <LABEL>Product Code</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MSDHR10</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX>4</TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>F1</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ/>
+      <LABEL></LABEL>
+      <ID>MSDHR24</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <FIELD TABPAGE="All" TYPE="FIELDSET" PARTITION="P2" INDEX="1" SECTION="S1">
+      <FIELD INDEX="3">
+        <DBC>HLD_RLS_RECEIVER</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>9</SIZE>
+        <REQUIRED>-1</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>9</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>HLD_RLS_RECEIVER</NAME>
+        <CASE>UPPER</CASE>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Receiver~Receiver Name</REDUCTION_FLD_LABELS>
+          <TITLE>Select Receiver</TITLE>
+          <COL_HEADING>Receiver~Receiver Name</COL_HEADING>
+          <NAME>LOV_RECEIVER</NAME>
+        </LOV>
+        <SUMMARY>QRA</SUMMARY>
+        <ABS_POS>152,500</ABS_POS>
+        <DBT>MSTBS_HOLD_RELEASE</DBT>
+        <LABEL>Receiver</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MSDHR5</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX>9</TABINDEX>
+      </FIELD>
+      <FIELD INDEX="1">
+        <DBC>HLD_RLS_BRANCH</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>9</SIZE>
+        <REQUIRED>-1</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>3</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>HLD_RLS_BRANCH</NAME>
+        <CASE>UPPER</CASE>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Branch~Description</REDUCTION_FLD_LABELS>
+          <TITLE>Select Branch</TITLE>
+          <COL_HEADING>Branch~Description</COL_HEADING>
+          <NAME>LOV_BRANCH</NAME>
+        </LOV>
+        <SUMMARY>QRA</SUMMARY>
+        <ABS_POS>82,508</ABS_POS>
+        <DBT>MSTBS_HOLD_RELEASE</DBT>
+        <LABEL>Branch</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MSDHR6</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX>7</TABINDEX>
+      </FIELD>
+      <FIELD INDEX="2">
+        <DBC>HLD_RLS_MODULE</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>9</SIZE>
+        <REQUIRED>-1</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>2</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>HLD_RLS_MODULE</NAME>
+        <CASE>UPPER</CASE>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Module~Description</REDUCTION_FLD_LABELS>
+          <TITLE>Select Module</TITLE>
+          <COL_HEADING>Module~Description</COL_HEADING>
+          <NAME>LOV_MODULE</NAME>
+        </LOV>
+        <SUMMARY>QRA</SUMMARY>
+        <ABS_POS>117,446</ABS_POS>
+        <DBT>MSTBS_HOLD_RELEASE</DBT>
+        <LABEL>Module Id</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MSDHR9</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX>8</TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>F2</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ/>
+      <LABEL></LABEL>
+      <ID>MSDHR25</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <FIELD TABPAGE="All" TYPE="FIELDSET" PARTITION="P1" INDEX="1" SECTION="S2">
+      <FIELD INDEX="1">
+        <UIBLOCK></UIBLOCK>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MSDHR7</ID>
+        <COLS></COLS>
+        <HEIGHT></HEIGHT>
+        <TYPE>DATE</TYPE>
+        <NAME>HLD_RLS_DATE</NAME>
+        <ROWS></ROWS>
+        <COLS></COLS>
+        <LABEL>Effective Date/Time</LABEL>
+        <SHOWIN></SHOWIN>
+        <REQUIRED>0</REQUIRED>
+        <MAXLENGTH></MAXLENGTH>
+        <AUTHSCRN>0</AUTHSCRN>
+        <READ_ONLY>0</READ_ONLY>
+        <DISABLED>0</DISABLED>
+        <HIDDEN>0</HIDDEN>
+        <CASE>UPPER</CASE>
+        <AMENDABLE>-1</AMENDABLE>
+        <DTYPE>DATE</DTYPE>
+        <SIZE></SIZE>
+        <WIDTH></WIDTH>
+        <CHECKED>0</CHECKED>
+        <DBC>HLD_RLS_DATE</DBC>
+        <TABINDEX>5</TABINDEX>
+        <SUMMARY>RA</SUMMARY>
+        <ABS_POS>222,108</ABS_POS>
+        <DBT>MSTBS_HOLD_RELEASE</DBT>
+        <ROWS></ROWS>
+      </FIELD>
+      <FIELD INDEX="2">
+        <UIBLOCK></UIBLOCK>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MSDHR13</ID>
+        <COLS></COLS>
+        <HEIGHT></HEIGHT>
+        <TYPE>AMOUNT</TYPE>
+        <NAME>AMOUNT</NAME>
+        <ROWS></ROWS>
+        <COLS></COLS>
+        <LABEL>Amount</LABEL>
+        <SHOWIN></SHOWIN>
+        <REQUIRED>0</REQUIRED>
+        <MAXLENGTH></MAXLENGTH>
+        <AUTHSCRN>0</AUTHSCRN>
+        <READ_ONLY>0</READ_ONLY>
+        <DISABLED>0</DISABLED>
+        <HIDDEN>0</HIDDEN>
+        <AMENDABLE>-1</AMENDABLE>
+        <DTYPE>NUMBER</DTYPE>
+        <SIZE></SIZE>
+        <WIDTH></WIDTH>
+        <CHECKED>0</CHECKED>
+        <DBC>AMOUNT</DBC>
+        <TABINDEX>6</TABINDEX>
+        <SUMMARY>RA</SUMMARY>
+        <ABS_POS>260,163</ABS_POS>
+        <DBT>MSTBS_HOLD_RELEASE</DBT>
+        <ROWS></ROWS>
+      </FIELD>
+      <FIELD INDEX="3">
+        <DBC>LIMIT_CCY</DBC>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>0</READ_ONLY>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY/>
+        <ABS_POS>295,139</ABS_POS>
+        <DBT>MSTBS_HOLD_RELEASE</DBT>
+        <LABEL>Limit Currency</LABEL>
+        <ID>MSDHR15</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>3</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>LIMIT_CCY</NAME>
+        <CASE>UPPER</CASE>
+        <DISABLED>0</DISABLED>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Currency~Currency Name</REDUCTION_FLD_LABELS>
+          <TITLE>Select Currency</TITLE>
+          <COL_HEADING>Currency~Currency Name</COL_HEADING>
+          <NAME>LOV_LIMIT_CCY</NAME>
+        </LOV>
+        <AMENDABLE>-1</AMENDABLE>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <TABINDEX>13</TABINDEX>
+      </FIELD>
+      <FIELD INDEX="4">
+        <UIBLOCK></UIBLOCK>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MSDHR16</ID>
+        <COLS></COLS>
+        <HEIGHT></HEIGHT>
+        <TYPE>AMOUNT</TYPE>
+        <NAME>LIMIT_AMOUNT</NAME>
+        <ROWS></ROWS>
+        <COLS></COLS>
+        <LABEL>Limit Amount</LABEL>
+        <SHOWIN></SHOWIN>
+        <REQUIRED>0</REQUIRED>
+        <MAXLENGTH></MAXLENGTH>
+        <AUTHSCRN>0</AUTHSCRN>
+        <READ_ONLY>0</READ_ONLY>
+        <DISABLED>0</DISABLED>
+        <HIDDEN>0</HIDDEN>
+        <RELATED_FIELD>LIMIT_CCY</RELATED_FIELD>
+        <AMENDABLE>-1</AMENDABLE>
+        <DTYPE>NUMBER</DTYPE>
+        <SIZE></SIZE>
+        <WIDTH></WIDTH>
+        <CHECKED>0</CHECKED>
+        <DBC>LIMIT_AMOUNT</DBC>
+        <TABINDEX>14</TABINDEX>
+        <SUMMARY/>
+        <ABS_POS>295,264</ABS_POS>
+        <DBT>MSTBS_HOLD_RELEASE</DBT>
+        <ROWS></ROWS>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>F3</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ/>
+      <LABEL></LABEL>
+      <ID>MSDHR26</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <FIELD TABPAGE="All" TYPE="FIELDSET" PARTITION="P2" INDEX="1" SECTION="S2">
+      <FIELD INDEX="1">
+        <DBC>HLD_RLS_FLAG</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE></SIZE>
+        <REQUIRED>-1</REQUIRED>
+        <OPTION COL="1" ROW="1">
+          <SELECTED/>
+          <ABS_POS>18,1</ABS_POS>
+          <LABEL>Release</LABEL>
+          <ID>MSDHR1_1</ID>
+          <VALUE>R</VALUE>
+        </OPTION>
+        <OPTION COL="1" ROW="2">
+          <SELECTED>-1</SELECTED>
+          <ABS_POS>18,70</ABS_POS>
+          <LABEL>Hold</LABEL>
+          <ID>MSDHR1_2</ID>
+          <VALUE>H</VALUE>
+        </OPTION>
+        <WIDTH>125</WIDTH>
+        <HIDDEN>0</HIDDEN>
+        <VALUE></VALUE>
+        <HEIGHT>50</HEIGHT>
+        <COLSPAN>2</COLSPAN>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>HLD_RLS_FLAG</NAME>
+        <DISABLED>0</DISABLED>
+        <SUMMARY>QRA</SUMMARY>
+        <ABS_POS>189,498</ABS_POS>
+        <DBT>MSTBS_HOLD_RELEASE</DBT>
+        <LABEL>Criteria</LABEL>
+        <ID>MSDHR1</ID>
+        <DTYPE>CHAR</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>RADIO</TYPE>
+        <TABINDEX>10</TABINDEX>
+      </FIELD>
+      <FIELD INDEX="2">
+        <UIBLOCK></UIBLOCK>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MSDHR8</ID>
+        <COLS></COLS>
+        <HEIGHT></HEIGHT>
+        <TYPE>CHECKBOX</TYPE>
+        <NAME>HLD_RLS_STATUS</NAME>
+        <ROWS></ROWS>
+        <COLS></COLS>
+        <LABEL>Criteria Status</LABEL>
+        <SHOWIN></SHOWIN>
+        <REQUIRED>0</REQUIRED>
+        <MAXLENGTH></MAXLENGTH>
+        <AUTHSCRN>0</AUTHSCRN>
+        <READ_ONLY>0</READ_ONLY>
+        <DISABLED>0</DISABLED>
+        <HIDDEN>0</HIDDEN>
+        <AMENDABLE>-1</AMENDABLE>
+        <DTYPE>CHAR</DTYPE>
+        <SIZE></SIZE>
+        <WIDTH></WIDTH>
+        <CHECKED>-1</CHECKED>
+        <DBC>HLD_RLS_STATUS</DBC>
+        <VALUE>Y</VALUE>
+        <TABINDEX>11</TABINDEX>
+        <SUMMARY>RA</SUMMARY>
+        <ABS_POS>253,476</ABS_POS>
+        <DBT>MSTBS_HOLD_RELEASE</DBT>
+        <ROWS></ROWS>
+      </FIELD>
+      <FIELD INDEX="3">
+        <UIBLOCK></UIBLOCK>
+        <CUSTOM>
+          <OFF>N</OFF>
+          <ON>Y</ON>
+        </CUSTOM>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>MSDHR14</ID>
+        <COLS></COLS>
+        <HEIGHT></HEIGHT>
+        <TYPE>CHECKBOX</TYPE>
+        <NAME>APPROVED</NAME>
+        <ROWS></ROWS>
+        <COLS></COLS>
+        <LABEL>Approved</LABEL>
+        <SHOWIN></SHOWIN>
+        <REQUIRED>0</REQUIRED>
+        <MAXLENGTH></MAXLENGTH>
+        <AUTHSCRN>0</AUTHSCRN>
+        <READ_ONLY>0</READ_ONLY>
+        <DISABLED>0</DISABLED>
+        <HIDDEN>0</HIDDEN>
+        <AMENDABLE>-1</AMENDABLE>
+        <DTYPE>CHAR</DTYPE>
+        <SIZE></SIZE>
+        <WIDTH></WIDTH>
+        <CHECKED>0</CHECKED>
+        <DBC>APPROVED</DBC>
+        <VALUE>N</VALUE>
+        <TABINDEX>12</TABINDEX>
+        <SUMMARY/>
+        <ABS_POS>253,577</ABS_POS>
+        <DBT>MSTBS_HOLD_RELEASE</DBT>
+        <ROWS></ROWS>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>F4</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ/>
+      <LABEL></LABEL>
+      <ID>MSDHR28</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <DATASRC>MSTBS_HOLD_RELEASE</DATASRC>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <LABEL></LABEL>
+    <ID>BLK_MSTBS_HOLD_RELEASE</ID>
+  </BLOCK>
+  <BLOCK TYPE="Single Entry" SCREEN="CVS_MAIN">
+    <FIELD TABPAGE="All" PARTITION="P1" SECTION="S1">
+      <SRC>Images/Exit2.gif</SRC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HALIGN>right</HALIGN>
+      <HIDDEN>0</HIDDEN>
+      <VALUE>Exit</VALUE>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <EVENT>
+        <FUNCTION>fnExit()</FUNCTION>
+        <NAME>onclick</NAME>
+      </EVENT>
+      <NAME>BTN_EXIT</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY/>
+      <ABS_POS></ABS_POS>
+      <VALIGN>bottom</VALIGN>
+      <LABEL/>
+      <ID>MSDHR19</ID>
+      <SHOWIN></SHOWIN>
+      <TYPE>BUTTON</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <ID>BLK_STD_BUTTONS_IMG</ID>
+  </BLOCK>
+  <SUMBLOCK TABPAGE="QUERY" TYPE="Single Entry" SCREEN="SUMMARY">
+    <FIELD TYPE="MULTIPLE" ID="1">
+      <DBC>HLD_RLS_FLAG</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Criteria</LABEL>
+      <TYPE>RADIO</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>HLD_RLS_FLAG</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="2">
+      <DBC>HLD_RLS_MEDIA</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Media</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>15</MAXLENGTH>
+      <NAME>HLD_RLS_MEDIA</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="3">
+      <DBC>HLD_RLS_MSG_TYPE</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Message Type</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>15</MAXLENGTH>
+      <NAME>HLD_RLS_MSG_TYPE</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="4">
+      <DBC>HLD_RLS_CCY</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Currency</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>3</MAXLENGTH>
+      <NAME>HLD_RLS_CCY</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="5">
+      <DBC>HLD_RLS_RECEIVER</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Receiver</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>9</MAXLENGTH>
+      <NAME>HLD_RLS_RECEIVER</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="6">
+      <DBC>HLD_RLS_BRANCH</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Branch</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>3</MAXLENGTH>
+      <NAME>HLD_RLS_BRANCH</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="7">
+      <DBC>HLD_RLS_MODULE</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Module Id</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>2</MAXLENGTH>
+      <NAME>HLD_RLS_MODULE</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="8">
+      <DBC>HLD_RLS_PRODUCT</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Product Code</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>4</MAXLENGTH>
+      <NAME>HLD_RLS_PRODUCT</NAME>
+    </FIELD>
+
+  </SUMBLOCK>
+  <SUMBLOCK TABPAGE="RESULT" TYPE="Multiple Entry" SCREEN="SUMMARY">
+    <FIELD TYPE="MULTIPLE" ID="1">
+      <DBC>HLD_RLS_FLAG</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Criteria</LABEL>
+      <TYPE>RADIO</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>HLD_RLS_FLAG</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="2">
+      <DBC>HLD_RLS_MEDIA</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Media</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>15</MAXLENGTH>
+      <NAME>HLD_RLS_MEDIA</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="3">
+      <DBC>HLD_RLS_MSG_TYPE</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Message Type</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>15</MAXLENGTH>
+      <NAME>HLD_RLS_MSG_TYPE</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="4">
+      <DBC>HLD_RLS_CCY</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Currency</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>3</MAXLENGTH>
+      <NAME>HLD_RLS_CCY</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="5">
+      <DBC>HLD_RLS_RECEIVER</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Receiver</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>9</MAXLENGTH>
+      <NAME>HLD_RLS_RECEIVER</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="6">
+      <DBC>HLD_RLS_BRANCH</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Branch</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>3</MAXLENGTH>
+      <NAME>HLD_RLS_BRANCH</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="7">
+      <DBC>HLD_RLS_DATE</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Effective Date/Time</LABEL>
+      <TYPE>DATE</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>HLD_RLS_DATE</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="8">
+      <DBC>HLD_RLS_STATUS</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Criteria Status</LABEL>
+      <TYPE>CHECKBOX</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>HLD_RLS_STATUS</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="9">
+      <DBC>HLD_RLS_MODULE</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Module Id</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>2</MAXLENGTH>
+      <NAME>HLD_RLS_MODULE</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="10">
+      <DBC>HLD_RLS_PRODUCT</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Product Code</LABEL>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>4</MAXLENGTH>
+      <NAME>HLD_RLS_PRODUCT</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="11">
+      <DBC>AMOUNT</DBC>
+      <DBT>MSTBS_HOLD_RELEASE</DBT>
+      <LABEL>Amount</LABEL>
+      <TYPE>AMOUNT</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>AMOUNT</NAME>
+    </FIELD>
+    <LEGENDS>
+      <OPTION VALUE="R">Release</OPTION>
+      <OPTION VALUE="H">Hold</OPTION>
+      <LABEL>Criteria</LABEL>
+      <WIDTH></WIDTH>
+      <FIELD_NAME>HLD_RLS_FLAG</FIELD_NAME>
+    </LEGENDS>
+
+  </SUMBLOCK>
+</FORM>

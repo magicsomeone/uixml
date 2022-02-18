@@ -1,0 +1,907 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE/>
+    <SUMMARY_DATA_BLK>BLK_STD9200_CUSTOM</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒绝</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">正常开放</OPTION>
+        <OPTION VALUE="C">关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>SSI的性质</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>CONTRACT_REFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>对手方</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>COUNTER_PARTY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>用户参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>USER_REF_NO</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒绝</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">正常开放</OPTION>
+        <OPTION VALUE="C">关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>SSI的性质</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>CONTRACT_REFNO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>对手方</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>COUNTER_PARTY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>用户参考编号</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>USER_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>分行別代號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BRANCH</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>客戶編號(CUST_ID)</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CUSTID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>数据日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>DATA_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>帳戶資料來源</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>70</MAXLENGTH>
+        <NAME>DATA_KIND</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>ORGDATASRC</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>40</MAXLENGTH>
+        <NAME>DATA_SRC</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="L">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL/>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL/>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS/>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>经办者</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>复核者</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS/>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>日期时间：</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>日期时间：</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>修改编号</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS/>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL/>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"/>
+                <OPTION VALUE="C">关闭</OPTION>
+                <OPTION VALUE="O">正常开放</OPTION>
+                <COLS/>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>记录状态</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"/>
+                <OPTION VALUE="A">已授权</OPTION>
+                <OPTION VALUE="R">已拒绝</OPTION>
+                <OPTION VALUE="U">未授权</OPTION>
+                <COLS/>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>授权状态</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STD9200_CUSTOM</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL/>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_1">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CONT_REFNO</NAME>
+                </LOV>
+                <LBL>SSI的性质</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>CONTRACT_REFNO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>用户参考编号</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>USER_REF_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>对手方</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>COUNTER_PARTY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>G</TYPE>
+                  <NAME>LOV_CCY</NAME>
+                </LOV>
+                <LBL>合同币种</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CONTRACT_CCY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>CONTRACT_AMOUNT</NAME>
+                <LBL>合同金额</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STD9200_CUSTOM</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50"/>
+          <LBL/>
+
+        </SECTION>
+        <SECTION ID="SEC_2" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_2">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>数据日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>DATA_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>G</TYPE>
+                  <NAME>LOV_BRANCH</NAME>
+                </LOV>
+                <LBL>分行別代號</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BRANCH</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_CUSTID</NAME>
+                </LOV>
+                <LBL>客戶編號(CUST_ID)</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>CUSTID</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>有無擔保放款</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="1" SELECTED="0">LBL_SECU_FLAG1</OPTION>
+                <OPTION VALUE="2" SELECTED="0">LBL_SECU_FLAG2</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>70</MAXLENGTH>
+                <NAME>SECU_FLAG</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>案件狀態</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="1" SELECTED="0">催收</OPTION>
+                <OPTION VALUE="2" SELECTED="0">呆帳</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <NAME>LOAN_STUS</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>初貸日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>VALUE_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>契約起日</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>VALID_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>首次動用日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>FIRST_VALUE_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>到期日</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>MATUR_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>契約迄日</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>EXPIRY_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>LINE_AMT</NAME>
+                <LBL>額度金額 </LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>LOAN_BAL</NAME>
+                <LBL>本金餘額(撥款)</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>G</TYPE>
+                  <NAME>LOV_CCY</NAME>
+                </LOV>
+                <LBL>放款幣別</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>CCY</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>INTRATE</NAME>
+                <LBL>下次還本繳息之利率</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>OVERDUE_DAYS</NAME>
+                <LBL>本行債權逾期天數</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>轉催收款日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>TRACER_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>轉銷呆帳日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>BAD_DEBT_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>BAD_DEBT_AMT</NAME>
+                <LBL>轉銷呆帳餘額</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>LOSS_DEBIT_RCVD_AMT</NAME>
+                <LBL>信用減損發生回收金額</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>回收金額日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>LOSS_DEBIT_RCVD_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>LOSS_DEBIT_COST_AMT</NAME>
+                <LBL>信用減損發生回收成本</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>回收成本發生日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>LOSS_DEBIT_COST_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>是否為債務協商戶</LBL>
+                <SIZE/>
+                <OPTION VALUE="" SELECTED="-1"/>
+                <OPTION VALUE="Y" SELECTED="0">債協戶</OPTION>
+                <OPTION VALUE="N" SELECTED="0">非債協戶</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>30</MAXLENGTH>
+                <NAME>LOAN_NEGO_TYPE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>債協日期</LBL>
+                <SIZE/>
+                <DTYPE>DATE</DTYPE>
+                <COLS/>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>LOAN_NEGO_DATE</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>NEGO_INTRATE</NAME>
+                <LBL>債協前之最近一次利率</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>LOAN_BAL_BFR_NEGO</NAME>
+                <LBL>債協前之本金餘額</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>ACCRU_INT_BFR_NEGO</NAME>
+                <LBL>債協前之應收利息</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>OVERDUE_AMT_BFR_NEGO</NAME>
+                <LBL>債協前之遲延息</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>PENALTY_BFR_NEGO</NAME>
+                <LBL>債協前之違約金</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>RECEIVABLE_AMT_BFR_NEGO</NAME>
+                <LBL>債協前之其他應收款</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>AMOUNT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>LNMSTM.ACCTKEY</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>LN_ACNO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>LNMSTM.Loan_No</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>LN_LOAN_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>EXBPAM.EXPNO</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>25</MAXLENGTH>
+                <NAME>EXPNO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>CSMSTM.ACNO_TK</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>ACNO_TK</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>CSMSTM.ACNO_NUM</LBL>
+                <SIZE/>
+                <DTYPE>CHAR</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ACNO_NUM</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>FRBPPM.TRN_NO</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>13</MAXLENGTH>
+                <NAME>FR_TXNT_NO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>LCNO</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <NAME>LCNO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>IMLABM.IBNO</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>IBNO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>LNGTTM.ACNO</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>LN_GT_ACNO</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS/>
+                <SIZE/>
+                <MAX_VAL/>
+                <COLS/>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>LN_GT_SEQNO_ORG</NAME>
+                <LBL>LNGTTM.SEQNO</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL/>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>ORGDATASRC</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>40</MAXLENGTH>
+                <NAME>DATA_SRC</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STD9200_CUSTOM</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART2" ID="PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_3">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_DATA_KIND</NAME>
+                </LOV>
+                <LBL>帳戶資料來源</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>70</MAXLENGTH>
+                <NAME>DATA_KIND</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL/>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>500</MAXLENGTH>
+                <NAME>DATA_KIND_DESC</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_SECU_KIND</NAME>
+                </LOV>
+                <LBL>擔保品類別</LBL>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>70</MAXLENGTH>
+                <NAME>SECU_KIND</NAME>
+                <ROWS/>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL/>
+                <SIZE/>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS/>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>500</MAXLENGTH>
+                <NAME>SECU_KIND_DESC</NAME>
+                <ROWS/>
+              </FIELD>
+              <LBL/>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_STD9200_CUSTOM</BLOCK>
+              <WIDTH/>
+              <HEIGHT/>
+            </FLDSET>
+
+          </PART>
+          <LBL/>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

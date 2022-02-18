@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="L">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS></BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fn_interim()</BUTTON_EVENT>
+        <BUTTON_LBL>臨時答覆</BUTTON_LBL>
+        <BUTTON_NAME>INTERIM</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fn_Accept()</BUTTON_EVENT>
+        <BUTTON_LBL>接受</BUTTON_LBL>
+        <BUTTON_NAME>ACCEPT</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="3">
+        <BUTTON_EVENT>fn_reject()</BUTTON_EVENT>
+        <BUTTON_LBL>已拒絕</BUTTON_LBL>
+        <BUTTON_NAME>REJECT</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="4">
+        <BUTTON_EVENT>fn_authorize()</BUTTON_EVENT>
+        <BUTTON_LBL>授權狀態</BUTTON_LBL>
+        <BUTTON_NAME>AUTHORIZE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="5">
+        <BUTTON_EVENT>fn_delete()</BUTTON_EVENT>
+        <BUTTON_LBL>拖欠日期</BUTTON_LBL>
+        <BUTTON_NAME>DELETE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="6">
+        <BUTTON_EVENT>fn_viewReq()</BUTTON_EVENT>
+        <BUTTON_LBL>查看利潤計算日誌</BUTTON_LBL>
+        <BUTTON_NAME>VIEW REQUEST</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="7">
+        <BUTTON_EVENT>fn_viewRes()</BUTTON_EVENT>
+        <BUTTON_LBL>查看佇列操作</BUTTON_LBL>
+        <BUTTON_NAME>VIEW RESPONSE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="8">
+        <BUTTON_EVENT>fn_vwQaction()</BUTTON_EVENT>
+        <BUTTON_LBL>查看匹配詳細資訊</BUTTON_LBL>
+        <BUTTON_NAME>VIEW QUEUE ACTION</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="9">
+        <BUTTON_EVENT>fn_viewTxn()</BUTTON_EVENT>
+        <BUTTON_LBL>查看</BUTTON_LBL>
+        <BUTTON_NAME>VIEW TRANSACTION</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW></BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_CANC_REQ_QUEUE</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>佇列參考號</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>交易查詢</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>取消消息詳細資訊</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CANCELLATION_REQ_REFERENCE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>結算欄位和模組自訂項</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>36</MAXLENGTH>
+        <NAME>UETR</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>gpiDir</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">年數</OPTION>
+        <OPTION VALUE="N" SELECTED="0">不設網</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>GPI_ENABLED</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>客戶名稱2</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTOMER_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>貸記帳戶</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CR_AC_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>本期計提</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">批准</OPTION>
+        <OPTION VALUE="R" SELECTED="0">拒絕</OPTION>
+        <OPTION VALUE="O" SELECTED="0">臨時答覆</OPTION>
+        <OPTION VALUE="P" SELECTED="0">等待保險匹配</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>CURRENT_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>交易來源參考編號</LBL>
+        <OPTION VALUE="P" SELECTED="0">允許掉入端本金計畫</OPTION>
+        <OPTION VALUE="E" SELECTED="0">異常原因</OPTION>
+        <OPTION VALUE="S" SELECTED="0">處理</OPTION>
+        <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+        <OPTION VALUE="F" SELECTED="0">未來應收首付款</OPTION>
+        <OPTION VALUE="J" SELECTED="0">拒絕</OPTION>
+        <OPTION VALUE="B" SELECTED="0">需要控制台</OPTION>
+        <OPTION VALUE="X" SELECTED="0">供應商名稱</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">段號</OPTION>
+        <OPTION VALUE="V" SELECTED="0">沖正</OPTION>
+        <OPTION VALUE="R" SELECTED="0">收回接收日期</OPTION>
+        <OPTION VALUE="A" SELECTED="0">gSRP 收回響應天數</OPTION>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TXN_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>gSRP 請求</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">年數</OPTION>
+        <OPTION VALUE="N" SELECTED="0">不設網</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>GSRP_FLAG</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>付款和收款分區順序維護</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="O" SELECTED="0">Outgoing</OPTION>
+        <OPTION VALUE="I" SELECTED="0">Incoming</OPTION>
+        <OPTION VALUE="M" SELECTED="0">LBL_INBOUND_MESSAGE</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>PAYMENT_TXN_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>已停止付款</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>到期餘額</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>INSTRUCTION_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>啟動日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>ACTIVATION_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>***利息和稅收的計算是根據當前的利率和稅率進行的。</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>RECALL_REQ_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>批參考號</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>TXN_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_AMOUNT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>出納員轉帳</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXN_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>網路貨幣首選項摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>僅異常</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="SC" SELECTED="0">在回應前沖正</OPTION>
+        <OPTION VALUE="TR" SELECTED="0">SC 已拒絕</OPTION>
+        <OPTION VALUE="ER" SELECTED="0">ECA 佇列</OPTION>
+        <OPTION VALUE="PE" SELECTED="0">網路解析佇列</OPTION>
+        <OPTION VALUE="BO" SELECTED="0">使用小外匯</OPTION>
+        <OPTION VALUE="EE" SELECTED="0">CSU 處理佇列</OPTION>
+        <OPTION VALUE="NC" SELECTED="0">非必需</OPTION>
+        <OPTION VALUE="PC" SELECTED="0">主要銀行檢查佇列</OPTION>
+        <OPTION VALUE="AL" SELECTED="0">手動拒絕</OPTION>
+        <OPTION VALUE="EQ" SELECTED="0">歐盟支付人偏好選項</OPTION>
+        <OPTION VALUE="EA" SELECTED="0">EAC 幣種</OPTION>
+        <OPTION VALUE="FV" SELECTED="0">未預約客戶自</OPTION>
+        <OPTION VALUE="##" SELECTED="0">處理截止佇列</OPTION>
+        <OPTION VALUE="SI" SELECTED="0">SSI 標籤</OPTION>
+        <OPTION VALUE="MC" SELECTED="0">停止關聯</OPTION>
+        <OPTION VALUE="UM" SELECTED="0">LBL_UNMATCH_QUEUE</OPTION>
+        <OPTION VALUE="NW" SELECTED="0">不需要/關閉</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>EXCEPTION_QUEUE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <LBL>金額級距和授權級別</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">授權</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授權</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_TYPE_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>網絡代碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>NETWORK_TYPE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <LBL>周邊同作消息</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>MESSAGE_TYPE</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>佇列參考號</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>交易查詢</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>取消消息詳細資訊</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>CANCELLATION_REQ_REFERENCE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>結算欄位和模組自訂項</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>36</MAXLENGTH>
+        <NAME>UETR</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>gpiDir</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">年數</OPTION>
+        <OPTION VALUE="N" SELECTED="0">不設網</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>GPI_ENABLED</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>客戶名稱2</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CUSTOMER_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>貸記帳戶</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>CR_AC_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>本期計提</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">批准</OPTION>
+        <OPTION VALUE="R" SELECTED="0">拒絕</OPTION>
+        <OPTION VALUE="O" SELECTED="0">臨時答覆</OPTION>
+        <OPTION VALUE="P" SELECTED="0">等待保險匹配</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>CURRENT_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>交易來源參考編號</LBL>
+        <OPTION VALUE="P" SELECTED="0">允許掉入端本金計畫</OPTION>
+        <OPTION VALUE="E" SELECTED="0">異常原因</OPTION>
+        <OPTION VALUE="S" SELECTED="0">處理</OPTION>
+        <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+        <OPTION VALUE="F" SELECTED="0">未來應收首付款</OPTION>
+        <OPTION VALUE="J" SELECTED="0">拒絕</OPTION>
+        <OPTION VALUE="B" SELECTED="0">需要控制台</OPTION>
+        <OPTION VALUE="X" SELECTED="0">供應商名稱</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">段號</OPTION>
+        <OPTION VALUE="V" SELECTED="0">沖正</OPTION>
+        <OPTION VALUE="R" SELECTED="0">收回接收日期</OPTION>
+        <OPTION VALUE="A" SELECTED="0">gSRP 收回響應天數</OPTION>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TXN_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>gSRP 請求</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">年數</OPTION>
+        <OPTION VALUE="N" SELECTED="0">不設網</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>GSRP_FLAG</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>付款和收款分區順序維護</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="O" SELECTED="0">Outgoing</OPTION>
+        <OPTION VALUE="I" SELECTED="0">Incoming</OPTION>
+        <OPTION VALUE="M" SELECTED="0">LBL_INBOUND_MESSAGE</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>PAYMENT_TXN_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>已停止付款</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>到期餘額</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>INSTRUCTION_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>啟動日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>ACTIVATION_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>***利息和稅收的計算是根據當前的利率和稅率進行的。</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>RECALL_REQ_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>批參考號</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <RELATED_FIELD>TXN_CCY</RELATED_FIELD>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22,4</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TXN_AMOUNT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>出納員轉帳</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXN_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>網路貨幣首選項摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>僅異常</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="SC" SELECTED="0">在回應前沖正</OPTION>
+        <OPTION VALUE="TR" SELECTED="0">SC 已拒絕</OPTION>
+        <OPTION VALUE="ER" SELECTED="0">ECA 佇列</OPTION>
+        <OPTION VALUE="PE" SELECTED="0">網路解析佇列</OPTION>
+        <OPTION VALUE="BO" SELECTED="0">使用小外匯</OPTION>
+        <OPTION VALUE="EE" SELECTED="0">CSU 處理佇列</OPTION>
+        <OPTION VALUE="NC" SELECTED="0">非必需</OPTION>
+        <OPTION VALUE="PC" SELECTED="0">主要銀行檢查佇列</OPTION>
+        <OPTION VALUE="AL" SELECTED="0">手動拒絕</OPTION>
+        <OPTION VALUE="EQ" SELECTED="0">歐盟支付人偏好選項</OPTION>
+        <OPTION VALUE="EA" SELECTED="0">EAC 幣種</OPTION>
+        <OPTION VALUE="FV" SELECTED="0">未預約客戶自</OPTION>
+        <OPTION VALUE="##" SELECTED="0">處理截止佇列</OPTION>
+        <OPTION VALUE="SI" SELECTED="0">SSI 標籤</OPTION>
+        <OPTION VALUE="MC" SELECTED="0">停止關聯</OPTION>
+        <OPTION VALUE="UM" SELECTED="0">LBL_UNMATCH_QUEUE</OPTION>
+        <OPTION VALUE="NW" SELECTED="0">不需要/關閉</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>EXCEPTION_QUEUE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <LBL>金額級距和授權級別</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">授權</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授權</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LBL>通知單編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <NAME>DCN</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>回應佇列</LBL>
+        <MAX_VAL></MAX_VAL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>RESPONSE_REFERENCE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="23">
+        <LBL>主機主金鑰</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>HOST_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="24">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>處理至下一個工作日-1</LBL>
+        <MAX_VAL></MAX_VAL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>PROCESS_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="25">
+        <LBL>佇列參考編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>QUEUE_ACTION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="26">
+        <LBL>交易金額</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>TXN_ARCH_DT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="27">
+        <LBL>轉移到詳細資訊</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="C" SELECTED="0">MT103+（MT202COV)</OPTION>
+        <OPTION VALUE="B" SELECTED="0">MT202</OPTION>
+        <OPTION VALUE="V" SELECTED="0">Customer Transfer With Cover</OPTION>
+        <OPTION VALUE="O" SELECTED="0">MT200</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>TRANSFER_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="28">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>收回原因</LBL>
+        <MAX_VAL></MAX_VAL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>RECALL_REFERENCE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="29">
+        <LOV>
+          <TYPE>L</TYPE>
+          <NAME>LOV_NETWORK_TYPE_CODE_SUM_S</NAME>
+        </LOV>
+        <LBL>網絡代碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>12</MAXLENGTH>
+        <NAME>NETWORK_TYPE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="30">
+        <LBL>周邊同作消息</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>MESSAGE_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="31">
+        <LBL>上次計提日期</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>LAST_ACTION</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="Y">年數</OPTION>
+        <OPTION VALUE="N">不設網</OPTION>
+        <FIELD_NAME>GPI_ENABLED</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">批准</OPTION>
+        <OPTION VALUE="R">拒絕</OPTION>
+        <OPTION VALUE="O">臨時答覆</OPTION>
+        <OPTION VALUE="P">等待保險匹配</OPTION>
+        <OPTION VALUE="T">SC 潛在搜索結果</OPTION>
+        <OPTION VALUE="Z">段號</OPTION>
+        <OPTION VALUE="RQ">重置價值日期</OPTION>
+        <FIELD_NAME>CURRENT_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="P">允許掉入端本金計畫</OPTION>
+        <OPTION VALUE="E">異常原因</OPTION>
+        <OPTION VALUE="S">處理</OPTION>
+        <OPTION VALUE="C">已取消</OPTION>
+        <OPTION VALUE="F">未來應收首付款</OPTION>
+        <OPTION VALUE="J">拒絕</OPTION>
+        <OPTION VALUE="B">需要控制台</OPTION>
+        <OPTION VALUE="X">供應商名稱</OPTION>
+        <OPTION VALUE="Z">段號</OPTION>
+        <OPTION VALUE="V">沖正</OPTION>
+        <OPTION VALUE="R">收回接收日期</OPTION>
+        <OPTION VALUE="A">gSRP 收回響應天數</OPTION>
+        <FIELD_NAME>TXN_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="Y">年數</OPTION>
+        <OPTION VALUE="N">不設網</OPTION>
+        <FIELD_NAME>GSRP_FLAG</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="O">Outgoing</OPTION>
+        <OPTION VALUE="I">Incoming</OPTION>
+        <OPTION VALUE="M">LBL_INBOUND_MESSAGE</OPTION>
+        <FIELD_NAME>PAYMENT_TXN_TYPE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="SC">在回應前沖正</OPTION>
+        <OPTION VALUE="TR">SC 已拒絕</OPTION>
+        <OPTION VALUE="ER">ECA 佇列</OPTION>
+        <OPTION VALUE="PE">網路解析佇列</OPTION>
+        <OPTION VALUE="BO">使用小外匯</OPTION>
+        <OPTION VALUE="EE">CSU 處理佇列</OPTION>
+        <OPTION VALUE="NC">非必需</OPTION>
+        <OPTION VALUE="PC">主要銀行檢查佇列</OPTION>
+        <OPTION VALUE="AL">手動拒絕</OPTION>
+        <OPTION VALUE="EQ">歐盟支付人偏好選項</OPTION>
+        <OPTION VALUE="EA">EAC 幣種</OPTION>
+        <OPTION VALUE="FV">未預約客戶自</OPTION>
+        <OPTION VALUE="##">處理截止佇列</OPTION>
+        <OPTION VALUE="SI">SSI 標籤</OPTION>
+        <OPTION VALUE="MC">停止關聯</OPTION>
+        <OPTION VALUE="UM">LBL_UNMATCH_QUEUE</OPTION>
+        <OPTION VALUE="NW">不需要/關閉</OPTION>
+        <FIELD_NAME>EXCEPTION_QUEUE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">授權</OPTION>
+        <OPTION VALUE="U">未授權</OPTION>
+        <FIELD_NAME>AUTH_STAT</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="C">MT103+（MT202COV)</OPTION>
+        <OPTION VALUE="B">MT202</OPTION>
+        <OPTION VALUE="V">Customer Transfer With Cover</OPTION>
+        <OPTION VALUE="O">MT200</OPTION>
+        <FIELD_NAME>TRANSFER_TYPE</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_ONE" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100"></PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

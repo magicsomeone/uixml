@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS></BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fn_ViewBatchPayments()</BUTTON_EVENT>
+        <BUTTON_LBL>View Batch Payments</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VW_BATCH_PM</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fn_ViewQueueActionLog()</BUTTON_EVENT>
+        <BUTTON_LBL>View Queue Action Log</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VW_Q_ACT_LOG</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW></BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_FILE_BATCH_CONSOLSUMMARY</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Batch ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>PMTINFID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Consol Batch Reference</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>40</MAXLENGTH>
+        <NAME>FILE_CONSOL_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>Processing Date</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>PROCESS_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>Network Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>Consol Batch Status</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="W" SELECTED="0">Work in Progress</OPTION>
+        <OPTION VALUE="X" SELECTED="0">Error</OPTION>
+        <OPTION VALUE="E" SELECTED="0">Move To Queue</OPTION>
+        <OPTION VALUE="S" SELECTED="0">Success</OPTION>
+        <OPTION VALUE="C" SELECTED="0">Cancelled</OPTION>
+        <OPTION VALUE="F" SELECTED="0">Future Dated</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">Seized</OPTION>
+        <OPTION VALUE="N" SELECTED="0">Not Applicable</OPTION>
+        <OPTION VALUE="M" SELECTED="0">Move To Work In Progress</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BATCH_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>Exception Queue</LBL>
+        <OPTION VALUE="##" SELECTED="0">##</OPTION>
+        <OPTION VALUE="AC" SELECTED="0">Accounting Queue</OPTION>
+        <OPTION VALUE="AL" SELECTED="0">Authorization Limit Queue</OPTION>
+        <OPTION VALUE="BO" SELECTED="0">Business Override Queue</OPTION>
+        <OPTION VALUE="CR" SELECTED="0">Clearing Return Queue</OPTION>
+        <OPTION VALUE="EA" SELECTED="0">External Account Check Queue</OPTION>
+        <OPTION VALUE="EC" SELECTED="0">External Credit Approval Queue</OPTION>
+        <OPTION VALUE="EE" SELECTED="0">External Exchange Rate Queue</OPTION>
+        <OPTION VALUE="EP" SELECTED="0">External Pricing Queue</OPTION>
+        <OPTION VALUE="ER" SELECTED="0">Exchange Rate Queue</OPTION>
+        <OPTION VALUE="FV" SELECTED="0">Warehouse Queue</OPTION>
+        <OPTION VALUE="NC" SELECTED="0">Network Cutoff Queue</OPTION>
+        <OPTION VALUE="PC" SELECTED="0">Processing Cutoff Queue</OPTION>
+        <OPTION VALUE="PE" SELECTED="0">Processing Exception Queue</OPTION>
+        <OPTION VALUE="SC" SELECTED="0">Sanction Check Queue</OPTION>
+        <OPTION VALUE="TR" SELECTED="0">Transaction Repair</OPTION>
+        <OPTION VALUE="SI" SELECTED="0">Settlement Review Queue</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>QUEUE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>Error Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>800</MAXLENGTH>
+        <NAME>ERROR_CODE</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>Batch ID</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>PMTINFID</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>Batch Ref Number</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>40</MAXLENGTH>
+        <NAME>BATCH_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>Consol Batch Reference</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>40</MAXLENGTH>
+        <NAME>FILE_CONSOL_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>File Reference Number</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>40</MAXLENGTH>
+        <NAME>FILE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>Processing Date</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>PROCESS_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>Network Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>Consol Batch Status</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="W" SELECTED="0">Work in Progress</OPTION>
+        <OPTION VALUE="X" SELECTED="0">Error</OPTION>
+        <OPTION VALUE="E" SELECTED="0">Move To Queue</OPTION>
+        <OPTION VALUE="S" SELECTED="0">Success</OPTION>
+        <OPTION VALUE="C" SELECTED="0">Cancelled</OPTION>
+        <OPTION VALUE="F" SELECTED="0">Future Dated</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">Seized</OPTION>
+        <OPTION VALUE="N" SELECTED="0">Not Applicable</OPTION>
+        <OPTION VALUE="M" SELECTED="0">Move To Work In Progress</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>BATCH_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>Exception Queue</LBL>
+        <OPTION VALUE="##" SELECTED="0">##</OPTION>
+        <OPTION VALUE="AC" SELECTED="0">Accounting Queue</OPTION>
+        <OPTION VALUE="AL" SELECTED="0">Authorization Limit Queue</OPTION>
+        <OPTION VALUE="BO" SELECTED="0">Business Override Queue</OPTION>
+        <OPTION VALUE="CR" SELECTED="0">Clearing Return Queue</OPTION>
+        <OPTION VALUE="EA" SELECTED="0">External Account Check Queue</OPTION>
+        <OPTION VALUE="EC" SELECTED="0">External Credit Approval Queue</OPTION>
+        <OPTION VALUE="EE" SELECTED="0">External Exchange Rate Queue</OPTION>
+        <OPTION VALUE="EP" SELECTED="0">External Pricing Queue</OPTION>
+        <OPTION VALUE="ER" SELECTED="0">Exchange Rate Queue</OPTION>
+        <OPTION VALUE="FV" SELECTED="0">Warehouse Queue</OPTION>
+        <OPTION VALUE="NC" SELECTED="0">Network Cutoff Queue</OPTION>
+        <OPTION VALUE="PC" SELECTED="0">Processing Cutoff Queue</OPTION>
+        <OPTION VALUE="PE" SELECTED="0">Processing Exception Queue</OPTION>
+        <OPTION VALUE="SC" SELECTED="0">Sanction Check Queue</OPTION>
+        <OPTION VALUE="TR" SELECTED="0">Transaction Repair</OPTION>
+        <OPTION VALUE="SI" SELECTED="0">Settlement Review Queue</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>2</MAXLENGTH>
+        <NAME>QUEUE_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>Error Code</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>800</MAXLENGTH>
+        <NAME>ERROR_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>Error Details</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>255</MAXLENGTH>
+        <NAME>ERR_PARAM</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>FX Status</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="S" SELECTED="0">Success</OPTION>
+        <OPTION VALUE="E" SELECTED="0">Error</OPTION>
+        <OPTION VALUE="N" SELECTED="0">Not Applicable</OPTION>
+        <OPTION VALUE="T" SELECTED="0">Timed Out</OPTION>
+        <OPTION VALUE="R" SELECTED="0">Rejected</OPTION>
+        <OPTION VALUE="C" SELECTED="0">Cancelled</OPTION>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>XCHG_RATE_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>ECA Status</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">Approved</OPTION>
+        <OPTION VALUE="O" SELECTED="0">Override</OPTION>
+        <OPTION VALUE="R" SELECTED="0">Rejected</OPTION>
+        <OPTION VALUE="T" SELECTED="0">Timed Out</OPTION>
+        <OPTION VALUE="E" SELECTED="0">Error</OPTION>
+        <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+        <OPTION VALUE="C" SELECTED="0">Cancelled</OPTION>
+        <OPTION VALUE="N" SELECTED="0">Not Initiated</OPTION>
+        <OPTION VALUE="O" SELECTED="0">Interim</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>ECA_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>Debit Liquidation Status</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="S" SELECTED="0">Success</OPTION>
+        <OPTION VALUE="E" SELECTED="0">Error</OPTION>
+        <OPTION VALUE="N" SELECTED="0">Not Initiated</OPTION>
+        <OPTION VALUE="C" SELECTED="0">Not Applicable</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>DRLQ_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>Credit Liquidation Status</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="S" SELECTED="0">Success</OPTION>
+        <OPTION VALUE="E" SELECTED="0">Error</OPTION>
+        <OPTION VALUE="N" SELECTED="0">Not Initiated</OPTION>
+        <OPTION VALUE="C" SELECTED="0">Not Applicable</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>CRLQ_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>Amount</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>DR_AMT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LBL>Currency</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>DR_AC_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>Exchange Rate</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>EXCH_RATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <LBL>Payment Type</LBL>
+        <OPTION VALUE="Y" SELECTED="0">ACH CT</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>PAYMENT_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>Payment Category</LBL>
+        <OPTION VALUE="N" SELECTED="0">Non Urgent</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>PAYMENT_CATEGORY</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="W">Work in Progress</OPTION>
+        <OPTION VALUE="X">Error</OPTION>
+        <OPTION VALUE="E">Move To Queue</OPTION>
+        <OPTION VALUE="S">Success</OPTION>
+        <OPTION VALUE="C">Cancelled</OPTION>
+        <OPTION VALUE="F">Future Dated</OPTION>
+        <OPTION VALUE="Z">Seized</OPTION>
+        <OPTION VALUE="N">Not Applicable</OPTION>
+        <OPTION VALUE="M">Move To Work In Progress</OPTION>
+        <FIELD_NAME>BATCH_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="##">##</OPTION>
+        <OPTION VALUE="AC">Accounting Queue</OPTION>
+        <OPTION VALUE="AL">Authorization Limit Queue</OPTION>
+        <OPTION VALUE="BO">Business Override Queue</OPTION>
+        <OPTION VALUE="CR">Clearing Return Queue</OPTION>
+        <OPTION VALUE="EA">External Account Check Queue</OPTION>
+        <OPTION VALUE="EC">External Credit Approval Queue</OPTION>
+        <OPTION VALUE="EE">External Exchange Rate Queue</OPTION>
+        <OPTION VALUE="EP">External Pricing Queue</OPTION>
+        <OPTION VALUE="ER">Exchange Rate Queue</OPTION>
+        <OPTION VALUE="FV">Warehouse Queue</OPTION>
+        <OPTION VALUE="NC">Network Cutoff Queue</OPTION>
+        <OPTION VALUE="PC">Processing Cutoff Queue</OPTION>
+        <OPTION VALUE="PE">Processing Exception Queue</OPTION>
+        <OPTION VALUE="SC">Sanction Check Queue</OPTION>
+        <OPTION VALUE="TR">Transaction Repair</OPTION>
+        <OPTION VALUE="SI">Settlement Review Queue</OPTION>
+        <FIELD_NAME>QUEUE_CODE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="S">Success</OPTION>
+        <OPTION VALUE="E">Error</OPTION>
+        <OPTION VALUE="N">Not Applicable</OPTION>
+        <OPTION VALUE="T">Timed Out</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <OPTION VALUE="C">Cancelled</OPTION>
+        <OPTION VALUE="P">Pending</OPTION>
+        <FIELD_NAME>XCHG_RATE_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">Approved</OPTION>
+        <OPTION VALUE="O">Override</OPTION>
+        <OPTION VALUE="R">Rejected</OPTION>
+        <OPTION VALUE="T">Timed Out</OPTION>
+        <OPTION VALUE="E">Error</OPTION>
+        <OPTION VALUE="P">Pending</OPTION>
+        <OPTION VALUE="C">Cancelled</OPTION>
+        <OPTION VALUE="N">Not Initiated</OPTION>
+        <OPTION VALUE="O">Interim</OPTION>
+        <FIELD_NAME>ECA_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="S">Success</OPTION>
+        <OPTION VALUE="E">Error</OPTION>
+        <OPTION VALUE="N">Not Initiated</OPTION>
+        <OPTION VALUE="C">Not Applicable</OPTION>
+        <FIELD_NAME>DRLQ_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="S">Success</OPTION>
+        <OPTION VALUE="E">Error</OPTION>
+        <OPTION VALUE="N">Not Initiated</OPTION>
+        <OPTION VALUE="C">Not Applicable</OPTION>
+        <FIELD_NAME>CRLQ_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="Y">ACH CT</OPTION>
+        <FIELD_NAME>PAYMENT_TYPE</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="N">Non Urgent</OPTION>
+        <FIELD_NAME>PAYMENT_CATEGORY</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="P1" ID="P1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_1">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Batch Ref Number</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>40</MAXLENGTH>
+                <NAME>BATCH_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Consol Batch Status</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="W" SELECTED="0">Work in Progress</OPTION>
+                <OPTION VALUE="X" SELECTED="0">Error</OPTION>
+                <OPTION VALUE="E" SELECTED="0">Move To Queue</OPTION>
+                <OPTION VALUE="S" SELECTED="0">Success</OPTION>
+                <OPTION VALUE="C" SELECTED="0">Cancelled</OPTION>
+                <OPTION VALUE="F" SELECTED="0">Future Dated</OPTION>
+                <OPTION VALUE="Z" SELECTED="0">Seized</OPTION>
+                <OPTION VALUE="N" SELECTED="0">Not Applicable</OPTION>
+                <OPTION VALUE="M" SELECTED="0">Move To Work In Progress</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>BATCH_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Currency</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>DR_AC_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>DR_AMT</NAME>
+                <LBL>Amount</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>ECA Status</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="A" SELECTED="0">Approved</OPTION>
+                <OPTION VALUE="O" SELECTED="0">Override</OPTION>
+                <OPTION VALUE="R" SELECTED="0">Rejected</OPTION>
+                <OPTION VALUE="T" SELECTED="0">Timed Out</OPTION>
+                <OPTION VALUE="E" SELECTED="0">Error</OPTION>
+                <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+                <OPTION VALUE="C" SELECTED="0">Cancelled</OPTION>
+                <OPTION VALUE="N" SELECTED="0">Not Initiated</OPTION>
+                <OPTION VALUE="O" SELECTED="0">Interim</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>ECA_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Error Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>800</MAXLENGTH>
+                <NAME>ERROR_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Error Details</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>255</MAXLENGTH>
+                <NAME>ERR_PARAM</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <NAME>EXCH_RATE</NAME>
+                <LBL>Exchange Rate</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Consol Batch Reference</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>40</MAXLENGTH>
+                <NAME>FILE_CONSOL_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Network Code</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>NETWORK_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Payment Category</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="N" SELECTED="0">Non Urgent</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>PAYMENT_CATEGORY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Payment Type</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="Y" SELECTED="0">ACH CT</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>PAYMENT_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Batch ID</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>PMTINFID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Processing Date</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATE</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>PROCESS_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>Exception Queue</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="##" SELECTED="0">##</OPTION>
+                <OPTION VALUE="AC" SELECTED="0">Accounting Queue</OPTION>
+                <OPTION VALUE="AL" SELECTED="0">Authorization Limit Queue</OPTION>
+                <OPTION VALUE="BO" SELECTED="0">Business Override Queue</OPTION>
+                <OPTION VALUE="CR" SELECTED="0">Clearing Return Queue</OPTION>
+                <OPTION VALUE="EA" SELECTED="0">External Account Check Queue</OPTION>
+                <OPTION VALUE="EC" SELECTED="0">External Credit Approval Queue</OPTION>
+                <OPTION VALUE="EE" SELECTED="0">External Exchange Rate Queue</OPTION>
+                <OPTION VALUE="EP" SELECTED="0">External Pricing Queue</OPTION>
+                <OPTION VALUE="ER" SELECTED="0">Exchange Rate Queue</OPTION>
+                <OPTION VALUE="FV" SELECTED="0">Warehouse Queue</OPTION>
+                <OPTION VALUE="NC" SELECTED="0">Network Cutoff Queue</OPTION>
+                <OPTION VALUE="PC" SELECTED="0">Processing Cutoff Queue</OPTION>
+                <OPTION VALUE="PE" SELECTED="0">Processing Exception Queue</OPTION>
+                <OPTION VALUE="SC" SELECTED="0">Sanction Check Queue</OPTION>
+                <OPTION VALUE="TR" SELECTED="0">Transaction Repair</OPTION>
+                <OPTION VALUE="SI" SELECTED="0">Settlement Review Queue</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>2</MAXLENGTH>
+                <NAME>QUEUE_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Credit Liquidation Status</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="S" SELECTED="0">Success</OPTION>
+                <OPTION VALUE="E" SELECTED="0">Error</OPTION>
+                <OPTION VALUE="N" SELECTED="0">Not Initiated</OPTION>
+                <OPTION VALUE="C" SELECTED="0">Not Applicable</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>CRLQ_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>Debit Liquidation Status</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="S" SELECTED="0">Success</OPTION>
+                <OPTION VALUE="E" SELECTED="0">Error</OPTION>
+                <OPTION VALUE="N" SELECTED="0">Not Initiated</OPTION>
+                <OPTION VALUE="C" SELECTED="0">Not Applicable</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>DRLQ_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>File Reference Number</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>40</MAXLENGTH>
+                <NAME>FILE_REF_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>FX Status</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="S" SELECTED="0">Success</OPTION>
+                <OPTION VALUE="E" SELECTED="0">Error</OPTION>
+                <OPTION VALUE="N" SELECTED="0">Not Applicable</OPTION>
+                <OPTION VALUE="T" SELECTED="0">Timed Out</OPTION>
+                <OPTION VALUE="R" SELECTED="0">Rejected</OPTION>
+                <OPTION VALUE="C" SELECTED="0">Cancelled</OPTION>
+                <OPTION VALUE="P" SELECTED="0">Pending</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>XCHG_RATE_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_FILE_BATCH_CONSOLSUMMARY</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

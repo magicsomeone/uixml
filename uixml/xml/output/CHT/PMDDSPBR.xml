@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="Dispatch File Browser" TMP_SCR_TYPE="L">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMBUTTONS>
+      <BUTTON_ROWS>1</BUTTON_ROWS>
+      <BUTTON ID="1">
+        <BUTTON_EVENT>fnGenerate()</BUTTON_EVENT>
+        <BUTTON_LBL>進程異常</BUTTON_LBL>
+        <BUTTON_NAME>RETRY</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="2">
+        <BUTTON_EVENT>fn_Message(event)</BUTTON_EVENT>
+        <BUTTON_LBL>查看天數</BUTTON_LBL>
+        <BUTTON_NAME>BTN_MESSAGE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="3">
+        <BUTTON_EVENT>fnQueueAction()</BUTTON_EVENT>
+        <BUTTON_LBL>查看匹配詳細資訊</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_QUE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="4">
+        <BUTTON_EVENT>fnAccountingEntries()</BUTTON_EVENT>
+        <BUTTON_LBL>視圖限制</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VIEW_ACCOUNTING</BUTTON_NAME>
+      </BUTTON>
+      <BUTTON ID="5">
+        <BUTTON_EVENT>fnVwValidationFile()</BUTTON_EVENT>
+        <BUTTON_LBL>查看狀態更新查詢</BUTTON_LBL>
+        <BUTTON_NAME>BTN_VW_VALD_FILE</BUTTON_NAME>
+      </BUTTON>
+      <BUTTONS_PER_ROW>1</BUTTONS_PER_ROW>
+    </SUMBUTTONS>
+    <SUMMARY_DATA_BLK>BLK_DISP_MSG_BRWSR</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>文件參考 ID</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>FILE_REF_NO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>網路貨幣首選項摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>檔案傳輸狀態</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>FILE_TYPE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>文件大小（MB）</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="S" SELECTED="0">子類型代碼</OPTION>
+        <OPTION VALUE="E" SELECTED="0">錯誤代碼</OPTION>
+        <OPTION VALUE="P" SELECTED="0">罰款類型</OPTION>
+        <OPTION VALUE="H" SELECTED="0">出現錯誤時暫停</OPTION>
+        <OPTION VALUE="A" SELECTED="0">後建 UIDB</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>HANDOFF_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>維護的發送時間</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">批間隔 (HH:MM)</OPTION>
+        <OPTION VALUE="N" SELECTED="0">批量消息</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>BATCH_PROCESSING</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>佇列類型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="GEN" SELECTED="0">狀態報表</OPTION>
+        <OPTION VALUE="REGEN" SELECTED="0">註冊酋長國</OPTION>
+        <OPTION VALUE="REJECT" SELECTED="0">已拒絕</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>QUEUE_ACTION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>金額級距和授權級別</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">授權</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授權</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>調度會計</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>CREATION_DT_TIME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>網路服務代碼</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="R" SELECTED="0">拒絕</OPTION>
+        <OPTION VALUE="P" SELECTED="0">已部分接受</OPTION>
+        <OPTION VALUE="A" SELECTED="0">已接受</OPTION>
+        <OPTION VALUE="N" SELECTED="0">罰款類型</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>NETWORK_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>允許分配人</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>100</MAXLENGTH>
+        <NAME>FILE_NAME</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>佇列參考編號</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>發送佇列名稱</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>DISP_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>供應頻率</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>OLD_FILE_REF_NO</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>文件參考 ID</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>FILE_REF_NO</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>網路貨幣首選項摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>檔案傳輸狀態</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>10</MAXLENGTH>
+        <NAME>FILE_TYPE</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>消息尾部</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>MSG_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>文件大小（MB）</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="S" SELECTED="0">子類型代碼</OPTION>
+        <OPTION VALUE="E" SELECTED="0">錯誤代碼</OPTION>
+        <OPTION VALUE="P" SELECTED="0">罰款類型</OPTION>
+        <OPTION VALUE="H" SELECTED="0">出現錯誤時暫停</OPTION>
+        <OPTION VALUE="A" SELECTED="0">後建 UIDB</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>HANDOFF_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <LBL>維護的發送時間</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="Y" SELECTED="0">批間隔 (HH:MM)</OPTION>
+        <OPTION VALUE="N" SELECTED="0">批量消息</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>BATCH_PROCESSING</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>佇列類型</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="GEN" SELECTED="0">狀態報表</OPTION>
+        <OPTION VALUE="REGEN" SELECTED="0">註冊酋長國</OPTION>
+        <OPTION VALUE="REJECT" SELECTED="0">已拒絕</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <NAME>QUEUE_ACTION</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>金額級距和授權級別</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="A" SELECTED="0">授權</OPTION>
+        <OPTION VALUE="U" SELECTED="0">未授權</OPTION>
+        <DTYPE>CHAR</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>AUTH_STAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>調度會計</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>DATE</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>CREATION_DT_TIME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>發送狀態</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>CREATION_TIME</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>網路服務代碼</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="R" SELECTED="0">拒絕</OPTION>
+        <OPTION VALUE="P" SELECTED="0">已部分接受</OPTION>
+        <OPTION VALUE="A" SELECTED="0">已接受</OPTION>
+        <OPTION VALUE="N" SELECTED="0">罰款類型</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>NETWORK_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>網路處理偏好選項</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>REJECT_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>允許分配人</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>100</MAXLENGTH>
+        <NAME>FILE_NAME</NAME>
+        <CASE>UPPER</CASE>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>總時間</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TOTAL_TXN_CNT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>未償本金總額</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>AMOUNT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>TOTAL_SETLMNT_AMNT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>收款人/付款人詳細資訊</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>CR_TRANSFER_BLK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>已收到收回</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>RCL_REF_BLK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>批量收回拒絕</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>RCL_REQ_BLK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>返回帳戶分支</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>38</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>RET_BLK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>修訂通知日</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>REV_BLK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LBL>錯誤代碼</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>2000</MAXLENGTH>
+        <NAME>ERROR_DESC</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>佇列參考編號</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>QUEUE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="23">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>發送佇列名稱</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>DISP_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="24">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>供應頻率</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>OLD_FILE_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="25">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>有效限額詳細資訊</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>INQUIRY_BLK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="26">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>排隊</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>INQ_RESP_BLK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="27">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>使用量</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>STATUS_BLK</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="28">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>起息日正公差</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>VD_INQ_BLK</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="S">子類型代碼</OPTION>
+        <OPTION VALUE="E">錯誤代碼</OPTION>
+        <OPTION VALUE="P">罰款類型</OPTION>
+        <OPTION VALUE="H">出現錯誤時暫停</OPTION>
+        <OPTION VALUE="A">後建 UIDB</OPTION>
+        <FIELD_NAME>HANDOFF_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="Y">批間隔 (HH:MM)</OPTION>
+        <OPTION VALUE="N">批量消息</OPTION>
+        <FIELD_NAME>BATCH_PROCESSING</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="GEN">狀態報表</OPTION>
+        <OPTION VALUE="REGEN">註冊酋長國</OPTION>
+        <OPTION VALUE="REJECT">已拒絕</OPTION>
+        <FIELD_NAME>QUEUE_ACTION</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">授權</OPTION>
+        <OPTION VALUE="U">未授權</OPTION>
+        <FIELD_NAME>AUTH_STAT</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="R">拒絕</OPTION>
+        <OPTION VALUE="P">已部分接受</OPTION>
+        <OPTION VALUE="A">已接受</OPTION>
+        <OPTION VALUE="N">罰款類型</OPTION>
+        <FIELD_NAME>NETWORK_STATUS</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="" TMP_SCR_TYPE="S">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="LBL_CORP_DEP_POV_RULE_SUMM" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_CSTBS_ACCPROD_PROV_RULE_DETAIL</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>产品代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>6</MAXLENGTH>
+        <NAME>ACCLS_OR_PRD</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>授权状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="A">已授权</OPTION>
+        <OPTION VALUE="U">未授权</OPTION>
+        <OPTION VALUE="R">已拒付</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>AUTHSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>记录状态</LBL>
+        <SIZE>1</SIZE>
+        <OPTION VALUE="O">打开</OPTION>
+        <OPTION VALUE="C">已关闭</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <CHECKED>N</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TXNSTAT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>产品代码</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>6</MAXLENGTH>
+        <NAME>ACCLS_OR_PRD</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="LBL_CRPRT_DEP_PROV_RULE_MAIN" TMP_SCR_TYPE="L">
+    <EXIT_BTN>1</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL>全部</LBL>
+        <SECTION ID="SEC_ONE" COLLAPSE="N">
+          <PART NAME="SEC1_P1" ID="SEC1_P1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_PRODUCT_CODE">
+              <FIELD INDEX="" CONTROL="N">
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_PROD</NAME>
+                </LOV>
+                <LBL>产品代码</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>6</MAXLENGTH>
+                <NAME>ACCLS_OR_PRD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CSTBS_ACCPROD_PROV_RULE_DETAIL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="2" ID="FST_PROD_DESC">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>4</MAXLENGTH>
+                <NAME>PRDCD</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>105</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>PRDDESC</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CSTMS_PRODUCT</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB NAME="TAB_FOOTER" HEIGHT="" ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION NAME="AUDIT_TEMPLATE" ID="AUDIT_TEMPLATE">
+          <PART NAME="AUDIT_PART_1" ID="AUDIT_PART_1" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FLD_AUDIT1">
+              <FIELD SPRT="1" INDEX="1">
+                <SIZE>12</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKER</NAME>
+                <LBL>经办者</LBL>
+                <ID>MAKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="1" SPRT="1">
+                <LBL>复核者</LBL>
+                <SIZE>12</SIZE>
+                <ID>CHECKER</ID>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="2" INDEX="2">
+                <SIZE>15</SIZE>
+                <WIDTH>3</WIDTH>
+                <COLS></COLS>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MAKERSTAMP</NAME>
+                <LBL>日期时间：</LBL>
+                <ID>MAKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <TYPE>DATETIME</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="2" SPRT="2">
+                <LBL>日期时间：</LBL>
+                <SIZE>15</SIZE>
+                <ID>CHECKERSTAMP</ID>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>DATETIME</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CHECKERSTAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="1">
+                <SIZE>4</SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>8</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>MODNO</NAME>
+                <LBL>模式编号</LBL>
+                <ID>MODNO</ID>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="3" INDEX="2">
+                <SIZE>1</SIZE>
+                <WIDTH>3</WIDTH>
+                <HIDDEN>-1</HIDDEN>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ONCEAUTH</NAME>
+                <LBL></LBL>
+                <ID>ONCEAUTH</ID>
+                <DTYPE>VARCHAR</DTYPE>
+                <TYPE>HIDDEN</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="C">已关闭</OPTION>
+                <OPTION VALUE="O">打开</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>TXNSTAT</NAME>
+                <LBL>记录状态</LBL>
+                <ID>TXNSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD SPRT="4" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE>1</SIZE>
+                <OPTION VALUE="" SELECTED="0"></OPTION>
+                <OPTION VALUE="A">已授权</OPTION>
+                <OPTION VALUE="R">已拒付</OPTION>
+                <OPTION VALUE="U">未授权</OPTION>
+                <COLS></COLS>
+                <CHECKED>N</CHECKED>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTHSTAT</NAME>
+                <LBL>授权状态</LBL>
+                <ID>AUTHSTAT</ID>
+                <DTYPE>CHAR</DTYPE>
+                <TYPE>ROSELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CSTBS_ACCPROD_PROV_RULE_DETAIL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <SUBSCREEN>
+      <FORM TYPE="C" SEQ="1" id="CSCFNUDF">
+        <SCREEN>CVS_UDF</SCREEN>
+        <LBL>字段</LBL>
+        <FUNCTION>CSCFNUDF</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_TWO" COLLAPSE="N">
+          <PART NAME="SEC2_P1" ID="SEC2_P1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_SET_PRV_RULE">
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>5</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RL1</NAME>
+                <LBL></LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>5</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RL2</NAME>
+                <LBL></LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>5</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RL3</NAME>
+                <LBL></LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>5</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RL4</NAME>
+                <LBL></LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>5</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>RL5</NAME>
+                <LBL></LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>规则</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CSTBS_ACCPROD_PROV_RULE_DETAIL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC2_P2" ID="SEC2_P2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FIELD1">
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE></TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnFocus_Rule()</FUNCTION>
+                  <NAME>onfocus</NAME>
+                </EVENT>
+                <EVENT>
+                  <FUNCTION>fnRule1()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>CND1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE></TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnFocus_Rule()</FUNCTION>
+                  <NAME>onfocus</NAME>
+                </EVENT>
+                <EVENT>
+                  <FUNCTION>fnRule2()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>CND2</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE></TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnFocus_Rule()</FUNCTION>
+                  <NAME>onfocus</NAME>
+                </EVENT>
+                <EVENT>
+                  <FUNCTION>fnRule3()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>CND3</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE></TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnFocus_Rule()</FUNCTION>
+                  <NAME>onfocus</NAME>
+                </EVENT>
+                <EVENT>
+                  <FUNCTION>fnRule4()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>CND4</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE></TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnFocus_Rule()</FUNCTION>
+                  <NAME>onfocus</NAME>
+                </EVENT>
+                <EVENT>
+                  <FUNCTION>fnRule5()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>CND5</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>案例</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CSTBS_ACCPROD_PROV_RULE_DETAIL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC2_P3" ID="SEC2_P3" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FIELD2">
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE></TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnFocus_Rule()</FUNCTION>
+                  <NAME>onfocus</NAME>
+                </EVENT>
+                <EVENT>
+                  <FUNCTION>fnRule1()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>RSLT1</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE></TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnFocus_Rule()</FUNCTION>
+                  <NAME>onfocus</NAME>
+                </EVENT>
+                <EVENT>
+                  <FUNCTION>fnRule2()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>RSLT2</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE></TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnFocus_Rule()</FUNCTION>
+                  <NAME>onfocus</NAME>
+                </EVENT>
+                <EVENT>
+                  <FUNCTION>fnRule3()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>RSLT3</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE></TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnFocus_Rule()</FUNCTION>
+                  <NAME>onfocus</NAME>
+                </EVENT>
+                <EVENT>
+                  <FUNCTION>fnRule4()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>RSLT4</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <POPUPEDIT>
+                  <OK_IMG_SRC></OK_IMG_SRC>
+                  <TITLE></TITLE>
+                  <CANCEL_IMG_SRC></CANCEL_IMG_SRC>
+                </POPUPEDIT>
+                <LBL></LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>4000</MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnFocus_Rule()</FUNCTION>
+                  <NAME>onfocus</NAME>
+                </EVENT>
+                <EVENT>
+                  <FUNCTION>fnRule5()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>RSLT5</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>结果</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CSTBS_ACCPROD_PROV_RULE_DETAIL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_THREE" COLLAPSE="N">
+          <PART NAME="SEC3_P1" ID="SEC3_P1" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_ELEMENTS">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>要素</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="@CUST_TYPE" SELECTED="0">客户类型</OPTION>
+                <OPTION VALUE="@CUST_CLASS" SELECTED="0">客户分类</OPTION>
+                <OPTION VALUE="@PRINCIPAL_OUTSTANDING" SELECTED="0">未付本金余额</OPTION>
+                <OPTION VALUE="@INTEREST_OUTSTANDING" SELECTED="0">LBL_OUT_INTEREST</OPTION>
+                <OPTION VALUE="@INT_RATE" SELECTED="0">利率</OPTION>
+                <OPTION VALUE="@FUTURE_PRINCIPAL" SELECTED="0">LBL_FUT_PRINCIPAL</OPTION>
+                <OPTION VALUE="@FUTURE_INTEREST" SELECTED="0">LBL_FUT_INTEREST</OPTION>
+                <OPTION VALUE="@DISC_PRINCIPAL" SELECTED="0">LBL_NVP</OPTION>
+                <OPTION VALUE="@DISC_INTEREST" SELECTED="0">LBL_INT_NVP</OPTION>
+                <OPTION VALUE="@RISK_FREE_AMT" SELECTED="0">LBL_RISK_FREE_EXP</OPTION>
+                <OPTION VALUE="@PROV_PERCENT" SELECTED="0">LBL_PROV_PER</OPTION>
+                <OPTION VALUE="@GROUP_CIF_STAT" SELECTED="0">LBL_GCIF_STATUS</OPTION>
+                <OPTION VALUE="@CONTRACT_STAT" SELECTED="0">合同状态</OPTION>
+                <OPTION VALUE="@STAT_SEQ" SELECTED="0">状态序列</OPTION>
+                <OPTION VALUE="@GROUP_CIF_EXP" SELECTED="0">LBL_GCIF_EXP_CAT</OPTION>
+                <OPTION VALUE="@CONTRACT_EXP" SELECTED="0">LBL_CONTRACT_EXP_CAT</OPTION>
+                <OPTION VALUE="@PRINCIPAL_OUTSTANDING_LCY" SELECTED="0">LBL_OUT_PRINCIPAL_LCY</OPTION>
+                <OPTION VALUE="@DISC_PERCENT" SELECTED="0">LBL_DISCOUNT_PER</OPTION>
+                <OPTION VALUE="@INTEREST_OUTSTANDING_LCY" SELECTED="0">LBL_OUT_INT_LCY</OPTION>
+                <OPTION VALUE="@DISC_INTEREST_LCY" SELECTED="0">LBL_FUT_INT_NVP_LCY</OPTION>
+                <OPTION VALUE="@DISC_PRINCIPAL_LCY" SELECTED="0">LBL_FUT_PRINCIPAL_NVP_LCY</OPTION>
+                <OPTION VALUE="@FUTURE_PRINCIPAL_LCY" SELECTED="0">LBL_FUT_PRINCIPAL_LCY</OPTION>
+                <OPTION VALUE="@FUTURE_INTEREST_LCY" SELECTED="0">LBL_FUT_INTEREST_LCY</OPTION>
+                <OPTION VALUE="@RISK_FREE_AMT_LCY" SELECTED="0">LBL_RISK_FREE_EXP_AMT_LCY</OPTION>
+                <OPTION VALUE="@PRINCIPAL_UNDISBURSED" SELECTED="0">LBL_UNDISBURSED_PRINCIPAL</OPTION>
+                <OPTION VALUE="@PRINCIPAL_UNDISBURSED_LCY" SELECTED="0">LBL_UNDISBURSED_PRINCIPAL_LCY</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnPerformOperation()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>TXT_ELEMENTS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>要素</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CSTBS_ACCPROD_PROV_RULE_DETAIL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC3_P2" ID="SEC3_P2" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FUNCTIONS">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>功能</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="ABS()" SELECTED="0">ABS</OPTION>
+                <OPTION VALUE="GREATEST()" SELECTED="0">最大</OPTION>
+                <OPTION VALUE="LEAST()" SELECTED="0">最少</OPTION>
+                <OPTION VALUE="ROUND()" SELECTED="0">四舍五入</OPTION>
+                <OPTION VALUE="TRUNC()" SELECTED="0">削减</OPTION>
+                <OPTION VALUE="FLOOR()" SELECTED="0">最低</OPTION>
+                <OPTION VALUE="CEIL()" SELECTED="0">最高</OPTION>
+                <OPTION VALUE="POWER()" SELECTED="0">幂</OPTION>
+                <OPTION VALUE="MOD()" SELECTED="0">模式</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnPerformOperation()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>TXT_FUNCTION</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>功能</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CSTBS_ACCPROD_PROV_RULE_DETAIL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="SEC3_P3" ID="SEC3_P3" WIDTH="33">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_OPERATORS">
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>数学运算</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="+" SELECTED="0">+</OPTION>
+                <OPTION VALUE="-" SELECTED="0">-</OPTION>
+                <OPTION VALUE="*" SELECTED="0">*</OPTION>
+                <OPTION VALUE="/" SELECTED="0">/</OPTION>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnPerformOperation()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>TXT_OPERATORS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>逻辑运算</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="&lt;" SELECTED="0"><</OPTION>
+                <OPTION VALUE="&gt;" SELECTED="0">></OPTION>
+                <OPTION VALUE="=" SELECTED="0">等于</OPTION>
+                <OPTION VALUE="&lt;&gt;" SELECTED="0">不等于</OPTION>
+                <OPTION VALUE="&lt;=" SELECTED="0">LBL_LESSTHAN_EQUAL</OPTION>
+                <OPTION VALUE="&gt;=" SELECTED="0">LBL_GREATERTHAN_EQUAL</OPTION>
+                <OPTION VALUE="AND" SELECTED="0">和</OPTION>
+                <OPTION VALUE="OR" SELECTED="0">或</OPTION>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnPerformOperation()</FUNCTION>
+                  <NAME>onchange</NAME>
+                </EVENT>
+                <NAME>TXT_LOGICAL_OPERATORS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="Y">
+                <LBL>重置</LBL>
+                <SIZE></SIZE>
+                <DTYPE></DTYPE>
+                <COLS></COLS>
+                <TYPE>BUTTON</TYPE>
+                <MAXLENGTH></MAXLENGTH>
+                <EVENT>
+                  <FUNCTION>fnReset()</FUNCTION>
+                  <NAME>onclick</NAME>
+                </EVENT>
+                <NAME>BTN_RESET</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>运算符</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_CSTBS_ACCPROD_PROV_RULE_DETAIL</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

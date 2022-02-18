@@ -1,0 +1,881 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY CRITERIA_SRCH="N" POSITION="TEMPLATE" TITLE="LBL_REVERSAL_SUMMARY" TMP_SCR_TYPE="M">
+    <SUMMARY_BASE></SUMMARY_BASE>
+    <SUMMARY_DATA_BLK>BLK_NACHA_OUT_REV</SUMMARY_DATA_BLK>
+    <SUMBLOCK TABPAGE="QUERY" TYPE="SE" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>指令代碼 5</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>INSTRUCTION_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>發起人詳細資訊維護</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>ORIG_ENTRY_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <REQD>-1</REQD>
+        <LBL>行 1 至 3</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>ORIG_TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>交易參考編號</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="P" SELECTED="0">允許掉入端本金計畫</OPTION>
+        <OPTION VALUE="E" SELECTED="0">異常原因</OPTION>
+        <OPTION VALUE="S" SELECTED="0">處理</OPTION>
+        <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+        <OPTION VALUE="R" SELECTED="0">繳回</OPTION>
+        <OPTION VALUE="L" SELECTED="0">收回接收日期</OPTION>
+        <OPTION VALUE="F" SELECTED="0">未來應收首付款</OPTION>
+        <OPTION VALUE="J" SELECTED="0">拒絕</OPTION>
+        <OPTION VALUE="RE" SELECTED="0">退回天數</OPTION>
+        <OPTION VALUE="A" SELECTED="0">有效</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">段號</OPTION>
+        <OPTION VALUE="RC" SELECTED="0">返回值</OPTION>
+        <OPTION VALUE="RZ" SELECTED="0">收回響應日期</OPTION>
+        <OPTION VALUE="LE" SELECTED="0">允許收回</OPTION>
+        <OPTION VALUE="RI" SELECTED="0">返回代碼說明</OPTION>
+        <OPTION VALUE="RR" SELECTED="0">LBL_RETURN_RECEIVED</OPTION>
+        <OPTION VALUE="VI" SELECTED="0">LBL_REVERSAL_INITIATED</OPTION>
+        <OPTION VALUE="VR" SELECTED="0">LBL_REVERSAL_REQUESTED</OPTION>
+        <OPTION VALUE="VZ" SELECTED="0">LBL_REVERSAL_SEIZED</OPTION>
+        <OPTION VALUE="VS" SELECTED="0">LBL_REVERSAL_SENT_TO_SC</OPTION>
+        <OPTION VALUE="V" SELECTED="0">沖正</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>ORIG_TXN_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>重估日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>REV_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>週期性利率修訂報表</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>38</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>REV_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>餘額類型</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>SEC_CODE</NAME>
+      </FIELD>
+
+    </SUMBLOCK>
+    <SUMBLOCK TABPAGE="RESULT" TYPE="ME" SCREEN="SUMMARY">
+      <FIELD TYPE="ME" ID="1">
+        <LBL>啟動日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>ACTIVATION_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="2">
+        <LBL>其他資訊</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>140</MAXLENGTH>
+        <NAME>ADDITIONAL_INFO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="3">
+        <LBL>客戶號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>CUSTOMER_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="4">
+        <LBL>客戶服務模式</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>16</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>CUSTOMER_SERVICE_MODEL</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="5">
+        <LBL>調度會計</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>DISPATCH_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="6">
+        <MAX_DECIMALS></MAX_DECIMALS>
+        <LBL>發送參考編號</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>DISPATCH_REF</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="7">
+        <LBL>調度運行參考</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="P" SELECTED="0">等待保險匹配</OPTION>
+        <OPTION VALUE="S" SELECTED="0">待發送日期</OPTION>
+        <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+        <OPTION VALUE="N" SELECTED="0">行詳細資訊</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>DISPATCH_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="8">
+        <LBL>批次詳細資訊</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>DISP_BATCH_NUMBER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="9">
+        <LBL>男高音</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>DISP_TRACE_NUMBER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="10">
+        <LBL>主機主金鑰</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>8</MAXLENGTH>
+        <NAME>HOST_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="11">
+        <LBL>指令代碼 5</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>INSTRUCTION_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="12">
+        <LBL>網路貨幣首選項摘要</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <NAME>NETWORK_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="13">
+        <LBL>批次詳細資訊</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>ORIG_BATCH_NUMBER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="14">
+        <LBL>發起人詳細資訊維護</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>20</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>ORIG_ENTRY_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="15">
+        <LBL>收回收益率</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>ORIG_RCVR_AC_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="16">
+        <LBL>男高音</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>15</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>ORIG_TRACE_NUMBER</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="17">
+        <MAX_DECIMALS>4</MAX_DECIMALS>
+        <LBL>轉移</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>22</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>ORIG_TXN_AMOUNT</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="18">
+        <REQD>-1</REQD>
+        <LBL>行 1 至 3</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>ORIG_TXN_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="19">
+        <LBL>交易參考編號</LBL>
+        <OPTION VALUE="" SELECTED="-1"></OPTION>
+        <OPTION VALUE="P" SELECTED="0">允許掉入端本金計畫</OPTION>
+        <OPTION VALUE="E" SELECTED="0">異常原因</OPTION>
+        <OPTION VALUE="S" SELECTED="0">處理</OPTION>
+        <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+        <OPTION VALUE="R" SELECTED="0">繳回</OPTION>
+        <OPTION VALUE="L" SELECTED="0">收回接收日期</OPTION>
+        <OPTION VALUE="F" SELECTED="0">未來應收首付款</OPTION>
+        <OPTION VALUE="J" SELECTED="0">拒絕</OPTION>
+        <OPTION VALUE="RE" SELECTED="0">退回天數</OPTION>
+        <OPTION VALUE="A" SELECTED="0">有效</OPTION>
+        <OPTION VALUE="Z" SELECTED="0">段號</OPTION>
+        <OPTION VALUE="RC" SELECTED="0">返回值</OPTION>
+        <OPTION VALUE="RZ" SELECTED="0">收回響應日期</OPTION>
+        <OPTION VALUE="LE" SELECTED="0">允許收回</OPTION>
+        <OPTION VALUE="RI" SELECTED="0">返回代碼說明</OPTION>
+        <OPTION VALUE="RR" SELECTED="0">LBL_RETURN_RECEIVED</OPTION>
+        <OPTION VALUE="VI" SELECTED="0">LBL_REVERSAL_INITIATED</OPTION>
+        <OPTION VALUE="VR" SELECTED="0">LBL_REVERSAL_REQUESTED</OPTION>
+        <OPTION VALUE="VZ" SELECTED="0">LBL_REVERSAL_SEIZED</OPTION>
+        <OPTION VALUE="VS" SELECTED="0">LBL_REVERSAL_SENT_TO_SC</OPTION>
+        <OPTION VALUE="V" SELECTED="0">沖正</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>ORIG_TXN_STATUS</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="20">
+        <LBL>重估日期</LBL>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>7</MAXLENGTH>
+        <NAME>REV_DATE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="21">
+        <LBL>沖正參考編號</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>255</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>REV_REASON</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="22">
+        <REQD>-1</REQD>
+        <LBL>沖正總帳</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>35</MAXLENGTH>
+        <NAME>REV_REASON_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="23">
+        <MAX_DECIMALS>0</MAX_DECIMALS>
+        <LBL>週期性利率修訂報表</LBL>
+        <MAX_VAL></MAX_VAL>
+        <DTYPE>NUMBER</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>38</MAXLENGTH>
+        <MIN_VAL></MIN_VAL>
+        <NAME>REV_REF_NO</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="24">
+        <LBL>餘額類型</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>SEC_CODE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="25">
+        <LBL>出納員轉帳</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TRANSFER_CCY</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="26">
+        <LBL>交易屬性 30</LBL>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>TEXT</TYPE>
+        <MAXLENGTH>3</MAXLENGTH>
+        <NAME>TXN_BRANCH</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="27">
+        <LBL>LBL_REV_TYPE</LBL>
+        <OPTION VALUE="A" SELECTED="0">管理人員</OPTION>
+        <OPTION VALUE="E" SELECTED="0">LBL_EXTEND</OPTION>
+        <DTYPE>VARCHAR2</DTYPE>
+        <TYPE>SELECT</TYPE>
+        <MAXLENGTH>1</MAXLENGTH>
+        <NAME>REVERSE_TYPE</NAME>
+      </FIELD>
+      <FIELD TYPE="ME" ID="28">
+        <LBL>交易金額</LBL>
+        <HIDDEN>-1</HIDDEN>
+        <DTYPE>DATE</DTYPE>
+        <TYPE>HIDDEN</TYPE>
+        <MAXLENGTH>11</MAXLENGTH>
+        <NAME>TXN_ARCH_DT</NAME>
+      </FIELD>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="P">等待保險匹配</OPTION>
+        <OPTION VALUE="S">待發送日期</OPTION>
+        <OPTION VALUE="C">已取消</OPTION>
+        <OPTION VALUE="N">行詳細資訊</OPTION>
+        <FIELD_NAME>DISPATCH_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="P">允許掉入端本金計畫</OPTION>
+        <OPTION VALUE="E">異常原因</OPTION>
+        <OPTION VALUE="S">處理</OPTION>
+        <OPTION VALUE="C">已取消</OPTION>
+        <OPTION VALUE="R">繳回</OPTION>
+        <OPTION VALUE="L">收回接收日期</OPTION>
+        <OPTION VALUE="F">未來應收首付款</OPTION>
+        <OPTION VALUE="J">拒絕</OPTION>
+        <OPTION VALUE="RE">退回天數</OPTION>
+        <OPTION VALUE="A">有效</OPTION>
+        <OPTION VALUE="Z">段號</OPTION>
+        <OPTION VALUE="RC">返回值</OPTION>
+        <OPTION VALUE="RZ">收回響應日期</OPTION>
+        <OPTION VALUE="LE">允許收回</OPTION>
+        <OPTION VALUE="RI">返回代碼說明</OPTION>
+        <OPTION VALUE="RR">LBL_RETURN_RECEIVED</OPTION>
+        <OPTION VALUE="VI">LBL_REVERSAL_INITIATED</OPTION>
+        <OPTION VALUE="VR">LBL_REVERSAL_REQUESTED</OPTION>
+        <OPTION VALUE="VZ">LBL_REVERSAL_SEIZED</OPTION>
+        <OPTION VALUE="VS">LBL_REVERSAL_SENT_TO_SC</OPTION>
+        <OPTION VALUE="V">沖正</OPTION>
+        <FIELD_NAME>ORIG_TXN_STATUS</FIELD_NAME>
+      </LEGENDS>
+      <LEGENDS>
+        <LBL></LBL>
+        <OPTION VALUE="A">管理人員</OPTION>
+        <OPTION VALUE="E">LBL_EXTEND</OPTION>
+        <FIELD_NAME>REVERSE_TYPE</FIELD_NAME>
+      </LEGENDS>
+
+    </SUMBLOCK>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" POSITION="template" TITLE="允許沖正" TMP_SCR_TYPE="M">
+    <EXIT_BTN>2</EXIT_BTN>
+    <HEADER>
+      <TAB ID="TAB_HEADER">
+        <LBL></LBL>
+        <SECTION ID="SEC_HEADER" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_HEADER">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS>0</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>38</MAXLENGTH>
+                <NAME>REV_REF_NO</NAME>
+                <LBL>週期性利率修訂報表</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>重估日期</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>REV_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <REQD>-1</REQD>
+                <SIZE></SIZE>
+                <COLS></COLS>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>ORIG_TXN_REF_NO</NAME>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_ORG_TXN_REF</NAME>
+                </LOV>
+                <LBL>行 1 至 3</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>交易屬性 30</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <NAME>TXN_BRANCH</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>主機主金鑰</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>8</MAXLENGTH>
+                <NAME>HOST_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>網路貨幣首選項摘要</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <NAME>NETWORK_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>交易金額</LBL>
+                <SIZE></SIZE>
+                <HIDDEN>-1</HIDDEN>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>HIDDEN</TYPE>
+                <MAXLENGTH>11</MAXLENGTH>
+                <NAME>TXN_ARCH_DT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NACHA_OUT_REV</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </HEADER>
+    <FOOTER>
+      <TAB ID="TAB_FOOTER">
+        <LBL></LBL>
+        <SECTION ID="SEC_1" COLLAPSE="N">
+          <PART NAME="PART1" ID="PART1" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_FOOTER">
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>經辦者日期戳記</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>MAKER_ID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>覆核者日期戳記</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>12</MAXLENGTH>
+                <NAME>CHECKER_ID</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>日期時間</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>MAKER_DT_STAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="2">
+                <LBL>日期時間</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <NAME>CHECKER_DT_STAMP</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="3">
+                <LBL>金額級距和授權級別</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>AUTH_STAT</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="3">
+                <LBL>記錄序號</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>RECORD_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL></LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NACHA_OUT_REV</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>4</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </FOOTER>
+    <BODY>
+      <TAB ID="TAB_MAIN">
+        <LBL></LBL>
+        <SECTION ID="SEC_TRANS_DET" COLLAPSE="N">
+          <PART NAME="PART2" ID="PART2" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_REV_DET">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>LBL_REV_TYPE</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="A" SELECTED="0">管理人員</OPTION>
+                <OPTION VALUE="E" SELECTED="0">LBL_EXTEND</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <NAME>REVERSE_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <REQD>-1</REQD>
+                <LOV>
+                  <TYPE>L</TYPE>
+                  <NAME>LOV_RJT_CODE</NAME>
+                </LOV>
+                <LBL>沖正總帳</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <NAME>REV_REASON_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>沖正參考編號</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>255</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>REV_REASON</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>其他資訊</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>140</MAXLENGTH>
+                <NAME>ADDITIONAL_INFO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>修訂計畫</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NACHA_OUT_REV</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <PART NAME="PART3" ID="PART3" WIDTH="50">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_ORG_DET">
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>發起人詳細資訊維護</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ORIG_ENTRY_TYPE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>餘額類型</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>SEC_CODE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>交易參考編號</LBL>
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="P" SELECTED="0">允許掉入端本金計畫</OPTION>
+                <OPTION VALUE="E" SELECTED="0">異常原因</OPTION>
+                <OPTION VALUE="S" SELECTED="0">處理</OPTION>
+                <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+                <OPTION VALUE="R" SELECTED="0">繳回</OPTION>
+                <OPTION VALUE="L" SELECTED="0">收回接收日期</OPTION>
+                <OPTION VALUE="F" SELECTED="0">未來應收首付款</OPTION>
+                <OPTION VALUE="J" SELECTED="0">拒絕</OPTION>
+                <OPTION VALUE="RE" SELECTED="0">退回天數</OPTION>
+                <OPTION VALUE="A" SELECTED="0">有效</OPTION>
+                <OPTION VALUE="Z" SELECTED="0">段號</OPTION>
+                <OPTION VALUE="RC" SELECTED="0">返回值</OPTION>
+                <OPTION VALUE="RZ" SELECTED="0">收回響應日期</OPTION>
+                <OPTION VALUE="LE" SELECTED="0">允許收回</OPTION>
+                <OPTION VALUE="RI" SELECTED="0">返回代碼說明</OPTION>
+                <OPTION VALUE="RR" SELECTED="0">LBL_RETURN_RECEIVED</OPTION>
+                <OPTION VALUE="VI" SELECTED="0">LBL_REVERSAL_INITIATED</OPTION>
+                <OPTION VALUE="VR" SELECTED="0">LBL_REVERSAL_REQUESTED</OPTION>
+                <OPTION VALUE="VZ" SELECTED="0">LBL_REVERSAL_SEIZED</OPTION>
+                <OPTION VALUE="VS" SELECTED="0">LBL_REVERSAL_SENT_TO_SC</OPTION>
+                <OPTION VALUE="V" SELECTED="0">沖正</OPTION>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>SELECT</TYPE>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ORIG_TXN_STATUS</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>指令代碼 5</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>INSTRUCTION_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>啟動日期</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ACTIVATION_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" INDEX="">
+                <MAX_DECIMALS>4</MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ORIG_TXN_AMOUNT</NAME>
+                <LBL>轉移</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>出納員轉帳</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>3</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>TRANSFER_CCY</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>收回收益率</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>35</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ORIG_RCVR_AC_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>客戶號</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>20</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CUSTOMER_NO</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>客戶服務模式</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>16</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>CUSTOMER_SERVICE_MODEL</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>批次詳細資訊</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ORIG_BATCH_NUMBER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N">
+                <LBL>男高音</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>ORIG_TRACE_NUMBER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>原始期限</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NACHA_OUT_REV</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+        <SECTION ID="SEC_DISP_DET" COLLAPSE="N">
+          <PART NAME="PART4" ID="PART4" WIDTH="100">
+            <FLDSET VIEW="SE" TYPE="SE" INDEX="1" ID="FST_DISP_DET">
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <SIZE></SIZE>
+                <OPTION VALUE="" SELECTED="-1"></OPTION>
+                <OPTION VALUE="P" SELECTED="0">等待保險匹配</OPTION>
+                <OPTION VALUE="S" SELECTED="0">待發送日期</OPTION>
+                <OPTION VALUE="C" SELECTED="0">已取消</OPTION>
+                <OPTION VALUE="N" SELECTED="0">行詳細資訊</OPTION>
+                <COLS></COLS>
+                <MAXLENGTH>1</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DISPATCH_STATUS</NAME>
+                <LBL>調度運行參考</LBL>
+                <DTYPE>VARCHAR2</DTYPE>
+                <TYPE>SELECT</TYPE>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD CONTROL="N" SPRT="1" INDEX="">
+                <MAX_DECIMALS></MAX_DECIMALS>
+                <SIZE></SIZE>
+                <MAX_VAL></MAX_VAL>
+                <COLS></COLS>
+                <MAXLENGTH>22</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DISPATCH_REF</NAME>
+                <LBL>發送參考編號</LBL>
+                <DTYPE>NUMBER</DTYPE>
+                <TYPE>TEXT</TYPE>
+                <MIN_VAL></MIN_VAL>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>調度會計</LBL>
+                <SIZE></SIZE>
+                <DTYPE>DATE</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>7</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DISPATCH_DATE</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>批次詳細資訊</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DISP_BATCH_NUMBER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <FIELD INDEX="" CONTROL="N" SPRT="1">
+                <LBL>男高音</LBL>
+                <SIZE></SIZE>
+                <DTYPE>VARCHAR2</DTYPE>
+                <COLS></COLS>
+                <TYPE>TEXT</TYPE>
+                <MAXLENGTH>15</MAXLENGTH>
+                <READ_ONLY>-1</READ_ONLY>
+                <NAME>DISP_TRACE_NUMBER</NAME>
+                <ROWS></ROWS>
+              </FIELD>
+              <LBL>發送天數</LBL>
+              <HREQ>0</HREQ>
+              <BLOCK>BLK_NACHA_OUT_REV</BLOCK>
+              <WIDTH></WIDTH>
+              <HEIGHT></HEIGHT>
+            </FLDSET>
+            <SPRTCNT>2</SPRTCNT>
+
+          </PART>
+          <LBL></LBL>
+
+        </SECTION>
+      </TAB>
+    </BODY>
+  </SCREEN>
+</FORM>

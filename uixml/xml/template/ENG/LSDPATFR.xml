@@ -1,0 +1,2743 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FORM>
+  <SUMMARY POSITION="template" TITLE="${FORM.SUMMARY.-TITLE}">
+    <SUMMARY_BASE>V</SUMMARY_BASE>
+    <TYPE>S</TYPE>
+  </SUMMARY>
+  <BLOCK TABPAGE="All" TYPE="Single Entry" SCREEN="SUMMARY" VIEW="Single Entry">
+    <FIELD TABPAGE="All">
+      <SRC>Images/Exit2.gif</SRC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>0</HIDDEN>
+      <VALUE>Exit</VALUE>
+      <CHECKED></CHECKED>
+      <READ_ONLY></READ_ONLY>
+      <EVENT>
+        <FUNCTION>fnExit()</FUNCTION>
+        <NAME>onClick</NAME>
+      </EVENT>
+      <NAME>BTN_EXIT</NAME>
+      <DISABLED></DISABLED>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL></LABEL>
+      <ID>BTN_EXIT</ID>
+      <SHOWIN>All</SHOWIN>
+      <TYPE>BUTTON</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED></REQUIRED>
+    <WIDTH></WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <LABEL></LABEL>
+    <ID>BLK_SUMMARY_EXIT</ID>
+  </BLOCK>
+  <SCREEN MAIN_WIN="Y" NAME="CVS_MAIN" TITLE="${FORM.BLOCK.1.#item.SCREEN.-TITLE}" VERSION_BTN_REQD="N" TMP_SCR_TYPE="large" WIDTH="780" POSITION="template" HEIGHT="516">
+    <HEADER>
+      <PAGE NAME="HEADER" HEIGHT="" ID="HEADER">
+        <LABEL></LABEL>
+        <SECTION HEIGHT="" ID="S1">
+          <PARTITION NAME="S1P1" ID="S1P1" WIDTH="33"></PARTITION>
+          <PARTITION NAME="S1P2" ID="S1P2" WIDTH="33"></PARTITION>
+          <PARTITION NAME="S1P3" ID="S1P3" WIDTH="33"></PARTITION>
+        </SECTION>
+        <SECTION HEIGHT="" ID="S2">
+          <PARTITION NAME="S2P1" ID="S2P1" WIDTH="33"></PARTITION>
+          <PARTITION NAME="S2P2" ID="S2P2" WIDTH="33"></PARTITION>
+          <PARTITION NAME="S2P3" ID="S2P3" WIDTH="33"></PARTITION>
+        </SECTION>
+      </PAGE>
+    </HEADER>
+    <SUBSCREEN>
+      <FORM TYPE="S" SEQ="1" id="CVS_PENDING_HISTORY">
+        <LABEL>Pending Transfers</LABEL>
+        <FUNCTION>fnShowSubscreen_CVS_PENDING_HISTORY()</FUNCTION>
+      </FORM>
+      <FORM TYPE="S" SEQ="2" id="CVS_PROCESSED_HISTORY">
+        <LABEL>Processed Transfers</LABEL>
+        <FUNCTION>fnShowSubscreen_CVS_PROCESSED_HISTORY()</FUNCTION>
+      </FORM>
+    </SUBSCREEN>
+    <TABPAGE_ALL HEIGHT="75">
+      <LABEL>All</LABEL>
+    </TABPAGE_ALL>
+    <TAB>
+      <PAGE NAME="TAB_DETAILED" HEIGHT="" ID="TAB_DETAILED">
+        <LABEL>Detailed</LABEL>
+        <SECTION HEIGHT="" ID="DS1">
+          <PARTITION NAME="" ID="DS1P1" WIDTH="33"></PARTITION>
+          <PARTITION NAME="" ID="DS1P2" WIDTH="66"></PARTITION>
+        </SECTION>
+      </PAGE>
+      <PAGE NAME="TAB_CONSOL" HEIGHT="" ID="TAB_CONSOL">
+        <LABEL>Consolidated</LABEL>
+        <SECTION HEIGHT="" ID="CS1">
+          <PARTITION NAME="" ID="CS1P1" WIDTH="100"></PARTITION>
+        </SECTION>
+      </PAGE>
+      <PAGE NAME="All" HEIGHT="" ID="All">
+        <LABEL></LABEL>
+        <SECTION HEIGHT="" ID="AS1">
+          <PARTITION NAME="" ID="AS1P1" WIDTH="33"></PARTITION>
+          <PARTITION NAME="" ID="AS1P2" WIDTH="66"></PARTITION>
+        </SECTION>
+        <SECTION HEIGHT="" ID="AS2">
+          <PARTITION NAME="" ID="AS2P1" WIDTH="50"></PARTITION>
+          <PARTITION NAME="" ID="AS2P2" WIDTH="50"></PARTITION>
+        </SECTION>
+      </PAGE>
+    </TAB>
+    <CS_BUTTON_ROWS></CS_BUTTON_ROWS>
+    <CS_BUTTONS_PER_ROW></CS_BUTTONS_PER_ROW>
+  </SCREEN>
+  <BLOCK TYPE="Audit Entry" SCREEN="CVS_MAIN">
+    <PROCESS_STATUS>-1</PROCESS_STATUS>
+    <AUTH_STATUS>-1</AUTH_STATUS>
+    <CONTRACT_STATUS>-1</CONTRACT_STATUS>
+    <READ_ONLY></READ_ONLY>
+    <REVERSAL>0</REVERSAL>
+    <DEAL_STATUS>0</DEAL_STATUS>
+    <PAYMENT_STATUS>0</PAYMENT_STATUS>
+    <ABS_POS>426,1</ABS_POS>
+    <DBT>LSVWS_CONTRACT_EVENT_LOG</DBT>
+    <LABEL></LABEL>
+    <COLLECTION_STATUS>0</COLLECTION_STATUS>
+    <ID>BLK_AUDIT</ID>
+    <TYPE>T</TYPE>
+  </BLOCK>
+  <BLOCK TABPAGE="HEADER" TYPE="Single Entry" SCREEN="CVS_MAIN" VIEW="Single Entry">
+    <FIELD TABPAGE="HEADER" TYPE="FIELDSET" PARTITION="S1P1" INDEX="1" SECTION="S1">
+      <FIELD INDEX="1">
+        <DBC>FCCREF</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>20</SIZE>
+        <REQUIRED>-1</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>16</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>FCCREF</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Contract Reference~Contract Type</REDUCTION_FLD_LABELS>
+          <TITLE>${FORM.BLOCK.3.FIELD.0.FIELD.0.LOV.TITLE}</TITLE>
+          <COL_HEADING>Contract Reference~Contract Type</COL_HEADING>
+          <NAME>LOV_FCCREF</NAME>
+        </LOV>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+        <LABEL>Contract Reference</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LSDPATFR1</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="2">
+        <DBC>CONTRACTTYPE</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE></SIZE>
+        <HIDDEN>-1</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>CONTRACTTYPE</NAME>
+        <DISABLED>0</DISABLED>
+        <SUMMARY></SUMMARY>
+        <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+        <ID>LSDPATFR75</ID>
+        <DTYPE>CHAR</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>HIDDEN</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="3">
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE></SIZE>
+        <HALIGN>right</HALIGN>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>0</READ_ONLY>
+        <EVENT>
+          <FUNCTION>fnContractPickUp()</FUNCTION>
+          <NAME>onclick</NAME>
+        </EVENT>
+        <NAME>BTN_P</NAME>
+        <DISABLED>0</DISABLED>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <VALIGN>bottom</VALIGN>
+        <LABEL>P</LABEL>
+        <ID>LSDPATFR181</ID>
+        <SHOWIN></SHOWIN>
+        <TYPE>BUTTON</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLD_SET_1</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ>-1</HREQ>
+      <LABEL></LABEL>
+      <ID>LSDPATFR19</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <FIELD TABPAGE="HEADER" TYPE="FIELDSET" PARTITION="S1P2" INDEX="1" SECTION="S1">
+      <FIELD INDEX="1">
+        <DBC>BRANCH</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>3</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>3</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>BRANCH</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+        <LABEL>Branch</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LSDPATFR3</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLD_SET_2</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ>-1</HREQ>
+      <LABEL></LABEL>
+      <ID>LSDPATFR20</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <FIELD TABPAGE="HEADER" TYPE="FIELDSET" PARTITION="S1P3" INDEX="1" SECTION="S1">
+      <FIELD INDEX="1">
+        <DBC>SERIALNO</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>4</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>0</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>SERIALNO</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+        <LABEL>Serial Number</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LSDPATFR7</ID>
+        <DTYPE>CHAR</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="2">
+        <SRC>Images/Moveprev.gif</SRC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE></SIZE>
+        <HALIGN>right</HALIGN>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>0</READ_ONLY>
+        <EVENT>
+          <FUNCTION>fnPrevious()</FUNCTION>
+          <NAME>onclick</NAME>
+        </EVENT>
+        <NAME>BTN_PREV</NAME>
+        <DISABLED>0</DISABLED>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Contract Reference~Contract Type</REDUCTION_FLD_LABELS>
+          <TITLE>${FORM.BLOCK.3.FIELD.2.FIELD.1.LOV.TITLE}</TITLE>
+          <COL_HEADING>Contract Reference~Contract Type</COL_HEADING>
+          <NAME>LOV_FCCREF</NAME>
+        </LOV>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <VALIGN>bottom</VALIGN>
+        <LABEL></LABEL>
+        <ID>LSDPATFR94</ID>
+        <SHOWIN></SHOWIN>
+        <TYPE>BUTTON</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="3">
+        <SRC>Images/Movenext.gif</SRC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE></SIZE>
+        <HALIGN>right</HALIGN>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>0</READ_ONLY>
+        <EVENT>
+          <FUNCTION>fnNext()</FUNCTION>
+          <NAME>onclick</NAME>
+        </EVENT>
+        <NAME>BTN_NEXT</NAME>
+        <DISABLED>0</DISABLED>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <VALIGN>bottom</VALIGN>
+        <LABEL></LABEL>
+        <ID>LSDPATFR93</ID>
+        <SHOWIN></SHOWIN>
+        <TYPE>BUTTON</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLD_SET_3</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ>-1</HREQ>
+      <LABEL></LABEL>
+      <ID>LSDPATFR21</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <FIELD TABPAGE="HEADER" TYPE="FIELDSET" PARTITION="S2P1" INDEX="1" SECTION="S2">
+      <FIELD INDEX="1">
+        <DBC>FCREFNO</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>20</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>16</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>FCREFNO</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+        <LABEL>Contract Reference</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LSDPATFR8</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="2">
+        <DBC>FCUSERREFNO</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>20</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>0</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>FCUSERREFNO</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+        <LABEL>User Reference</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LSDPATFR11</ID>
+        <DTYPE>CHAR</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="3">
+        <DBC>BORROWER</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>20</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>0</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>BORROWER</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+        <LABEL>Borrower</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LSDPATFR14</ID>
+        <DTYPE>CHAR</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="4">
+        <DBC>BORROWERNAME</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>0</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>0</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>BORROWERNAME</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+        <LABEL>Borrower Name</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LSDPATFR15</ID>
+        <DTYPE>CHAR</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLD_SET_4</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ>0</HREQ>
+      <LABEL>Facility</LABEL>
+      <ID>LSDPATFR22</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <FIELD TABPAGE="HEADER" TYPE="FIELDSET" PARTITION="S2P2" INDEX="1" SECTION="S2">
+      <FIELD INDEX="1">
+        <DBC>TRREFNO</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>20</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>16</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TRREFNO</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+        <LABEL>Contract Reference</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LSDPATFR9</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="2">
+        <DBC>TRUSERREFNO</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>20</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>0</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>TRUSERREFNO</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+        <LABEL>User Reference</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LSDPATFR12</ID>
+        <DTYPE>CHAR</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="3">
+        <DBC>CASCADEPARTICIPATION</DBC>
+        <WIDTH></WIDTH>
+        <VALUE>N</VALUE>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <UIBLOCK></UIBLOCK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+        <LABEL>Cascade Participation</LABEL>
+        <ID>LSDPATFR17</ID>
+        <DTYPE>CHAR</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>CHECKBOX</TYPE>
+        <AUTHSCRN>0</AUTHSCRN>
+        <SIZE></SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <COLS></COLS>
+        <HEIGHT></HEIGHT>
+        <MAXLENGTH></MAXLENGTH>
+        <NAME>CASCADEPARTICIPATION</NAME>
+        <DISABLED>0</DISABLED>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ROWS></ROWS>
+      </FIELD>
+      <FIELD INDEX="4">
+        <DBC>INSTRUCTIONTYPE</DBC>
+        <WIDTH></WIDTH>
+        <VALUE>N</VALUE>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>0</READ_ONLY>
+        <EVENT>
+          <FUNCTION>fnEnableDisableTab()</FUNCTION>
+          <NAME>onclick</NAME>
+        </EVENT>
+        <UIBLOCK></UIBLOCK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+        <LABEL>Detailed Instruction</LABEL>
+        <ID>LSDPATFR18</ID>
+        <DTYPE>CHAR</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>CHECKBOX</TYPE>
+        <AUTHSCRN>0</AUTHSCRN>
+        <SIZE></SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <COLS></COLS>
+        <HEIGHT></HEIGHT>
+        <MAXLENGTH></MAXLENGTH>
+        <NAME>INSTRUCTIONTYPE</NAME>
+        <DISABLED>0</DISABLED>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ROWS></ROWS>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLD_SET_5</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ>0</HREQ>
+      <LABEL>Tranche</LABEL>
+      <ID>LSDPATFR23</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <FIELD TABPAGE="HEADER" TYPE="FIELDSET" PARTITION="S2P3" INDEX="1" SECTION="S2">
+      <FIELD INDEX="1">
+        <DBC>DRREFNO</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>20</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>16</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>DRREFNO</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+        <LABEL>Contract Reference</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LSDPATFR10</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="2">
+        <DBC>DRUSERREFNO</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>20</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>0</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>DRUSERREFNO</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+        <LABEL>User Reference</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LSDPATFR13</ID>
+        <DTYPE>CHAR</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="3">
+        <DBC>DRAWDOWNNO</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>10</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>22</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>DRAWDOWNNO</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+        <LABEL>Drawdown Number</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LSDPATFR16</ID>
+        <DTYPE>NUMBER</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <FIELD INDEX="4">
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE></SIZE>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>0</READ_ONLY>
+        <EVENT>
+          <FUNCTION>fnEnrich()</FUNCTION>
+          <NAME>onclick</NAME>
+        </EVENT>
+        <NAME>BTN_ENRICH</NAME>
+        <DISABLED>0</DISABLED>
+        <LOV>
+          <REDUCTION_FLD_LABELS>Contract Reference~Contract Type</REDUCTION_FLD_LABELS>
+          <TITLE>${FORM.BLOCK.3.FIELD.5.FIELD.3.LOV.TITLE}</TITLE>
+          <COL_HEADING>Contract Reference~Contract Type</COL_HEADING>
+          <NAME>LOV_FCCREF</NAME>
+        </LOV>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <LABEL>Enrich</LABEL>
+        <ID>LSDPATFR76</ID>
+        <SHOWIN></SHOWIN>
+        <TYPE>BUTTON</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLD_SET_6</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ>0</HREQ>
+      <LABEL>Drawdown</LABEL>
+      <ID>LSDPATFR24</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <FIELD TABPAGE="HEADER">
+      <DBC>ESN</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>ESN</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+      <ID>LSDPATFR79</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="HEADER" TYPE="FIELDSET" PARTITION="S1P1" INDEX="2" SECTION="S1">
+      <FIELD INDEX="1">
+        <DBC>USERREF</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>20</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>35</MAXLENGTH>
+        <READ_ONLY>-1</READ_ONLY>
+        <NAME>USERREF</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+        <LABEL>User Reference</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LSDPATFR2</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLS_USERREF</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ>-1</HREQ>
+      <LABEL></LABEL>
+      <ID>LSDPATFR180</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <FIELD TABPAGE="HEADER" TYPE="FIELDSET" PARTITION="S1P2" INDEX="2" SECTION="S1">
+      <FIELD INDEX="1">
+        <DBC>VALUEDT</DBC>
+        <WIDTH></WIDTH>
+        <CHECKED>0</CHECKED>
+        <READ_ONLY>-1</READ_ONLY>
+        <UIBLOCK></UIBLOCK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>LSVWS_PARTICIPANT_TRANSFER</DBT>
+        <LABEL>Value Date</LABEL>
+        <ID>LSDPATFR6</ID>
+        <DTYPE>CHAR</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>DATE</TYPE>
+        <AUTHSCRN>0</AUTHSCRN>
+        <SIZE>10</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <COLS></COLS>
+        <HEIGHT></HEIGHT>
+        <MAXLENGTH></MAXLENGTH>
+        <NAME>VALUEDT</NAME>
+        <DISABLED>0</DISABLED>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ROWS></ROWS>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLS_VALDT</NAME>
+      <LOV>
+        <REDUCTION_FLD_LABELS>Contract Reference~Contract Type</REDUCTION_FLD_LABELS>
+        <TITLE>${FORM.BLOCK.3.FIELD.8.LOV.TITLE}</TITLE>
+        <COL_HEADING>Contract Reference~Contract Type</COL_HEADING>
+        <NAME>LOV_FCCREF</NAME>
+      </LOV>
+      <ABS_POS></ABS_POS>
+      <HREQ>-1</HREQ>
+      <LABEL></LABEL>
+      <ID>LSDPATFR182</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <DATASRC>LSVWS_PARTICIPANT_TRANSFER</DATASRC>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <LABEL></LABEL>
+    <ID>BLK_LSVWS_PARTICIPANT_TRANSFER</ID>
+  </BLOCK>
+  <BLOCK TABPAGE="TAB_DETAILED" TYPE="Multiple Entry" PARTITION="DS1P1" SCREEN="CVS_MAIN" SECTION="DS1">
+    <FIELD TABPAGE="HEADER">
+      <DBC>FCCREF</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>FCCREF_MASTER</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <LABEL>Sequence Number</LABEL>
+      <ID>LSDPATFR25</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>SEQNO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>3</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>-1</READ_ONLY>
+      <NAME>SEQNO</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Sequence Number</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR27</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFERFROM</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>12</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>12</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFERFROM</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <LOV>
+        <REDUCTION_FLD_LABELS>Participant~Name</REDUCTION_FLD_LABELS>
+        <TITLE></TITLE>
+        <COL_HEADING>Participant~Name</COL_HEADING>
+        <NAME>LOV_PARTICIPANTS</NAME>
+      </LOV>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transfer From</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR29</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>PARTICIPANTNAME</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>0</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>0</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>PARTICIPANTNAME_M</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Participant Name</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR28</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <EVENT>
+      <FUNCTION>fnHandleTransferBlock('LSVWS_PART_TRANSFER_MASTER')</FUNCTION>
+      <NAME>onclick</NAME>
+    </EVENT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <DBT>LSVWS_PART_TRANSFER_MASTER</DBT>
+    <LABEL>Transferor</LABEL>
+    <ID>BLK_LSVWS_PART_TRANSFER_MASTER</ID>
+  </BLOCK>
+  <BLOCK TABPAGE="TAB_CONSOL" TYPE="Multiple Entry" PARTITION="CS1P1" SCREEN="CVS_MAIN" SECTION="CS1">
+    <FIELD TABPAGE="HEADER">
+      <DBC>FCCREF</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>FCCREF</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <ID>LSDPATFR30</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>PARTICIPANT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>12</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>12</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>PARTICIPANT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <LOV>
+        <REDUCTION_FLD_LABELS>Participant~Name</REDUCTION_FLD_LABELS>
+        <TITLE>${FORM.BLOCK.5.FIELD.1.LOV.TITLE}</TITLE>
+        <COL_HEADING>Participant~Name</COL_HEADING>
+        <NAME>LOV_CONSOL_PARTICIPANTS</NAME>
+      </LOV>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Participant</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR33</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="HEADER">
+      <DBC>PARTICIPANTNAME</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>0</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>0</MAXLENGTH>
+      <READ_ONLY>-1</READ_ONLY>
+      <NAME>PARTICIPANTNAME_C</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Participant Name</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR164</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="HEADER">
+      <DBC>TRANSFERAMT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFERAMT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transfer Amount</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR34</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="HEADER">
+      <DBC>OLDAMOUNT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>-1</READ_ONLY>
+      <NAME>OLDAMOUNT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Participant Old Amount</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR165</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="HEADER">
+      <DBC>NEWAMOUNT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>-1</READ_ONLY>
+      <NAME>NEWAMOUNT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Participant New Amount</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR166</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <DBT>LSVWS_CONSOL_TRANSFER</DBT>
+    <LABEL>Participant Transfer</LABEL>
+    <ID>BLK_LSVWS_CONSOL_TRANSFER</ID>
+  </BLOCK>
+  <BLOCK TABPAGE="All" TYPE="Multiple Entry" PARTITION="AS1P1" SCREEN="CVS_MAIN" SECTION="AS1">
+    <FIELD TABPAGE="HEADER">
+      <DBC>FCCREF</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>FCCREF</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <ID>LSDPATFR41</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>ESN</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>ESN</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <ID>LSDPATFR42</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>CUSTNO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>0</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>0</MAXLENGTH>
+      <READ_ONLY>-1</READ_ONLY>
+      <NAME>CUSTNO</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Participant</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR43</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>PATRICIPANTNAME</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>0</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>0</MAXLENGTH>
+      <READ_ONLY>-1</READ_ONLY>
+      <NAME>PATRICIPANTNAME</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Participant Name</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR44</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>ASSETRATIO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>0</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>100</MAXLENGTH>
+      <READ_ONLY>-1</READ_ONLY>
+      <NAME>ASSETRATIO</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Asset Ratio</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR45</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="HEADER">
+      <DBC>ASSETAMT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>0</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>0</MAXLENGTH>
+      <READ_ONLY>-1</READ_ONLY>
+      <NAME>ASSETAMT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Amount</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR77</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="HEADER">
+      <DBC>SELFPARTICIPATION</DBC>
+      <AUTHSCRN>0</AUTHSCRN>
+      <SIZE></SIZE>
+      <REQUIRED>0</REQUIRED>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <VALUE>N</VALUE>
+      <COLS></COLS>
+      <MAXLENGTH></MAXLENGTH>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>SELFPARTICIPATION</NAME>
+      <DISABLED>0</DISABLED>
+      <UIBLOCK></UIBLOCK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Self Participation</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR183</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>CHECKBOX</TYPE>
+      <ROWS></ROWS>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <EVENT>
+      <FUNCTION>fnHandleEventBlock('LSVWS_PARTI_RATIO_MASTER')</FUNCTION>
+      <NAME>onclick</NAME>
+    </EVENT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <DBT>LSVWS_PARTI_RATIO_MASTER</DBT>
+    <LABEL>Existing Ratio</LABEL>
+    <ID>BLK_LSVWS_PARTI_RATIO_MASTER</ID>
+  </BLOCK>
+  <BLOCK TABPAGE="TAB_DETAILED" TYPE="Multiple Entry" PARTITION="DS1P2" SCREEN="CVS_MAIN" SECTION="DS1">
+    <FIELD TABPAGE="HEADER">
+      <DBC>FCCREF</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>FCCREF_DET</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <LABEL>Contract Reference</LABEL>
+      <ID>LSDPATFR46</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>ENTRYSEQNO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>ENTRYSEQNO</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <LABEL>Entry Sequence Number</LABEL>
+      <ID>LSDPATFR47</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFERTO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>12</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>12</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFERTO</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <LOV>
+        <REDUCTION_FLD_LABELS>Participant~Name</REDUCTION_FLD_LABELS>
+        <TITLE></TITLE>
+        <COL_HEADING>Participant~Name</COL_HEADING>
+        <NAME>LOV_TRANSFER_TO</NAME>
+      </LOV>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transfer To</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR50</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>PARTICIPANTNAME</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>0</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>0</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>PARTICIPANTNAME_D</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Participant Name</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR51</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFERRATIO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>100</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFERRATIO</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transfer Ratio</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR53</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFERAMT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFERAMT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transfer Amount</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR52</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <DBT>LSVWS_PARTI_TRANSFER_DETAILED</DBT>
+    <LABEL>Transferee</LABEL>
+    <ID>BLK_LSVWS_PARTI_TRANSFER_DETAILED</ID>
+  </BLOCK>
+  <BLOCK TABPAGE="All" TYPE="Multiple Entry" PARTITION="AS1P2" SCREEN="CVS_MAIN" SECTION="AS1">
+    <FIELD TABPAGE="HEADER">
+      <DBC>FCCREF</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>16</SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>FCCREF</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <LABEL>Contract Reference</LABEL>
+      <ID>LSDPATFR57</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>COMPONENT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>0</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>0</MAXLENGTH>
+      <READ_ONLY>-1</READ_ONLY>
+      <NAME>COMPONENT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Component</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR59</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>COMPONENTTYPE</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>0</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>0</MAXLENGTH>
+      <READ_ONLY>-1</READ_ONLY>
+      <NAME>COMPONENTTYPE</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Component Type</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR60</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>RATIO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>13</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>100</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>RATIO</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Ratio</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR61</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TOTAL</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>0</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>0</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TOTAL</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Total</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR62</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="HEADER">
+      <DBC>CUST</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>CUST</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <ID>LSDPATFR78</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <DBT>LSVWS_TRANSFER_COMPONENTS</DBT>
+    <LABEL>Components</LABEL>
+    <ID>BLK_LSVWS_TRANSFER_COMPONENTS</ID>
+  </BLOCK>
+  <BLOCK TABPAGE="All" TYPE="Multiple Entry" PARTITION="AS2P1" SCREEN="CVS_MAIN" SECTION="AS2">
+    <FIELD TABPAGE="HEADER">
+      <DBC>FCCREF</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>FCCREF</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <ID>LSDPATFR70</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="HEADER">
+      <DBC>ENTIYCODE</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>15</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>15</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>ENTIYCODE</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <LOV>
+        <REDUCTION_FLD_LABELS>Entity</REDUCTION_FLD_LABELS>
+        <TITLE>${FORM.BLOCK.9.FIELD.1.LOV.TITLE}</TITLE>
+        <COL_HEADING>Entity</COL_HEADING>
+        <NAME>LOV_ENTITY</NAME>
+      </LOV>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Entity Id</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR67</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="HEADER">
+      <DBC>REMARKS</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>20</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>100</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>REMARKS</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Remarks</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR68</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="HEADER">
+      <DBC>PRIMARYENTITY</DBC>
+      <AUTHSCRN>0</AUTHSCRN>
+      <SIZE></SIZE>
+      <REQUIRED>0</REQUIRED>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <VALUE>N</VALUE>
+      <COLS></COLS>
+      <MAXLENGTH></MAXLENGTH>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>PRIMARYENTITY</NAME>
+      <DISABLED>0</DISABLED>
+      <UIBLOCK></UIBLOCK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Primary</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR69</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>CHECKBOX</TYPE>
+      <ROWS></ROWS>
+    </FIELD>
+    <FIELD TABPAGE="HEADER">
+      <DBC>EVENTSEQNO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>EVENTSEQNO</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <ID>LSDPATFR71</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="HEADER">
+      <DBC>CUSTOMERNO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>CUSTOMERNO_ENTITY</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <ID>LSDPATFR74</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <DBT>LSVWS_ENTITY</DBT>
+    <LABEL>Entity Details</LABEL>
+    <ID>BLK_LSVWS_ENTITY</ID>
+  </BLOCK>
+  <SCREEN NAME="CVS_PROCESSED_HISTORY" POSITION="template" TITLE="${FORM.BLOCK.10.#item.SCREEN.-TITLE}" HEIGHT="516" VERSION_BTN_REQD="N" TMP_SCR_TYPE="medium" WIDTH="780">
+    <TAB>
+      <PAGE NAME="All" HEIGHT="" ID="All">
+        <LABEL>All</LABEL>
+        <SECTION HEIGHT="" ID="S1">
+          <PARTITION NAME="S1P1" ID="S1P1" WIDTH="50"></PARTITION>
+          <PARTITION NAME="S2P2" ID="S2P2" WIDTH="50"></PARTITION>
+        </SECTION>
+        <SECTION HEIGHT="" ID="S2">
+          <PARTITION NAME="S2P1" ID="S2P1" WIDTH="100"></PARTITION>
+        </SECTION>
+        <SECTION HEIGHT="" ID="S3">
+          <PARTITION NAME="S3P3" ID="S3P3" WIDTH="100"></PARTITION>
+        </SECTION>
+      </PAGE>
+    </TAB>
+    <CS_BUTTON_ROWS></CS_BUTTON_ROWS>
+    <TABPAGE_ALL HEIGHT="75">
+      <LABEL>All</LABEL>
+    </TABPAGE_ALL>
+    <CS_BUTTONS_PER_ROW></CS_BUTTONS_PER_ROW>
+  </SCREEN>
+  <BLOCK TABPAGE="All" TYPE="Single Entry" SCREEN="CVS_PROCESSED_HISTORY" VIEW="Single Entry">
+    <FIELD TABPAGE="All" TYPE="FIELDSET" PARTITION="S1P1" INDEX="1" SECTION="S1">
+      <FIELD INDEX="1">
+        <DBC>FCCREF</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>16</SIZE>
+        <REQUIRED>-1</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>16</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>FCCREF</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>CSVWS_CONTRACT</DBT>
+        <LABEL>Contract Reference</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LSDPATFR109</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLS_H1</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ>0</HREQ>
+      <LABEL></LABEL>
+      <ID>LSDPATFR111</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <FIELD TABPAGE="All" TYPE="FIELDSET" PARTITION="S2P2" INDEX="1" SECTION="S1">
+      <FIELD INDEX="1">
+        <DBC>USER_REF_NO</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>16</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>35</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>USER_REF_NO</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>CSVWS_CONTRACT</DBT>
+        <LABEL>User Reference</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LSDPATFR110</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLS_H2</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ>0</HREQ>
+      <LABEL></LABEL>
+      <ID>LSDPATFR112</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <DATASRC>CSVWS_CONTRACT</DATASRC>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <LABEL></LABEL>
+    <ID>BLK_CSVWS_CONTRACT</ID>
+  </BLOCK>
+  <BLOCK TABPAGE="All" TYPE="Multiple Entry" PARTITION="S2P1" SCREEN="CVS_PROCESSED_HISTORY" SECTION="S2">
+    <FIELD TABPAGE="All">
+      <DBC>FCCREF</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>FCCREF</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <LABEL>Contract Reference</LABEL>
+      <ID>LSDPATFR100</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>VALUEDT</DBC>
+      <AUTHSCRN>0</AUTHSCRN>
+      <SIZE>7</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <COLS></COLS>
+      <MAXLENGTH></MAXLENGTH>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>VALUEDT</NAME>
+      <DISABLED>0</DISABLED>
+      <UIBLOCK></UIBLOCK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Value Date</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR102</ID>
+      <DTYPE>DATE</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>DATE</TYPE>
+      <ROWS></ROWS>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>ESN</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>ESN</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Sequence Number</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR101</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFERFROM</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>12</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>12</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFERFROM</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transferor</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR103</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFEROR</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>0</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>0</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFEROR</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transferor Name</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR104</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFERTO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>12</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>12</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFERTO</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transferee</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR105</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFEREE</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>0</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>0</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFEREE</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transferee Name</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR106</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFERAMT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFERAMT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transferred Amount</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR107</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFERRATIO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFERRATIO</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transfer Ratio</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR108</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <DBT>LSVWS_PARTI_TRANSFER_HISTORY</DBT>
+    <LABEL>Transfer History</LABEL>
+    <ID>BLK_LSVWS_PARTI_TRANSFER_HISTORY</ID>
+  </BLOCK>
+  <BLOCK TABPAGE="All" TYPE="Multiple Entry" PARTITION="S3P3" SCREEN="CVS_PROCESSED_HISTORY" SECTION="S3">
+    <FIELD TABPAGE="All">
+      <DBC>FCCREF</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>FCCREF</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <ID>LSDPATFR113</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>VALUEDT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>7</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>7</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>VALUEDT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Value Date</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR115</ID>
+      <DTYPE>DATE</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>ESN</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>ESN</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Sequence Number</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR114</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>PARTICIPANT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>12</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>12</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>PARTICIPANT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Participant</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR116</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>PARTICIPANTNAME</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>0</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>0</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>PARTICIPANTNAME</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Participant Name</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR117</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFERAMOUNT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFERAMOUNT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transfer Amount</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR123</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>OLDAMOUNT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>OLDAMOUNT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Participant Old Amount</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR124</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>NEWAMOUNT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>NEWAMOUNT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Participant New Amount</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR125</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <DBT>LSVWS_CONSOL_HISTORY</DBT>
+    <LABEL>Consol Transfer History</LABEL>
+    <ID>BLK_LSVWS_CONSOL_HISTORY</ID>
+  </BLOCK>
+  <SCREEN NAME="CVS_PENDING_HISTORY" POSITION="template" TITLE="${FORM.BLOCK.14.#item.SCREEN.-TITLE}" HEIGHT="516" VERSION_BTN_REQD="N" TMP_SCR_TYPE="medium" WIDTH="780">
+    <TAB>
+      <PAGE NAME="All" HEIGHT="" ID="All">
+        <LABEL>All</LABEL>
+        <SECTION HEIGHT="" ID="S1">
+          <PARTITION NAME="S1P1" ID="S1P1" WIDTH="50"></PARTITION>
+          <PARTITION NAME="S2P2" ID="S2P2" WIDTH="50"></PARTITION>
+        </SECTION>
+        <SECTION HEIGHT="" ID="S2">
+          <PARTITION NAME="S2P1" ID="S2P1" WIDTH="100"></PARTITION>
+        </SECTION>
+        <SECTION HEIGHT="" ID="S3">
+          <PARTITION NAME="S3P1" ID="S3P1" WIDTH="100"></PARTITION>
+        </SECTION>
+      </PAGE>
+    </TAB>
+    <CS_BUTTON_ROWS></CS_BUTTON_ROWS>
+    <TABPAGE_ALL HEIGHT="75">
+      <LABEL>All</LABEL>
+    </TABPAGE_ALL>
+    <CS_BUTTONS_PER_ROW></CS_BUTTONS_PER_ROW>
+  </SCREEN>
+  <BLOCK TABPAGE="All" TYPE="Single Entry" SCREEN="CVS_PENDING_HISTORY" VIEW="Single Entry">
+    <FIELD TABPAGE="All" TYPE="FIELDSET" PARTITION="S1P1" INDEX="1" SECTION="S1">
+      <FIELD INDEX="1">
+        <DBC>FCCREF</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>16</SIZE>
+        <REQUIRED>-1</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>16</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>FCCREF</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>CSVWS_CONTRACT</DBT>
+        <LABEL>Contract Reference</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LSDPATFR109</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLS_H1</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ>0</HREQ>
+      <LABEL></LABEL>
+      <ID>LSDPATFR111</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <FIELD TABPAGE="All" TYPE="FIELDSET" PARTITION="S2P2" INDEX="1" SECTION="S1">
+      <FIELD INDEX="1">
+        <DBC>USER_REF_NO</DBC>
+        <AUTHSCRN></AUTHSCRN>
+        <SIZE>16</SIZE>
+        <REQUIRED>0</REQUIRED>
+        <HIDDEN>0</HIDDEN>
+        <CHECKED>0</CHECKED>
+        <MAXLENGTH>16</MAXLENGTH>
+        <READ_ONLY>0</READ_ONLY>
+        <NAME>USER_REF_NO</NAME>
+        <DISABLED>0</DISABLED>
+        <LABEL_LINK></LABEL_LINK>
+        <SUMMARY></SUMMARY>
+        <ABS_POS></ABS_POS>
+        <DBT>CSVWS_CONTRACT</DBT>
+        <LABEL>User Reference</LABEL>
+        <TEXT-ALIGN></TEXT-ALIGN>
+        <ID>LSDPATFR110</ID>
+        <DTYPE>VARCHAR2</DTYPE>
+        <SHOWIN></SHOWIN>
+        <TYPE>TEXT</TYPE>
+        <TABINDEX></TABINDEX>
+      </FIELD>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <HEIGHT></HEIGHT>
+      <COLSPAN></COLSPAN>
+      <NAME>FLS_H2</NAME>
+      <ABS_POS></ABS_POS>
+      <HREQ>0</HREQ>
+      <LABEL></LABEL>
+      <ID>LSDPATFR112</ID>
+      <TYPE>FIELDSET</TYPE>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <DATASRC>CSVWS_CONTRACT</DATASRC>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <LABEL></LABEL>
+    <ID>BLK_CSVW_CONTRACT</ID>
+  </BLOCK>
+  <BLOCK TABPAGE="All" TYPE="Multiple Entry" PARTITION="S2P1" SCREEN="CVS_PENDING_HISTORY" SECTION="S2">
+    <FIELD TABPAGE="All">
+      <DBC>FCCREF</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>FCCREF</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <ID>LSDPATFR131</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>VALUEDT</DBC>
+      <AUTHSCRN>0</AUTHSCRN>
+      <SIZE></SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <WIDTH></WIDTH>
+      <HIDDEN>0</HIDDEN>
+      <COLS></COLS>
+      <MAXLENGTH></MAXLENGTH>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>VALUEDT</NAME>
+      <DISABLED>0</DISABLED>
+      <UIBLOCK></UIBLOCK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Value Date</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR133</ID>
+      <DTYPE>DATE</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>DATE</TYPE>
+      <ROWS></ROWS>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>ESN</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>ESN</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Sequence Number</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR132</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFERFROM</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>12</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>12</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFERFROM</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transferor</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR134</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFEROR</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>0</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>0</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFEROR</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transferor Name</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR135</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFERTO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>12</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>12</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFERTO</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transferee</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR136</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFEREE</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>0</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>0</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFEREE</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transferee Name</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR137</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFERAMT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFERAMT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transfer Amount</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR138</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFERRATIO</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFERRATIO</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transfer Ratio</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR139</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <DBT>LSVWS_PENDING_TRANSFER_HISTORY</DBT>
+    <LABEL>Pending Transfer History</LABEL>
+    <ID>BLK_LSVWS_PENDING_TRANSFER_HISTORY</ID>
+  </BLOCK>
+  <BLOCK TABPAGE="All" TYPE="Multiple Entry" PARTITION="S3P1" SCREEN="CVS_PENDING_HISTORY" SECTION="S3">
+    <FIELD TABPAGE="All">
+      <DBC>FCCREF</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN>-1</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>FCCREF</NAME>
+      <DISABLED>0</DISABLED>
+      <SUMMARY></SUMMARY>
+      <ID>LSDPATFR151</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>HIDDEN</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>VALUEDT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>7</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>7</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>VALUEDT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Value Date</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR153</ID>
+      <DTYPE>DATE</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>ESN</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>ESN</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Sequence Number</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR152</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>PARTICIPANT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>12</SIZE>
+      <REQUIRED>-1</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>12</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>PARTICIPANT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Participant</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR154</ID>
+      <DTYPE>VARCHAR2</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>PARTICIPANTNAME</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>0</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>0</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>PARTICIPANTNAME</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Participant Name</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR155</ID>
+      <DTYPE>CHAR</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>TRANSFERAMOUNT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>TRANSFERAMOUNT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Transfer Amount</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR156</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>OLDAMOUNT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>OLDAMOUNT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Participant Old Amount</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR157</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <FIELD TABPAGE="All">
+      <DBC>NEWAMOUNT</DBC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE>22</SIZE>
+      <REQUIRED>0</REQUIRED>
+      <HIDDEN>0</HIDDEN>
+      <CHECKED>0</CHECKED>
+      <MAXLENGTH>22</MAXLENGTH>
+      <READ_ONLY>0</READ_ONLY>
+      <NAME>NEWAMOUNT</NAME>
+      <DISABLED>0</DISABLED>
+      <LABEL_LINK></LABEL_LINK>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL>Participant New Amount</LABEL>
+      <TEXT-ALIGN></TEXT-ALIGN>
+      <ID>LSDPATFR158</ID>
+      <DTYPE>NUMBER</DTYPE>
+      <SHOWIN></SHOWIN>
+      <TYPE>TEXT</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <REQUIRED>0</REQUIRED>
+    <WIDTH></WIDTH>
+    <OKCANCEL>0</OKCANCEL>
+    <HEIGHT></HEIGHT>
+    <DATAPAGESIZE></DATAPAGESIZE>
+    <ABS_POS></ABS_POS>
+    <DBT>LSVWS_PENDING_CONSOL_HISTORY</DBT>
+    <LABEL>Pending Consol Transfer History</LABEL>
+    <ID>BLK_LSVWS_PENDING_CONSOL_HISTORY</ID>
+  </BLOCK>
+  <BLOCK TYPE="Single Entry" SCREEN="CVS_MAIN">
+    <FIELD TABPAGE="All">
+      <SRC>Images/Exit2.gif</SRC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN></HIDDEN>
+      <VALUE>Exit</VALUE>
+      <CHECKED></CHECKED>
+      <READ_ONLY></READ_ONLY>
+      <EVENT>
+        <FUNCTION>fnExit()</FUNCTION>
+        <NAME>onclick</NAME>
+      </EVENT>
+      <NAME>BTN_EXIT</NAME>
+      <DISABLED></DISABLED>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL></LABEL>
+      <ID>LSDPATFR97</ID>
+      <SHOWIN></SHOWIN>
+      <TYPE>BUTTON</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <ID>BLK_STD_BUTTONS_IMG</ID>
+  </BLOCK>
+  <BLOCK TYPE="Single Entry" SCREEN="CVS_PROCESSED_HISTORY">
+    <FIELD TABPAGE="All">
+      <SRC>Images/Exit2.gif</SRC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN></HIDDEN>
+      <VALUE>Exit</VALUE>
+      <CHECKED></CHECKED>
+      <READ_ONLY></READ_ONLY>
+      <EVENT>
+        <FUNCTION>fnExit_CVS_PROCESSED_HISTORY()</FUNCTION>
+        <NAME>onclick</NAME>
+      </EVENT>
+      <NAME>BTN_EXIT</NAME>
+      <DISABLED></DISABLED>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL></LABEL>
+      <ID>LSDPATFR130</ID>
+      <SHOWIN></SHOWIN>
+      <TYPE>BUTTON</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <ID>BLK_STD_BUTTONS_IMG</ID>
+  </BLOCK>
+  <BLOCK TYPE="Single Entry" SCREEN="CVS_PENDING_HISTORY">
+    <FIELD TABPAGE="All">
+      <SRC>Images/Exit2.gif</SRC>
+      <AUTHSCRN></AUTHSCRN>
+      <SIZE></SIZE>
+      <HIDDEN></HIDDEN>
+      <VALUE>Exit</VALUE>
+      <CHECKED></CHECKED>
+      <READ_ONLY></READ_ONLY>
+      <EVENT>
+        <FUNCTION>fnExit_CVS_PENDING_HISTORY()</FUNCTION>
+        <NAME>onclick</NAME>
+      </EVENT>
+      <NAME>BTN_EXIT</NAME>
+      <DISABLED></DISABLED>
+      <SUMMARY></SUMMARY>
+      <ABS_POS></ABS_POS>
+      <LABEL></LABEL>
+      <ID>LSDPATFR163</ID>
+      <SHOWIN></SHOWIN>
+      <TYPE>BUTTON</TYPE>
+      <TABINDEX></TABINDEX>
+    </FIELD>
+    <ID>BLK_STD_BUTTONS_IMG</ID>
+  </BLOCK>
+  <SUMBLOCK TABPAGE="QUERY" TYPE="Single Entry" SCREEN="SUMMARY">
+    <FIELD TYPE="MULTIPLE" ID="1">
+      <DBC>FCCREF</DBC>
+      <DBT>LSVWS_PARTI_TRANSFER_SUMMARY</DBT>
+      <LABEL>Contract Reference</LABEL>
+      <DTYPE>VARCHAR2</DTYPE>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>16</MAXLENGTH>
+      <NAME>FCCREF</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="2">
+      <DBC>USER_REF</DBC>
+      <DBT>LSVWS_PARTI_TRANSFER_SUMMARY</DBT>
+      <LABEL>User Reference</LABEL>
+      <DTYPE>VARCHAR2</DTYPE>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>35</MAXLENGTH>
+      <NAME>USER_REF</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="3">
+      <DBC>VALDT</DBC>
+      <DBT>LSVWS_PARTI_TRANSFER_SUMMARY</DBT>
+      <LABEL>Value Date</LABEL>
+      <DTYPE>DATE</DTYPE>
+      <TYPE>DATE</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>VALDT</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="4">
+      <DBC>AUTHSTAT</DBC>
+      <DBT>LSVWS_PARTI_TRANSFER_SUMMARY</DBT>
+      <OPTION VALUE="A" SELECTED="0">${FORM.SUMBLOCK.0.FIELD.3.OPTION.0.#text}</OPTION>
+      <OPTION VALUE="U" SELECTED="0">${FORM.SUMBLOCK.0.FIELD.3.OPTION.1.#text}</OPTION>
+      <OPTION VALUE="" SELECTED="-1"></OPTION>
+      <LABEL>Authorization Status</LABEL>
+      <DTYPE>VARCHAR2</DTYPE>
+      <TYPE>SELECT</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>AUTHSTAT</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="5">
+      <DBC>CONTSTAT</DBC>
+      <DBT>LSVWS_PARTI_TRANSFER_SUMMARY</DBT>
+      <OPTION VALUE="A" SELECTED="0">${FORM.SUMBLOCK.0.FIELD.4.OPTION.0.#text}</OPTION>
+      <OPTION VALUE="L" SELECTED="0">${FORM.SUMBLOCK.0.FIELD.4.OPTION.1.#text}</OPTION>
+      <OPTION VALUE="V" SELECTED="0">${FORM.SUMBLOCK.0.FIELD.4.OPTION.2.#text}</OPTION>
+      <OPTION VALUE="H" SELECTED="0">${FORM.SUMBLOCK.0.FIELD.4.OPTION.3.#text}</OPTION>
+      <OPTION VALUE="I" SELECTED="0">${FORM.SUMBLOCK.0.FIELD.4.OPTION.4.#text}</OPTION>
+      <OPTION VALUE="U" SELECTED="0">${FORM.SUMBLOCK.0.FIELD.4.OPTION.5.#text}</OPTION>
+      <OPTION VALUE="" SELECTED="-1"></OPTION>
+      <LABEL>Account Status</LABEL>
+      <DTYPE>VARCHAR2</DTYPE>
+      <TYPE>SELECT</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>CONTSTAT</NAME>
+    </FIELD>
+
+  </SUMBLOCK>
+  <SUMBLOCK TABPAGE="RESULT" TYPE="Multiple Entry" SCREEN="SUMMARY">
+    <FIELD TYPE="MULTIPLE" ID="1">
+      <ORDER></ORDER>
+      <DBC>FCCREF</DBC>
+      <DBT>LSVWS_PARTI_TRANSFER_SUMMARY</DBT>
+      <LABEL>Contract Reference</LABEL>
+      <DTYPE>VARCHAR2</DTYPE>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>16</MAXLENGTH>
+      <NAME>FCCREF</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="2">
+      <ORDER></ORDER>
+      <DBC>USER_REF</DBC>
+      <DBT>LSVWS_PARTI_TRANSFER_SUMMARY</DBT>
+      <LABEL>User Reference</LABEL>
+      <DTYPE>VARCHAR2</DTYPE>
+      <TYPE>TEXT</TYPE>
+      <MAXLENGTH>35</MAXLENGTH>
+      <NAME>USER_REF</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="3">
+      <ORDER></ORDER>
+      <DBC>VALDT</DBC>
+      <DBT>LSVWS_PARTI_TRANSFER_SUMMARY</DBT>
+      <LABEL>Value Date</LABEL>
+      <DTYPE>DATE</DTYPE>
+      <TYPE>DATE</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>VALDT</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="4">
+      <ORDER></ORDER>
+      <DBC>AUTHSTAT</DBC>
+      <DBT>LSVWS_PARTI_TRANSFER_SUMMARY</DBT>
+      <LABEL>Authorization Status</LABEL>
+      <DTYPE>VARCHAR2</DTYPE>
+      <TYPE>SELECT</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>AUTHSTAT</NAME>
+    </FIELD>
+    <FIELD TYPE="MULTIPLE" ID="5">
+      <ORDER></ORDER>
+      <DBC>CONTSTAT</DBC>
+      <DBT>LSVWS_PARTI_TRANSFER_SUMMARY</DBT>
+      <LABEL>Account Status</LABEL>
+      <DTYPE>VARCHAR2</DTYPE>
+      <TYPE>SELECT</TYPE>
+      <MAXLENGTH></MAXLENGTH>
+      <NAME>CONTSTAT</NAME>
+    </FIELD>
+    <LEGENDS>
+      <OPTION VALUE="A">${FORM.SUMBLOCK.1.LEGENDS.0.OPTION.0.#text}</OPTION>
+      <OPTION VALUE="U">${FORM.SUMBLOCK.1.LEGENDS.0.OPTION.1.#text}</OPTION>
+      <LABEL>Authorization Status</LABEL>
+      <WIDTH></WIDTH>
+      <FIELD_NAME>AUTHSTAT</FIELD_NAME>
+    </LEGENDS>
+    <LEGENDS>
+      <OPTION VALUE="A">${FORM.SUMBLOCK.1.LEGENDS.1.OPTION.0.#text}</OPTION>
+      <OPTION VALUE="L">${FORM.SUMBLOCK.1.LEGENDS.1.OPTION.1.#text}</OPTION>
+      <OPTION VALUE="V">${FORM.SUMBLOCK.1.LEGENDS.1.OPTION.2.#text}</OPTION>
+      <OPTION VALUE="H">${FORM.SUMBLOCK.1.LEGENDS.1.OPTION.3.#text}</OPTION>
+      <OPTION VALUE="I">${FORM.SUMBLOCK.1.LEGENDS.1.OPTION.4.#text}</OPTION>
+      <OPTION VALUE="Y">${FORM.SUMBLOCK.1.LEGENDS.1.OPTION.5.#text}</OPTION>
+      <LABEL>Account Status</LABEL>
+      <WIDTH></WIDTH>
+      <FIELD_NAME>CONTSTAT</FIELD_NAME>
+    </LEGENDS>
+
+  </SUMBLOCK>
+</FORM>
