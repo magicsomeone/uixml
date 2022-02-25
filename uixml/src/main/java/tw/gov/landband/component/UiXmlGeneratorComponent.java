@@ -42,7 +42,7 @@ public class UiXmlGeneratorComponent {
 			try {
 				FileUtils.cleanDirectory(dir);
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.error("Directory remove failed.");
 			}
 		} else {
 			dir.mkdirs();
@@ -110,20 +110,18 @@ public class UiXmlGeneratorComponent {
 									try {
 										Files.write(Path.of(outputLanguageXmlPath), xmlString.getBytes());
 									} catch (IOException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
+										logger.error("File write failed.");
 									}
 								});
 							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
+								logger.error("File read failed.");
 							}
 						});
 					}
 				});
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("XLSX file read failed");
 		}
 	}
 }
